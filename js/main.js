@@ -168,6 +168,25 @@
       });
     });
 
+    var prevBtn = document.querySelector('.ai-gallery-prev');
+    var nextBtn = document.querySelector('.ai-gallery-next');
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        var prev = (currentIndex - 1 + cards.length) % cards.length;
+        showCard(prev);
+        resetAutoPlay();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        var next = (currentIndex + 1) % cards.length;
+        showCard(next);
+        resetAutoPlay();
+      });
+    }
+
     function autoPlay() {
       autoPlayInterval = setInterval(function () {
         var next = (currentIndex + 1) % cards.length;

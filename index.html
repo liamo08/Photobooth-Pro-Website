@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
 
@@ -368,12 +368,20 @@
               </div>
             </div>
 
-            <div class="ai-gallery-dots">
-              <button class="ai-gallery-dot active" data-index="0" aria-label="Show transformation 1"></button>
-              <button class="ai-gallery-dot" data-index="1" aria-label="Show transformation 2"></button>
-              <button class="ai-gallery-dot" data-index="2" aria-label="Show transformation 3"></button>
-              <button class="ai-gallery-dot" data-index="3" aria-label="Show transformation 4"></button>
-              <button class="ai-gallery-dot" data-index="4" aria-label="Show transformation 5"></button>
+            <div class="ai-gallery-nav">
+              <button class="ai-gallery-prev" aria-label="Previous slide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <div class="ai-gallery-dots">
+                <button class="ai-gallery-dot active" data-index="0" aria-label="Show transformation 1"></button>
+                <button class="ai-gallery-dot" data-index="1" aria-label="Show transformation 2"></button>
+                <button class="ai-gallery-dot" data-index="2" aria-label="Show transformation 3"></button>
+                <button class="ai-gallery-dot" data-index="3" aria-label="Show transformation 4"></button>
+                <button class="ai-gallery-dot" data-index="4" aria-label="Show transformation 5"></button>
+              </div>
+              <button class="ai-gallery-next" aria-label="Next slide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
             </div>
           </div>
         </div>
@@ -644,6 +652,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=3"></script>
+  <script src="js/main.js?v=4"></script>
 </body>
 </html>
