@@ -141,6 +141,46 @@
     window.addEventListener('scroll', highlightNav, { passive: true });
   }
 
+  // --- AI Gallery carousel ---
+  function initAIGallery() {
+    var cards = document.querySelectorAll('.ai-gallery-card');
+    var dots = document.querySelectorAll('.ai-gallery-dot');
+    if (!cards.length || !dots.length) return;
+
+    var currentIndex = 0;
+    var autoPlayInterval;
+
+    function showCard(index) {
+      cards.forEach(function (card) { card.classList.remove('active'); });
+      dots.forEach(function (dot) { dot.classList.remove('active'); });
+      cards[index].classList.add('active');
+      dots[index].classList.add('active');
+      currentIndex = index;
+    }
+
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        var index = parseInt(this.getAttribute('data-index'), 10);
+        showCard(index);
+        resetAutoPlay();
+      });
+    });
+
+    function autoPlay() {
+      autoPlayInterval = setInterval(function () {
+        var next = (currentIndex + 1) % cards.length;
+        showCard(next);
+      }, 4000);
+    }
+
+    function resetAutoPlay() {
+      clearInterval(autoPlayInterval);
+      autoPlay();
+    }
+
+    autoPlay();
+  }
+
   // --- Initialize everything ---
   function init() {
     initScrollAnimations();
@@ -149,6 +189,7 @@
     initSmoothScroll();
     initDownloadButton();
     initActiveNavLinks();
+    initAIGallery();
   }
 
   if (document.readyState === 'loading') {

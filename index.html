@@ -259,74 +259,116 @@
             </div>
           </div>
 
-          <div class="ai-prompts">
-            <h4>Pre-Built Creative Prompts</h4>
-            <div class="prompt-tags">
-              <span class="prompt-tag">Anime Style</span>
-              <span class="prompt-tag">Oil Painting</span>
-              <span class="prompt-tag">80s Retro</span>
-              <span class="prompt-tag">Superhero</span>
-              <span class="prompt-tag">Old Hollywood</span>
-              <span class="prompt-tag">Pixel Art</span>
-              <span class="prompt-tag">Watercolor</span>
-              <span class="prompt-tag">+ Custom Prompts</span>
-            </div>
-          </div>
         </div>
 
         <div class="ai-visual fade-in">
-          <div class="ai-demo-card">
-            <div class="ai-demo-header">
-              <span class="ai-demo-dot red"></span>
-              <span class="ai-demo-dot yellow"></span>
-              <span class="ai-demo-dot green"></span>
-              <span class="ai-demo-title">AI Transformation</span>
+          <div class="ai-gallery">
+            <div class="ai-gallery-card active" data-index="0">
+              <div class="ai-gallery-images">
+                <div class="ai-gallery-before">
+                  <img src="images/original-trio.jpg" alt="Original photo of three people at a wedding" loading="lazy">
+                  <span class="ai-gallery-label">Before</span>
+                </div>
+                <div class="ai-gallery-arrow">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+                <div class="ai-gallery-after">
+                  <img src="images/ai-vogue-trio.jpg" alt="AI-transformed Vogue magazine cover" loading="lazy">
+                  <span class="ai-gallery-label">After</span>
+                </div>
+              </div>
+              <div class="ai-gallery-caption">
+                <span class="ai-gallery-style">Vogue Magazine Cover</span>
+                <span class="ai-gallery-model">Seedream v4.5</span>
+              </div>
             </div>
-            <div class="ai-demo-body">
-              <div class="ai-demo-row">
-                <div class="ai-demo-photo">
-                  <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="120" height="120" rx="8" fill="#1e293b"/>
-                    <circle cx="60" cy="45" r="18" fill="#334155"/>
-                    <ellipse cx="60" cy="90" rx="30" ry="20" fill="#334155"/>
-                    <text x="60" y="118" text-anchor="middle" fill="#64748b" font-size="10">Original</text>
-                  </svg>
+
+            <div class="ai-gallery-card" data-index="1">
+              <div class="ai-gallery-images">
+                <div class="ai-gallery-before">
+                  <img src="images/original-couple.jpg" alt="Original photo of a couple at a wedding" loading="lazy">
+                  <span class="ai-gallery-label">Before</span>
                 </div>
-                <div class="ai-demo-arrow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
+                <div class="ai-gallery-arrow">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </div>
-                <div class="ai-demo-photo ai-result">
-                  <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="120" height="120" rx="8" fill="url(#ai-bg)"/>
-                    <circle cx="60" cy="45" r="18" fill="url(#ai-face)"/>
-                    <ellipse cx="60" cy="90" rx="30" ry="20" fill="url(#ai-body)"/>
-                    <text x="60" y="118" text-anchor="middle" fill="#c4b5fd" font-size="10">AI Enhanced</text>
-                    <defs>
-                      <linearGradient id="ai-bg" x1="0" y1="0" x2="120" y2="120">
-                        <stop offset="0%" stop-color="#312e81"/>
-                        <stop offset="100%" stop-color="#1e1b4b"/>
-                      </linearGradient>
-                      <linearGradient id="ai-face" x1="42" y1="27" x2="78" y2="63">
-                        <stop offset="0%" stop-color="#6366f1"/>
-                        <stop offset="100%" stop-color="#8b5cf6"/>
-                      </linearGradient>
-                      <linearGradient id="ai-body" x1="30" y1="70" x2="90" y2="110">
-                        <stop offset="0%" stop-color="#4f46e5"/>
-                        <stop offset="100%" stop-color="#7c3aed"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
+                <div class="ai-gallery-after">
+                  <img src="images/ai-vogue-couple.jpg" alt="AI-transformed Vogue magazine cover" loading="lazy">
+                  <span class="ai-gallery-label">After</span>
                 </div>
               </div>
-              <div class="ai-demo-prompt">
-                <span class="ai-demo-label">Prompt:</span> "Transform into anime style with vibrant colors"
+              <div class="ai-gallery-caption">
+                <span class="ai-gallery-style">Magazine Cover</span>
+                <span class="ai-gallery-model">FLUX 2 Pro</span>
               </div>
-              <div class="ai-demo-progress">
-                <div class="ai-demo-progress-bar"></div>
+            </div>
+
+            <div class="ai-gallery-card" data-index="2">
+              <div class="ai-gallery-images">
+                <div class="ai-gallery-before">
+                  <img src="images/original-duo.jpg" alt="Original photo of two women at a wedding" loading="lazy">
+                  <span class="ai-gallery-label">Before</span>
+                </div>
+                <div class="ai-gallery-arrow">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+                <div class="ai-gallery-after">
+                  <img src="images/ai-sketch-duo.jpg" alt="AI-transformed pencil sketch" loading="lazy">
+                  <span class="ai-gallery-label">After</span>
+                </div>
               </div>
-              <span class="ai-demo-status">Processing with Seedream v4.5...</span>
+              <div class="ai-gallery-caption">
+                <span class="ai-gallery-style">Pencil Sketch</span>
+                <span class="ai-gallery-model">Nano Banana Pro</span>
+              </div>
+            </div>
+
+            <div class="ai-gallery-card" data-index="3">
+              <div class="ai-gallery-images">
+                <div class="ai-gallery-before">
+                  <img src="images/original-trio.jpg" alt="Original photo of three people at a wedding" loading="lazy">
+                  <span class="ai-gallery-label">Before</span>
+                </div>
+                <div class="ai-gallery-arrow">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+                <div class="ai-gallery-after">
+                  <img src="images/ai-instagram-trio.jpg" alt="AI-transformed Instagram fashion shoot" loading="lazy">
+                  <span class="ai-gallery-label">After</span>
+                </div>
+              </div>
+              <div class="ai-gallery-caption">
+                <span class="ai-gallery-style">Social Media Style</span>
+                <span class="ai-gallery-model">Seedream v4.5</span>
+              </div>
+            </div>
+
+            <div class="ai-gallery-card" data-index="4">
+              <div class="ai-gallery-images">
+                <div class="ai-gallery-before">
+                  <img src="images/original-lads.jpg" alt="Original photo of four men" loading="lazy">
+                  <span class="ai-gallery-label">Before</span>
+                </div>
+                <div class="ai-gallery-arrow">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+                <div class="ai-gallery-after">
+                  <img src="images/ai-goodfellas-lads.png" alt="AI-transformed GoodFellas movie poster" loading="lazy">
+                  <span class="ai-gallery-label">After</span>
+                </div>
+              </div>
+              <div class="ai-gallery-caption">
+                <span class="ai-gallery-style">Movie Poster</span>
+                <span class="ai-gallery-model">Seedream v4.5</span>
+              </div>
+            </div>
+
+            <div class="ai-gallery-dots">
+              <button class="ai-gallery-dot active" data-index="0" aria-label="Show transformation 1"></button>
+              <button class="ai-gallery-dot" data-index="1" aria-label="Show transformation 2"></button>
+              <button class="ai-gallery-dot" data-index="2" aria-label="Show transformation 3"></button>
+              <button class="ai-gallery-dot" data-index="3" aria-label="Show transformation 4"></button>
+              <button class="ai-gallery-dot" data-index="4" aria-label="Show transformation 5"></button>
             </div>
           </div>
         </div>
