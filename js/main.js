@@ -142,6 +142,8 @@
   }
 
   // --- AI Gallery carousel ---
+  var galleryAutoPlay = { pause: function () {}, resume: function () {} };
+
   function initAIGallery() {
     var cards = document.querySelectorAll('.ai-gallery-card');
     var dots = document.querySelectorAll('.ai-gallery-dot');
@@ -177,6 +179,14 @@
       clearInterval(autoPlayInterval);
       autoPlay();
     }
+
+    galleryAutoPlay.pause = function () {
+      clearInterval(autoPlayInterval);
+    };
+
+    galleryAutoPlay.resume = function () {
+      resetAutoPlay();
+    };
 
     autoPlay();
   }
@@ -221,6 +231,7 @@
       images.addEventListener('pointerdown', function (e) {
         if (!isMobile()) return;
         dragging = true;
+        galleryAutoPlay.pause();
         images.setPointerCapture(e.pointerId);
         updateFromEvent(e);
         e.preventDefault();
@@ -232,11 +243,17 @@
       });
 
       images.addEventListener('pointerup', function () {
-        dragging = false;
+        if (dragging) {
+          dragging = false;
+          galleryAutoPlay.resume();
+        }
       });
 
       images.addEventListener('pointercancel', function () {
-        dragging = false;
+        if (dragging) {
+          dragging = false;
+          galleryAutoPlay.resume();
+        }
       });
     });
 
