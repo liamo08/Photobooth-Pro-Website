@@ -235,8 +235,9 @@
     }
 
     cards.forEach(function (card) {
+      var handle = card.querySelector('.ai-slider-handle');
       var images = card.querySelector('.ai-gallery-images');
-      if (!images) return;
+      if (!handle || !images) return;
 
       var dragging = false;
 
@@ -247,28 +248,27 @@
         setSliderPosition(card, pct);
       }
 
-      images.addEventListener('pointerdown', function (e) {
+      handle.addEventListener('pointerdown', function (e) {
         if (!isMobile()) return;
         dragging = true;
         galleryAutoPlay.pause();
-        images.setPointerCapture(e.pointerId);
-        updateFromEvent(e);
+        handle.setPointerCapture(e.pointerId);
         e.preventDefault();
       });
 
-      images.addEventListener('pointermove', function (e) {
+      handle.addEventListener('pointermove', function (e) {
         if (!dragging || !isMobile()) return;
         updateFromEvent(e);
       });
 
-      images.addEventListener('pointerup', function () {
+      handle.addEventListener('pointerup', function () {
         if (dragging) {
           dragging = false;
           galleryAutoPlay.resume();
         }
       });
 
-      images.addEventListener('pointercancel', function () {
+      handle.addEventListener('pointercancel', function () {
         if (dragging) {
           dragging = false;
           galleryAutoPlay.resume();
