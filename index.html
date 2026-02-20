@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhotoBooth Pro - Professional Photo Booth Software</title>
+  <meta name="description" content="Transform any setup into a professional photo booth with PhotoBooth Pro. Canon DSLR support, AI effects, templates, printing, and cloud sync with BoothLedger.">
+  <meta property="og:title" content="PhotoBooth Pro - Professional Photo Booth Software">
+  <meta property="og:description" content="The all-in-one photo booth solution for event professionals. DSLR quality, AI effects, instant sharing.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <svg class="logo-icon" viewBox="0 0 48 48" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Camera body -->
+          <rect x="4" y="14" width="40" height="26" rx="4" fill="url(#logo-grad)" />
+          <!-- Viewfinder bump -->
+          <rect x="16" y="8" width="12" height="8" rx="2" fill="url(#logo-grad)" />
+          <!-- Lens outer ring -->
+          <circle cx="24" cy="27" r="10" fill="#0f172a" />
+          <circle cx="24" cy="27" r="9" fill="none" stroke="url(#lens-grad)" stroke-width="1.5" />
+          <!-- Aperture blades -->
+          <path d="M24 18 L27 24 L24 22 Z" fill="url(#lens-grad)" opacity="0.6" />
+          <path d="M32.5 22 L28 25.5 L29 23 Z" fill="url(#lens-grad)" opacity="0.5" />
+          <path d="M32.5 32 L27.5 27 L29.5 27.5 Z" fill="url(#lens-grad)" opacity="0.4" />
+          <path d="M24 36 L21 30 L24 32 Z" fill="url(#lens-grad)" opacity="0.6" />
+          <path d="M15.5 32 L20 28.5 L18.5 31 Z" fill="url(#lens-grad)" opacity="0.5" />
+          <path d="M15.5 22 L20.5 27 L18 26.5 Z" fill="url(#lens-grad)" opacity="0.4" />
+          <!-- Lens center -->
+          <circle cx="24" cy="27" r="4" fill="url(#center-grad)" />
+          <circle cx="22.5" cy="25.5" r="1.2" fill="rgba(255,255,255,0.4)" />
+          <!-- Flash -->
+          <circle cx="37" cy="17" r="2" fill="#facc15" opacity="0.8" />
+          <defs>
+            <linearGradient id="logo-grad" x1="0" y1="0" x2="48" y2="48">
+              <stop offset="0%" stop-color="#6366f1" />
+              <stop offset="100%" stop-color="#3b82f6" />
+            </linearGradient>
+            <linearGradient id="lens-grad" x1="14" y1="17" x2="34" y2="37">
+              <stop offset="0%" stop-color="#818cf8" />
+              <stop offset="100%" stop-color="#60a5fa" />
+            </linearGradient>
+            <radialGradient id="center-grad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#1e1b4b" />
+              <stop offset="100%" stop-color="#0f172a" />
+            </radialGradient>
+          </defs>
+        </svg>
+        <span class="logo-text">PhotoBooth <span class="logo-accent">Pro</span></span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#ai">AI Effects</a></li>
+        <li><a href="#ecosystem">Ecosystem</a></li>
+        <li><a href="#download" class="nav-cta">Download Trial</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-badge fade-in">
+        <span class="badge-dot"></span>
+        Now with AI-powered effects
+      </div>
+      <h1 class="hero-title fade-in">
+        Professional Photo Booth<br>
+        <span class="gradient-text">Software That Delivers</span>
+      </h1>
+      <p class="hero-subtitle fade-in">
+        Turn any Windows PC and camera into a professional photo booth.
+        Canon DSLR quality, AI-powered effects, beautiful templates, instant sharing,
+        and cloud management &mdash; all in one powerful application.
+      </p>
+      <div class="hero-actions fade-in">
+        <a href="#download" class="btn btn-primary btn-lg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Start 30-Day Free Trial
+        </a>
+        <a href="#features" class="btn btn-outline btn-lg">
+          Explore Features
+        </a>
+      </div>
+      <div class="hero-stats fade-in">
+        <div class="stat">
+          <span class="stat-value">DSLR</span>
+          <span class="stat-label">Camera Quality</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">3</span>
+          <span class="stat-label">AI Models</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">8+</span>
+          <span class="stat-label">Photo Filters</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">Cloud</span>
+          <span class="stat-label">Sync Built-in</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Core Features</span>
+        <h2 class="section-title">Everything You Need to Run<br><span class="gradient-text">a Professional Photo Booth</span></h2>
+        <p class="section-subtitle">PhotoBooth Pro is packed with features that professional event photographers need to deliver unforgettable experiences.</p>
+      </div>
+
+      <div class="features-grid">
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+          </div>
+          <h3>Canon DSLR Integration</h3>
+          <p>Native Canon EDSDK integration for professional-grade photo quality. Live view preview, autofocus, and high-resolution capture. Automatic webcam fallback ensures the show never stops.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <h3>Beautiful Templates</h3>
+          <p>Design branded multi-photo layouts with photo slots, overlays, text, shapes, and QR codes. Landscape or portrait orientation with cloud-synced template management.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 6 2 18 2 18 9"/>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+              <rect x="6" y="14" width="12" height="8"/>
+            </svg>
+          </div>
+          <h3>Professional Printing</h3>
+          <p>Direct printing to dye-sublimation printers like the DNP DS-RX1. Configurable paper sizes, auto-print mode, and multiple printer support for high-volume events.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+              <polyline points="16 6 12 2 8 6"/>
+              <line x1="12" y1="2" x2="12" y2="15"/>
+            </svg>
+          </div>
+          <h3>Instant Sharing</h3>
+          <p>Guests share photos instantly via SMS (Twilio), email, QR codes, or cloud gallery links. Customizable message templates with private share URLs for every photo.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-rose">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <h3>Real-Time Filters</h3>
+          <p>Eight stunning live filters &mdash; Black & White, Sepia, Warm, Cool, Vivid, Muted, and Vintage &mdash; applied in real-time to the camera preview so guests see the effect before capture.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13" rx="2"/>
+              <polygon points="23 7 16 12 16 8 23 3"/>
+              <line x1="1" y1="20" x2="15" y2="20"/>
+              <line x1="18" y1="20" x2="23" y2="20"/>
+            </svg>
+          </div>
+          <h3>Boomerang / GIF Mode</h3>
+          <p>Capture Instagram-style boomerang animations your guests will love sharing. Configurable duration, playback speed, and loop count. Works with both DSLR and webcam.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <h3>Offline Resilience</h3>
+          <p>Works seamlessly without internet. Photos store locally and sync automatically when connectivity returns. Upload queue with retry ensures nothing is ever lost.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </div>
+          <h3>Event Management</h3>
+          <p>Organize all photos by event with a browsable gallery. Portable folder structure makes backup simple. Track composites, raw captures, AI-generated images, and GIFs per event.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Section -->
+  <section class="ai-section" id="ai">
+    <div class="container">
+      <div class="ai-layout">
+        <div class="ai-content fade-in">
+          <span class="section-tag">Premium Feature</span>
+          <h2 class="section-title">AI-Powered<br><span class="gradient-text">Creative Effects</span></h2>
+          <p class="section-subtitle">Transform ordinary photos into extraordinary works of art. Three AI models give your guests the power to reimagine their photos in countless creative styles.</p>
+
+          <div class="ai-models">
+            <div class="ai-model">
+              <div class="ai-model-badge badge-green">Best Value</div>
+              <h4>Seedream v4.5</h4>
+              <p>Outstanding quality at the lowest cost per image &mdash; the smart choice for most events.</p>
+            </div>
+            <div class="ai-model">
+              <div class="ai-model-badge badge-blue">Balanced</div>
+              <h4>FLUX 2 Pro</h4>
+              <p>Perfect balance of speed and quality for event environments.</p>
+            </div>
+            <div class="ai-model">
+              <div class="ai-model-badge">Premium Quality</div>
+              <h4>Nano Banana Pro</h4>
+              <p>The highest fidelity transformations for when only the best will do.</p>
+            </div>
+          </div>
+
+          <div class="ai-prompts">
+            <h4>Pre-Built Creative Prompts</h4>
+            <div class="prompt-tags">
+              <span class="prompt-tag">Anime Style</span>
+              <span class="prompt-tag">Oil Painting</span>
+              <span class="prompt-tag">80s Retro</span>
+              <span class="prompt-tag">Superhero</span>
+              <span class="prompt-tag">Old Hollywood</span>
+              <span class="prompt-tag">Pixel Art</span>
+              <span class="prompt-tag">Watercolor</span>
+              <span class="prompt-tag">+ Custom Prompts</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ai-visual fade-in">
+          <div class="ai-demo-card">
+            <div class="ai-demo-header">
+              <span class="ai-demo-dot red"></span>
+              <span class="ai-demo-dot yellow"></span>
+              <span class="ai-demo-dot green"></span>
+              <span class="ai-demo-title">AI Transformation</span>
+            </div>
+            <div class="ai-demo-body">
+              <div class="ai-demo-row">
+                <div class="ai-demo-photo">
+                  <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="120" height="120" rx="8" fill="#1e293b"/>
+                    <circle cx="60" cy="45" r="18" fill="#334155"/>
+                    <ellipse cx="60" cy="90" rx="30" ry="20" fill="#334155"/>
+                    <text x="60" y="118" text-anchor="middle" fill="#64748b" font-size="10">Original</text>
+                  </svg>
+                </div>
+                <div class="ai-demo-arrow">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </div>
+                <div class="ai-demo-photo ai-result">
+                  <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="120" height="120" rx="8" fill="url(#ai-bg)"/>
+                    <circle cx="60" cy="45" r="18" fill="url(#ai-face)"/>
+                    <ellipse cx="60" cy="90" rx="30" ry="20" fill="url(#ai-body)"/>
+                    <text x="60" y="118" text-anchor="middle" fill="#c4b5fd" font-size="10">AI Enhanced</text>
+                    <defs>
+                      <linearGradient id="ai-bg" x1="0" y1="0" x2="120" y2="120">
+                        <stop offset="0%" stop-color="#312e81"/>
+                        <stop offset="100%" stop-color="#1e1b4b"/>
+                      </linearGradient>
+                      <linearGradient id="ai-face" x1="42" y1="27" x2="78" y2="63">
+                        <stop offset="0%" stop-color="#6366f1"/>
+                        <stop offset="100%" stop-color="#8b5cf6"/>
+                      </linearGradient>
+                      <linearGradient id="ai-body" x1="30" y1="70" x2="90" y2="110">
+                        <stop offset="0%" stop-color="#4f46e5"/>
+                        <stop offset="100%" stop-color="#7c3aed"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+              <div class="ai-demo-prompt">
+                <span class="ai-demo-label">Prompt:</span> "Transform into anime style with vibrant colors"
+              </div>
+              <div class="ai-demo-progress">
+                <div class="ai-demo-progress-bar"></div>
+              </div>
+              <span class="ai-demo-status">Processing with Seedream v4.5...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ecosystem Section -->
+  <section class="ecosystem" id="ecosystem">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Ecosystem</span>
+        <h2 class="section-title">Powered by<br><span class="gradient-text">BoothLedger Cloud</span></h2>
+        <p class="section-subtitle">PhotoBooth Pro connects seamlessly to BoothLedger &mdash; your cloud backend for event management, photo storage, gallery sharing, and remote booth configuration.</p>
+      </div>
+
+      <div class="ecosystem-diagram fade-in">
+        <div class="eco-node eco-booth">
+          <div class="eco-icon">
+            <svg viewBox="0 0 48 48" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="14" width="40" height="26" rx="4" fill="url(#logo-grad2)" />
+              <rect x="16" y="8" width="12" height="8" rx="2" fill="url(#logo-grad2)" />
+              <circle cx="24" cy="27" r="8" fill="#0f172a" />
+              <circle cx="24" cy="27" r="4" fill="#1e1b4b" />
+              <circle cx="22.5" cy="25.5" r="1" fill="rgba(255,255,255,0.3)" />
+              <defs>
+                <linearGradient id="logo-grad2" x1="0" y1="0" x2="48" y2="48">
+                  <stop offset="0%" stop-color="#6366f1" />
+                  <stop offset="100%" stop-color="#3b82f6" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h4>PhotoBooth Pro</h4>
+          <p>Desktop application at the event</p>
+        </div>
+
+        <div class="eco-connector">
+          <div class="eco-line"></div>
+          <div class="eco-pulse"></div>
+          <div class="eco-sync-labels">
+            <span>Photos</span>
+            <span>Settings</span>
+            <span>Templates</span>
+          </div>
+        </div>
+
+        <div class="eco-node eco-cloud">
+          <div class="eco-icon eco-icon-cloud">
+            <svg viewBox="0 0 48 48" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 36h20a10 10 0 0 0 2-19.8A12 12 0 0 0 14 20a8 8 0 0 0 0 16z" fill="url(#cloud-grad)" />
+              <rect x="18" y="26" width="12" height="8" rx="1" fill="#0f172a" opacity="0.3"/>
+              <rect x="20" y="28" width="3" height="4" rx="0.5" fill="rgba(255,255,255,0.4)"/>
+              <rect x="25" y="28" width="3" height="4" rx="0.5" fill="rgba(255,255,255,0.4)"/>
+              <defs>
+                <linearGradient id="cloud-grad" x1="10" y1="12" x2="40" y2="40">
+                  <stop offset="0%" stop-color="#3b82f6" />
+                  <stop offset="100%" stop-color="#06b6d4" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h4>BoothLedger</h4>
+          <p>Cloud backend & storage</p>
+        </div>
+      </div>
+
+      <div class="eco-features-grid">
+        <div class="eco-feature fade-in">
+          <div class="eco-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h4>Event Management</h4>
+          <p>Create, configure, and manage all your events from one central dashboard. Custom branding, public or private galleries.</p>
+        </div>
+        <div class="eco-feature fade-in">
+          <div class="eco-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <h4>Cloud Photo Storage</h4>
+          <p>All photos automatically upload to BoothLedger with thumbnails. Download as ZIP, share via private links, or browse the gallery.</p>
+        </div>
+        <div class="eco-feature fade-in">
+          <div class="eco-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </div>
+          <h4>QR Code Galleries</h4>
+          <p>Every event gets a shareable gallery with QR code. Guests scan and instantly access all their photos on any device.</p>
+        </div>
+        <div class="eco-feature fade-in">
+          <div class="eco-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <h4>Remote Configuration</h4>
+          <p>Change AI prompts, camera settings, templates, and sharing options from anywhere. Your booth syncs automatically every 45 seconds.</p>
+        </div>
+        <div class="eco-feature fade-in">
+          <div class="eco-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>Licensing & Activation</h4>
+          <p>Secure license key system with Basic and Premium tiers. Activate instantly, manage from the admin dashboard.</p>
+        </div>
+        <div class="eco-feature fade-in">
+          <div class="eco-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h4>Email Notifications</h4>
+          <p>Automated gallery link emails with branded HTML templates. Guests receive a "View Your Photos" link right in their inbox.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download / Trial Section -->
+  <section class="download" id="download">
+    <div class="container">
+      <div class="download-card fade-in">
+        <div class="download-content">
+          <h2 class="section-title">Ready to Get Started?</h2>
+          <p class="section-subtitle">Download PhotoBooth Pro and try it free for 30 days. No credit card required. Full access to all features including AI effects.</p>
+
+          <div class="download-features">
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>30-day full-featured trial</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>No credit card required</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Canon DSLR + webcam support</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>AI effects included</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>BoothLedger cloud access</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Windows 10/11 compatible</span>
+            </div>
+          </div>
+
+          <div class="download-actions">
+            <button class="btn btn-primary btn-xl" id="downloadBtn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download for Windows
+            </button>
+            <span class="download-version">v1.0 &middot; Windows 10/11 &middot; 64-bit</span>
+          </div>
+        </div>
+
+        <div class="download-visual">
+          <div class="app-window">
+            <div class="app-titlebar">
+              <span class="app-dot red"></span>
+              <span class="app-dot yellow"></span>
+              <span class="app-dot green"></span>
+              <span class="app-title">PhotoBooth Pro</span>
+            </div>
+            <div class="app-body">
+              <div class="app-sidebar">
+                <div class="app-sidebar-item active">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                </div>
+                <div class="app-sidebar-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                </div>
+                <div class="app-sidebar-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <div class="app-sidebar-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-2.82 1.18V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1.08-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0-1.18-2.82H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1.08 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 2.82-1.18V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1.08 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83"/></svg>
+                </div>
+              </div>
+              <div class="app-main">
+                <div class="app-camera-view">
+                  <div class="app-camera-circle"></div>
+                  <div class="app-camera-text">Live Preview</div>
+                </div>
+                <div class="app-capture-btn">
+                  <div class="app-capture-inner"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <svg class="logo-icon" viewBox="0 0 48 48" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="14" width="40" height="26" rx="4" fill="url(#logo-grad-f)" />
+              <rect x="16" y="8" width="12" height="8" rx="2" fill="url(#logo-grad-f)" />
+              <circle cx="24" cy="27" r="8" fill="#0f172a" />
+              <circle cx="24" cy="27" r="4" fill="#1e1b4b" />
+              <circle cx="22.5" cy="25.5" r="1" fill="rgba(255,255,255,0.3)" />
+              <defs>
+                <linearGradient id="logo-grad-f" x1="0" y1="0" x2="48" y2="48">
+                  <stop offset="0%" stop-color="#6366f1" />
+                  <stop offset="100%" stop-color="#3b82f6" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <span class="logo-text">PhotoBooth <span class="logo-accent">Pro</span></span>
+          </a>
+          <p class="footer-tagline">Professional photo booth software for event photographers. Part of the PhotoBooth Guys ecosystem.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Product</h4>
+            <a href="#features">Features</a>
+            <a href="#ai">AI Effects</a>
+            <a href="#download">Download</a>
+          </div>
+          <div class="footer-col">
+            <h4>Ecosystem</h4>
+            <a href="#ecosystem">BoothLedger</a>
+            <a href="#ecosystem">Cloud Storage</a>
+            <a href="#ecosystem">Remote Config</a>
+          </div>
+          <div class="footer-col">
+            <h4>Support</h4>
+            <a href="mailto:support@photoboothguys.ie">Contact</a>
+            <a href="#">Documentation</a>
+            <a href="#">FAQ</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 PhotoBooth Guys. All rights reserved.</p>
+        <p>PhotoBooth Pro &middot; BoothLedger</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
