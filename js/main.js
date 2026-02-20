@@ -100,7 +100,7 @@
     if (!downloadBtn) return;
 
     // GitHub latest release URL - always points to newest version
-    var downloadUrl = 'https://github.com/liamo08/Camera-Basic-6-Capture-screen/releases/latest/download/PhotoboothPro-Setup.exe';
+    var downloadUrl = 'https://github.com/liamo08/photobooth-pro-releases/releases/latest/download/PhotoboothPro-Setup.exe';
 
     downloadBtn.addEventListener('click', function () {
       // Start download
