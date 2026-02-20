@@ -99,17 +99,20 @@
     var downloadBtn = document.getElementById('downloadBtn');
     if (!downloadBtn) return;
 
+    // GitHub latest release URL - always points to newest version
+    var downloadUrl = 'https://github.com/liamo08/Camera-Basic-6-Capture-screen/releases/latest/download/PhotoboothPro-Setup.exe';
+
     downloadBtn.addEventListener('click', function () {
+      // Start download
+      window.location.href = downloadUrl;
+
+      // Show feedback
       var originalText = downloadBtn.innerHTML;
       downloadBtn.innerHTML =
-        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> Trial Coming Soon';
-      downloadBtn.style.opacity = '0.8';
-      downloadBtn.disabled = true;
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Download Starting...';
 
       setTimeout(function () {
         downloadBtn.innerHTML = originalText;
-        downloadBtn.style.opacity = '1';
-        downloadBtn.disabled = false;
       }, 3000);
     });
   }
