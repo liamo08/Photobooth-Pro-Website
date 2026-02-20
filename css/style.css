@@ -1080,34 +1080,35 @@ img {
 
 .app-camera-view {
   width: 100%;
-  height: 180px;
-  background: radial-gradient(circle at center, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+  position: relative;
+  background: #0f172a;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
+  overflow: hidden;
   margin-bottom: 16px;
   border: 1px solid rgba(148, 163, 184, 0.06);
 }
 
-.app-camera-circle {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 2px solid rgba(99, 102, 241, 0.3);
-  animation: camera-pulse 2s ease-in-out infinite;
-}
-
-@keyframes camera-pulse {
-  0%, 100% { border-color: rgba(99, 102, 241, 0.3); }
-  50% { border-color: rgba(99, 102, 241, 0.6); }
+.app-camera-img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  display: block;
 }
 
 .app-camera-text {
-  font-size: 11px;
-  color: var(--text-subtle);
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
 }
 
 .app-capture-btn {
