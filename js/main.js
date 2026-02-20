@@ -181,6 +181,87 @@
     autoPlay();
   }
 
+  // --- Mobile comparison sliders ---
+  function initComparisonSliders() {
+    var cards = document.querySelectorAll('.ai-gallery-card');
+    if (!cards.length) return;
+
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
+
+    function setSliderPosition(card, pct) {
+      var before = card.querySelector('.ai-gallery-before');
+      var handle = card.querySelector('.ai-slider-handle');
+      if (!before || !handle) return;
+      var clamped = Math.max(0, Math.min(100, pct));
+      before.style.clipPath = 'inset(0 ' + (100 - clamped) + '% 0 0)';
+      handle.style.left = clamped + '%';
+    }
+
+    function resetAllSliders() {
+      cards.forEach(function (card) {
+        setSliderPosition(card, 50);
+      });
+    }
+
+    cards.forEach(function (card) {
+      var images = card.querySelector('.ai-gallery-images');
+      if (!images) return;
+
+      var dragging = false;
+
+      function updateFromEvent(e) {
+        var rect = images.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var pct = (x / rect.width) * 100;
+        setSliderPosition(card, pct);
+      }
+
+      images.addEventListener('pointerdown', function (e) {
+        if (!isMobile()) return;
+        dragging = true;
+        images.setPointerCapture(e.pointerId);
+        updateFromEvent(e);
+        e.preventDefault();
+      });
+
+      images.addEventListener('pointermove', function (e) {
+        if (!dragging || !isMobile()) return;
+        updateFromEvent(e);
+      });
+
+      images.addEventListener('pointerup', function () {
+        dragging = false;
+      });
+
+      images.addEventListener('pointercancel', function () {
+        dragging = false;
+      });
+    });
+
+    // Reset sliders when carousel changes slides
+    var dots = document.querySelectorAll('.ai-gallery-dot');
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        resetAllSliders();
+      });
+    });
+
+    // Also reset on autoplay transitions via MutationObserver
+    var gallery = document.querySelector('.ai-gallery');
+    if (gallery) {
+      var observer = new MutationObserver(function () {
+        if (isMobile()) {
+          resetAllSliders();
+        }
+      });
+      cards.forEach(function (card) {
+        observer.observe(card, { attributes: true, attributeFilter: ['class'] });
+      });
+    }
+  }
+
   // --- Video replay button ---
   function initVideoReplay() {
     var player = document.querySelector('.eco-video-player');
@@ -210,6 +291,7 @@
     initDownloadButton();
     initActiveNavLinks();
     initAIGallery();
+    initComparisonSliders();
     initVideoReplay();
   }
 

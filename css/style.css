@@ -641,6 +641,11 @@ img {
   color: var(--accent-light);
 }
 
+/* Slider handle hidden on desktop */
+.ai-slider-handle {
+  display: none;
+}
+
 .ai-gallery-dots {
   display: flex;
   justify-content: center;
@@ -1308,13 +1313,103 @@ img {
     gap: 8px;
   }
 
-  .ai-gallery-arrow {
-    width: 28px;
+  /* Mobile comparison slider */
+  .ai-gallery-images {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    touch-action: none;
+    cursor: ew-resize;
   }
 
-  .ai-gallery-arrow svg {
-    width: 16px;
-    height: 16px;
+  .ai-gallery-before,
+  .ai-gallery-after {
+    width: 100%;
+  }
+
+  .ai-gallery-after {
+    display: block;
+    position: relative;
+    z-index: 0;
+  }
+
+  .ai-gallery-before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    clip-path: inset(0 50% 0 0);
+  }
+
+  .ai-gallery-before img,
+  .ai-gallery-after img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ai-gallery-after .ai-gallery-label {
+    left: auto;
+    right: 12px;
+  }
+
+  .ai-gallery-arrow {
+    display: none;
+  }
+
+  .ai-slider-handle {
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    z-index: 3;
+    width: 3px;
+    transform: translateX(-50%);
+    background: #fff;
+    pointer-events: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+  }
+
+  .ai-slider-handle span {
+    display: block;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid rgba(99, 102, 241, 0.8);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .ai-slider-handle span::before,
+  .ai-slider-handle span::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    transform: translateY(-50%);
+  }
+
+  .ai-slider-handle span::before {
+    left: 5px;
+    border-width: 5px 5px 5px 0;
+    border-color: transparent rgba(99, 102, 241, 0.8) transparent transparent;
+  }
+
+  .ai-slider-handle span::after {
+    right: 5px;
+    border-width: 5px 0 5px 5px;
+    border-color: transparent transparent transparent rgba(99, 102, 241, 0.8);
   }
 
   .ai-gallery-caption {
