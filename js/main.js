@@ -181,6 +181,26 @@
     autoPlay();
   }
 
+  // --- Video replay button ---
+  function initVideoReplay() {
+    var player = document.querySelector('.eco-video-player');
+    if (!player) return;
+
+    var video = player.querySelector('video');
+    var btn = player.querySelector('.eco-video-replay');
+    if (!video || !btn) return;
+
+    video.addEventListener('ended', function () {
+      btn.classList.add('visible');
+    });
+
+    btn.addEventListener('click', function () {
+      btn.classList.remove('visible');
+      video.currentTime = 0;
+      video.play();
+    });
+  }
+
   // --- Initialize everything ---
   function init() {
     initScrollAnimations();
@@ -190,6 +210,7 @@
     initDownloadButton();
     initActiveNavLinks();
     initAIGallery();
+    initVideoReplay();
   }
 
   if (document.readyState === 'loading') {

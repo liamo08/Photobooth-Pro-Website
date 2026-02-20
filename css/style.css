@@ -764,6 +764,79 @@ img {
   background: rgba(99, 102, 241, 0.06);
 }
 
+/* --- Ecosystem Video Demo --- */
+.eco-video-demo {
+  max-width: 600px;
+  margin: 0 auto 48px;
+  background: var(--bg-subtle);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.eco-video-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px 12px;
+}
+
+.eco-video-header h3 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.eco-video-header p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.eco-video-player {
+  position: relative;
+  padding: 0 20px 20px;
+}
+
+.eco-video-player video {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+.eco-video-replay {
+  position: absolute;
+  inset: 0 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.eco-video-replay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.eco-video-replay:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.eco-video-replay svg {
+  width: 20px;
+  height: 20px;
+}
+
 .eco-features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
