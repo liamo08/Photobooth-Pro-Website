@@ -81,13 +81,13 @@
     .pricing-card.featured { border-color: rgba(99,102,241,.3); background: linear-gradient(160deg, rgba(99,102,241,.08) 0%, rgba(17,24,39,.8) 40%); box-shadow: 0 0 60px -20px rgba(99,102,241,.15); }
     .pricing-card.featured::before { content: 'Most Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--accent), #4f46e5); color: #fff; font-size: 12px; font-weight: 700; padding: 5px 16px; border-radius: 100px; letter-spacing: .04em; }
     .card-name { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-    .card-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; line-height: 1.5; }
+    .card-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.5; }
     .card-price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 4px; }
     .card-price__currency { font-size: 20px; font-weight: 600; color: var(--text-muted); }
     .card-price__amount { font-size: 48px; font-weight: 800; line-height: 1; background: linear-gradient(135deg, #fff, var(--accent-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .card-price__period { font-size: 16px; color: var(--text-subtle); font-weight: 500; }
-    .card-billed { font-size: 13px; color: var(--text-subtle); margin-bottom: 28px; min-height: 20px; }
-    .card-cta { display: flex; align-items: center; justify-content: center; width: 100%; height: 48px; border: none; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: transform .15s, box-shadow .25s, opacity .2s; margin-bottom: 28px; text-decoration: none; }
+    .card-price__period { font-size: 17px; color: var(--text-subtle); font-weight: 500; }
+    .card-billed { font-size: 13px; color: var(--text-subtle); margin-bottom: 32px; min-height: 20px; }
+    .card-cta { display: flex; align-items: center; justify-content: center; width: 100%; height: 48px; border: none; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: transform .15s, box-shadow .25s, opacity .2s; margin-bottom: 32px; text-decoration: none; }
     .card-cta:hover { transform: translateY(-1px); }
     .card-cta--outline { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,.15); }
     .card-cta--outline:hover { border-color: rgba(255,255,255,.3); box-shadow: 0 4px 20px -4px rgba(0,0,0,.3); }
@@ -105,7 +105,7 @@
     .faq { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; padding: 0 24px 100px; }
     .faq h2 { text-align: center; font-size: 28px; font-weight: 700; margin-bottom: 40px; }
     .faq-item { border-bottom: 1px solid rgba(255,255,255,.06); padding: 20px 0; }
-    .faq-q { font-size: 16px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; transition: color .2s; }
+    .faq-q { font-size: 17px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; transition: color .2s; }
     .faq-q:hover { color: var(--accent-light); }
     .faq-q svg { flex-shrink: 0; width: 20px; height: 20px; color: var(--text-subtle); transition: transform .3s; }
     .faq-item.open .faq-q svg { transform: rotate(45deg); }
@@ -147,11 +147,11 @@
     .modal-card {
       position: relative;
       width: 100%;
-      max-width: 520px;
+      max-width: 640px;
       background: #0c1222;
       border: 1px solid rgba(99,102,241,.18);
       border-radius: 20px;
-      padding: 44px 40px 40px;
+      padding: 52px 48px 48px;
       box-shadow:
         0 0 0 1px rgba(99,102,241,.06),
         0 32px 80px -12px rgba(0,0,0,.8),
@@ -186,11 +186,11 @@
       background: rgba(99,102,241,.1);
       border: 1px solid rgba(99,102,241,.2);
       border-radius: 100px;
-      padding: 8px 18px;
+      padding: 10px 20px;
       font-size: 14px;
       font-weight: 600;
       color: var(--accent-light);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       letter-spacing: .02em;
     }
     .modal-plan svg { width: 14px; height: 14px; }
@@ -201,12 +201,12 @@
       background: rgba(255,255,255,.04);
       border-radius: 10px;
       padding: 3px;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
       border: 1px solid rgba(255,255,255,.06);
     }
     .modal-tab {
       flex: 1;
-      padding: 12px 0;
+      padding: 14px 0;
       text-align: center;
       font-size: 14px;
       font-weight: 600;
@@ -243,7 +243,7 @@
 
     /* Form fields */
     .modal-field {
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
     .modal-field label {
       display: block;
@@ -256,7 +256,7 @@
     }
     .modal-field input {
       width: 100%;
-      height: 50px;
+      height: 56px;
       padding: 0 16px;
       background: rgba(255,255,255,.04);
       border: 1px solid rgba(255,255,255,.08);
@@ -281,13 +281,13 @@
     /* Submit */
     .modal-submit {
       width: 100%;
-      height: 52px;
+      height: 58px;
       border: none;
       border-radius: 12px;
       background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
       color: #fff;
       font-family: 'Inter', sans-serif;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 600;
       cursor: pointer;
       position: relative;
