@@ -355,7 +355,7 @@
 
 <!-- ═══ AUTH MODAL ═══ -->
 <div class="modal-backdrop" id="authModal">
-  <div class="modal-card" data-mode="login">
+  <div class="modal-card" data-mode="register">
     <button class="modal-close" onclick="closeModal()" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
@@ -366,8 +366,8 @@
     </div>
 
     <div class="modal-tabs">
-      <button class="modal-tab active" onclick="setAuthMode('login')">Sign In</button>
-      <button class="modal-tab" onclick="setAuthMode('register')">Create Account</button>
+      <button class="modal-tab active" onclick="setAuthMode('register')">Create Account</button>
+      <button class="modal-tab" onclick="setAuthMode('login')">Sign In</button>
     </div>
 
     <div class="modal-error" id="modalError">
@@ -400,7 +400,7 @@
     </form>
 
     <div class="modal-footer" id="modalFooter">
-      Don't have an account? <a onclick="setAuthMode('register')">Create one</a>
+      Already have an account? <a onclick="setAuthMode('login')">Sign in</a>
     </div>
   </div>
 </div>
@@ -594,15 +594,15 @@
     const card = document.querySelector('.modal-card');
     card.dataset.mode = mode;
     const tabs = document.querySelectorAll('.modal-tab');
-    tabs[0].classList.toggle('active', mode === 'login');
-    tabs[1].classList.toggle('active', mode === 'register');
+    tabs[0].classList.toggle('active', mode === 'register');
+    tabs[1].classList.toggle('active', mode === 'login');
     clearError();
 
     const footer = document.getElementById('modalFooter');
-    if (mode === 'login') {
-      footer.innerHTML = "Don't have an account? <a onclick=\"setAuthMode('register')\">Create one</a>";
-    } else {
+    if (mode === 'register') {
       footer.innerHTML = "Already have an account? <a onclick=\"setAuthMode('login')\">Sign in</a>";
+    } else {
+      footer.innerHTML = "Don't have an account? <a onclick=\"setAuthMode('register')\">Create one</a>";
     }
   }
 
