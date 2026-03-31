@@ -530,6 +530,43 @@
   let selectedPriceKey = '';
   const API = 'https://boothledgercloud.photoboothguys.ie/api/v1';
 
+  // Load dynamic pricing from server
+  let dynamicPricing = null;
+  async function loadPricing() {
+    try {
+      const resp = await fetch(API + '/pricing');
+      if (resp.ok) {
+        dynamicPricing = await resp.json();
+        // Update card prices (amounts are in cents from API)
+        const basicCards = document.querySelectorAll('.card-price__amount');
+        if (basicCards[0] && dynamicPricing.basic_monthly) {
+          basicCards[0].dataset.monthly = (dynamicPricing.basic_monthly / 100).toFixed(0);
+          basicCards[0].dataset.yearly = (dynamicPricing.basic_yearly / 100 / 12).toFixed(0);
+          basicCards[0].textContent = isYearly ? basicCards[0].dataset.yearly : basicCards[0].dataset.monthly;
+        }
+        if (basicCards[1] && dynamicPricing.ai_monthly) {
+          basicCards[1].dataset.monthly = (dynamicPricing.ai_monthly / 100).toFixed(0);
+          basicCards[1].dataset.yearly = (dynamicPricing.ai_yearly / 100 / 12).toFixed(0);
+          basicCards[1].textContent = isYearly ? basicCards[1].dataset.yearly : basicCards[1].dataset.monthly;
+        }
+        // Update yearly billed text
+        const billedEls = document.querySelectorAll('.card-billed');
+        if (billedEls[0] && dynamicPricing.basic_yearly) {
+          billedEls[0].dataset.yearly = 'Billed \u20ac' + (dynamicPricing.basic_yearly / 100).toFixed(0) + '/year';
+          if (isYearly) billedEls[0].innerHTML = billedEls[0].dataset.yearly;
+        }
+        if (billedEls[1] && dynamicPricing.ai_yearly) {
+          billedEls[1].dataset.yearly = 'Billed \u20ac' + (dynamicPricing.ai_yearly / 100).toFixed(0) + '/year';
+          if (isYearly) billedEls[1].innerHTML = billedEls[1].dataset.yearly;
+        }
+      }
+    } catch (e) {
+      // Silently fall back to hardcoded prices
+      console.log('Using default prices');
+    }
+  }
+  loadPricing();
+
   const PLAN_LABELS = {
     basic_monthly: 'Basic - Monthly',
     basic_yearly: 'Basic - Yearly',
