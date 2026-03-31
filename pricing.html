@@ -646,6 +646,15 @@
   function showError(msg) {
     const el = document.getElementById('modalError');
     document.getElementById('modalErrorText').textContent = msg;
+    el.style.background = 'rgba(239,68,68,.15)';
+    el.style.borderColor = '#ef4444';
+    el.classList.add('visible');
+  }
+  function showWarning(msg) {
+    const el = document.getElementById('modalError');
+    document.getElementById('modalErrorText').textContent = msg;
+    el.style.background = 'rgba(245,158,11,.15)';
+    el.style.borderColor = '#f59e0b';
     el.classList.add('visible');
   }
   function clearError() {
@@ -705,7 +714,11 @@
       const data = await resp.json();
 
       if (!resp.ok) {
-        showError(data.detail || 'Something went wrong. Please try again.');
+        if (resp.status === 409) {
+          showWarning(data.detail || 'You are already on this plan.');
+        } else {
+          showError(data.detail || 'Something went wrong. Please try again.');
+        }
         btn.classList.remove('loading');
         btn.disabled = false;
         return;
