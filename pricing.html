@@ -8,9 +8,8 @@
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ── Reset ── */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
@@ -36,12 +35,8 @@
     }
     a { color: inherit; text-decoration: none; }
 
-    /* ── Atmosphere ── */
     .pricing-bg {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background:
         radial-gradient(ellipse 70% 40% at 30% 20%, rgba(99,102,241,.08) 0%, transparent 70%),
         radial-gradient(ellipse 50% 40% at 70% 80%, rgba(6,182,212,.06) 0%, transparent 70%),
@@ -49,415 +44,302 @@
     }
 
     /* ── Nav ── */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(3,7,18,.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      font-size: 18px;
-    }
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(3,7,18,.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,.06); }
+    .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; }
     .nav-logo img { width: 32px; height: 32px; border-radius: 8px; }
     .nav-logo-accent { color: var(--accent-light); }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-muted);
-      transition: color .2s;
-    }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); transition: color .2s; }
     .nav-links a:hover { color: var(--text); }
-    .nav-cta {
-      background: var(--accent) !important;
-      color: #fff !important;
-      padding: 8px 20px;
-      border-radius: 8px;
-      font-weight: 600 !important;
-      transition: opacity .2s, transform .15s !important;
-    }
+    .nav-cta { background: var(--accent) !important; color: #fff !important; padding: 8px 20px; border-radius: 8px; font-weight: 600 !important; transition: opacity .2s, transform .15s !important; }
     .nav-cta:hover { opacity: .9; transform: translateY(-1px); }
 
     /* ── Hero ── */
-    .pricing-hero {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 140px 24px 40px;
-    }
-    .pricing-hero__badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(99,102,241,.1);
-      border: 1px solid rgba(99,102,241,.2);
-      border-radius: 100px;
-      padding: 8px 20px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--accent-light);
-      margin-bottom: 24px;
-      animation: fadeUp .6s .1s cubic-bezier(.16,1,.3,1) both;
-    }
-    .pricing-hero h1 {
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 16px;
-      background: linear-gradient(135deg, #fff 20%, var(--accent-light) 80%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: fadeUp .6s .2s cubic-bezier(.16,1,.3,1) both;
-    }
-    .pricing-hero p {
-      font-size: 18px;
-      color: var(--text-muted);
-      max-width: 520px;
-      margin: 0 auto;
-      animation: fadeUp .6s .3s cubic-bezier(.16,1,.3,1) both;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-    }
+    .pricing-hero { position: relative; z-index: 1; text-align: center; padding: 140px 24px 40px; }
+    .pricing-hero__badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(99,102,241,.1); border: 1px solid rgba(99,102,241,.2); border-radius: 100px; padding: 8px 20px; font-size: 13px; font-weight: 600; color: var(--accent-light); margin-bottom: 24px; animation: fadeUp .6s .1s cubic-bezier(.16,1,.3,1) both; }
+    .pricing-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 16px; background: linear-gradient(135deg, #fff 20%, var(--accent-light) 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: fadeUp .6s .2s cubic-bezier(.16,1,.3,1) both; }
+    .pricing-hero p { font-size: 18px; color: var(--text-muted); max-width: 520px; margin: 0 auto; animation: fadeUp .6s .3s cubic-bezier(.16,1,.3,1) both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } }
 
     /* ── Toggle ── */
-    .toggle-wrap {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 16px;
-      margin: 40px auto 48px;
-      animation: fadeUp .6s .35s cubic-bezier(.16,1,.3,1) both;
-    }
-    .toggle-label {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: color .2s;
-    }
+    .toggle-wrap { position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; gap: 16px; margin: 40px auto 48px; animation: fadeUp .6s .35s cubic-bezier(.16,1,.3,1) both; }
+    .toggle-label { font-size: 15px; font-weight: 500; color: var(--text-muted); cursor: pointer; transition: color .2s; }
     .toggle-label.active { color: var(--text); }
-    .toggle-track {
-      width: 52px;
-      height: 28px;
-      border-radius: 100px;
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(255,255,255,.12);
-      cursor: pointer;
-      position: relative;
-      transition: background .3s;
-    }
+    .toggle-track { width: 52px; height: 28px; border-radius: 100px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.12); cursor: pointer; position: relative; transition: background .3s; }
     .toggle-track.yearly { background: rgba(99,102,241,.3); border-color: rgba(99,102,241,.4); }
-    .toggle-thumb {
-      position: absolute;
-      top: 3px;
-      left: 3px;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: #fff;
-      transition: transform .3s cubic-bezier(.16,1,.3,1);
-    }
+    .toggle-thumb { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; transition: transform .3s cubic-bezier(.16,1,.3,1); }
     .toggle-track.yearly .toggle-thumb { transform: translateX(24px); }
-    .save-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--green), #059669);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 100px;
-      letter-spacing: .03em;
-    }
+    .save-badge { display: inline-block; background: linear-gradient(135deg, var(--green), #059669); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 100px; letter-spacing: .03em; }
 
     /* ── Cards ── */
-    .pricing-cards {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      max-width: 840px;
-      margin: 0 auto;
-      padding: 0 24px 80px;
-    }
-    .pricing-card {
-      border-radius: 20px;
-      padding: 40px 36px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(17,24,39,.6);
-      backdrop-filter: blur(20px);
-      position: relative;
-      transition: transform .3s, border-color .3s, box-shadow .3s;
-      animation: fadeUp .6s cubic-bezier(.16,1,.3,1) both;
-    }
+    .pricing-cards { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 840px; margin: 0 auto; padding: 0 24px 80px; }
+    .pricing-card { border-radius: 20px; padding: 40px 36px; border: 1px solid rgba(255,255,255,.08); background: rgba(17,24,39,.6); backdrop-filter: blur(20px); position: relative; transition: transform .3s, border-color .3s, box-shadow .3s; animation: fadeUp .6s cubic-bezier(.16,1,.3,1) both; }
     .pricing-card:nth-child(1) { animation-delay: .4s; }
     .pricing-card:nth-child(2) { animation-delay: .5s; }
-    .pricing-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(99,102,241,.2);
-      box-shadow: 0 20px 60px -12px rgba(0,0,0,.5);
-    }
-    .pricing-card.featured {
-      border-color: rgba(99,102,241,.3);
-      background: linear-gradient(160deg, rgba(99,102,241,.08) 0%, rgba(17,24,39,.8) 40%);
-      box-shadow: 0 0 60px -20px rgba(99,102,241,.15);
-    }
-    .pricing-card.featured::before {
-      content: 'Most Popular';
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--accent), #4f46e5);
-      color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 5px 16px;
-      border-radius: 100px;
-      letter-spacing: .04em;
-    }
-
-    .card-name {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .card-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 28px;
-      line-height: 1.5;
-    }
-    .card-price {
-      display: flex;
-      align-items: baseline;
-      gap: 4px;
-      margin-bottom: 4px;
-    }
-    .card-price__currency {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--text-muted);
-    }
-    .card-price__amount {
-      font-size: 48px;
-      font-weight: 800;
-      line-height: 1;
-      background: linear-gradient(135deg, #fff, var(--accent-light));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .card-price__period {
-      font-size: 16px;
-      color: var(--text-subtle);
-      font-weight: 500;
-    }
-    .card-billed {
-      font-size: 13px;
-      color: var(--text-subtle);
-      margin-bottom: 28px;
-      min-height: 20px;
-    }
-
-    .card-cta {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 48px;
-      border: none;
-      border-radius: 12px;
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform .15s, box-shadow .25s, opacity .2s;
-      margin-bottom: 28px;
-      text-decoration: none;
-    }
-    .card-cta:hover {
-      transform: translateY(-1px);
-    }
-    .card-cta--outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid rgba(255,255,255,.15);
-    }
-    .card-cta--outline:hover {
-      border-color: rgba(255,255,255,.3);
-      box-shadow: 0 4px 20px -4px rgba(0,0,0,.3);
-    }
-    .card-cta--primary {
-      background: linear-gradient(135deg, var(--accent) 0%, #4f46e5 100%);
-      color: #fff;
-      border: none;
-    }
-    .card-cta--primary:hover {
-      box-shadow: 0 8px 32px -8px rgba(99,102,241,.5);
-    }
-
-    .card-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .card-features li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-    .card-features li svg {
-      flex-shrink: 0;
-      width: 18px;
-      height: 18px;
-      color: var(--green);
-    }
-    .card-features li.highlight {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .card-divider {
-      border: none;
-      border-top: 1px solid rgba(255,255,255,.06);
-      margin: 0 0 20px;
-    }
-
-    /* ── Devices badge ── */
-    .devices-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(6,182,212,.08);
-      border: 1px solid rgba(6,182,212,.2);
-      border-radius: 8px;
-      padding: 6px 12px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--cyan);
-      margin-bottom: 24px;
-    }
+    .pricing-card:hover { transform: translateY(-4px); border-color: rgba(99,102,241,.2); box-shadow: 0 20px 60px -12px rgba(0,0,0,.5); }
+    .pricing-card.featured { border-color: rgba(99,102,241,.3); background: linear-gradient(160deg, rgba(99,102,241,.08) 0%, rgba(17,24,39,.8) 40%); box-shadow: 0 0 60px -20px rgba(99,102,241,.15); }
+    .pricing-card.featured::before { content: 'Most Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--accent), #4f46e5); color: #fff; font-size: 12px; font-weight: 700; padding: 5px 16px; border-radius: 100px; letter-spacing: .04em; }
+    .card-name { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .card-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; line-height: 1.5; }
+    .card-price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 4px; }
+    .card-price__currency { font-size: 20px; font-weight: 600; color: var(--text-muted); }
+    .card-price__amount { font-size: 48px; font-weight: 800; line-height: 1; background: linear-gradient(135deg, #fff, var(--accent-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .card-price__period { font-size: 16px; color: var(--text-subtle); font-weight: 500; }
+    .card-billed { font-size: 13px; color: var(--text-subtle); margin-bottom: 28px; min-height: 20px; }
+    .card-cta { display: flex; align-items: center; justify-content: center; width: 100%; height: 48px; border: none; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: transform .15s, box-shadow .25s, opacity .2s; margin-bottom: 28px; text-decoration: none; }
+    .card-cta:hover { transform: translateY(-1px); }
+    .card-cta--outline { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,.15); }
+    .card-cta--outline:hover { border-color: rgba(255,255,255,.3); box-shadow: 0 4px 20px -4px rgba(0,0,0,.3); }
+    .card-cta--primary { background: linear-gradient(135deg, var(--accent) 0%, #4f46e5 100%); color: #fff; border: none; }
+    .card-cta--primary:hover { box-shadow: 0 8px 32px -8px rgba(99,102,241,.5); }
+    .card-features { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .card-features li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-muted); }
+    .card-features li svg { flex-shrink: 0; width: 18px; height: 18px; color: var(--green); }
+    .card-features li.highlight { color: var(--text); font-weight: 500; }
+    .card-divider { border: none; border-top: 1px solid rgba(255,255,255,.06); margin: 0 0 20px; }
+    .devices-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(6,182,212,.08); border: 1px solid rgba(6,182,212,.2); border-radius: 8px; padding: 6px 12px; font-size: 12px; font-weight: 600; color: var(--cyan); margin-bottom: 24px; }
     .devices-badge svg { width: 14px; height: 14px; }
 
     /* ── FAQ ── */
-    .faq {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 0 24px 100px;
-    }
-    .faq h2 {
-      text-align: center;
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 40px;
-    }
-    .faq-item {
-      border-bottom: 1px solid rgba(255,255,255,.06);
-      padding: 20px 0;
-    }
-    .faq-q {
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      transition: color .2s;
-    }
+    .faq { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; padding: 0 24px 100px; }
+    .faq h2 { text-align: center; font-size: 28px; font-weight: 700; margin-bottom: 40px; }
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,.06); padding: 20px 0; }
+    .faq-q { font-size: 16px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; transition: color .2s; }
     .faq-q:hover { color: var(--accent-light); }
-    .faq-q svg {
-      flex-shrink: 0;
-      width: 20px;
-      height: 20px;
-      color: var(--text-subtle);
-      transition: transform .3s;
-    }
+    .faq-q svg { flex-shrink: 0; width: 20px; height: 20px; color: var(--text-subtle); transition: transform .3s; }
     .faq-item.open .faq-q svg { transform: rotate(45deg); }
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .3s ease, padding .3s;
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-    .faq-item.open .faq-a {
-      max-height: 200px;
-      padding-top: 12px;
-    }
-
-    /* ── Footer ── */
-    .pricing-footer {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 40px 24px;
-      border-top: 1px solid rgba(255,255,255,.06);
-      font-size: 14px;
-      color: var(--text-subtle);
-    }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .3s; font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .faq-item.open .faq-a { max-height: 200px; padding-top: 12px; }
+    .pricing-footer { position: relative; z-index: 1; text-align: center; padding: 40px 24px; border-top: 1px solid rgba(255,255,255,.06); font-size: 14px; color: var(--text-subtle); }
     .pricing-footer a { color: var(--accent-light); }
     .pricing-footer a:hover { text-decoration: underline; }
 
     /* ── Success banner ── */
-    .success-banner {
-      display: none;
-      position: fixed;
-      top: 80px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 200;
-      background: rgba(16,185,129,.15);
-      border: 1px solid rgba(16,185,129,.3);
-      backdrop-filter: blur(16px);
-      border-radius: 12px;
-      padding: 14px 24px;
-      font-size: 14px;
-      font-weight: 500;
-      color: #6ee7b7;
-      animation: slideDown .4s cubic-bezier(.16,1,.3,1);
-    }
+    .success-banner { display: none; position: fixed; top: 80px; left: 50%; transform: translateX(-50%); z-index: 200; background: rgba(16,185,129,.15); border: 1px solid rgba(16,185,129,.3); backdrop-filter: blur(16px); border-radius: 12px; padding: 14px 24px; font-size: 14px; font-weight: 500; color: #6ee7b7; animation: slideDown .4s cubic-bezier(.16,1,.3,1); }
     .success-banner.visible { display: flex; align-items: center; gap: 8px; }
     @keyframes slideDown { from { opacity: 0; transform: translateX(-50%) translateY(-12px); } }
+
+    /* ═══════════════════════════════════
+       AUTH MODAL
+       ═══════════════════════════════════ */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(2,6,15,.75);
+      backdrop-filter: blur(12px);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal-backdrop.open {
+      display: flex;
+    }
+    .modal-backdrop.open .modal-card {
+      animation: modalIn .35s cubic-bezier(.16,1,.3,1) both;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(.92) translateY(12px); }
+    }
+
+    .modal-card {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      background: #0c1222;
+      border: 1px solid rgba(99,102,241,.18);
+      border-radius: 20px;
+      padding: 36px 32px 32px;
+      box-shadow:
+        0 0 0 1px rgba(99,102,241,.06),
+        0 32px 80px -12px rgba(0,0,0,.8),
+        0 0 100px -30px rgba(99,102,241,.12);
+    }
+
+    /* Close */
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255,255,255,.05);
+      color: var(--text-subtle);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s, color .2s;
+    }
+    .modal-close:hover { background: rgba(255,255,255,.1); color: var(--text); }
+    .modal-close svg { width: 16px; height: 16px; }
+
+    /* Plan badge */
+    .modal-plan {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(99,102,241,.1);
+      border: 1px solid rgba(99,102,241,.2);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-light);
+      margin-bottom: 20px;
+      letter-spacing: .02em;
+    }
+    .modal-plan svg { width: 14px; height: 14px; }
+
+    /* Tabs */
+    .modal-tabs {
+      display: flex;
+      background: rgba(255,255,255,.04);
+      border-radius: 10px;
+      padding: 3px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .modal-tab {
+      flex: 1;
+      padding: 9px 0;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-subtle);
+      border: none;
+      background: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all .25s;
+      font-family: inherit;
+    }
+    .modal-tab.active {
+      background: rgba(99,102,241,.15);
+      color: var(--accent-light);
+      box-shadow: 0 1px 4px rgba(0,0,0,.2);
+    }
+    .modal-tab:not(.active):hover { color: var(--text-muted); }
+
+    /* Error */
+    .modal-error {
+      display: none;
+      background: rgba(239,68,68,.08);
+      border: 1px solid rgba(239,68,68,.2);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: #fca5a5;
+      align-items: center;
+      gap: 8px;
+    }
+    .modal-error.visible { display: flex; }
+    .modal-error svg { flex-shrink: 0; width: 16px; height: 16px; color: #f87171; }
+
+    /* Form fields */
+    .modal-field {
+      margin-bottom: 16px;
+    }
+    .modal-field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+    .modal-field input {
+      width: 100%;
+      height: 44px;
+      padding: 0 14px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+    .modal-field input::placeholder { color: rgba(148,163,184,.35); }
+    .modal-field input:focus {
+      border-color: rgba(99,102,241,.45);
+      box-shadow: 0 0 0 3px rgba(99,102,241,.1);
+      background: rgba(99,102,241,.04);
+    }
+
+    /* Register-only fields */
+    .register-only { display: none; }
+    .modal-card[data-mode="register"] .register-only { display: block; }
+
+    /* Submit */
+    .modal-submit {
+      width: 100%;
+      height: 48px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform .15s, box-shadow .25s;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .modal-submit:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 28px -6px rgba(99,102,241,.5);
+    }
+    .modal-submit:disabled {
+      opacity: .7;
+      cursor: not-allowed;
+    }
+    .modal-spinner {
+      display: none;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .6s linear infinite;
+    }
+    .modal-submit.loading .modal-spinner { display: block; }
+    .modal-submit.loading .modal-submit-text { display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Footer */
+    .modal-footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--text-subtle);
+    }
+    .modal-footer a {
+      color: var(--accent-light);
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .modal-footer a:hover { text-decoration: underline; }
 
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .pricing-cards { grid-template-columns: 1fr; max-width: 440px; }
       .nav-links { display: none; }
       .pricing-hero { padding-top: 120px; }
+      .modal-card { padding: 28px 24px 24px; }
     }
   </style>
 </head>
@@ -465,10 +347,62 @@
 
 <div class="pricing-bg"></div>
 
-<!-- Success banner (shown after payment) -->
+<!-- Success banner -->
 <div class="success-banner" id="successBanner">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
   Payment successful! Your subscription is now active. Open the BoothLedger app to get started.
+</div>
+
+<!-- ═══ AUTH MODAL ═══ -->
+<div class="modal-backdrop" id="authModal">
+  <div class="modal-card" data-mode="login">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="modal-plan" id="modalPlanBadge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      <span id="modalPlanLabel">Basic - Monthly</span>
+    </div>
+
+    <div class="modal-tabs">
+      <button class="modal-tab active" onclick="setAuthMode('login')">Sign In</button>
+      <button class="modal-tab" onclick="setAuthMode('register')">Create Account</button>
+    </div>
+
+    <div class="modal-error" id="modalError">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+      <span id="modalErrorText"></span>
+    </div>
+
+    <form id="authForm" onsubmit="handleAuthSubmit(event)">
+      <div class="modal-field register-only">
+        <label for="m_name">Display Name</label>
+        <input type="text" id="m_name" placeholder="Your name or business">
+      </div>
+      <div class="modal-field">
+        <label for="m_email">Email</label>
+        <input type="email" id="m_email" placeholder="you@company.com" required>
+      </div>
+      <div class="modal-field">
+        <label for="m_password">Password</label>
+        <input type="password" id="m_password" placeholder="Min. 6 characters" minlength="6" required>
+      </div>
+      <div class="modal-field register-only">
+        <label for="m_confirm">Confirm Password</label>
+        <input type="password" id="m_confirm" placeholder="Re-enter password">
+      </div>
+
+      <button type="submit" class="modal-submit" id="modalSubmit">
+        <div class="modal-spinner"></div>
+        <span class="modal-submit-text">Continue to Payment</span>
+      </button>
+    </form>
+
+    <div class="modal-footer" id="modalFooter">
+      Don't have an account? <a onclick="setAuthMode('register')">Create one</a>
+    </div>
+  </div>
 </div>
 
 <!-- Nav -->
@@ -506,56 +440,30 @@
 
 <!-- Cards -->
 <div class="pricing-cards" id="plans">
-
   <!-- Basic -->
   <div class="pricing-card">
     <div class="card-name">Basic</div>
     <div class="card-desc">Everything you need to run a professional photo booth business.</div>
-
     <div class="devices-badge">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
       2 devices included
     </div>
-
     <div class="card-price">
       <span class="card-price__currency">&euro;</span>
       <span class="card-price__amount" data-monthly="20" data-yearly="17">20</span>
       <span class="card-price__period">/month</span>
     </div>
     <div class="card-billed" data-monthly="" data-yearly="Billed &euro;204/year">&nbsp;</div>
-
-    <a href="#" class="card-cta card-cta--outline" data-plan="basic" onclick="handleSubscribe('basic'); return false;">Subscribe</a>
-
+    <a href="#" class="card-cta card-cta--outline" onclick="handleSubscribe('basic'); return false;">Subscribe</a>
     <hr class="card-divider">
     <ul class="card-features">
-      <li class="highlight">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Camera control &amp; capture
-      </li>
-      <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Photo sharing (QR, email, SMS)
-      </li>
-      <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Display management
-      </li>
-      <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Template editor
-      </li>
-      <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Event management
-      </li>
-      <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Cloud sync &amp; gallery
-      </li>
-      <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Bulk photo download
-      </li>
+      <li class="highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Camera control &amp; capture</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Photo sharing (QR, email, SMS)</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Display management</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Template editor</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Event management</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Cloud sync &amp; gallery</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Bulk photo download</li>
     </ul>
   </div>
 
@@ -563,109 +471,73 @@
   <div class="pricing-card featured">
     <div class="card-name">AI Photobooth</div>
     <div class="card-desc">The full BoothLedger experience with AI-powered effects and face swap.</div>
-
     <div class="devices-badge">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
       2 devices included
     </div>
-
     <div class="card-price">
       <span class="card-price__currency">&euro;</span>
       <span class="card-price__amount" data-monthly="35" data-yearly="30">35</span>
       <span class="card-price__period">/month</span>
     </div>
     <div class="card-billed" data-monthly="" data-yearly="Billed &euro;360/year">&nbsp;</div>
-
-    <a href="#" class="card-cta card-cta--primary" data-plan="ai" onclick="handleSubscribe('ai'); return false;">Subscribe</a>
-
+    <a href="#" class="card-cta card-cta--primary" onclick="handleSubscribe('ai'); return false;">Subscribe</a>
     <hr class="card-divider">
     <ul class="card-features">
-      <li class="highlight">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Everything in Basic
-      </li>
-      <li class="highlight">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-        AI photo effects &amp; prompts
-      </li>
-      <li class="highlight">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-        AI face swap
-      </li>
-      <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-        AI background removal
-      </li>
-      <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-        AI face enhancement
-      </li>
-      <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-        AI face mapping
-      </li>
-      <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Live swap mode
-      </li>
+      <li class="highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Everything in Basic</li>
+      <li class="highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>AI photo effects &amp; prompts</li>
+      <li class="highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>AI face swap</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>AI background removal</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>AI face enhancement</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>AI face mapping</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Live swap mode</li>
     </ul>
   </div>
-
 </div>
 
 <!-- FAQ -->
 <section class="faq">
   <h2>Frequently Asked Questions</h2>
-
   <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">
-      What happens when my trial ends?
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    </div>
+    <div class="faq-q" onclick="toggleFaq(this)">What happens when my trial ends?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
     <div class="faq-a">When your 30-day trial ends, you'll be prompted to choose a plan. Your events and photos are preserved &mdash; just subscribe to regain access. No data is deleted.</div>
   </div>
-
   <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">
-      What does "2 devices included" mean?
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    </div>
+    <div class="faq-q" onclick="toggleFaq(this)">What does "2 devices included" mean?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
     <div class="faq-a">Each subscription covers up to 2 separate computers running BoothLedger. This is tracked automatically when you sign in. If you need to switch a device, contact support to free up a slot.</div>
   </div>
-
   <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">
-      Can I switch between plans?
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    </div>
+    <div class="faq-q" onclick="toggleFaq(this)">Can I switch between plans?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
     <div class="faq-a">Yes. You can upgrade from Basic to AI Photobooth at any time. The price difference is prorated. You can also switch between monthly and yearly billing through the customer portal.</div>
   </div>
-
   <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">
-      How do I cancel?
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    </div>
+    <div class="faq-q" onclick="toggleFaq(this)">How do I cancel?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
     <div class="faq-a">You can cancel anytime from your billing portal. Your subscription remains active until the end of the current billing period. No hidden fees or penalties.</div>
   </div>
-
   <div class="faq-item">
-    <div class="faq-q" onclick="toggleFaq(this)">
-      Is there a free trial of the AI features?
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    </div>
+    <div class="faq-q" onclick="toggleFaq(this)">Is there a free trial of the AI features?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
     <div class="faq-a">The 30-day free trial includes basic features. AI features are available immediately when you subscribe to the AI Photobooth plan.</div>
   </div>
 </section>
 
-<!-- Footer -->
 <div class="pricing-footer">
   <p>&copy; 2026 BoothLedger &middot; <a href="https://boothledger.photoboothguys.ie">Home</a> &middot; <a href="https://boothledgercloud.photoboothguys.ie/user/login">Sign In</a></p>
 </div>
 
 <script>
-  // Billing toggle
+  // ── State ──
   let isYearly = false;
+  let selectedPriceKey = '';
+  const API = 'https://boothledgercloud.photoboothguys.ie/api/v1';
+
+  const PLAN_LABELS = {
+    basic_monthly: 'Basic - Monthly',
+    basic_yearly: 'Basic - Yearly',
+    ai_monthly: 'AI Photobooth - Monthly',
+    ai_yearly: 'AI Photobooth - Yearly',
+  };
+
+  // ── Billing toggle ──
   const toggle = document.getElementById('billingToggle');
   const monthlyLabel = document.getElementById('monthlyLabel');
   const yearlyLabel = document.getElementById('yearlyLabel');
@@ -690,26 +562,142 @@
     });
   }
 
-  // FAQ toggle
-  function toggleFaq(el) {
-    el.parentElement.classList.toggle('open');
-  }
+  // ── FAQ ──
+  function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
 
-  // Revolut checkout handler
+  // ── Modal ──
   function handleSubscribe(plan) {
-    const priceKey = plan + (isYearly ? '_yearly' : '_monthly');
-    // Redirect to login/register first, then to checkout
-    const loginUrl = 'https://boothledgercloud.photoboothguys.ie/user/login?next=/user/checkout/' + priceKey;
-    window.location.href = loginUrl;
+    selectedPriceKey = plan + (isYearly ? '_yearly' : '_monthly');
+    document.getElementById('modalPlanLabel').textContent = PLAN_LABELS[selectedPriceKey] || selectedPriceKey;
+    clearError();
+    document.getElementById('authForm').reset();
+    document.getElementById('authModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => document.getElementById('m_email').focus(), 100);
   }
 
-  // Show success banner if redirected from Revolut
+  function closeModal() {
+    document.getElementById('authModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Close on backdrop click
+  document.getElementById('authModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeModal();
+  });
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  function setAuthMode(mode) {
+    const card = document.querySelector('.modal-card');
+    card.dataset.mode = mode;
+    const tabs = document.querySelectorAll('.modal-tab');
+    tabs[0].classList.toggle('active', mode === 'login');
+    tabs[1].classList.toggle('active', mode === 'register');
+    clearError();
+
+    const footer = document.getElementById('modalFooter');
+    if (mode === 'login') {
+      footer.innerHTML = "Don't have an account? <a onclick=\"setAuthMode('register')\">Create one</a>";
+    } else {
+      footer.innerHTML = "Already have an account? <a onclick=\"setAuthMode('login')\">Sign in</a>";
+    }
+  }
+
+  function showError(msg) {
+    const el = document.getElementById('modalError');
+    document.getElementById('modalErrorText').textContent = msg;
+    el.classList.add('visible');
+  }
+  function clearError() {
+    document.getElementById('modalError').classList.remove('visible');
+  }
+
+  async function handleAuthSubmit(e) {
+    e.preventDefault();
+    clearError();
+
+    const card = document.querySelector('.modal-card');
+    const isRegister = card.dataset.mode === 'register';
+    const email = document.getElementById('m_email').value.trim();
+    const password = document.getElementById('m_password').value;
+
+    if (!email || !password) {
+      showError('Please fill in all fields.');
+      return;
+    }
+    if (password.length < 6) {
+      showError('Password must be at least 6 characters.');
+      return;
+    }
+
+    let displayName = '';
+    if (isRegister) {
+      displayName = document.getElementById('m_name').value.trim();
+      const confirm = document.getElementById('m_confirm').value;
+      if (!displayName) {
+        showError('Please enter your display name.');
+        return;
+      }
+      if (password !== confirm) {
+        showError('Passwords do not match.');
+        return;
+      }
+    }
+
+    // Show loading
+    const btn = document.getElementById('modalSubmit');
+    btn.classList.add('loading');
+    btn.disabled = true;
+
+    try {
+      const resp = await fetch(`${API}/auth/checkout`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+          price_key: selectedPriceKey,
+          is_register: isRegister,
+          display_name: displayName || undefined,
+        }),
+      });
+
+      const data = await resp.json();
+
+      if (!resp.ok) {
+        showError(data.detail || 'Something went wrong. Please try again.');
+        btn.classList.remove('loading');
+        btn.disabled = false;
+        return;
+      }
+
+      // Redirect to Revolut checkout
+      window.location.href = data.checkout_url;
+
+    } catch (err) {
+      showError('Network error. Please check your connection and try again.');
+      btn.classList.remove('loading');
+      btn.disabled = false;
+    }
+  }
+
+  // ── Success banner ──
   const params = new URLSearchParams(window.location.search);
   if (params.get('success') === 'true') {
     document.getElementById('successBanner').classList.add('visible');
+
+    // Also verify the order if order_id is present
+    const orderId = params.get('order_id');
+    if (orderId) {
+      fetch(`${API}/payments/verify/${orderId}`).catch(() => {});
+    }
+
     setTimeout(() => {
       document.getElementById('successBanner').classList.remove('visible');
-    }, 8000);
+    }, 10000);
   }
 </script>
 
