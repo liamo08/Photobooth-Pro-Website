@@ -541,12 +541,12 @@
         const basicCards = document.querySelectorAll('.card-price__amount');
         if (basicCards[0] && dynamicPricing.basic_monthly) {
           basicCards[0].dataset.monthly = (dynamicPricing.basic_monthly / 100).toFixed(0);
-          basicCards[0].dataset.yearly = (dynamicPricing.basic_yearly / 100 / 12).toFixed(0);
+          var bym = dynamicPricing.basic_yearly / 100 / 12; basicCards[0].dataset.yearly = bym % 1 === 0 ? bym.toFixed(0) : bym.toFixed(2);
           basicCards[0].textContent = isYearly ? basicCards[0].dataset.yearly : basicCards[0].dataset.monthly;
         }
         if (basicCards[1] && dynamicPricing.ai_monthly) {
           basicCards[1].dataset.monthly = (dynamicPricing.ai_monthly / 100).toFixed(0);
-          basicCards[1].dataset.yearly = (dynamicPricing.ai_yearly / 100 / 12).toFixed(0);
+          var aym = dynamicPricing.ai_yearly / 100 / 12; basicCards[1].dataset.yearly = aym % 1 === 0 ? aym.toFixed(0) : aym.toFixed(2);
           basicCards[1].textContent = isYearly ? basicCards[1].dataset.yearly : basicCards[1].dataset.monthly;
         }
         // Update yearly billed text
