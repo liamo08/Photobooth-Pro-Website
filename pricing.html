@@ -750,5 +750,39 @@
   }
 </script>
 
+
+  <!-- Analytics -->
+  <script>
+  (function(){
+    var start = Date.now();
+    var sent = false;
+    function track(dur) {
+      if (sent) return;
+      sent = true;
+      var data = {
+        path: location.pathname,
+        referrer: document.referrer || "",
+        screen_width: screen.width,
+        duration: dur || Math.round((Date.now() - start) / 1000)
+      };
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon("https://boothledgercloud.photoboothguys.ie/api/v1/analytics/track",
+          new Blob([JSON.stringify(data)], {type: "application/json"}));
+      } else {
+        fetch("https://boothledgercloud.photoboothguys.ie/api/v1/analytics/track", {
+          method: "POST", body: JSON.stringify(data),
+          headers: {"Content-Type": "application/json"}, keepalive: true
+        }).catch(function(){});
+      }
+    }
+    // Track on page unload (captures duration)
+    document.addEventListener("visibilitychange", function() {
+      if (document.visibilityState === "hidden") track();
+    });
+    window.addEventListener("beforeunload", function() { track(); });
+    // Also track after 2s as fallback (in case they leave quickly)
+    setTimeout(function() { if (!sent) { track(Math.round((Date.now() - start) / 1000)); sent = false; } }, 2000);
+  })();
+  </script>
 </body>
 </html>
