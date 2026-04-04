@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://boothledger.photoboothguys.ie/sitemap.xml
+Sitemap: https://boothledger.com/sitemap.xml
