@@ -338,6 +338,103 @@
     });
   }
 
+
+
+  // --- Interactive Comparison Slider (AI Showcase) ---
+  function initComparisonHero() {
+    var slider = document.getElementById('comparisonSlider');
+    if (!slider) return;
+
+    var before = document.getElementById('compBefore');
+    var handle = document.getElementById('compHandle');
+    var beforeImg = document.getElementById('compBeforeImg');
+    var afterImg = document.getElementById('compAfterImg');
+    var styleLabel = document.getElementById('compStyleLabel');
+    var dragging = false;
+    var position = 50;
+
+    function setPosition(pct) {
+      pct = Math.max(2, Math.min(98, pct));
+      position = pct;
+      before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+      handle.style.left = pct + '%';
+    }
+
+    function getPosition(e) {
+      var rect = slider.getBoundingClientRect();
+      var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      return ((clientX - rect.left) / rect.width) * 100;
+    }
+
+    slider.addEventListener('mousedown', function(e) {
+      dragging = true;
+      slider.classList.add('dragging');
+      setPosition(getPosition(e));
+      e.preventDefault();
+    });
+
+    slider.addEventListener('touchstart', function(e) {
+      dragging = true;
+      slider.classList.add('dragging');
+      setPosition(getPosition(e));
+    }, { passive: true });
+
+    document.addEventListener('mousemove', function(e) {
+      if (!dragging) return;
+      setPosition(getPosition(e));
+    });
+
+    document.addEventListener('touchmove', function(e) {
+      if (!dragging) return;
+      setPosition(getPosition(e));
+    }, { passive: true });
+
+    document.addEventListener('mouseup', function() {
+      dragging = false;
+      slider.classList.remove('dragging');
+    });
+
+    document.addEventListener('touchend', function() {
+      dragging = false;
+      slider.classList.remove('dragging');
+    });
+
+    // Showcase card click -> update comparison slider
+    var showcaseCards = document.querySelectorAll('.showcase-card');
+    showcaseCards.forEach(function(card) {
+      card.addEventListener('click', function() {
+        var beforeSrc = this.getAttribute('data-before');
+        var afterSrc = this.getAttribute('data-after');
+        var style = this.getAttribute('data-style');
+
+        if (beforeImg && afterImg && beforeSrc && afterSrc) {
+          beforeImg.src = beforeSrc;
+          afterImg.src = afterSrc;
+          if (styleLabel) styleLabel.textContent = style || '';
+
+          // Reset slider position
+          setPosition(50);
+
+          // Scroll to comparison slider
+          var sliderTop = slider.getBoundingClientRect().top + window.pageYOffset;
+          var navHeight = document.getElementById('nav') ? document.getElementById('nav').offsetHeight : 0;
+          window.scrollTo({
+            top: sliderTop - navHeight - 32,
+            behavior: 'smooth'
+          });
+
+          // Pulse animation
+          slider.style.boxShadow = '0 0 0 4px rgba(59,130,246,0.4), 0 25px 50px -12px rgba(0,0,0,0.5)';
+          setTimeout(function() {
+            slider.style.boxShadow = '';
+          }, 800);
+        }
+      });
+    });
+
+    setPosition(50);
+  }
+
   // --- Initialize everything ---
   function init() {
     initScrollAnimations();
@@ -349,6 +446,7 @@
     initAIGallery();
     initComparisonSliders();
     initVideoReplay();
+    initComparisonHero();
   }
 
   if (document.readyState === 'loading') {

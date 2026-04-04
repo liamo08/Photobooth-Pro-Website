@@ -125,7 +125,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
-  <link rel="stylesheet" href="css/style.css?v=10">
+  <link rel="stylesheet" href="css/style.css?v=11">
 </head>
 <body>
 
@@ -250,148 +250,141 @@
     </div>
   </section>
 
-  <!-- Before/After Gallery -->
-  <section class="ai-section" id="ai-gallery">
+
+  <!-- AI Showcase Gallery -->
+  <section class="showcase" id="ai-gallery">
     <div class="container">
-      <div class="ai-layout">
-        <div class="ai-content fade-in">
-          <span class="section-tag">See It In Action</span>
-          <h2 class="section-title">Before &amp; After<br><span class="gradient-text">AI Transformations</span></h2>
-          <p class="section-subtitle">Real examples from BoothLedger's AI photo booth. Every transformation is generated in seconds using our built-in AI engines.</p>
+      <div class="section-header fade-in">
+        <span class="section-tag">Real Results</span>
+        <h2 class="section-title">See the AI<br><span class="gradient-text">Transformations</span></h2>
+        <p class="section-subtitle">Real photos from real events, transformed by BoothLedger's AI engines. Drag the slider to compare, or browse the gallery below.</p>
+      </div>
 
-          <div class="ai-models">
-            <div class="ai-model">
-              <div class="ai-model-badge badge-green">Best Value</div>
-              <h3>Core Engine</h3>
-              <p>Outstanding quality at the lowest cost per image &mdash; the smart choice for most events.</p>
+      <!-- Interactive Comparison Slider -->
+      <div class="comparison-hero fade-in">
+        <div class="comparison-slider" id="comparisonSlider">
+          <div class="comparison-image comparison-after">
+            <img src="images/Ai examples2/web-a2.jpg" alt="AI Miami Vice pop art transformation" id="compAfterImg">
+            <span class="comparison-badge comparison-badge-after">AI Transformed</span>
+          </div>
+          <div class="comparison-image comparison-before" id="compBefore">
+            <img src="images/Ai examples2/web-a1.jpg" alt="Original photo before AI transformation" id="compBeforeImg">
+            <span class="comparison-badge comparison-badge-before">Original</span>
+          </div>
+          <div class="comparison-handle" id="compHandle">
+            <div class="comparison-handle-line"></div>
+            <div class="comparison-handle-circle">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"/>
+              </svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
             </div>
-            <div class="ai-model">
-              <div class="ai-model-badge">Premium Quality</div>
-              <h3>Nano Banana Pro</h3>
-              <p>The highest fidelity transformations for when only the best will do.</p>
+          </div>
+        </div>
+        <div class="comparison-style-label" id="compStyleLabel">Miami Vice Pop Art</div>
+      </div>
+
+      <!-- Transformation Grid -->
+      <div class="showcase-grid fade-in">
+
+        <!-- Group A: Christmas Party Friends -->
+        <div class="showcase-group">
+          <div class="showcase-original" data-group="a">
+            <img src="images/Ai examples2/web-a1.jpg" loading="lazy" alt="Original photo - four friends at Christmas party">
+            <span class="showcase-tag">Original Photo</span>
+          </div>
+          <div class="showcase-transforms">
+            <div class="showcase-card" data-before="images/Ai examples2/web-a1.jpg" data-after="images/Ai examples2/web-a2.jpg" data-style="Miami Vice Pop Art">
+              <img src="images/Ai examples2/web-a2.jpg" loading="lazy" alt="AI Miami Vice pop art transformation">
+              <div class="showcase-card-overlay">
+                <span class="showcase-card-style">Miami Vice Pop Art</span>
+                <span class="showcase-card-action">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                  Compare
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </span>
+              </div>
+            </div>
+            <div class="showcase-card" data-before="images/Ai examples2/web-a1.jpg" data-after="images/Ai examples2/web-a3.jpg" data-style="Hip-Hop Illustration">
+              <img src="images/Ai examples2/web-a3.jpg" loading="lazy" alt="AI hip-hop street illustration">
+              <div class="showcase-card-overlay">
+                <span class="showcase-card-style">Hip-Hop Illustration</span>
+                <span class="showcase-card-action">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                  Compare
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </span>
+              </div>
+            </div>
+            <div class="showcase-card" data-before="images/Ai examples2/web-a1.jpg" data-after="images/Ai examples2/web-a4.jpg" data-style="Noir Spotlight">
+              <img src="images/Ai examples2/web-a4.jpg" loading="lazy" alt="AI noir spotlight sketch">
+              <div class="showcase-card-overlay">
+                <span class="showcase-card-style">Noir Spotlight</span>
+                <span class="showcase-card-action">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                  Compare
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </span>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="ai-visual fade-in">
-          <div class="ai-gallery">
-            <div class="ai-gallery-card active" data-index="0">
-              <div class="ai-gallery-images">
-                <div class="ai-gallery-before">
-                  <img src="images/original-trio.webp" loading="lazy" alt="Original photo before AI transformation">
-                  <span class="ai-gallery-label">Before</span>
-                </div>
-                <div class="ai-gallery-arrow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </div>
-                <div class="ai-gallery-after">
-                  <img src="images/ai-vogue-trio.webp" loading="lazy" alt="AI-transformed Vogue magazine cover effect">
-                  <span class="ai-gallery-label">After</span>
-                </div>
-              </div>
-              <div class="ai-gallery-caption">
-                <span class="ai-gallery-style">Vogue Magazine Cover</span>
-                <span class="ai-gallery-model">Core Engine</span>
+        <!-- Group B: Wedding Guests -->
+        <div class="showcase-group">
+          <div class="showcase-original" data-group="b">
+            <img src="images/Ai examples2/web-b1.jpg" loading="lazy" alt="Original photo - wedding guests">
+            <span class="showcase-tag">Original Photo</span>
+          </div>
+          <div class="showcase-transforms">
+            <div class="showcase-card" data-before="images/Ai examples2/web-b1.jpg" data-after="images/Ai examples2/web-b2.jpg" data-style="Superhero Face Swap">
+              <img src="images/Ai examples2/web-b2.jpg" loading="lazy" alt="AI superhero Justice League face swap">
+              <div class="showcase-card-overlay">
+                <span class="showcase-card-style">Superhero Face Swap</span>
+                <span class="showcase-card-action">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                  Compare
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </span>
               </div>
             </div>
-
-            <div class="ai-gallery-card" data-index="1">
-              <div class="ai-gallery-images">
-                <div class="ai-gallery-before">
-                  <img src="images/original-couple.webp" loading="lazy" alt="Original couple photo before AI effect">
-                  <span class="ai-gallery-label">Before</span>
-                </div>
-                <div class="ai-gallery-arrow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </div>
-                <div class="ai-gallery-after">
-                  <img src="images/ai-vogue-couple.webp" loading="lazy" alt="AI magazine cover transformation">
-                  <span class="ai-gallery-label">After</span>
-                </div>
+            <div class="showcase-card" data-before="images/Ai examples2/web-b1.jpg" data-after="images/Ai examples2/web-b3.jpg" data-style="Kitchen Chaos">
+              <img src="images/Ai examples2/web-b3.jpg" loading="lazy" alt="AI kitchen chef scene face swap">
+              <div class="showcase-card-overlay">
+                <span class="showcase-card-style">Kitchen Chaos</span>
+                <span class="showcase-card-action">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                  Compare
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </span>
               </div>
-              <div class="ai-gallery-caption">
-                <span class="ai-gallery-style">Magazine Cover</span>
-                <span class="ai-gallery-model">Core Engine</span>
-              </div>
-            </div>
-
-            <div class="ai-gallery-card" data-index="2">
-              <div class="ai-gallery-images">
-                <div class="ai-gallery-before">
-                  <img src="images/original-duo.webp" loading="lazy" alt="Original photo before pencil sketch AI effect">
-                  <span class="ai-gallery-label">Before</span>
-                </div>
-                <div class="ai-gallery-arrow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </div>
-                <div class="ai-gallery-after">
-                  <img src="images/ai-sketch-duo.webp" loading="lazy" alt="AI pencil sketch transformation">
-                  <span class="ai-gallery-label">After</span>
-                </div>
-              </div>
-              <div class="ai-gallery-caption">
-                <span class="ai-gallery-style">Pencil Sketch</span>
-                <span class="ai-gallery-model">Nano Banana Pro</span>
-              </div>
-            </div>
-
-            <div class="ai-gallery-card" data-index="3">
-              <div class="ai-gallery-images">
-                <div class="ai-gallery-before">
-                  <img src="images/original-trio.webp" loading="lazy" alt="Original photo before social media AI effect">
-                  <span class="ai-gallery-label">Before</span>
-                </div>
-                <div class="ai-gallery-arrow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </div>
-                <div class="ai-gallery-after">
-                  <img src="images/ai-instagram-trio.webp" loading="lazy" alt="AI social media style transformation">
-                  <span class="ai-gallery-label">After</span>
-                </div>
-              </div>
-              <div class="ai-gallery-caption">
-                <span class="ai-gallery-style">Social Media Style</span>
-                <span class="ai-gallery-model">Core Engine</span>
-              </div>
-            </div>
-
-            <div class="ai-gallery-card" data-index="4">
-              <div class="ai-gallery-images">
-                <div class="ai-gallery-before">
-                  <img src="images/original-lads.webp" loading="lazy" alt="Original photo before movie poster AI effect">
-                  <span class="ai-gallery-label">Before</span>
-                </div>
-                <div class="ai-gallery-arrow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </div>
-                <div class="ai-gallery-after">
-                  <img src="images/ai-goodfellas-lads.webp" loading="lazy" alt="AI movie poster transformation">
-                  <span class="ai-gallery-label">After</span>
-                </div>
-              </div>
-              <div class="ai-gallery-caption">
-                <span class="ai-gallery-style">Movie Poster</span>
-                <span class="ai-gallery-model">Core Engine</span>
-              </div>
-            </div>
-
-            <div class="ai-gallery-nav">
-              <button class="ai-gallery-prev" aria-label="Previous slide">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-              </button>
-              <div class="ai-gallery-dots">
-                <button class="ai-gallery-dot active" data-index="0" aria-label="Show transformation 1"></button>
-                <button class="ai-gallery-dot" data-index="1" aria-label="Show transformation 2"></button>
-                <button class="ai-gallery-dot" data-index="2" aria-label="Show transformation 3"></button>
-                <button class="ai-gallery-dot" data-index="3" aria-label="Show transformation 4"></button>
-                <button class="ai-gallery-dot" data-index="4" aria-label="Show transformation 5"></button>
-              </div>
-              <button class="ai-gallery-next" aria-label="Next slide">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-              </button>
             </div>
           </div>
         </div>
+
+        <!-- Group C: Two Women at Party -->
+        <div class="showcase-group">
+          <div class="showcase-original" data-group="c">
+            <img src="images/Ai examples2/web-c1.jpg" loading="lazy" alt="Original photo - two women at party">
+            <span class="showcase-tag">Original Photo</span>
+          </div>
+          <div class="showcase-transforms">
+            <div class="showcase-card" data-before="images/Ai examples2/web-c1.jpg" data-after="images/Ai examples2/web-c2.jpg" data-style="Retro Hip-Hop">
+              <img src="images/Ai examples2/web-c2.jpg" loading="lazy" alt="AI retro hip-hop illustration">
+              <div class="showcase-card-overlay">
+                <span class="showcase-card-style">Retro Hip-Hop</span>
+                <span class="showcase-card-action">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                  Compare
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -552,7 +545,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=10"></script>
+  <script src="js/main.js?v=11"></script>
 
   <!-- Analytics -->
   <script>
