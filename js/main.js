@@ -100,9 +100,26 @@
     if (!downloadBtn) return;
 
     // GitHub latest release URL - always points to newest version
-    var downloadUrl = 'https://github.com/liamo08/photobooth-pro-releases/releases/latest/download/BoothLedger-Setup.exe';
+    var downloadUrl = 'https://github.com/liamo08/boothledger-releases/releases/latest/download/BoothLedger-Setup.exe';
 
     downloadBtn.addEventListener('click', function () {
+      // Fire Google Ads conversion event
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'G-2L4B7DR1YK',
+          'event_category': 'download',
+          'event_label': 'windows_installer'
+        });
+      }
+
+      // Track download click
+      try {
+        navigator.sendBeacon(
+          'https://boothledgercloud.photoboothguys.ie/api/v1/analytics/track-download',
+          new Blob([JSON.stringify({referrer: document.referrer || ''})], {type: 'application/json'})
+        );
+      } catch(e) {}
+
       // Start download
       window.location.href = downloadUrl;
 
