@@ -256,9 +256,11 @@ img {
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   padding-top: 80px;
+  padding-bottom: 20px;
   overflow: hidden;
 }
 
@@ -2021,17 +2023,7 @@ img {
    Hero Split Layout + Gallery Slideshow
    ======================================== */
 
-/* Override: hero becomes a split container */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  padding-top: 80px;
-  padding-bottom: 20px;
-  overflow: hidden;
-}
+/* Hero split layout styles (merged into original .hero above) */
 
 .hero-split {
   position: relative;
