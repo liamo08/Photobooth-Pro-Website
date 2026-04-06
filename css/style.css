@@ -2880,3 +2880,351 @@ img {
     font-size: 16px;
   }
 }
+
+/* ========================================
+   Ecosystem Section — 4K Fixes
+   ======================================== */
+
+/* ── QHD+ (2400px) ── */
+@media (min-width: 2400px) {
+  .ecosystem-diagram {
+    gap: 20px;
+    margin-bottom: 100px;
+    padding: 64px 24px;
+  }
+  .eco-node {
+    padding: 40px;
+  }
+  .eco-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 24px;
+    margin-bottom: 20px;
+  }
+  .eco-icon img {
+    height: 80px !important;
+  }
+  .eco-icon-cloud svg {
+    width: 60px;
+    height: 60px;
+  }
+  .eco-node h3 {
+    font-size: 24px;
+  }
+  .eco-node p {
+    font-size: 16px;
+  }
+  .eco-connector {
+    width: 280px;
+  }
+  .eco-sync-labels span {
+    font-size: 14px;
+    padding: 4px 12px;
+  }
+  .eco-video-demo {
+    max-width: 900px;
+    border-radius: 20px;
+    margin-bottom: 64px;
+  }
+  .eco-video-header {
+    padding: 24px 28px 16px;
+  }
+  .eco-video-header h3 {
+    font-size: 20px;
+  }
+  .eco-video-header p {
+    font-size: 16px;
+  }
+  .eco-video-player {
+    padding: 0 28px 28px;
+  }
+  .eco-video-player video {
+    border-radius: 12px;
+  }
+  .eco-features-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .eco-feature {
+    padding: 32px;
+    border-radius: 16px;
+    gap: 20px;
+  }
+  .eco-feature-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+  }
+  .eco-feature-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+  .eco-feature h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .eco-feature p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+}
+
+/* ── True 4K (3600px+) ── */
+@media (min-width: 3600px) {
+  .ecosystem {
+    padding: 160px 0;
+  }
+  .ecosystem-diagram {
+    gap: 40px;
+    margin-bottom: 120px;
+    padding: 80px 24px;
+  }
+  .eco-node {
+    padding: 56px;
+  }
+  .eco-icon {
+    width: 128px;
+    height: 128px;
+    border-radius: 32px;
+    margin-bottom: 28px;
+    border-width: 2px;
+  }
+  .eco-icon img {
+    height: 96px !important;
+  }
+  .eco-icon-cloud svg {
+    width: 80px;
+    height: 80px;
+  }
+  .eco-node h3 {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+  .eco-node p {
+    font-size: 20px;
+  }
+  .eco-connector {
+    width: 400px;
+    gap: 16px;
+  }
+  .eco-line {
+    height: 3px;
+  }
+  .eco-pulse {
+    width: 18px;
+    height: 18px;
+  }
+  .eco-sync-labels {
+    gap: 20px;
+  }
+  .eco-sync-labels span {
+    font-size: 17px;
+    padding: 6px 16px;
+  }
+
+  .eco-video-demo {
+    max-width: 1200px;
+    border-radius: 24px;
+    margin-bottom: 80px;
+  }
+  .eco-video-header {
+    padding: 32px 36px 20px;
+  }
+  .eco-video-header h3 {
+    font-size: 26px;
+  }
+  .eco-video-header p {
+    font-size: 20px;
+  }
+  .eco-video-player {
+    padding: 0 36px 36px;
+  }
+  .eco-video-player video {
+    border-radius: 16px;
+  }
+  .eco-video-replay {
+    font-size: 20px;
+    gap: 12px;
+  }
+  .eco-video-replay svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .eco-features-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .eco-feature {
+    padding: 40px;
+    border-radius: 20px;
+    gap: 24px;
+  }
+  .eco-feature-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+  }
+  .eco-feature-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+  .eco-feature h3 {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  .eco-feature p {
+    font-size: 20px;
+    line-height: 1.7;
+  }
+}
+
+/* ========================================
+   Download Section + App Window — 4K Fixes
+   ======================================== */
+
+@media (min-width: 2400px) {
+  .download-card {
+    gap: 80px;
+    border-radius: 24px;
+  }
+  .app-body {
+    min-height: 360px;
+  }
+  .app-sidebar {
+    width: 60px;
+  }
+  .app-sidebar-item {
+    width: 44px;
+    height: 44px;
+  }
+  .app-sidebar-item svg {
+    width: 22px;
+    height: 22px;
+  }
+  .app-main {
+    padding: 32px;
+  }
+  .app-camera-img {
+    max-height: 420px;
+  }
+  .app-titlebar {
+    padding: 14px 18px;
+  }
+  .app-dot {
+    width: 13px;
+    height: 13px;
+  }
+  .app-title {
+    font-size: 14px;
+  }
+  .app-capture-btn {
+    width: 60px;
+    height: 60px;
+  }
+  .app-capture-inner {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+@media (min-width: 3600px) {
+  .download {
+    padding: 160px 0;
+  }
+  .download-card {
+    padding: 100px;
+    gap: 100px;
+    border-radius: 32px;
+  }
+  .download-content .section-title {
+    font-size: 56px !important;
+  }
+  .download-content .section-subtitle {
+    font-size: 24px !important;
+    margin-bottom: 48px;
+  }
+  .download-features {
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+  .download-check {
+    font-size: 20px;
+    gap: 14px;
+  }
+  .download-check svg {
+    width: 28px;
+    height: 28px;
+  }
+  .download-actions .btn {
+    font-size: 22px;
+    padding: 22px 44px;
+    border-radius: 16px;
+  }
+  .download-version {
+    font-size: 17px;
+  }
+
+  /* App window mock */
+  .app-window {
+    border-radius: 20px;
+  }
+  .app-body {
+    min-height: 480px;
+  }
+  .app-titlebar {
+    padding: 18px 24px;
+  }
+  .app-dot {
+    width: 16px;
+    height: 16px;
+  }
+  .app-title {
+    font-size: 17px;
+    margin-left: 10px;
+  }
+  .app-sidebar {
+    width: 72px;
+    padding: 16px 0;
+    gap: 12px;
+  }
+  .app-sidebar-item {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+  }
+  .app-sidebar-item svg {
+    width: 26px;
+    height: 26px;
+  }
+  .app-main {
+    padding: 40px;
+  }
+  .app-camera-view {
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+  .app-camera-img {
+    max-height: 560px;
+  }
+  .app-camera-text {
+    font-size: 14px;
+    padding: 6px 14px;
+    top: 14px;
+    left: 14px;
+  }
+  .app-capture-btn {
+    width: 72px;
+    height: 72px;
+    border-width: 4px;
+  }
+  .app-capture-inner {
+    width: 56px;
+    height: 56px;
+  }
+
+  /* System requirements table in download */
+  .download-card .system-req {
+    font-size: 18px;
+  }
+}
