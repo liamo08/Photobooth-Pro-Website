@@ -2527,3 +2527,356 @@ img {
     display: none;
   }
 }
+
+/* ========================================
+   4K Full-Page Scaling (3600px+)
+   ======================================== */
+@media (min-width: 3600px) {
+
+  /* ── Global container ── */
+  .container {
+    max-width: 2800px;
+    padding: 0 80px;
+  }
+
+  /* ── Social Proof ── */
+  .social-proof {
+    padding: 80px 0;
+  }
+  .proof-stats {
+    gap: 80px;
+  }
+  .proof-number {
+    font-size: 3.5rem;
+  }
+  .proof-label {
+    font-size: 1.3rem;
+    margin-top: 8px;
+  }
+  .proof-divider {
+    height: 60px;
+  }
+
+  /* ── Section Headers (shared) ── */
+  .section-tag {
+    font-size: 18px;
+    padding: 8px 20px;
+  }
+  .section-title {
+    font-size: 64px !important;
+  }
+  .section-subtitle {
+    font-size: 24px !important;
+    max-width: 800px;
+  }
+  .section-header {
+    margin-bottom: 100px;
+  }
+
+  /* ── Features Section ── */
+  .features {
+    padding: 120px 0;
+  }
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    gap: 40px;
+  }
+  .feature-card {
+    padding: 48px;
+    border-radius: 24px;
+  }
+  .feature-card .feature-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 24px;
+  }
+  .feature-card h3 {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+  .feature-card p {
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  /* ── AI Section ── */
+  .ai-section {
+    padding: 120px 0;
+  }
+  .ai-layout {
+    gap: 100px;
+  }
+  .ai-content .section-title {
+    font-size: 56px !important;
+  }
+  .ai-content .section-subtitle {
+    font-size: 22px !important;
+  }
+  .ai-content .btn {
+    font-size: 20px;
+    padding: 18px 36px;
+  }
+  .ai-tag {
+    font-size: 15px;
+    padding: 6px 18px;
+  }
+  .ai-gallery-card {
+    border-radius: 20px;
+  }
+  .ai-gallery-label {
+    font-size: 15px;
+    padding: 8px 16px;
+  }
+  .ai-gallery-caption {
+    font-size: 22px;
+  }
+  .ai-gallery-style {
+    font-size: 17px;
+  }
+  .ai-gallery-model {
+    font-size: 15px;
+  }
+  .ai-gallery-prev,
+  .ai-gallery-next {
+    width: 56px;
+    height: 56px;
+  }
+  .ai-gallery-prev svg,
+  .ai-gallery-next svg {
+    width: 28px;
+    height: 28px;
+  }
+  .ai-gallery-dot {
+    width: 14px;
+    height: 14px;
+  }
+  .ai-gallery-dot.active {
+    width: 36px;
+  }
+
+  /* ── Ecosystem Section ── */
+  .ecosystem {
+    padding: 120px 0;
+  }
+  .ecosystem-diagram {
+    gap: 48px;
+  }
+  .eco-hub {
+    font-size: 20px;
+    padding: 28px 48px;
+  }
+  .eco-card {
+    padding: 36px;
+    border-radius: 20px;
+  }
+  .eco-card h3 {
+    font-size: 22px;
+  }
+  .eco-card p {
+    font-size: 17px;
+  }
+  .eco-card .eco-icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 20px;
+  }
+
+  /* ── Download Section ── */
+  .download {
+    padding: 120px 0;
+  }
+  .download-card {
+    padding: 80px;
+    border-radius: 28px;
+  }
+  .download-content .section-title {
+    font-size: 56px !important;
+  }
+  .download-content .section-subtitle {
+    font-size: 22px !important;
+    max-width: 700px;
+  }
+  .download-features {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .download-check {
+    font-size: 18px;
+    gap: 14px;
+  }
+  .download-check svg {
+    width: 28px;
+    height: 28px;
+  }
+  .download-actions .btn {
+    font-size: 20px;
+    padding: 20px 40px;
+  }
+  .download-version {
+    font-size: 16px;
+  }
+
+  /* ── FAQ Section ── */
+  .faq-section {
+    padding: 120px 0;
+  }
+  .faq-list {
+    max-width: 1200px;
+  }
+  .faq-item {
+    padding: 28px 32px;
+    border-radius: 18px;
+    margin-bottom: 16px;
+  }
+  .faq-item summary {
+    font-size: 22px;
+  }
+  .faq-item p {
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  /* ── Newsletter Section ── */
+  .newsletter-section {
+    padding: 80px 0;
+  }
+  .newsletter-card {
+    padding: 64px 80px;
+    border-radius: 28px;
+    max-width: 1400px;
+  }
+  .newsletter-content .section-title {
+    font-size: 40px !important;
+  }
+  .newsletter-content p {
+    font-size: 20px;
+  }
+  .newsletter-input {
+    font-size: 18px;
+    padding: 18px 24px;
+  }
+  .newsletter-btn {
+    font-size: 18px;
+    padding: 18px 32px;
+  }
+  .newsletter-privacy {
+    font-size: 15px;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    padding: 80px 0 40px;
+  }
+  .footer-content {
+    gap: 80px;
+  }
+  .footer-tagline {
+    font-size: 18px;
+    max-width: 400px;
+  }
+  .footer-col h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .footer-col a {
+    font-size: 17px;
+    padding: 6px 0;
+  }
+  .footer-bottom {
+    margin-top: 48px;
+    padding-top: 28px;
+    font-size: 16px;
+  }
+}
+
+
+/* ========================================
+   2400px+ Scaling (QHD+)
+   ======================================== */
+@media (min-width: 2400px) {
+
+  .container {
+    max-width: 2200px;
+    padding: 0 60px;
+  }
+
+  /* Social Proof */
+  .proof-number {
+    font-size: 2.8rem;
+  }
+  .proof-label {
+    font-size: 1.1rem;
+  }
+  .proof-stats {
+    gap: 60px;
+  }
+
+  /* Section Headers */
+  .section-title {
+    font-size: 52px !important;
+  }
+  .section-subtitle {
+    font-size: 20px !important;
+  }
+
+  /* Features */
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 32px;
+  }
+  .feature-card {
+    padding: 40px;
+  }
+  .feature-card h3 {
+    font-size: 22px;
+  }
+  .feature-card p {
+    font-size: 16px;
+  }
+
+  /* AI Section */
+  .ai-content .section-title {
+    font-size: 48px !important;
+  }
+  .ai-gallery-caption {
+    font-size: 18px;
+  }
+
+  /* Download */
+  .download-card {
+    padding: 64px;
+  }
+  .download-content .section-title {
+    font-size: 48px !important;
+  }
+  .download-check {
+    font-size: 16px;
+  }
+
+  /* FAQ */
+  .faq-list {
+    max-width: 1000px;
+  }
+  .faq-item summary {
+    font-size: 19px;
+  }
+  .faq-item p {
+    font-size: 16px;
+  }
+
+  /* Newsletter */
+  .newsletter-card {
+    max-width: 1100px;
+  }
+  .newsletter-content .section-title {
+    font-size: 34px !important;
+  }
+
+  /* Footer */
+  .footer-col a {
+    font-size: 15px;
+  }
+  .footer-tagline {
+    font-size: 16px;
+  }
+}
