@@ -166,6 +166,7 @@
     ]
   }
   </script>
+  <link rel="preload" href="images/ai-vogue-couple.webp" as="image" type="image/webp">
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
@@ -174,7 +175,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
-  <link rel="stylesheet" href="css/style.css?v=11">
+  <link rel="stylesheet" href="css/style.css?v=14">
 </head>
 <body>
 
@@ -203,64 +204,113 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="hero-bg">
       <div class="hero-gradient"></div>
       <div class="hero-grid"></div>
     </div>
-    <div class="container hero-content">
-      <div class="hero-badge fade-in">
-        <span class="badge-dot"></span>
-        Now with AI-powered effects
+
+    <div class="hero-split">
+      <!-- Left: Copy -->
+      <div class="hero-copy">
+        <div class="hero-badge fade-in">
+          <span class="badge-dot"></span>
+          Now with AI-powered effects
+        </div>
+        <h1 class="hero-title fade-in">
+          Professional Photo Booth
+          <span class="gradient-text">Software That Delivers</span>
+        </h1>
+        <p class="hero-subtitle fade-in">
+          The all-in-one photo booth software for event professionals.
+          Canon DSLR support, beautiful templates, instant SMS/email sharing,
+          cloud management, and AI-powered effects &mdash; everything you need to deliver unforgettable events.
+        </p>
+        <div class="hero-actions fade-in">
+          <a href="#download" class="btn btn-primary btn-lg">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Start 30-Day Free Trial
+          </a>
+          <a href="#features" class="btn btn-outline btn-lg">
+            Explore Features
+          </a>
+        </div>
+        <div class="hero-stats fade-in">
+          <div class="stat">
+            <span class="stat-value">DSLR</span>
+            <span class="stat-label">Camera Quality</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-value">2</span>
+            <span class="stat-label">AI Models</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-value">8+</span>
+            <span class="stat-label">Photo Filters</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-value">Cloud</span>
+            <span class="stat-label">Sync Built-in</span>
+          </div>
+        </div>
       </div>
-      <h1 class="hero-title fade-in">
-        Professional Photo Booth<br>
-        <span class="gradient-text">Software That Delivers</span>
-      </h1>
-      <p class="hero-subtitle fade-in">
-        The all-in-one photo booth software for event professionals.
-        Canon DSLR support, beautiful templates, instant SMS/email sharing,
-        cloud management, and AI-powered effects &mdash; everything you need to deliver unforgettable events.
-      </p>
-      <div class="hero-actions fade-in">
-        <a href="#download" class="btn btn-primary btn-lg">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="7 10 12 15 17 10"/>
-            <line x1="12" y1="15" x2="12" y2="3"/>
-          </svg>
-          Start 30-Day Free Trial
-        </a>
-        <a href="#features" class="btn btn-outline btn-lg">
-          Explore Features
-        </a>
-      </div>
-      <div class="hero-stats fade-in">
-        <div class="stat">
-          <span class="stat-value">DSLR</span>
-          <span class="stat-label">Camera Quality</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-value">2</span>
-          <span class="stat-label">AI Models</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-value">8+</span>
-          <span class="stat-label">Photo Filters</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-value">Cloud</span>
-          <span class="stat-label">Sync Built-in</span>
+
+      <!-- Right: Slideshow Gallery -->
+      <div class="hero-gallery fade-in" aria-label="AI photo booth examples">
+        <div class="gallery-showcase">
+          <!-- Main featured image -->
+          <div class="gallery-main">
+            <div class="gallery-slider" id="gallerySlider">
+              <div class="gallery-slide active" data-label="AI Vogue Cover">
+                <img src="images/ai-vogue-couple.webp" alt="AI Vogue magazine cover effect - couple transformed into fashion cover stars" width="400" height="600" fetchpriority="high">
+              </div>
+              <div class="gallery-slide" data-label="AI Pencil Sketch">
+                <img src="images/ai-sketch-duo.webp" alt="AI pencil sketch transformation - realistic artistic drawing effect" width="400" height="600" loading="lazy">
+              </div>
+              <div class="gallery-slide" data-label="AI Movie Poster">
+                <img src="images/ai-goodfellas-lads.webp" alt="AI movie poster face swap - guests as Goodfellas characters" width="400" height="600" loading="lazy">
+              </div>
+              <div class="gallery-slide" data-label="AI Instagram Frame">
+                <img src="images/ai-instagram-trio.webp" alt="AI Instagram frame effect - professional social media style" width="400" height="600" loading="lazy">
+              </div>
+              <div class="gallery-slide" data-label="AI Fashion Editorial">
+                <img src="images/ai-vogue-trio.webp" alt="AI Vogue editorial - group transformed into fashion editorial" width="400" height="600" loading="lazy">
+              </div>
+            </div>
+            <!-- Effect label overlay -->
+            <div class="gallery-label" id="galleryLabel">
+              <span class="gallery-label-dot"></span>
+              <span id="galleryLabelText">AI Vogue Cover</span>
+            </div>
+          </div>
+          <!-- Dot navigation -->
+          <div class="gallery-dots" id="galleryDots">
+            <button class="gallery-dot active" data-index="0" aria-label="Show slide 1"></button>
+            <button class="gallery-dot" data-index="1" aria-label="Show slide 2"></button>
+            <button class="gallery-dot" data-index="2" aria-label="Show slide 3"></button>
+            <button class="gallery-dot" data-index="3" aria-label="Show slide 4"></button>
+            <button class="gallery-dot" data-index="4" aria-label="Show slide 5"></button>
+          </div>
+          <!-- Floating accent thumbnails -->
+          <div class="gallery-float gallery-float--top" aria-hidden="true">
+            <img src="images/float-a2.webp" alt="" width="120" height="80" loading="lazy">
+          </div>
+          <div class="gallery-float gallery-float--bottom" aria-hidden="true">
+            <img src="images/float-b1.webp" alt="" width="120" height="80" loading="lazy">
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-
-  <!-- Social Proof -->
+<!-- Social Proof -->
   <section class="social-proof">
     <div class="container">
       <div class="proof-stats fade-in">
@@ -891,6 +941,7 @@
     </div>
   </footer>
 
+  <script src="js/hero-slideshow.js"></script>
   <script src="js/main.js?v=11"></script>
 
   <!-- Analytics -->

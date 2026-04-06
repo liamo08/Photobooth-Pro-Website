@@ -2015,3 +2015,328 @@ img {
     opacity: 1;
   }
 }
+
+
+/* ========================================
+   Hero Split Layout + Gallery Slideshow
+   ======================================== */
+
+/* Override: hero becomes a split container */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  overflow: hidden;
+}
+
+.hero-split {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 48px;
+  width: 100%;
+}
+
+/* ── Left: Copy ── */
+.hero-copy {
+  text-align: left;
+  max-width: 640px;
+}
+
+.hero-copy .hero-title {
+  text-align: left;
+}
+
+.hero-copy .hero-subtitle {
+  margin: 0 0 40px;
+  text-align: left;
+}
+
+.hero-copy .hero-actions {
+  justify-content: flex-start;
+}
+
+.hero-copy .hero-stats {
+  justify-content: flex-start;
+}
+
+/* ── Right: Gallery ── */
+.hero-gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+}
+
+.gallery-showcase {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* Main image container */
+.gallery-main {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 25px 60px -12px rgba(99, 102, 241, 0.25),
+    0 12px 30px -8px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-subtle);
+}
+
+.gallery-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
+}
+
+.gallery-slide.active {
+  opacity: 1;
+}
+
+.gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Effect label pill */
+.gallery-label {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(3, 7, 18, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 12px;
+  font-weight: 600;
+  color: #f8fafc;
+  letter-spacing: 0.02em;
+  z-index: 5;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-label-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse-dot 2s infinite;
+}
+
+/* Dot navigation */
+.gallery-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.gallery-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(148, 163, 184, 0.25);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.gallery-dot:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+.gallery-dot.active {
+  background: var(--accent-light);
+  box-shadow: 0 0 8px rgba(129, 140, 248, 0.5);
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* Floating accent thumbnails */
+.gallery-float {
+  position: absolute;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    0 8px 24px -4px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  z-index: 3;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-float img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-float--top {
+  width: 130px;
+  height: 88px;
+  top: -20px;
+  right: -40px;
+  transform: rotate(6deg);
+}
+
+.gallery-float--top:hover {
+  transform: rotate(3deg) scale(1.05);
+}
+
+.gallery-float--bottom {
+  width: 120px;
+  height: 80px;
+  bottom: 60px;
+  left: -30px;
+  transform: rotate(-4deg);
+}
+
+.gallery-float--bottom:hover {
+  transform: rotate(-2deg) scale(1.05);
+}
+
+/* Subtle ambient glow behind gallery */
+.gallery-showcase::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(ellipse, rgba(99, 102, 241, 0.12) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ── Responsive ── */
+
+/* Large screens: give the gallery more room */
+@media (min-width: 1600px) {
+  .hero-split {
+    max-width: 1600px;
+    gap: 80px;
+    padding: 60px 80px;
+  }
+  .gallery-showcase {
+    max-width: 500px;
+  }
+}
+
+/* Extra wide screens */
+@media (min-width: 1920px) {
+  .hero-split {
+    max-width: 1800px;
+    gap: 100px;
+  }
+  .gallery-showcase {
+    max-width: 540px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .hero-split {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .hero-copy {
+    text-align: center;
+    order: 1;
+  }
+
+  .hero-copy .hero-title,
+  .hero-copy .hero-subtitle {
+    text-align: center;
+  }
+
+  .hero-copy .hero-subtitle {
+    margin: 0 auto 40px;
+  }
+
+  .hero-copy .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-copy .hero-stats {
+    justify-content: center;
+  }
+
+  .hero-gallery {
+    order: 2;
+  }
+
+  .gallery-showcase {
+    max-width: 340px;
+  }
+
+  .gallery-float--top {
+    width: 100px;
+    height: 68px;
+    right: -20px;
+    top: -12px;
+  }
+
+  .gallery-float--bottom {
+    width: 96px;
+    height: 64px;
+    left: -18px;
+    bottom: 36px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .hero-split {
+    gap: 32px;
+    padding: 32px 16px;
+  }
+
+  .gallery-showcase {
+    max-width: 280px;
+  }
+
+  .gallery-float {
+    display: none;
+  }
+
+  .hero-copy .hero-stats {
+    gap: 16px;
+  }
+
+  .stat-divider {
+    display: none;
+  }
+}
