@@ -1,0 +1,28 @@
+# BoothLedger
+
+> Professional photo booth software for events. Canon DSLR support, custom templates, instant SMS/email sharing, cloud management & AI effects.
+
+BoothLedger is a Windows photo booth application designed for professional event photographers and photo booth operators. It supports Canon DSLR cameras, custom multi-photo templates, direct dye-sublimation printing, and instant sharing via SMS, email, and QR codes. The software includes two AI engines for creative effects like face swap, AI backgrounds, magazine covers, and artistic transformations.
+
+## Pages
+
+- [Home](https://boothledger.com/): Main landing page with features overview, download, and FAQ
+- [AI Photo Booth](https://boothledger.com/ai-photo-booth): AI-powered photo booth features including face swap, AI backgrounds, and 50+ creative effects
+- [Pricing](https://boothledger.com/pricing.html): Subscription plans starting at EUR 20/month with 30-day free trial
+
+## Key Features
+
+- Canon DSLR camera integration with live view
+- AI face swap and AI background removal
+- Custom multi-photo templates
+- Direct dye-sublimation printing
+- SMS, email, and QR code sharing
+- Boomerang and GIF capture
+- Cloud sync via BoothLedger Cloud
+- Offline mode with automatic sync
+
+## Contact
+
+- Email: info@photoboothguys.ie
+- Instagram: https://www.instagram.com/booth_ledger
+- Website: https://boothledger.com

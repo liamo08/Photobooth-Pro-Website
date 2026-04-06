@@ -15,11 +15,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pricing - BoothLedger</title>
   <meta name="description" content="Choose your BoothLedger plan. Professional photo booth software starting at EUR17/month.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://boothledger.com/pricing">
+
   <!-- Open Graph -->
   <meta property="og:title" content="Pricing - BoothLedger">
   <meta property="og:description" content="Choose your BoothLedger plan. Professional photo booth software starting at EUR17/month.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://boothledger.com/pricing.html">
+  <meta property="og:url" content="https://boothledger.com/pricing">
   <meta property="og:site_name" content="BoothLedger">
   <meta property="og:image" content="https://boothledger.com/images/boothledger-logo-full.png">
   <meta property="og:image:alt" content="BoothLedger - Professional Photo Booth Software">
@@ -28,6 +31,32 @@
   <meta name="twitter:title" content="Pricing - BoothLedger">
   <meta name="twitter:description" content="Choose your BoothLedger plan. Professional photo booth software starting at EUR17/month.">
   <meta name="twitter:image" content="https://boothledger.com/images/boothledger-logo-full.png">
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "BoothLedger",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Windows 10, Windows 11",
+    "description": "Professional photo booth software for events with Canon DSLR support, custom templates, instant sharing, and AI effects.",
+    "url": "https://boothledger.com/pricing.html",
+    "image": "https://boothledger.com/images/boothledger-logo-full.png",
+    "offers": {
+      "@type": "AggregateOffer",
+      "offerCount": "2",
+      "lowPrice": "20",
+      "highPrice": "35",
+      "priceCurrency": "EUR",
+      "description": "Free 30-day trial, then from EUR 20/month"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "BoothLedger",
+      "url": "https://boothledger.com"
+    }
+  }
+  </script>
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -477,7 +506,7 @@
       <span class="card-price__period">/month</span>
     </div>
     <div class="card-billed" data-monthly="" data-yearly="Billed &euro;204/year">&nbsp;</div>
-    <a href="#" class="card-cta card-cta--outline" onclick="handleSubscribe('basic'); return false;">Subscribe</a>
+    <a href="javascript:void(0)" class="card-cta card-cta--outline" onclick="handleSubscribe('basic'); return false;">Subscribe</a>
     <hr class="card-divider">
     <ul class="card-features">
       <li class="highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Camera control &amp; capture</li>
@@ -504,7 +533,7 @@
       <span class="card-price__period">/month</span>
     </div>
     <div class="card-billed" data-monthly="" data-yearly="Billed &euro;360/year">&nbsp;</div>
-    <a href="#" class="card-cta card-cta--primary" onclick="handleSubscribe('ai'); return false;">Subscribe</a>
+    <a href="javascript:void(0)" class="card-cta card-cta--primary" onclick="handleSubscribe('ai'); return false;">Subscribe</a>
     <hr class="card-divider">
     <ul class="card-features">
       <li class="highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Everything in Basic</li>
@@ -542,9 +571,45 @@
   </div>
 </section>
 
-<div class="pricing-footer">
-  <p>&copy; 2026 BoothLedger &middot; <a href="https://boothledger.com">Home</a> &middot; <a href="https://boothledgercloud.photoboothguys.ie/user/login">Sign In</a></p>
-</div>
+<footer class="pricing-footer" style="border-top:1px solid rgba(255,255,255,.08); padding:48px 24px 32px; margin-top:60px;">
+  <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:32px;">
+    <div>
+      <a href="/" style="display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px; color:#f8fafc; margin-bottom:12px;">
+        <img src="images/boothledger-logo.svg" alt="BoothLedger" width="32" height="32" style="border-radius:8px;">
+        Booth<span style="color:#818cf8;">Ledger</span>
+      </a>
+      <p style="color:#94a3b8; font-size:14px; line-height:1.6;">Professional photo booth software for event photographers.</p>
+    </div>
+    <div>
+      <h4 style="color:#f8fafc; font-size:14px; font-weight:600; margin-bottom:12px;">Product</h4>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <a href="/#features" style="color:#94a3b8; font-size:14px;">Features</a>
+        <a href="/ai-photo-booth" style="color:#94a3b8; font-size:14px;">AI Photo Booth</a>
+        <a href="/#download" style="color:#94a3b8; font-size:14px;">Download</a>
+        <a href="/pricing" style="color:#94a3b8; font-size:14px;">Pricing</a>
+      </div>
+    </div>
+    <div>
+      <h4 style="color:#f8fafc; font-size:14px; font-weight:600; margin-bottom:12px;">Ecosystem</h4>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <a href="/#ecosystem" style="color:#94a3b8; font-size:14px;">BoothLedger Cloud</a>
+        <a href="/#ecosystem" style="color:#94a3b8; font-size:14px;">Cloud Storage</a>
+        <a href="https://boothledgercloud.photoboothguys.ie/user/login" style="color:#94a3b8; font-size:14px;">Sign In</a>
+      </div>
+    </div>
+    <div>
+      <h4 style="color:#f8fafc; font-size:14px; font-weight:600; margin-bottom:12px;">Support</h4>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <a href="https://www.instagram.com/booth_ledger" target="_blank" rel="noopener noreferrer" style="color:#94a3b8; font-size:14px;">Instagram</a>
+        <a href="mailto:info@photoboothguys.ie" style="color:#94a3b8; font-size:14px;">Contact</a>
+        <a href="/#faq" style="color:#94a3b8; font-size:14px;">FAQ</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1200px; margin:32px auto 0; padding-top:24px; border-top:1px solid rgba(255,255,255,.06); text-align:center;">
+    <p style="color:#64748b; font-size:13px;">&copy; 2026 PhotoBooth Guys. All rights reserved. &middot; <a href="mailto:info@photoboothguys.ie" style="color:rgba(255,255,255,.4);">info@photoboothguys.ie</a></p>
+  </div>
+</footer>
 
 <script>
   // ── State ──
