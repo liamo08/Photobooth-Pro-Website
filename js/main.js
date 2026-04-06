@@ -455,3 +455,43 @@
     init();
   }
 })();
+
+// ── Newsletter Form ──
+(function() {
+  var form = document.getElementById("newsletterForm");
+  if (!form) return;
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    var btn = form.querySelector(".newsletter-btn");
+    var input = form.querySelector("input[name=email]");
+    var email = input.value.trim();
+    if (!email) return;
+    btn.textContent = "Subscribing...";
+    btn.disabled = true;
+    fetch("https://boothledgercloud.photoboothguys.ie/api/v1/newsletter/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      btn.textContent = data.status === "already_subscribed" ? "Already Subscribed" : "Subscribed!";
+      btn.style.background = "var(--green)";
+      input.value = "";
+      setTimeout(function() {
+        btn.textContent = "Subscribe";
+        btn.style.background = "";
+        btn.disabled = false;
+      }, 3000);
+    })
+    .catch(function() {
+      btn.textContent = "Error - Try Again";
+      btn.style.background = "var(--rose)";
+      btn.disabled = false;
+      setTimeout(function() {
+        btn.textContent = "Subscribe";
+        btn.style.background = "";
+      }, 3000);
+    });
+  });
+})();
