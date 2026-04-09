@@ -37,6 +37,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://boothledger.com/blog/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://boothledger.com/blog/how-to-start-photo-booth-business</loc>
     <lastmod>2026-04-06</lastmod>
     <changefreq>monthly</changefreq>

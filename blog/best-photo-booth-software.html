@@ -129,10 +129,10 @@
   }
   </script>
 
-  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -321,6 +321,22 @@
       color: rgba(255,255,255,.7);
     }
 
+    .blog-cta .btn-primary {
+      color: #ffffff !important;
+      background: linear-gradient(135deg, #6366f1 0%, #3b82f6 50%, #06b6d4 100%) !important;
+      padding: 18px 44px !important;
+      font-size: 17px !important;
+      font-weight: 700 !important;
+      letter-spacing: .2px !important;
+      border-radius: 14px !important;
+      box-shadow: 0 10px 30px -8px rgba(99,102,241,.55), 0 0 0 1px rgba(255,255,255,.12) inset !important;
+      text-shadow: 0 1px 2px rgba(0,0,0,.25) !important;
+      transition: transform .2s ease, box-shadow .2s ease !important;
+    }
+    .blog-cta .btn-primary:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 16px 40px -10px rgba(99,102,241,.7), 0 0 0 1px rgba(255,255,255,.18) inset !important;
+    }
     /* Blog CTA */
     .blog-cta {
       text-align: center;
@@ -433,6 +449,7 @@
       details p { font-size: 20px !important; }
     }
   </style>
+  <script src="https://analytics.ahrefs.com/analytics.js" data-key="hDTsJjbsuIFfEsb2icX72w" async></script>
 </head>
 <body>
 
@@ -440,7 +457,7 @@
   <nav class="nav" id="nav">
     <div class="nav-container">
       <a href="/" class="nav-logo">
-        <img class="logo-icon" src="/images/boothledger-logo-80.webp" alt="BoothLedger" width="40" height="40">
+        <img class="logo-icon" src="/images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="40" height="40">
         <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
       </a>
       <a href="https://www.photoboothguys.ie" target="_blank" rel="noopener" class="nav-brought-by">
@@ -891,7 +908,7 @@
       <div class="footer-content">
         <div class="footer-brand">
           <a href="/" class="nav-logo">
-            <img class="logo-icon" src="/images/boothledger-logo-80.webp" alt="BoothLedger" width="32" height="32">
+            <img class="logo-icon" src="/images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="32" height="32">
             <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
           </a>
           <p class="footer-tagline">Professional photo booth software for event photographers. Part of the PhotoBooth Guys ecosystem.</p>
