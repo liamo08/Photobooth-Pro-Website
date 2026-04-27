@@ -1221,7 +1221,6 @@
     });
     window.addEventListener("beforeunload", function() { track(); });
     // Also track after 2s as fallback (in case they leave quickly)
-    setTimeout(function() { if (!sent) { track(Math.round((Date.now() - start) / 1000)); sent = false; } }, 2000);
   })();
   </script>
 </body>

@@ -607,7 +607,6 @@
       if (document.visibilityState === "hidden") track();
     });
     window.addEventListener("beforeunload", function() { track(); });
-    setTimeout(function() { if (!sent) { track(Math.round((Date.now() - start) / 1000)); sent = false; } }, 2000);
   })();
   </script>
 </body>
