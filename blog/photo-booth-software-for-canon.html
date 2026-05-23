@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y29HTTRMH9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y29HTTRMH9');
+    gtag('config', 'AW-755417118');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Booth Software for Canon Cameras (R5, R6, R50) | 2026 Setup Guide | BoothLedger</title>
+  <meta name="description" content="The complete 2026 guide to running a Canon photo booth. Supported camera models (R50, R6, R6 II, R5, 5D IV), tethering, focus, lighting and the best Canon photo booth software. Step-by-step setup.">
+  <meta name="keywords" content="canon photo booth software, photo booth software for canon, canon r5 photo booth, canon r6 photo booth, canon r50 photo booth, canon eos photo booth, dslr photo booth canon, photo booth tethering canon">
+  <meta name="author" content="BoothLedger">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://boothledger.com/blog/photo-booth-software-for-canon">
+  <link rel="alternate" hreflang="en" href="https://boothledger.com/blog/photo-booth-software-for-canon">
+  <link rel="alternate" hreflang="x-default" href="https://boothledger.com/blog/photo-booth-software-for-canon">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Photo Booth Software for Canon Cameras (R5, R6, R50) | 2026 Setup Guide">
+  <meta property="og:description" content="Supported Canon models, tethering, focus, lighting, and the best Canon photo booth software. Step-by-step.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://boothledger.com/blog/photo-booth-software-for-canon">
+  <meta property="og:site_name" content="BoothLedger">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://boothledger.com/images/boothledger-logo-full.png">
+  <meta property="article:published_time" content="2026-05-23T00:00:00+00:00">
+  <meta property="article:modified_time" content="2026-05-23T00:00:00+00:00">
+  <meta property="article:author" content="BoothLedger">
+  <meta property="article:section" content="Photo Booth Software">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Photo Booth Software for Canon (R5/R6/R50) | BoothLedger">
+  <meta name="twitter:description" content="The complete 2026 guide to running a Canon photo booth.">
+  <meta name="twitter:image" content="https://boothledger.com/images/boothledger-logo-full.png">
+
+  <!-- Article Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Photo Booth Software for Canon Cameras (R5, R6, R50) | 2026 Setup Guide",
+    "description": "The complete 2026 guide to running a Canon photo booth. Supported camera models, tethering, focus, lighting and the best Canon photo booth software.",
+    "image": "https://boothledger.com/images/boothledger-logo-full.png",
+    "author": {"@type": "Organization", "name": "BoothLedger", "url": "https://boothledger.com"},
+    "publisher": {
+      "@type": "Organization",
+      "name": "BoothLedger",
+      "logo": {"@type": "ImageObject", "url": "https://boothledger.com/images/boothledger-logo-full.png"}
+    },
+    "datePublished": "2026-05-23",
+    "dateModified": "2026-05-23",
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://boothledger.com/blog/photo-booth-software-for-canon"}
+  }
+  </script>
+
+  <!-- HowTo Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to set up a Canon photo booth",
+    "description": "Connect a Canon DSLR or mirrorless camera to photo booth software for live events.",
+    "step": [
+      {"@type": "HowToStep", "name": "Pick a supported Canon model", "text": "Choose a Canon EOS body that supports tethered live view over USB. The R50, R6, R6 II, R5, R8, M50 II, 90D and 5D Mark IV are all confirmed working with BoothLedger and other Windows photo booth software."},
+      {"@type": "HowToStep", "name": "Install the Canon EOS Utility drivers", "text": "Download Canon EOS Utility from canon.com. The booth software does not use the utility itself but the install registers the camera drivers Windows needs to talk to the camera."},
+      {"@type": "HowToStep", "name": "Tether with a reinforced USB cable", "text": "Connect the camera to a Windows mini-PC with a reinforced USB-C cable (or USB Mini-B on older Canons). Cheap cables fail mid-event. Use a TetherTools or equivalent locking cable."},
+      {"@type": "HowToStep", "name": "Configure in BoothLedger", "text": "Open BoothLedger, pick the Canon camera in the device list, set live view on, autofocus mode to AF-S or One-Shot, and disable auto power-off in the camera menu."},
+      {"@type": "HowToStep", "name": "Run a 50-shot stress test", "text": "Before the event, fire 50 shots in a row through the booth and watch for missed connections, focus failures or print queue stalls. Fix any issue at home, not at the venue."}
+    ]
+  }
+  </script>
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "What is the best Canon for a photo booth?",
+       "acceptedAnswer": {"@type": "Answer", "text": "The Canon EOS R6 Mark II is the sweet spot in 2026 — full-frame sensor, excellent autofocus, and fast USB-C tethering. The cheaper R50 is the best value entry point and runs every BoothLedger feature. The R5 is overkill unless you also shoot the photos for print enlargements after the event."}},
+      {"@type": "Question", "name": "Does Canon work with all photo booth software?",
+       "acceptedAnswer": {"@type": "Answer", "text": "Most Windows photo booth software supports Canon, including BoothLedger, LumaBooth (formerly dslrBooth) and Darkroom Booth. iPad-only apps like Simple Booth do not connect to a Canon DSLR; they use the iPad camera. Touchpix supports Canon on Windows, macOS and Linux."}},
+      {"@type": "Question", "name": "Can I use a Canon R50 in a photo booth?",
+       "acceptedAnswer": {"@type": "Answer", "text": "Yes. The Canon R50 is a fully supported entry-level mirrorless body for photo booths. It tethers over USB-C, supports live view, and runs all the AF and exposure controls BoothLedger needs. It's a popular first booth camera because it's around half the price of an R6 II."}},
+      {"@type": "Question", "name": "Do I need Canon EOS Utility for a photo booth?",
+       "acceptedAnswer": {"@type": "Answer", "text": "You don't run EOS Utility during events, but you should install it once so Windows registers the Canon drivers. After install, close EOS Utility — running both EOS Utility and a photo booth app at the same time will fight for the camera connection."}},
+      {"@type": "Question", "name": "What USB cable should I use to tether a Canon?",
+       "acceptedAnswer": {"@type": "Answer", "text": "Use a reinforced USB-C cable (newer Canons) or USB Mini-B (older Canons) at least 3m long. TetherTools, JerkStopper or Carlton cables hold up to event abuse. Avoid generic cables; mid-event disconnects almost always trace back to a cheap cable."}},
+      {"@type": "Question", "name": "How do I stop a Canon camera from sleeping during a photo booth event?",
+       "acceptedAnswer": {"@type": "Answer", "text": "In the camera menu, set auto power-off to Disable or 30 minutes. On Canon R6 and newer, also set 'Eco mode' to Off. Use a dummy battery with mains power so the camera never sleeps for low battery, and disable Wi-Fi to prevent the camera waking and reconnecting."}}
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="/css/style.min.css?v=21">
+
+  <style>
+    .blog-article { max-width: 900px; margin: 0 auto; padding: 120px 24px 80px; color: rgba(255,255,255,.88); line-height: 1.75; }
+    .blog-article h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 16px; color: #fff; }
+    .blog-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; font-size: .9rem; color: rgba(255,255,255,.5); }
+    .blog-meta time { color: rgba(255,255,255,.6); }
+    .blog-meta .reading-time { display: flex; align-items: center; gap: 6px; }
+    .blog-article h2 { font-size: 1.6rem; font-weight: 700; margin: 56px 0 16px; color: #fff; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.08); }
+    .blog-article h2:first-of-type { border-top: none; }
+    .blog-article h3 { font-size: 1.2rem; font-weight: 600; margin: 32px 0 12px; color: rgba(255,255,255,.95); }
+    .blog-article p { margin-bottom: 20px; }
+    .blog-article ul, .blog-article ol { margin: 0 0 20px 24px; }
+    .blog-article li { margin-bottom: 8px; }
+    .blog-article a { color: var(--accent, #6c63ff); text-decoration: underline; text-underline-offset: 3px; }
+    .blog-article a:hover { color: #fff; }
+    .blog-article strong { color: rgba(255,255,255,.95); }
+
+    .comparison-table-wrap { overflow-x: auto; margin: 32px 0; border-radius: 12px; border: 1px solid rgba(255,255,255,.1); }
+    .comparison-table { width: 100%; border-collapse: collapse; font-size: .88rem; min-width: 700px; }
+    .comparison-table th, .comparison-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .comparison-table thead th { background: rgba(255,255,255,.05); color: rgba(255,255,255,.7); font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .5px; }
+
+    .callout { padding: 20px 24px; margin: 24px 0; border-radius: 10px; background: rgba(255,255,255,.04); border-left: 4px solid var(--accent, #6c63ff); }
+    .callout strong { color: var(--accent, #6c63ff); }
+    .callout p:last-child { margin-bottom: 0; }
+
+    .step-box { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 24px 28px; margin: 20px 0; }
+    .step-box .num { display: inline-block; width: 32px; height: 32px; line-height: 32px; text-align: center; border-radius: 8px; background: var(--accent, #6c63ff); color: #fff; font-weight: 700; margin-right: 12px; }
+    .step-box h3 { display: inline-block; vertical-align: middle; margin-top: 0 !important; }
+
+    .blog-cta .btn-primary { color: #ffffff !important; background: linear-gradient(135deg, #6366f1 0%, #3b82f6 50%, #06b6d4 100%) !important; padding: 18px 44px !important; font-size: 17px !important; font-weight: 700 !important; letter-spacing: .2px !important; border-radius: 14px !important; box-shadow: 0 10px 30px -8px rgba(99,102,241,.55), 0 0 0 1px rgba(255,255,255,.12) inset !important; text-shadow: 0 1px 2px rgba(0,0,0,.25) !important; transition: transform .2s ease, box-shadow .2s ease !important; }
+    .blog-cta .btn-primary:hover { transform: translateY(-2px) !important; box-shadow: 0 16px 40px -10px rgba(99,102,241,.7), 0 0 0 1px rgba(255,255,255,.18) inset !important; }
+    .blog-cta { text-align: center; padding: 48px 32px; margin: 56px 0 0; border-radius: 16px; background: linear-gradient(135deg, rgba(108,99,255,.12), rgba(99,200,255,.08)); border: 1px solid rgba(108,99,255,.2); }
+    .blog-cta h2 { border: none; margin-top: 0; padding-top: 0; }
+    .blog-cta p { color: rgba(255,255,255,.65); max-width: 500px; margin: 0 auto 24px; }
+
+    .breadcrumbs { font-size: .85rem; color: rgba(255,255,255,.4); margin-bottom: 24px; }
+    .breadcrumbs a { color: rgba(255,255,255,.5); text-decoration: none; }
+    .breadcrumbs a:hover { color: var(--accent, #6c63ff); }
+    .breadcrumbs span { margin: 0 8px; }
+
+    .toc { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 24px 28px; margin: 32px 0 40px; }
+    .toc h3 { font-size: 1rem; margin: 0 0 12px; color: rgba(255,255,255,.7); }
+    .toc ol { margin: 0; padding-left: 20px; }
+    .toc li { margin-bottom: 6px; font-size: .9rem; }
+    .toc a { color: rgba(255,255,255,.6); text-decoration: none; }
+    .toc a:hover { color: var(--accent, #6c63ff); }
+
+    .related-posts { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+    .related-posts h2 { font-size: 1.4rem; margin-bottom: 24px; color: #fff; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .related-card { display: block; padding: 20px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; text-decoration: none !important; color: inherit; transition: border-color .2s, background .2s; }
+    .related-card:hover { border-color: rgba(108,99,255,.4); background: rgba(255,255,255,.05); }
+    .related-card .tag { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #6c63ff; }
+    .related-card h3 { font-size: 1rem; margin: 8px 0 0; color: #fff; line-height: 1.4; }
+  </style>
+  <script src="https://analytics.ahrefs.com/analytics.js" data-key="hDTsJjbsuIFfEsb2icX72w" async></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <img class="logo-icon" src="/images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="40" height="40">
+        <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
+      </a>
+      <a href="https://www.photoboothguys.ie" target="_blank" rel="noopener" class="nav-brought-by">
+        <span>Brought to you by</span>
+        <img src="/images/photobooth-guys-logo.webp" width="31" height="28" alt="PhotoBooth Guys">
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/ai-photo-booth">AI Photo Booth</a></li>
+        <li><a href="/#ecosystem">Ecosystem</a></li>
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/#download" class="nav-cta">Download Trial</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <article class="blog-article">
+
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span>Photo Booth Software for Canon
+    </nav>
+
+    <h1>Photo Booth Software for Canon Cameras (R5, R6, R50) — 2026 Setup Guide</h1>
+
+    <div class="blog-meta">
+      <time datetime="2026-05-23">May 23, 2026</time>
+      <span class="reading-time">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        10 min read
+      </span>
+    </div>
+
+    <p>Canon is the dominant camera brand in photo booth land &mdash; about three out of every four pro DSLR booths we see in the wild are running a Canon body. The reason is simple: Canon's tethering protocol over USB has been the most reliable in the industry for over a decade, and almost every Windows photo booth platform was built around the Canon EDSDK first and added other brands later.</p>
+
+    <p>This guide is the complete 2026 walk-through: which Canon bodies work, which photo booth software to pair them with, how to tether without disconnects, and how to lock the camera down so it doesn't sleep, focus-hunt or reboot mid-event. By the end you'll have a Canon photo booth that prints, shares and runs all night without touching it.</p>
+
+    <nav class="toc" aria-label="Table of contents">
+      <h3>In This Guide</h3>
+      <ol>
+        <li><a href="#supported-cameras">Supported Canon cameras</a></li>
+        <li><a href="#best-software">Best photo booth software for Canon</a></li>
+        <li><a href="#setup">Step-by-step setup</a></li>
+        <li><a href="#camera-settings">Camera settings checklist</a></li>
+        <li><a href="#lens">Choosing the right Canon lens</a></li>
+        <li><a href="#troubleshooting">Common Canon tethering issues</a></li>
+        <li><a href="#faq">Frequently asked questions</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="supported-cameras">Supported Canon cameras</h2>
+    <p>Most modern Canon DSLR and mirrorless bodies tether cleanly. Here is the quick lookup of the bodies we've tested with <a href="/dslr-photo-booth-software">BoothLedger DSLR photo booth software</a> in 2026:</p>
+
+    <div class="comparison-table-wrap">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Canon body</th>
+            <th>Sensor</th>
+            <th>Tether port</th>
+            <th>Best for</th>
+            <th>Approx. price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Canon EOS R50</td>
+            <td>APS-C 24MP</td>
+            <td>USB-C</td>
+            <td>Entry photo booth</td>
+            <td>EUR 700</td>
+          </tr>
+          <tr>
+            <td>Canon EOS R8</td>
+            <td>Full-frame 24MP</td>
+            <td>USB-C</td>
+            <td>Mid-tier weddings</td>
+            <td>EUR 1,400</td>
+          </tr>
+          <tr>
+            <td>Canon EOS R6 Mark II</td>
+            <td>Full-frame 24MP</td>
+            <td>USB-C</td>
+            <td>Pro all-purpose</td>
+            <td>EUR 2,200</td>
+          </tr>
+          <tr>
+            <td>Canon EOS R5</td>
+            <td>Full-frame 45MP</td>
+            <td>USB-C</td>
+            <td>High-end with re-print</td>
+            <td>EUR 3,300</td>
+          </tr>
+          <tr>
+            <td>Canon EOS M50 Mark II</td>
+            <td>APS-C 24MP</td>
+            <td>Micro-USB</td>
+            <td>Budget / second booth</td>
+            <td>EUR 550</td>
+          </tr>
+          <tr>
+            <td>Canon EOS 90D</td>
+            <td>APS-C 32MP</td>
+            <td>USB Mini-B</td>
+            <td>DSLR die-hards</td>
+            <td>EUR 1,100</td>
+          </tr>
+          <tr>
+            <td>Canon EOS 5D Mark IV</td>
+            <td>Full-frame 30MP</td>
+            <td>USB Mini-B</td>
+            <td>Used / classic DSLR</td>
+            <td>EUR 1,400 used</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>If you're buying a Canon camera specifically for a photo booth in 2026, the <strong>R50 is the best value entry point</strong> and the <strong>R6 Mark II is the sweet spot for paid event work</strong>. Both tether over USB-C, which is what you want for cable durability.</p>
+
+    <div class="callout">
+      <p><strong>Tip:</strong> avoid the Canon RP for booth work &mdash; the autofocus in continuous mode is slower than the R-series bodies, and you'll lose shots when guests move during the count-down.</p>
+    </div>
+
+    <h2 id="best-software">Best photo booth software for Canon</h2>
+    <p>Three main options dominate the Canon-on-Windows world:</p>
+
+    <h3>BoothLedger</h3>
+    <p><a href="/">BoothLedger</a> is the most affordable feature-complete option. Canon DSLR and mirrorless support, AI background removal, branded templates, dye-sub print, instant SMS/email/QR share, cloud gallery and Windows kiosk lockdown. Plans from EUR 20/month with a free 30-day trial. Built specifically for the Canon + Windows workflow.</p>
+
+    <h3>LumaBooth (formerly dslrBooth)</h3>
+    <p>LumaBooth is the long-standing Windows option originally branded dslrBooth. Strong Canon support including older DSLR bodies. Now also has an iPad-side product. Higher monthly cost than BoothLedger and a more dated interface, but trusted by long-running booth operators.</p>
+
+    <h3>Darkroom Booth</h3>
+    <p>Darkroom Booth is the veterans' choice &mdash; one-time licence purchase (around $295), Windows-only, supports Canon DSLR going back many generations. No cloud, no AI, no monthly subscription. If you want a booth that works the same way in 2034 as it does today, Darkroom is the pick.</p>
+
+    <p>Our full feature-by-feature breakdown across all seven major platforms is in the <a href="/blog/best-photo-booth-software">best photo booth software 2026</a> guide.</p>
+
+    <h2 id="setup">Step-by-step Canon photo booth setup</h2>
+
+    <div class="step-box">
+      <span class="num">1</span><h3>Pick a supported Canon body</h3>
+      <p>From the table above, choose the body that matches your event budget. If you're undecided, the R50 (entry) or R6 Mark II (pro) are the two safest 2026 picks.</p>
+    </div>
+
+    <div class="step-box">
+      <span class="num">2</span><h3>Install Canon EOS Utility</h3>
+      <p>Download Canon EOS Utility from canon.com. You'll never run it during events &mdash; but installing it once registers the Canon drivers Windows needs to talk to the camera. After install, close EOS Utility and don't open it again. Running EOS Utility and a photo booth app at the same time will fight for the camera connection.</p>
+    </div>
+
+    <div class="step-box">
+      <span class="num">3</span><h3>Get a reinforced USB tether cable</h3>
+      <p>This is the most important purchase. Cheap USB cables fail mid-event. Buy a TetherTools, JerkStopper or similar reinforced cable, 3m or longer. For newer Canons it'll be USB-C to USB-A or USB-C. For older bodies it'll be USB Mini-B. Always carry a spare in your kit.</p>
+    </div>
+
+    <div class="step-box">
+      <span class="num">4</span><h3>Connect to BoothLedger</h3>
+      <p>Plug the camera in, open <a href="/">BoothLedger</a>, and in Settings &rarr; Camera select the Canon body. Turn on Live View. Set AF mode to One-Shot AF. Confirm the live view preview shows up. If it doesn't, see the troubleshooting section below.</p>
+    </div>
+
+    <div class="step-box">
+      <span class="num">5</span><h3>Run a 50-shot stress test</h3>
+      <p>Before the event, fire 50 photos in a row through the booth. Watch for: missed connections, focus failures (especially in low light), USB drops, slow live view refresh, or print queue stalls. Fix every issue you see at home &mdash; not at the venue.</p>
+    </div>
+
+    <h2 id="camera-settings">Canon camera settings checklist</h2>
+    <p>These are the in-camera menu settings that make the difference between a Canon that runs all night and one that goes to sleep at the worst moment.</p>
+
+    <ul>
+      <li><strong>Auto power-off:</strong> Disable, or set to 30 minutes if Disable isn't available.</li>
+      <li><strong>Eco mode (R-series):</strong> Off.</li>
+      <li><strong>Wi-Fi &amp; Bluetooth:</strong> Off. Wi-Fi will fight USB for the data channel on some Canon bodies.</li>
+      <li><strong>Image quality:</strong> JPEG Large Fine. RAW files take too long to transfer over USB and the booth doesn't use them.</li>
+      <li><strong>SD card recording:</strong> Off (set to host PC only). Saves SD card wear and avoids dual-write delay.</li>
+      <li><strong>Beep:</strong> Off. Guests notice the camera beeping more than you'd think.</li>
+      <li><strong>Drive mode:</strong> Single shot. Continuous causes accidental multi-fires from the booth.</li>
+      <li><strong>White balance:</strong> Auto, or set a custom WB for the venue if you have time. Pictures should not look orange.</li>
+      <li><strong>ISO:</strong> Auto with a max of 6400 (R6/R6 II) or 3200 (R50/M50). Beyond that, noise is visible.</li>
+      <li><strong>Picture style:</strong> Standard or Portrait. Avoid Faithful or Neutral &mdash; flat skin tones don't print well.</li>
+      <li><strong>Battery:</strong> Use a Canon dummy battery (DC coupler) wired to mains power. Real batteries die mid-event.</li>
+    </ul>
+
+    <h2 id="lens">Choosing the right Canon lens</h2>
+    <p>The lens matters more than people think. The right photo booth lens is wide enough to fit a group of 4&ndash;6 guests in a 1.8m enclosure but not so wide that it distorts faces at the edges.</p>
+
+    <p>For full-frame bodies (R6 II, R8, R5, 5D IV):</p>
+    <ul>
+      <li><strong>Canon RF 24mm f/1.8 Macro IS STM</strong> &mdash; the booth lens. Wide enough for groups, fast enough for low light, not too wide to warp faces.</li>
+      <li><strong>Canon RF 28mm f/2.8 STM</strong> &mdash; lighter alternative. Slightly less wide, slightly slower.</li>
+      <li><strong>Canon RF 24-70mm f/2.8L</strong> &mdash; overkill for a booth but does double duty if you also shoot weddings.</li>
+    </ul>
+
+    <p>For APS-C bodies (R50, M50 II, 90D):</p>
+    <ul>
+      <li><strong>Canon RF-S 18-45mm STM</strong> &mdash; the kit lens is fine. Use it at 18-22mm in the booth.</li>
+      <li><strong>Canon RF-S 18-150mm STM</strong> &mdash; over-spec, only worth it if you also shoot at the event.</li>
+    </ul>
+
+    <p>Avoid ultra-wide primes (14mm, 16mm) &mdash; the barrel distortion makes guests at the edge of the frame look stretched.</p>
+
+    <h2 id="troubleshooting">Common Canon tethering issues</h2>
+
+    <h3>Live view won't appear in the booth software</h3>
+    <ol>
+      <li>Close EOS Utility if it's running (Task Manager &rarr; End Process).</li>
+      <li>Set the camera to <em>P</em> or <em>M</em> mode &mdash; Movie mode prevents live view on some bodies.</li>
+      <li>Try a different USB port (use a USB 3.0 port directly on the motherboard, not a hub).</li>
+      <li>Replace the cable. 90% of "live view won't show" issues are a flaky cable.</li>
+    </ol>
+
+    <h3>Autofocus is hunting in low light</h3>
+    <ol>
+      <li>Switch from Continuous AF to One-Shot / AF-S in the booth software.</li>
+      <li>Add continuous lighting (a ring light or LED panel) to give the AF system something to lock on.</li>
+      <li>Use a lens with f/2.8 or wider &mdash; the AF system gets more light to work with.</li>
+      <li>On R-series bodies, switch to Eye AF and tap on a face in live view to anchor the focus.</li>
+    </ol>
+
+    <h3>Camera disconnects after 30&ndash;60 minutes</h3>
+    <ol>
+      <li>Disable auto power-off in the camera menu (Set Up &rarr; Auto power off &rarr; Disable).</li>
+      <li>Disable Eco mode on R-series bodies.</li>
+      <li>Turn off Wi-Fi and Bluetooth on the camera.</li>
+      <li>Use a powered USB hub or a dedicated USB controller card if you have many USB devices on the PC.</li>
+    </ol>
+
+    <h3>Prints are coming out too dark/orange</h3>
+    <ol>
+      <li>Set a custom white balance in the camera using a grey card.</li>
+      <li>Use Auto White Balance only as a fallback.</li>
+      <li>Confirm the dye-sub printer is using the manufacturer's ICC profile (DNP DS-RX1 is the common booth printer).</li>
+      <li>Set the camera picture style to Portrait, not Faithful or Neutral.</li>
+    </ol>
+
+    <h2 id="faq">Frequently asked questions</h2>
+
+    <h3>What is the best Canon for a photo booth?</h3>
+    <p>The Canon EOS R6 Mark II is the sweet spot in 2026 &mdash; full-frame sensor, excellent autofocus, and fast USB-C tethering. The cheaper R50 is the best value entry point and runs every BoothLedger feature. The R5 is overkill unless you also shoot the photos for print enlargements after the event.</p>
+
+    <h3>Does Canon work with all photo booth software?</h3>
+    <p>Most Windows photo booth software supports Canon, including BoothLedger, LumaBooth (formerly dslrBooth) and Darkroom Booth. iPad-only apps like Simple Booth do not connect to a Canon DSLR; they use the iPad camera. Touchpix supports Canon on Windows, macOS and Linux.</p>
+
+    <h3>Can I use a Canon R50 in a photo booth?</h3>
+    <p>Yes. The Canon R50 is a fully supported entry-level mirrorless body for photo booths. It tethers over USB-C, supports live view, and runs all the AF and exposure controls BoothLedger needs. It's a popular first booth camera because it's around half the price of an R6 II.</p>
+
+    <h3>Do I need Canon EOS Utility for a photo booth?</h3>
+    <p>You don't run EOS Utility during events, but you should install it once so Windows registers the Canon drivers. After install, close EOS Utility &mdash; running both EOS Utility and a photo booth app at the same time will fight for the camera connection.</p>
+
+    <h3>What USB cable should I use to tether a Canon?</h3>
+    <p>Use a reinforced USB-C cable (newer Canons) or USB Mini-B (older Canons) at least 3m long. TetherTools, JerkStopper or Carlton cables hold up to event abuse. Avoid generic cables; mid-event disconnects almost always trace back to a cheap cable.</p>
+
+    <h3>How do I stop a Canon camera from sleeping during a photo booth event?</h3>
+    <p>In the camera menu, set auto power-off to Disable or 30 minutes. On Canon R6 and newer, also set 'Eco mode' to Off. Use a dummy battery with mains power so the camera never sleeps for low battery, and disable Wi-Fi to prevent the camera waking and reconnecting.</p>
+
+    <!-- CTA -->
+    <div class="blog-cta">
+      <h2>Run your Canon with BoothLedger</h2>
+      <p>Built for Windows + Canon DSLR. AI effects, branded templates, on-site print, cloud sync. Free 30-day trial, no credit card.</p>
+      <a href="/#download" class="btn btn-primary btn-lg">Start Free Trial</a>
+    </div>
+
+  </article>
+
+  <section class="related-posts">
+    <h2>Keep reading</h2>
+    <div class="related-grid">
+      <a class="related-card" href="/blog/dslr-vs-ipad-photo-booth">
+        <span class="tag">Comparison</span>
+        <h3>DSLR vs iPad Photo Booth (2026)</h3>
+      </a>
+      <a class="related-card" href="/blog/best-photo-booth-software">
+        <span class="tag">Comparison</span>
+        <h3>7 Best Photo Booth Software in 2026</h3>
+      </a>
+      <a class="related-card" href="/dslr-photo-booth-software">
+        <span class="tag">Product</span>
+        <h3>DSLR Photo Booth Software</h3>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo">
+            <img class="logo-icon" src="/images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="32" height="32">
+            <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
+          </a>
+          <p class="footer-tagline">Professional photo booth software for event professionals worldwide.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h3>Product</h3>
+            <a href="/#features">Features</a>
+            <a href="/ai-photo-booth">AI Photo Booth</a>
+            <a href="/dslr-photo-booth-software">DSLR Photo Booth</a>
+            <a href="/mirror-booth">Mirror Booth</a>
+            <a href="/green-screen-photo-booth">Green Screen</a>
+            <a href="/trading-card-photo-booth">Trading Cards</a>
+            <a href="/glam-booth">Glam Booth</a>
+            <a href="/pricing">Pricing</a>
+          </div>
+          <div class="footer-col">
+            <h3>Solutions</h3>
+            <a href="/wedding-photo-booth-software">Weddings</a>
+            <a href="/corporate-photo-booth-software">Corporate</a>
+            <a href="/event-photo-booth-software">Events</a>
+            <a href="/brand-activation-photo-booth">Brand Activations</a>
+            <a href="/permanent-photo-booth-install">Permanent Installs</a>
+            <a href="/roaming-photographer-software">Roaming Photography</a>
+          </div>
+          <div class="footer-col">
+            <h3>Compare</h3>
+            <a href="/compare">All Comparisons</a>
+            <a href="/vs-dslrbooth">vs dslrBooth</a>
+            <a href="/vs-snappic">vs Snappic</a>
+            <a href="/vs-lumabooth">vs LumaBooth</a>
+            <a href="/vs-darkroom-booth">vs Darkroom Booth</a>
+            <a href="/vs-simple-booth">vs Simple Booth</a>
+            <a href="/vs-boothbook">vs BoothBook</a>
+          </div>
+          <div class="footer-col">
+            <h3>Resources</h3>
+            <a href="/blog/best-photo-booth-software">Best Software 2026</a>
+            <a href="/blog/how-to-start-photo-booth-business">Start a Business</a>
+            <a href="/blog/photo-booth-pricing-guide">Pricing Guide</a>
+            <a href="/blog/dslr-vs-ipad-photo-booth">DSLR vs iPad</a>
+            <a href="/#faq">FAQ</a>
+            <a href="https://www.instagram.com/booth_ledger" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="mailto:info@photoboothguys.ie">Contact</a>
+            <a href="https://boothledgercloud.photoboothguys.ie/user/login" target="_blank" rel="noopener noreferrer">Vendor Login</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 PhotoBooth Guys. All rights reserved.</p>
+        <p><a href="mailto:info@photoboothguys.ie" style="color:rgba(255,255,255,.6);text-decoration:none;">info@photoboothguys.ie</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js?v=12" defer></script>
+</body>
+</html>
