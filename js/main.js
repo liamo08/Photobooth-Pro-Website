@@ -106,7 +106,9 @@
       // Fire Google Ads conversion event
       if (typeof gtag === 'function') {
         gtag('event', 'conversion', {
-          'send_to': 'G-2L4B7DR1YK',
+          'send_to': 'AW-755417118/wXMxCPupm6gcEJ6Am-gC',
+          'value': 1.0,
+          'currency': 'EUR',
           'event_category': 'download',
           'event_label': 'windows_installer'
         });
