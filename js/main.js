@@ -5,6 +5,10 @@
 (function () {
   'use strict';
 
+  // --- Google Click ID (gclid) capture & persistence ---
+  (function(){try{var KEY='__bl_gclid';var TTL=90*24*60*60*1000;var p=new URLSearchParams(window.location.search);var g=p.get('gclid');if(g){try{localStorage.setItem(KEY,JSON.stringify({v:g,t:Date.now()}));}catch(e){}}window.BL_getGclid=function(){try{var raw=localStorage.getItem(KEY);if(!raw)return '';var o=JSON.parse(raw);if(!o||!o.v||!o.t)return '';if(Date.now()-o.t>TTL){localStorage.removeItem(KEY);return '';}return o.v;}catch(e){return '';}};}catch(e){}})();
+
+
   // --- Scroll-triggered fade-in animations ---
   function initScrollAnimations() {
     var fadeElements = document.querySelectorAll('.fade-in');
@@ -106,7 +110,7 @@
       // Fire Google Ads conversion event
       if (typeof gtag === 'function') {
         gtag('event', 'conversion', {
-          'send_to': 'AW-755417118/wXMxCPupm6gcEJ6Am-gC',
+          'send_to': 'AW-755417118/wYMsCPupm6gcEJ6Am-gC',
           'value': 1.0,
           'currency': 'EUR',
           'event_category': 'download',
@@ -118,7 +122,7 @@
       try {
         navigator.sendBeacon(
           'https://boothledgercloud.photoboothguys.ie/api/v1/analytics/track-download',
-          new Blob([JSON.stringify({referrer: document.referrer || ''})], {type: 'application/json'})
+          new Blob([JSON.stringify({referrer: document.referrer || '', gclid: (typeof window.BL_getGclid === 'function' ? window.BL_getGclid() : '')})], {type: 'application/json'})
         );
       } catch(e) {}
 
