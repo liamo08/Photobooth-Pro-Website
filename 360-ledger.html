@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2L4B7DR1YK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2L4B7DR1YK');
+    gtag('config', 'AW-755417118');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>360Ledger — 360° Spinning-Arm Video Booth Software | PhotoBooth Guys</title>
+  <meta name="description" content="360Ledger turns an iPhone or iPad into a pro 360° spinning-arm video booth: cinematic slow-mo, boomerang and speed-ramp effects, branded overlays, and an instant QR link guests scan to watch and share. Free 30-day trial.">
+  <!-- Not for public indexing yet -->
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://boothledger.com/360-ledger">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="360Ledger — 360° Spinning-Arm Video Booth Software">
+  <meta property="og:description" content="Cinematic 360° video booth software for iPhone & iPad. Slow-mo, boomerang, speed ramps, branded overlays, instant QR sharing. Free 30-day trial.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://boothledger.com/360-ledger">
+  <meta property="og:site_name" content="BoothLedger">
+  <meta property="og:image" content="https://boothledger.com/images/boothledger-logo-full.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="360Ledger — 360° Video Booth Software">
+  <meta name="twitter:description" content="Cinematic 360° video booth software for iPhone & iPad. Free 30-day trial.">
+  <meta name="twitter:image" content="https://boothledger.com/images/boothledger-logo-full.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="css/style.min.css?v=21">
+  <script src="https://analytics.ahrefs.com/analytics.js" data-key="hDTsJjbsuIFfEsb2icX72w" async></script>
+
+  <!-- Page-scoped styles (reuse the site's CSS variables for an on-brand, self-contained 360 page) -->
+  <style>
+    .s360-hero{padding:160px 0 80px;text-align:center;position:relative;overflow:hidden}
+    .s360-hero .container{position:relative;z-index:1}
+    .s360-hero-glow{position:absolute;top:-25%;left:50%;transform:translateX(-50%);width:900px;height:620px;max-width:120vw;background:radial-gradient(ellipse at center,rgba(99,102,241,.28),transparent 60%);filter:blur(40px);pointer-events:none}
+    .s360-eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent-light);background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.3);padding:8px 16px;border-radius:var(--radius-full);margin-bottom:24px}
+    .s360-hero h1{font-size:clamp(36px,6vw,68px);line-height:1.05;font-weight:700;margin:0 0 20px;letter-spacing:-.02em}
+    .s360-grad{background:var(--gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .s360-hero p.sub{font-size:clamp(17px,2.2vw,21px);color:var(--text-muted);max-width:660px;margin:0 auto 36px;line-height:1.6}
+    .s360-cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+    .s360-btn-ghost{display:inline-flex;align-items:center;justify-content:center;padding:16px 32px;border-radius:var(--radius-full);font-weight:700;font-size:16px;color:var(--text);background:transparent;border:1px solid rgba(255,255,255,.18);text-decoration:none;transition:border-color .2s,background .2s}
+    .s360-btn-ghost:hover{border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.04)}
+
+    .s360-section{padding:80px 0}
+    .s360-section-head{text-align:center;max-width:700px;margin:0 auto 56px}
+    .s360-section-head h2{font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-.02em;margin:0 0 16px}
+    .s360-section-head p{font-size:18px;color:var(--text-muted);line-height:1.6;margin:0}
+
+    .s360-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px}
+    .s360-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius-lg);padding:28px;transition:transform .2s,border-color .2s,background .2s}
+    .s360-card:hover{transform:translateY(-4px);border-color:rgba(99,102,241,.4);background:var(--bg-card-hover)}
+    .s360-card .ic{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--gradient);color:#fff;margin-bottom:18px}
+    .s360-card .ic svg{width:24px;height:24px}
+    .s360-card h3{font-size:18px;font-weight:700;margin:0 0 8px}
+    .s360-card p{font-size:15px;color:var(--text-muted);line-height:1.55;margin:0}
+
+    .s360-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px}
+    .s360-step{padding:28px;background:var(--bg-subtle);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius-lg)}
+    .s360-step .num{width:36px;height:36px;border-radius:50%;background:var(--gradient);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+    .s360-step h3{font-size:18px;margin:0 0 8px}
+    .s360-step p{color:var(--text-muted);font-size:15px;line-height:1.55;margin:0}
+
+    .s360-cta{padding:40px 0 100px}
+    .s360-cta-card{max-width:920px;margin:0 auto;background:linear-gradient(135deg,rgba(99,102,241,.13),rgba(6,182,212,.08));border:1px solid rgba(99,102,241,.25);border-radius:var(--radius-lg);padding:48px 40px}
+    .s360-cta-card h2{font-size:clamp(26px,4vw,40px);font-weight:700;text-align:center;margin:0 0 12px}
+    .s360-cta-card .sub{text-align:center;color:var(--text-muted);font-size:18px;max-width:600px;margin:0 auto 32px;line-height:1.6}
+    .s360-checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:0 auto 32px;max-width:640px}
+    .s360-check{display:flex;align-items:center;gap:10px;color:var(--text);font-size:15px}
+    .s360-check svg{width:20px;height:20px;stroke:var(--green);flex:none}
+    .s360-install{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px 28px;margin:0 auto 28px;max-width:640px}
+    .s360-install .lbl{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue-light);margin-bottom:14px}
+    .s360-install ol{margin:0;padding-left:20px;color:var(--text-muted);font-size:15px;line-height:1.85}
+    .s360-install ol strong{color:var(--text)}
+    .s360-actions{text-align:center}
+    .s360-note{display:block;color:var(--text-subtle);font-size:13px;margin-top:16px;line-height:1.6}
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <img class="logo-icon" src="images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="40" height="40">
+        <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
+      </a>
+      <a href="https://www.photoboothguys.ie" target="_blank" rel="noopener" class="nav-brought-by">
+        <span>Brought to you by</span>
+        <img src="images/photobooth-guys-logo.webp" width="31" height="28" alt="PhotoBooth Guys">
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="/">BoothLedger</a></li>
+        <li><a href="#download" class="nav-cta">Get the App</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="s360-hero">
+    <div class="s360-hero-glow"></div>
+    <div class="container">
+      <span class="s360-eyebrow">360° Video Booth Software</span>
+      <h1>The <span class="s360-grad">360° booth</span><br>in your pocket</h1>
+      <p class="sub">360Ledger turns an iPhone or iPad into a pro 360 spinning-arm video booth — cinematic slow-mo, boomerang and speed-ramp effects, your branding baked in, and an instant QR link guests scan to watch and share.</p>
+      <div class="s360-cta-row">
+        <a href="#download" class="btn btn-primary btn-xl">Start your free 30-day trial</a>
+        <a href="#features" class="s360-btn-ghost">See what it does</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="s360-section" id="features">
+    <div class="container">
+      <div class="s360-section-head fade-in">
+        <h2>Snappic-tier 360 video, run from a phone</h2>
+        <p>Everything that makes a high-end 360 booth look incredible — captured, processed and shared right on the device.</p>
+      </div>
+      <div class="s360-grid">
+        <div class="s360-card fade-in">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg></div>
+          <h3>Cinematic slow-mo</h3>
+          <p>Capture at up to 120fps and play it back in silky slow motion that makes every spin look epic.</p>
+        </div>
+        <div class="s360-card fade-in">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><polyline points="21 3 21 8 16 8"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><polyline points="3 21 3 16 8 16"/></svg></div>
+          <h3>Boomerang &amp; reverse</h3>
+          <p>Loop the action forward-and-back or run it in reverse for that classic, hypnotic 360 moment.</p>
+        </div>
+        <div class="s360-card fade-in">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <h3>Speed ramps &amp; GlamBot</h3>
+          <p>One-tap GlamBot, MultiZoom and DoubleSlowMo ramps — the high-end agency look, built right in.</p>
+        </div>
+        <div class="s360-card fade-in">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 14.4 9.4 22 9.4 15.8 14 18.2 21.4 12 16.8 5.8 21.4 8.2 14 2 9.4 9.6 9.4 12 2"/></svg></div>
+          <h3>Your branding</h3>
+          <p>Drop in logos, animated overlays, colour LUTs and music so every clip goes out perfectly on-brand.</p>
+        </div>
+        <div class="s360-card fade-in">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg></div>
+          <h3>Instant QR sharing</h3>
+          <p>The effect is rendered on the device, then guests scan a QR code to watch and download in seconds.</p>
+        </div>
+        <div class="s360-card fade-in">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
+          <h3>Per-event control</h3>
+          <p>Set effects, frame rate, stabilisation and branding for each event from the cloud dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="s360-section" id="how" style="background:var(--bg-subtle)">
+    <div class="container">
+      <div class="s360-section-head fade-in">
+        <h2>Up and running in minutes</h2>
+        <p>No laptops, no capture cards — just the app, your phone, and your 360 arm.</p>
+      </div>
+      <div class="s360-steps">
+        <div class="s360-step fade-in">
+          <div class="num">1</div>
+          <h3>Download &amp; sign up</h3>
+          <p>Install 360Ledger on your iPhone or iPad and create your account. Your 30-day free trial starts the moment you sign up — no credit card.</p>
+        </div>
+        <div class="s360-step fade-in">
+          <div class="num">2</div>
+          <h3>Set up your event</h3>
+          <p>Create an event in the dashboard, choose your effects and branding, and your operator's phone is ready to capture.</p>
+        </div>
+        <div class="s360-step fade-in">
+          <div class="num">3</div>
+          <h3>Capture &amp; share</h3>
+          <p>Hit record, the effect is applied on the spot, and guests scan the QR code to get their clip instantly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download / Get started -->
+  <section class="s360-cta" id="download">
+    <div class="container">
+      <div class="s360-cta-card fade-in">
+        <h2>Start your 30-day free trial</h2>
+        <p class="sub">Download 360Ledger, open it, and create your account — full access for 30 days. No credit card required.</p>
+        <div class="s360-checks">
+          <div class="s360-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>30-day full-feature trial</span></div>
+          <div class="s360-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Works on iPhone &amp; iPad</span></div>
+          <div class="s360-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Slow-mo, boomerang &amp; speed ramps</span></div>
+          <div class="s360-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Branded overlays &amp; instant QR sharing</span></div>
+        </div>
+        <div class="s360-install">
+          <div class="lbl">Installing on iPhone / iPad</div>
+          <ol>
+            <li>Tap <strong>Download</strong> below to install 360Ledger — request a TestFlight invite and we'll add you.</li>
+            <li>Open the app and tap <strong>Sign Up</strong> to create your account.</li>
+            <li>Your 30-day trial starts instantly — set up your first event and start capturing.</li>
+          </ol>
+        </div>
+        <div class="s360-actions">
+          <a href="https://360ledger.boothledger.com/downloads/ledger360-unsigned.ipa" class="btn btn-primary btn-xl">Download for iPhone / iPad</a>
+          <span class="s360-note">iOS 14+ &middot; TestFlight invite available on request &middot; Android coming soon<br>Questions? <a href="mailto:info@photoboothguys.ie" style="color:var(--accent-light);text-decoration:none;">info@photoboothguys.ie</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo">
+            <img class="logo-icon" src="/images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="32" height="32">
+            <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
+          </a>
+          <p class="footer-tagline">Professional photo booth software for event professionals worldwide.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h3>Product</h3>
+            <a href="/#features">Features</a>
+            <a href="/ai-photo-booth">AI Photo Booth</a>
+            <a href="/dslr-photo-booth-software">DSLR Photo Booth</a>
+            <a href="/mirror-booth">Mirror Booth</a>
+            <a href="/green-screen-photo-booth">Green Screen</a>
+            <a href="/trading-card-photo-booth">Trading Cards</a>
+            <a href="/glam-booth">Glam Booth</a>
+            <a href="/pricing">Pricing</a>
+          </div>
+          <div class="footer-col">
+            <h3>Solutions</h3>
+            <a href="/wedding-photo-booth-software">Weddings</a>
+            <a href="/corporate-photo-booth-software">Corporate</a>
+            <a href="/event-photo-booth-software">Events</a>
+            <a href="/brand-activation-photo-booth">Brand Activations</a>
+            <a href="/permanent-photo-booth-install">Permanent Installs</a>
+            <a href="/roaming-photographer-software">Roaming Photography</a>
+          </div>
+          <div class="footer-col">
+            <h3>Compare</h3>
+            <a href="/compare">All Comparisons</a>
+            <a href="/vs-dslrbooth">vs dslrBooth</a>
+            <a href="/vs-snappic">vs Snappic</a>
+            <a href="/vs-lumabooth">vs LumaBooth</a>
+            <a href="/vs-darkroom-booth">vs Darkroom Booth</a>
+            <a href="/vs-simple-booth">vs Simple Booth</a>
+            <a href="/vs-boothbook">vs BoothBook</a>
+          </div>
+          <div class="footer-col">
+            <h3>Resources</h3>
+            <a href="/blog/best-photo-booth-software">Best Software 2026</a>
+            <a href="/blog/how-to-start-photo-booth-business">Start a Business</a>
+            <a href="/blog/photo-booth-pricing-guide">Pricing Guide</a>
+            <a href="/blog/dslr-vs-ipad-photo-booth">DSLR vs iPad</a>
+            <a href="/#faq">FAQ</a>
+            <a href="https://www.instagram.com/booth_ledger" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="mailto:info@photoboothguys.ie">Contact</a>
+            <a href="https://boothledgercloud.photoboothguys.ie/user/login" target="_blank" rel="noopener noreferrer">Vendor Login</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 PhotoBooth Guys. All rights reserved.</p>
+        <p><a href="mailto:info@photoboothguys.ie" style="color:rgba(255,255,255,.6);text-decoration:none;">info@photoboothguys.ie</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=14"></script>
+</body>
+</html>
