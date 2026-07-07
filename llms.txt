@@ -12,6 +12,7 @@ BoothLedger is a Windows photo booth application designed for professional event
 - [Mirror Booth](https://boothledger.com/mirror-booth): Mirror booth software for interactive photo booth experiences
 - [Green Screen Photo Booth](https://boothledger.com/green-screen-photo-booth): Green screen and AI background removal features
 - [Newspaper Photo Booth](https://boothledger.com/newspaper-photo-booth): Newspaper photo booth software that turns each guest into a custom A4 front-page newspaper with an editable headline, names and date, printed full-size on-site
+- [Photo Mosaic](https://boothledger.com/photo-mosaic): Guests turn the event album into a photo mosaic from their gallery link — pick any photo or upload a picture/logo and every booth photo becomes a tile. Included free with every gallery.
 - [Compare](https://boothledger.com/compare): BoothLedger vs DSLRBooth vs Snappic comparison
 - [How to Start a Photo Booth Business](https://boothledger.com/blog/how-to-start-photo-booth-business): Complete guide to starting a photo booth business in 2026
 - [Best Photo Booth Software](https://boothledger.com/blog/best-photo-booth-software): Comparison of the 7 best photo booth software options in 2026
