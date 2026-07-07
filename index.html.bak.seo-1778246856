@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2L4B7DR1YK"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y29HTTRMH9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-2L4B7DR1YK');
+    gtag('config', 'G-Y29HTTRMH9');
     gtag('config', 'AW-755417118');
-    gtag('config', 'G-2L4B7DR1YK');
+    gtag('config', 'G-Y29HTTRMH9');
   </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BoothLedger – Photo Booth Software | Free 30-Day Trial</title>
-  <meta name="description" content="Photo booth software with Canon DSLR support, custom templates, SMS/email sharing, AI effects &amp; cloud management. Free 30-day trial — no credit card.">
+  <title>BoothLedger - Professional Photo Booth Software | Free 30-Day Trial</title>
+  <meta name="description" content="Professional photo booth software for events. Canon DSLR support, custom templates, instant SMS/email sharing, cloud management &amp; AI effects. Download free 30-day trial.">
   <meta name="keywords" content="photo booth software, professional photo booth software, photo booth software download, DSLR photo booth, event photo booth software, wedding photo booth software, corporate photo booth, photo booth rental software, photo booth app, photo booth for events, photobooth software windows">
   <meta name="author" content="BoothLedger">
   <meta name="robots" content="index, follow">
@@ -302,10 +302,10 @@
           </div>
           <!-- Floating accent thumbnails -->
           <div class="gallery-float gallery-float--top" aria-hidden="true">
-            <img src="images/float-a2.webp" alt="AI photo booth effect thumbnail preview" width="120" height="80" loading="lazy">
+            <img src="images/float-a2.webp" alt="" width="120" height="80" loading="lazy">
           </div>
           <div class="gallery-float gallery-float--bottom" aria-hidden="true">
-            <img src="images/float-b1.webp" alt="AI photo booth transformation preview" width="120" height="80" loading="lazy">
+            <img src="images/float-b1.webp" alt="" width="120" height="80" loading="lazy">
           </div>
         </div>
       </div>
@@ -345,7 +345,7 @@
       <div class="section-header fade-in">
         <span class="section-tag">Core Features</span>
         <h2 class="section-title">Everything You Need to Run<br><span class="gradient-text">a Professional Photo Booth</span></h2>
-        <p class="section-subtitle">BoothLedger delivers everything professional event photographers need for unforgettable experiences.</p>
+        <p class="section-subtitle">BoothLedger is packed with features that professional event photographers need to deliver unforgettable experiences.</p>
       </div>
 
       <div class="features-grid">
@@ -438,7 +438,7 @@
               <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
             </svg>
           </div>
-          <h3>Event Photo Library</h3>
+          <h3>Event Management</h3>
           <p>Organize all photos by event with a browsable gallery. Portable folder structure makes backup simple. Track composites, raw captures, AI-generated images, and GIFs per event.</p>
         </div>
 
@@ -1149,8 +1149,6 @@
             <a href="/dslr-photo-booth-software">DSLR Photo Booth</a>
             <a href="/mirror-booth">Mirror Booth</a>
             <a href="/green-screen-photo-booth">Green Screen</a>
-            <a href="/trading-card-photo-booth">Trading Cards</a>
-            <a href="/newspaper-photo-booth">Newspaper</a>
             <a href="/glam-booth">Glam Booth</a>
             <a href="/pricing">Pricing</a>
           </div>
@@ -1177,8 +1175,6 @@
             <h3>Resources</h3>
             <a href="/blog/best-photo-booth-software">Best Software 2026</a>
             <a href="/blog/how-to-start-photo-booth-business">Start a Business</a>
-            <a href="/blog/photo-booth-pricing-guide">Pricing Guide</a>
-            <a href="/blog/dslr-vs-ipad-photo-booth">DSLR vs iPad</a>
             <a href="/#faq">FAQ</a>
             <a href="https://www.instagram.com/booth_ledger" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="mailto:info@photoboothguys.ie">Contact</a>
@@ -1194,7 +1190,7 @@
   </footer>
 
   <script src="js/hero-slideshow.js" defer></script>
-  <script src="js/main.js?v=14" defer></script>
+  <script src="js/main.js?v=12" defer></script>
 
   <!-- Analytics -->
   <script>
