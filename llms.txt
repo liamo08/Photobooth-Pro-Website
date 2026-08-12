@@ -41,3 +41,4 @@ BoothLedger is a Windows photo booth application designed for professional event
 - Email: info@photoboothguys.ie
 - Instagram: https://www.instagram.com/booth_ledger
 - Website: https://boothledger.com
+- https://boothledger.com/privacy — Privacy policy for the BoothLedger apps and cloud

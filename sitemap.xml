@@ -25,7 +25,7 @@
   <url><loc>https://boothledger.com/vs-simple-booth</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://boothledger.com/vs-boothbook</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://boothledger.com/blog/</loc><lastmod>2026-04-26</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://boothledger.com/blog/how-to-start-photo-booth-business</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://boothledger.com/blog/how-to-start-photo-booth-business</loc><lastmod>2026-08-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://boothledger.com/blog/best-photo-booth-software</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://boothledger.com/blog/dslr-vs-ipad-photo-booth</loc><lastmod>2026-05-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://boothledger.com/blog/photo-booth-software-for-canon</loc><lastmod>2026-05-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -36,4 +36,5 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url><loc>https://boothledger.com/privacy</loc><priority>0.3</priority></url>
 </urlset>

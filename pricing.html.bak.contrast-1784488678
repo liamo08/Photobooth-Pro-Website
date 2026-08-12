@@ -252,11 +252,11 @@
     /* Tabs */
     .modal-tabs {
       display: flex;
-      background: rgba(2,6,18,.6);
+      background: rgba(255,255,255,.04);
       border-radius: 10px;
       padding: 3px;
       margin-bottom: 32px;
-      border: 1px solid rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.06);
     }
     .modal-tab {
       flex: 1;
@@ -264,7 +264,7 @@
       text-align: center;
       font-size: 14px;
       font-weight: 600;
-      color: #b6c2d4;
+      color: var(--text-subtle);
       border: none;
       background: none;
       border-radius: 8px;
@@ -273,11 +273,11 @@
       font-family: inherit;
     }
     .modal-tab.active {
-      background: rgba(99,102,241,.34);
-      color: #ffffff;
+      background: rgba(99,102,241,.15);
+      color: var(--accent-light);
       box-shadow: 0 1px 4px rgba(0,0,0,.2);
     }
-    .modal-tab:not(.active):hover { color: #ffffff; }
+    .modal-tab:not(.active):hover { color: var(--text-muted); }
 
     /* Error */
     .modal-error {
@@ -302,8 +302,8 @@
     .modal-field label {
       display: block;
       font-size: 13px;
-      font-weight: 600;
-      color: #dbe3ef;
+      font-weight: 500;
+      color: var(--text-muted);
       margin-bottom: 6px;
       letter-spacing: .03em;
       text-transform: uppercase;
@@ -312,20 +312,20 @@
       width: 100%;
       height: 56px;
       padding: 0 16px;
-      background: rgba(2,6,18,.72);
-      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
       border-radius: 10px;
-      color: #ffffff;
+      color: var(--text);
       font-family: 'Inter', sans-serif;
       font-size: 15px;
       outline: none;
       transition: border-color .2s, box-shadow .2s, background .2s;
     }
-    .modal-field input::placeholder { color: rgba(203,213,225,.75); }
+    .modal-field input::placeholder { color: rgba(148,163,184,.35); }
     .modal-field input:focus {
-      border-color: rgba(129,132,255,.95);
-      box-shadow: 0 0 0 3px rgba(99,102,241,.28);
-      background: rgba(2,6,18,.9);
+      border-color: rgba(99,102,241,.45);
+      box-shadow: 0 0 0 3px rgba(99,102,241,.1);
+      background: rgba(99,102,241,.04);
     }
 
     /* Register-only fields */
@@ -597,9 +597,7 @@
             <a href="/mirror-booth">Mirror Booth</a>
             <a href="/green-screen-photo-booth">Green Screen</a>
             <a href="/trading-card-photo-booth">Trading Cards</a>
-            <a href="/photobooth-software">Photobooth Software</a>
             <a href="/newspaper-photo-booth">Newspaper</a>
-            <a href="/colouring-photo-booth">Colouring In</a>
             <a href="/photo-mosaic">Photo Mosaic</a>
             <a href="/glam-booth">Glam Booth</a>
             <a href="/pricing">Pricing</a>
@@ -629,8 +627,6 @@
             <a href="/blog/how-to-start-photo-booth-business">Start a Business</a>
             <a href="/blog/photo-booth-pricing-guide">Pricing Guide</a>
             <a href="/blog/dslr-vs-ipad-photo-booth">DSLR vs iPad</a>
-            <a href="/blog/ai-background-removal-vs-green-screen">AI vs Green Screen</a>
-            <a href="/blog/photo-booth-software-for-canon">Canon Software</a>
             <a href="/#faq">FAQ</a>
             <a href="https://www.instagram.com/booth_ledger" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="mailto:info@photoboothguys.ie">Contact</a>
@@ -640,7 +636,7 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 PhotoBooth Guys. All rights reserved.</p>
-        <p><a href="mailto:info@photoboothguys.ie" style="color:rgba(255,255,255,.6);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:rgba(255,255,255,.6);text-decoration:none;">Privacy</a></p>
+        <p><a href="mailto:info@photoboothguys.ie" style="color:rgba(255,255,255,.6);text-decoration:none;">info@photoboothguys.ie</a></p>
       </div>
     </div>
   </footer>
