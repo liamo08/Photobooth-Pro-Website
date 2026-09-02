@@ -31,6 +31,7 @@ BoothLedger is a Windows photo booth application designed for professional event
 - SMS, email, and QR code sharing
 - Boomerang and GIF capture
 - Cloud sync via BoothLedger Cloud
+- BoothLedger Share (https://boothledgershare.photoboothguys.ie): guest share station web app for any tablet, phone or laptop — guests browse the event gallery and share by SMS, email, QR code or download; slideshow with music; same account as the booth. Cloud mode for venues with internet, or the booth serves it over its own Wi-Fi at no-internet venues (view/download work fully offline). The ecosystem is three apps: BoothLedger (desktop, at the event) + BoothLedger Cloud (backend/storage/config) + BoothLedger Share (guest-facing).
 - Offline mode with automatic sync
 - Mirror booth support
 - Green screen and AI backgrounds
