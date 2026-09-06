@@ -553,6 +553,25 @@
   </div>
 </div>
 
+<!-- Prepaid (one-off) terms -->
+<section class="prepaid" id="prepaid" style="max-width:960px;margin:8px auto 56px;padding:0 24px;">
+  <div style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:16px;padding:28px 28px 22px;">
+    <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between;">
+      <div style="flex:1 1 320px;">
+        <h3 style="margin:0 0 6px;font-size:20px;color:#fff;">Prefer to pay once?</h3>
+        <p style="margin:0;font-size:14px;line-height:1.6;color:#a3a8b3;">Pay for 6 or 12 months up front. No subscription, nothing renews automatically, and every plan still includes 2 devices. Recommended if your bank blocks recurring international card payments (common in India, the Philippines and several other countries) &mdash; a single one-off charge goes through where a subscription won't.</p>
+      </div>
+      <div style="flex:1 1 380px;display:grid;grid-template-columns:1fr 1fr;gap:10px;" id="prepaidGrid">
+        <button type="button" class="card-cta card-cta--outline" style="margin:0;" onclick="handleSubscribe('basic_6mo'); return false;">Basic &middot; 6 months <span data-prepaid="basic_6mo">&euro;66</span></button>
+        <button type="button" class="card-cta card-cta--outline" style="margin:0;" onclick="handleSubscribe('basic_12mo'); return false;">Basic &middot; 12 months <span data-prepaid="basic_12mo">&euro;130</span></button>
+        <button type="button" class="card-cta card-cta--primary" style="margin:0;" onclick="handleSubscribe('ai_6mo'); return false;">AI &middot; 6 months <span data-prepaid="ai_6mo">&euro;192</span></button>
+        <button type="button" class="card-cta card-cta--primary" style="margin:0;" onclick="handleSubscribe('ai_12mo'); return false;">AI &middot; 12 months <span data-prepaid="ai_12mo">&euro;380</span></button>
+      </div>
+    </div>
+    <p style="margin:14px 0 0;font-size:12px;color:#8a8f98;">Need more than 2 devices? Each extra device is 50% of the plan price; you can add one for the rest of your term at any time from Account &rarr; Devices.</p>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="faq">
   <h2>Frequently Asked Questions</h2>
@@ -571,6 +590,10 @@
   <div class="faq-item">
     <div class="faq-q" onclick="toggleFaq(this)">How do I cancel?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
     <div class="faq-a">You can cancel anytime from your billing portal. Your subscription remains active until the end of the current billing period. No hidden fees or penalties.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Can I pay once instead of subscribing?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+    <div class="faq-a">Yes. Choose a 6 or 12 month prepaid term above: one payment, nothing renews automatically, and you get a reminder before it ends. This is the reliable option if your bank declines recurring international card payments, which is common in India, the Philippines, Indonesia and some other countries.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="toggleFaq(this)">Is there a free trial of the AI features?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
@@ -665,6 +688,7 @@
     currency = c;
     localStorage.setItem('bl_currency', c);
     applyPricing();
+    applyPrepaidPrices();
     renderCurrencySwitch();
   }
   function renderCurrencySwitch() {
@@ -724,7 +748,27 @@
     basic_yearly: 'Basic - Yearly',
     ai_monthly: 'AI Photobooth - Monthly',
     ai_yearly: 'AI Photobooth - Yearly',
+    basic_6mo: 'Basic - 6 months, paid once',
+    basic_12mo: 'Basic - 12 months, paid once',
+    ai_6mo: 'AI Photobooth - 6 months, paid once',
+    ai_12mo: 'AI Photobooth - 12 months, paid once',
   };
+  const PREPAID_KEYS = new Set(['basic_6mo','basic_12mo','ai_6mo','ai_12mo']);
+  let prepaidPrices = null;
+  async function loadPrepaidPrices() {
+    try {
+      const r = await fetch(API + '/prepaid/prices');
+      if (r.ok) { prepaidPrices = await r.json(); applyPrepaidPrices(); }
+    } catch (e) {}
+  }
+  function applyPrepaidPrices() {
+    if (!prepaidPrices) return;
+    document.querySelectorAll('[data-prepaid]').forEach(el => {
+      const c = prepaidPrices[curPrefix() + el.dataset.prepaid];
+      if (c) el.textContent = curSymbol() + (c / 100).toFixed(0);
+    });
+  }
+  loadPrepaidPrices();
 
   // ── Billing toggle ──
   const toggle = document.getElementById('billingToggle');
@@ -756,7 +800,9 @@
 
   // ── Modal ──
   function handleSubscribe(plan) {
-    selectedPriceKey = curPrefix() + plan + (isYearly ? '_yearly' : '_monthly');
+    selectedPriceKey = PREPAID_KEYS.has(plan)
+      ? curPrefix() + plan
+      : curPrefix() + plan + (isYearly ? '_yearly' : '_monthly');
     const labelKey = selectedPriceKey.replace(/^usd_/, '');
     const curNote = currency === 'USD' ? ' (USD)' : '';
     document.getElementById('modalPlanLabel').textContent = (PLAN_LABELS[labelKey] || labelKey) + curNote;
@@ -897,6 +943,9 @@
     const orderId = params.get('order_id');
     if (orderId) {
       fetch(`${API}/payments/verify/${orderId}`).catch(() => {});
+      if (params.get('prepaid') === '1') {
+        fetch(`${API}/prepaid/verify/${orderId}`).catch(() => {});
+      }
     }
 
     setTimeout(() => {
