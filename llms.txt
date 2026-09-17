@@ -11,7 +11,7 @@ BoothLedger is a Windows photo booth application designed for professional event
 - [Pricing](https://boothledger.com/pricing): Subscription plans starting at EUR 12/month with 30-day free trial
 - [Mirror Booth](https://boothledger.com/mirror-booth): Mirror booth software for interactive photo booth experiences
 - [Green Screen Photo Booth](https://boothledger.com/green-screen-photo-booth): Green screen and AI background removal features
-- [Newspaper Photo Booth](https://boothledger.com/newspaper-photo-booth): Newspaper photo booth software that turns each guest into a custom A4 front-page newspaper with an editable headline, names and date, printed full-size on-site
+- [Newspaper Photo Booth](https://boothledger.com/newspaper-photo-booth): Newspaper photo booth software that turns each guest into a custom A4 front-page newspaper with an editable headline, names and date, printed full-size on-site. "On This Date" mode lets a guest enter a birthday (or any date from 1900 on) and writes the front page from that day — headline, story, captions and classified ads — for $0.03 of AI credit per page, in 8 languages
 - [Colouring In Photo Booth](https://boothledger.com/colouring-photo-booth): Colouring in photo booth software that converts guest photos into printable A4 colouring pages with AI line art - faces stay recognisable, pages print on plain paper on-site, and guests keep a digital copy
 - [Photo Mosaic](https://boothledger.com/photo-mosaic): Guests turn the event album into a photo mosaic from their gallery link — pick any photo or upload a picture/logo and every booth photo becomes a tile. Included free with every gallery.
 - [Photo Booth Data Capture](https://boothledger.com/photo-booth-data-capture): GDPR-compliant guest data capture — collects emails and phone numbers with an explicit Yes/No opt-in at the booth (nothing pre-ticked, photo sent either way), consent timestamped, 12-month auto-expiry, one-click erasure, EU hosting, per-event on/off and custom wording, CSV export per event and account-wide. Included in every plan.
@@ -36,6 +36,7 @@ BoothLedger is a Windows photo booth application designed for professional event
 - Mirror booth support
 - Green screen and AI backgrounds
 - Newspaper front-page templates with full A4 printing
+- "On This Date" birthday newspapers: the guest enters a date and AI writes that day's front page, printed with their photo
 - Video guestbook recording
 
 ## Contact
