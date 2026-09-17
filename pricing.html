@@ -451,6 +451,17 @@
         <label for="m_confirm">Confirm Password</label>
         <input type="password" id="m_confirm" placeholder="Re-enter password">
       </div>
+      <div class="modal-field">
+        <label for="m_country">Country (for VAT)</label>
+        <select id="m_country" required onchange="updateVatHint()" style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:#fff;font:inherit;">
+          <option value="">Select your country…</option>
+        </select>
+      </div>
+      <div class="modal-field" id="vatField" style="display:none;">
+        <label for="m_vat">VAT number <span style="opacity:.6;font-weight:400;">(EU businesses — no VAT charged if valid)</span></label>
+        <input type="text" id="m_vat" placeholder="e.g. DE123456789" autocomplete="off">
+      </div>
+      <p id="vatHint" style="margin:-4px 0 14px;font-size:12px;color:#9ca3af;line-height:1.5;">Prices shown exclude VAT.</p>
 
       <button type="submit" class="modal-submit" id="modalSubmit">
         <div class="modal-spinner"></div>
@@ -808,6 +819,7 @@
     document.getElementById('modalPlanLabel').textContent = (PLAN_LABELS[labelKey] || labelKey) + curNote;
     clearError();
     document.getElementById('authForm').reset();
+    updateVatHint();
     document.getElementById('authModal').classList.add('open');
     document.body.style.overflow = 'hidden';
     setTimeout(() => document.getElementById('m_email').focus(), 100);
@@ -861,6 +873,33 @@
     document.getElementById('modalError').classList.remove('visible');
   }
 
+  // ── VAT: Ireland +23%; EU business with a valid VAT number → reverse charge (0%);
+  //         EU consumer → 23% (Irish rate); outside the EU → no VAT. Decided server-side;
+  //         this is only the hint + the fields.
+  const COUNTRIES = [["IE","Ireland"],["GB","United Kingdom"],["US","United States"],["DE","Germany"],["FR","France"],["ES","Spain"],["IT","Italy"],["NL","Netherlands"],["BE","Belgium"],["PT","Portugal"],["AT","Austria"],["PL","Poland"],["SE","Sweden"],["DK","Denmark"],["FI","Finland"],["NO","Norway"],["CH","Switzerland"],["CZ","Czechia"],["SK","Slovakia"],["HU","Hungary"],["RO","Romania"],["BG","Bulgaria"],["HR","Croatia"],["SI","Slovenia"],["GR","Greece"],["CY","Cyprus"],["MT","Malta"],["LU","Luxembourg"],["EE","Estonia"],["LV","Latvia"],["LT","Lithuania"],["CA","Canada"],["AU","Australia"],["NZ","New Zealand"],["IN","India"],["AE","United Arab Emirates"],["ZA","South Africa"],["PH","Philippines"],["SG","Singapore"],["MX","Mexico"],["BR","Brazil"],["JP","Japan"],["OTHER","Other / not listed"]];
+  const EU_CODES = new Set(["AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE"]);
+  (function () {
+    const sel = document.getElementById('m_country');
+    COUNTRIES.forEach(([c, n]) => { const o = document.createElement('option'); o.value = c; o.textContent = n; sel.appendChild(o); });
+  })();
+  function updateVatHint() {
+    const c = document.getElementById('m_country').value;
+    const vf = document.getElementById('vatField');
+    const hint = document.getElementById('vatHint');
+    const vatNo = document.getElementById('m_vat').value.trim();
+    if (!c) { vf.style.display = 'none'; hint.textContent = 'Prices shown exclude VAT.'; return; }
+    if (c === 'IE') { vf.style.display = 'block'; hint.textContent = 'Ireland: 23% VAT is added at checkout.'; return; }
+    if (EU_CODES.has(c)) {
+      vf.style.display = 'block';
+      hint.textContent = vatNo
+        ? 'EU business: no VAT charged if your VAT number validates (reverse charge). Otherwise 23% is added.'
+        : 'EU: 23% VAT is added — unless you enter a valid business VAT number above.';
+      return;
+    }
+    vf.style.display = 'none'; hint.textContent = 'Outside the EU: no VAT is charged.';
+  }
+  document.getElementById('m_vat').addEventListener('input', updateVatHint);
+
   // One click, one checkout. The button stays disabled once we've handed off
   // to Revolut; coming back with the browser's Back button (bfcache) re-arms
   // it. Server-side, /auth/checkout also hands back the same open checkout
@@ -890,6 +929,12 @@
       showError('Password must be at least 6 characters.');
       return;
     }
+    const country = document.getElementById('m_country').value;
+    if (!country) {
+      showError('Please select your country so we can apply the right VAT.');
+      return;
+    }
+    const vatNumber = document.getElementById('m_vat').value.trim();
 
     let displayName = '';
     if (isRegister) {
@@ -921,6 +966,8 @@
           price_key: selectedPriceKey,
           is_register: isRegister,
           display_name: displayName || undefined,
+          country: country,
+          vat_number: vatNumber || undefined,
         }),
       });
 
