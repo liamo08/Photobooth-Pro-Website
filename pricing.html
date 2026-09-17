@@ -861,8 +861,20 @@
     document.getElementById('modalError').classList.remove('visible');
   }
 
+  // One click, one checkout. The button stays disabled once we've handed off
+  // to Revolut; coming back with the browser's Back button (bfcache) re-arms
+  // it. Server-side, /auth/checkout also hands back the same open checkout
+  // for repeat clicks within the hour instead of minting a new subscription.
+  let checkoutInFlight = false;
+  window.addEventListener('pageshow', function () {
+    checkoutInFlight = false;
+    const b = document.getElementById('modalSubmit');
+    if (b) { b.classList.remove('loading'); b.disabled = false; }
+  });
+
   async function handleAuthSubmit(e) {
     e.preventDefault();
+    if (checkoutInFlight) return;
     clearError();
 
     const card = document.querySelector('.modal-card');
@@ -897,6 +909,7 @@
     const btn = document.getElementById('modalSubmit');
     btn.classList.add('loading');
     btn.disabled = true;
+    checkoutInFlight = true;
 
     try {
       const resp = await fetch(`${API}/auth/checkout`, {
@@ -921,16 +934,18 @@
         }
         btn.classList.remove('loading');
         btn.disabled = false;
+        checkoutInFlight = false;
         return;
       }
 
-      // Redirect to Revolut checkout
+      // Redirect to Revolut checkout (button intentionally stays disabled)
       window.location.href = data.checkout_url;
 
     } catch (err) {
       showError('Network error. Please check your connection and try again.');
       btn.classList.remove('loading');
       btn.disabled = false;
+      checkoutInFlight = false;
     }
   }
 
