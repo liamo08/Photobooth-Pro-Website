@@ -458,7 +458,7 @@
         </select>
       </div>
       <div class="modal-field" id="vatField" style="display:none;">
-        <label for="m_vat">VAT number <span style="opacity:.6;font-weight:400;">(EU businesses — no VAT charged if valid)</span></label>
+        <label for="m_vat">VAT number <span style="opacity:.6;font-weight:400;">(EU businesses — leave blank if you don't have one)</span></label>
         <input type="text" id="m_vat" placeholder="e.g. DE123456789" autocomplete="off">
       </div>
       <p id="vatHint" style="margin:-4px 0 14px;font-size:12px;color:#9ca3af;line-height:1.5;">Prices shown exclude VAT.</p>
@@ -873,9 +873,9 @@
     document.getElementById('modalError').classList.remove('visible');
   }
 
-  // ── VAT: Ireland +23%; EU business with a valid VAT number → reverse charge (0%);
-  //         EU consumer → 23% (Irish rate); outside the EU → no VAT. Decided server-side;
-  //         this is only the hint + the fields.
+  // ── VAT: Ireland +23%; EU business that gives a VAT number → reverse charge (0%);
+  //         EU without one → 23% (Irish rate); outside the EU → no VAT. Decided
+  //         server-side; this is only the hint + the fields.
   const COUNTRIES = [["IE","Ireland"],["GB","United Kingdom"],["US","United States"],["DE","Germany"],["FR","France"],["ES","Spain"],["IT","Italy"],["NL","Netherlands"],["BE","Belgium"],["PT","Portugal"],["AT","Austria"],["PL","Poland"],["SE","Sweden"],["DK","Denmark"],["FI","Finland"],["NO","Norway"],["CH","Switzerland"],["CZ","Czechia"],["SK","Slovakia"],["HU","Hungary"],["RO","Romania"],["BG","Bulgaria"],["HR","Croatia"],["SI","Slovenia"],["GR","Greece"],["CY","Cyprus"],["MT","Malta"],["LU","Luxembourg"],["EE","Estonia"],["LV","Latvia"],["LT","Lithuania"],["CA","Canada"],["AU","Australia"],["NZ","New Zealand"],["IN","India"],["AE","United Arab Emirates"],["ZA","South Africa"],["PH","Philippines"],["SG","Singapore"],["MX","Mexico"],["BR","Brazil"],["JP","Japan"],["OTHER","Other / not listed"]];
   const EU_CODES = new Set(["AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE"]);
   (function () {
@@ -892,8 +892,8 @@
     if (EU_CODES.has(c)) {
       vf.style.display = 'block';
       hint.textContent = vatNo
-        ? 'EU business: no VAT charged if your VAT number validates (reverse charge). Otherwise 23% is added.'
-        : 'EU: 23% VAT is added — unless you enter a valid business VAT number above.';
+        ? 'No VAT charged — reverse charge applies and your VAT number goes on the invoice.'
+        : 'EU: 23% VAT is added — unless you enter a business VAT number above.';
       return;
     }
     vf.style.display = 'none'; hint.textContent = 'Outside the EU: no VAT is charged.';
