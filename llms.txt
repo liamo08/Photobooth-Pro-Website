@@ -16,6 +16,7 @@ BoothLedger is a Windows photo booth application designed for professional event
 - [Photo Mosaic](https://boothledger.com/photo-mosaic): Guests turn the event album into a photo mosaic from their gallery link — pick any photo or upload a picture/logo and every booth photo becomes a tile. Included free with every gallery.
 - [Photo Booth Data Capture](https://boothledger.com/photo-booth-data-capture): GDPR-compliant guest data capture — collects emails and phone numbers with an explicit Yes/No opt-in at the booth (nothing pre-ticked, photo sent either way), consent timestamped, 12-month auto-expiry, one-click erasure, EU hosting, per-event on/off and custom wording, CSV export per event and account-wide. Included in every plan.
 - [Compare](https://boothledger.com/compare): BoothLedger vs DSLRBooth vs Snappic comparison
+- [dslrBooth Alternative](https://boothledger.com/vs-dslrbooth): BoothLedger vs dslrBooth (LumaBooth) — features, DSLR support, AI, pricing, migration
 - [AI Background Removal vs Green Screen](https://boothledger.com/blog/ai-background-removal-vs-green-screen): How AI background removal compares to a physical green screen for photo booths
 - [Photo Booth Software for Canon](https://boothledger.com/blog/photo-booth-software-for-canon): Guide to running Canon DSLR and mirrorless cameras with photo booth software
 - [Photo Booth Software for Windows](https://boothledger.com/photobooth-software): Overview of the Windows photo booth software - DSLR and webcam capture, AI features, templates, printing and cloud galleries
