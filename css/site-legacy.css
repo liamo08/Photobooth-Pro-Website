@@ -17,19 +17,19 @@
   --text: #0b1220;
   --text-muted: #475569;
   --text-subtle: #64748b;
-  --accent: #2563eb;
-  --accent-light: #1d4ed8;
-  --blue: #2563eb;
-  --blue-light: #3b82f6;
-  --cyan: #0891b2;
+  --accent: #7c3aed;
+  --accent-light: #6d28d9;
+  --blue: #7c3aed;
+  --blue-light: #8b5cf6;
+  --cyan: #a21caf;
   --green: #16a34a;
   --amber: #d97706;
   --rose: #e11d48;
   --orange: #ea580c;
   --purple: #7c3aed;
   --teal: #0d9488;
-  --gradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-  --gradient-text: linear-gradient(120deg, #1d4ed8, #2563eb 45%, #0891b2);
+  --gradient: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+  --gradient-text: linear-gradient(120deg, #6d28d9, #7c3aed 45%, #a21caf);
   --shadow-sm: 0 1px 2px rgba(15,23,42,.04), 0 1px 1px rgba(15,23,42,.03);
   --shadow: 0 6px 16px -8px rgba(15,23,42,.18);
   --shadow-lg: 0 12px 32px -14px rgba(15,23,42,.22);
@@ -38,9 +38,9 @@
   --radius-lg: 22px;
   /* new tokens (same as site.css) */
   --ink: #0b1220; --ink-2: #1e293b; --slate: #475569; --muted: #64748b; --faint: #94a3b8;
-  --line: #e6eaf1; --line-2: #d7dde8; --blue-700: #1d4ed8; --blue-50: #eef3ff; --blue-100: #dbe6ff;
-  --navy: linear-gradient(150deg, #0c1735 0%, #132449 42%, #2b3a55 100%);
-  --bright: linear-gradient(160deg, #3b7bff 0%, #2563eb 45%, #1d4ed8 100%);
+  --line: #e6eaf1; --line-2: #d7dde8; --blue-700: #6d28d9; --blue-50: #f5f0ff; --blue-100: #ebe1ff;
+  --navy: linear-gradient(150deg, #160e33 0%, #221548 42%, #3a2c57 100%);
+  --bright: linear-gradient(160deg, #9b6bff 0%, #7c3aed 45%, #6d28d9 100%);
 }
 
 html:has(body.ml) { overflow-x: clip; }
@@ -50,13 +50,13 @@ body.ml {
   color: var(--ink);
   font-feature-settings: "cv11", "ss01", "ss03";
   background:
-    radial-gradient(1000px 480px at 10% -140px, rgba(37,99,235,.10), transparent 70%),
-    radial-gradient(1000px 480px at 95% -180px, rgba(56,189,248,.10), transparent 70%),
+    radial-gradient(1000px 480px at 10% -140px, rgba(124,58,237,.10), transparent 70%),
+    radial-gradient(1000px 480px at 95% -180px, rgba(192,132,252,.10), transparent 70%),
     #f6f8fb;
   background-repeat: no-repeat;
   background-color: #f6f8fb;
 }
-.ml ::selection { background: #bfdbfe; color: var(--ink); }
+.ml ::selection { background: #ddd6fe; color: var(--ink); }
 .ml h1, .ml h2, .ml h3, .ml h4 { color: var(--ink); }
 
 /* ---------- Nav: floating pill (markup unchanged, main.js still drives it) ---------- */
@@ -78,7 +78,7 @@ body.ml {
 .ml .nav-links a { display: block; padding: 8px 13px; border-radius: 999px; font-size: 14.5px; font-weight: 500; text-decoration: none; }
 .ml .nav-links a, .ml .nav-links a[style] { color: var(--slate) !important; }
 .ml .nav-links a:hover { background: #f1f4f9; color: var(--ink) !important; }
-.ml .nav-links a.nav-cta, .ml .nav-links a.nav-cta[style] { background: var(--blue); color: #fff !important; padding: 10px 16px; margin-left: 8px; font-weight: 600 !important; box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 10px 22px -10px rgba(37,99,235,.8); }
+.ml .nav-links a.nav-cta, .ml .nav-links a.nav-cta[style] { background: var(--blue); color: #fff !important; padding: 10px 16px; margin-left: 8px; font-weight: 600 !important; box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 10px 22px -10px rgba(124,58,237,.8); }
 .ml .nav-links a.nav-cta:hover { background: var(--blue-700); opacity: 1; transform: none; }
 .ml .nav-toggle { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: #fff; align-items: center; justify-content: center; gap: 4px; padding: 0; }
 .ml .nav-toggle span { width: 18px; background: var(--ink); }
@@ -88,8 +88,8 @@ body.ml {
 
 /* ---------- Hero ---------- */
 .ml .hero { min-height: 0; padding-top: 130px; padding-bottom: 20px; }
-.ml .hero-gradient { background: radial-gradient(circle, rgba(37,99,235,.10) 0%, rgba(56,189,248,.06) 40%, transparent 70%); }
-.ml .hero-grid { background-image: linear-gradient(rgba(37,99,235,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,.05) 1px, transparent 1px); }
+.ml .hero-gradient { background: radial-gradient(circle, rgba(124,58,237,.10) 0%, rgba(192,132,252,.06) 40%, transparent 70%); }
+.ml .hero-grid { background-image: linear-gradient(rgba(124,58,237,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(124,58,237,.05) 1px, transparent 1px); }
 .ml .hero-content { padding: 40px 0; }
 .ml .hero-badge { background: #fff; border: 1px solid var(--blue-100); color: var(--blue-700); font-weight: 600; box-shadow: var(--shadow-sm); }
 .ml .badge-dot { background: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,.18); }
@@ -123,8 +123,8 @@ body.ml {
 
 /* ---------- Buttons ---------- */
 .ml .btn { border-radius: 13px; }
-.ml .btn-primary, .ml a.btn-primary { background: var(--blue); color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 10px 22px -10px rgba(37,99,235,.8); }
-.ml .btn-primary:hover { background: var(--blue-700); transform: none; box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 12px 26px -10px rgba(37,99,235,.9); }
+.ml .btn-primary, .ml a.btn-primary { background: var(--blue); color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 10px 22px -10px rgba(124,58,237,.8); }
+.ml .btn-primary:hover { background: var(--blue-700); transform: none; box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 12px 26px -10px rgba(124,58,237,.9); }
 .ml .btn-outline { background: #fff; color: var(--ink-2); border: 1px solid var(--line-2); }
 .ml .btn-outline:hover { background: #fff; border-color: #b9c3d4; box-shadow: var(--shadow-sm); transform: none; }
 
@@ -144,8 +144,8 @@ body.ml {
 .ml .download-card .download-check svg { color: #fff; }
 .ml .download-card .download-version { color: rgba(255,255,255,.92); }
 .ml .download-card .section-tag { color: rgba(255,255,255,.85); }
-.ml .download-card .btn-primary { background: #fff; color: #1d4ed8; box-shadow: 0 10px 24px -10px rgba(0,0,0,.35); }
-.ml .download-card .btn-primary:hover { background: #f0f5ff; }
+.ml .download-card .btn-primary { background: #fff; color: #6d28d9; box-shadow: 0 10px 24px -10px rgba(0,0,0,.35); }
+.ml .download-card .btn-primary:hover { background: #f7f3ff; }
 .ml .download-card .btn-outline { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.3); color: #fff; }
 .ml .download-card a:not(.btn) { color: #fff; }
 
@@ -171,7 +171,7 @@ body.ml {
 .ml .comparison-style-label { color: var(--muted); }
 .ml .gallery-label { background: rgba(255,255,255,.92); color: var(--ink); border-color: var(--line); }
 .ml .app-camera-view { background: #0f172a; }
-.ml .comparison-badge-after { color: #1d4ed8; background: rgba(255,255,255,.94); border-color: var(--blue-100); }
+.ml .comparison-badge-after { color: #6d28d9; background: rgba(255,255,255,.94); border-color: var(--blue-100); }
 
 /* ---------- Tables (comparison pages, blog) ---------- */
 .ml table { color: var(--ink-2); }
@@ -184,7 +184,7 @@ body.ml {
 /* ---------- Footer: dark band, as on the homepage ---------- */
 .ml .footer { background: #0b1220; border-top: 0; margin-top: 64px; padding: 64px 0 28px; }
 .ml .footer .nav-logo, .ml .footer .logo-text { color: #fff; }
-.ml .footer .logo-accent { color: #60a5fa; }
+.ml .footer .logo-accent { color: #a78bfa; }
 .ml .footer-tagline { color: #94a3b8; }
 .ml .footer-links { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
 .ml .footer-col h3, .ml .footer-col h4 { color: #fff; font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
@@ -225,7 +225,7 @@ body.ml {
 .ml-pricing .toggle-thumb { box-shadow: 0 1px 3px rgba(15,23,42,.25); }
 .ml-pricing .pricing-card { background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-sm); -webkit-backdrop-filter: none; backdrop-filter: none; }
 .ml-pricing .pricing-card:hover { border-color: var(--line-2); box-shadow: var(--shadow-lg); }
-.ml-pricing .pricing-card.featured { background: #fff; border: 2px solid var(--blue); box-shadow: 0 18px 40px -22px rgba(37,99,235,.55); }
+.ml-pricing .pricing-card.featured { background: #fff; border: 2px solid var(--blue); box-shadow: 0 18px 40px -22px rgba(124,58,237,.55); }
 .ml-pricing .pricing-card.featured::before { background: var(--blue); color: #fff; }
 .ml-pricing .card-name { color: var(--ink); letter-spacing: -.02em; }
 .ml-pricing .card-desc, .ml-pricing .card-features li { color: var(--slate); }
@@ -236,7 +236,7 @@ body.ml {
 .ml-pricing .card-price__period, .ml-pricing .card-billed { color: var(--muted); }
 .ml-pricing .card-cta--outline { background: #fff; color: var(--ink-2); border: 1px solid var(--line-2); }
 .ml-pricing .card-cta--outline:hover { border-color: #b9c3d4; box-shadow: var(--shadow-sm); }
-.ml-pricing .card-cta--primary { background: var(--blue); color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 10px 22px -10px rgba(37,99,235,.8); }
+.ml-pricing .card-cta--primary { background: var(--blue); color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 10px 22px -10px rgba(124,58,237,.8); }
 .ml-pricing .card-cta--primary:hover { background: var(--blue-700); }
 .ml-pricing .card-divider { border-top-color: var(--line); }
 .ml-pricing .devices-badge { background: var(--blue-50); border-color: var(--blue-100); color: var(--blue-700); }
@@ -279,8 +279,8 @@ body.ml {
 .ml-pricing .modal-field label { color: var(--ink-2); }
 .ml-pricing .modal-field input { background: #fff; border: 1px solid var(--line-2); color: var(--ink); }
 .ml-pricing .modal-field input::placeholder { color: var(--faint); }
-.ml-pricing .modal-field input:focus { background: #fff; border-color: var(--blue); box-shadow: 0 0 0 4px rgba(37,99,235,.14); }
+.ml-pricing .modal-field input:focus { background: #fff; border-color: var(--blue); box-shadow: 0 0 0 4px rgba(124,58,237,.14); }
 .ml-pricing .modal-submit { background: var(--blue); color: #fff; }
-.ml-pricing .modal-submit:hover:not(:disabled) { background: var(--blue-700); box-shadow: 0 8px 24px -8px rgba(37,99,235,.6); }
+.ml-pricing .modal-submit:hover:not(:disabled) { background: var(--blue-700); box-shadow: 0 8px 24px -8px rgba(124,58,237,.6); }
 .ml-pricing .modal-footer { color: var(--muted); }
 .ml-pricing .modal-footer a { color: var(--blue-700); }
