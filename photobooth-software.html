@@ -36,34 +36,35 @@
     {"@type":"Question","name":"Is the trial really fully featured?","acceptedAnswer":{"@type":"Answer","text":"Yes. The 30-day trial unlocks every feature including AI effects, cloud sharing and printing &mdash; with no nag screens, no watermarks and no credit card."}}
   ]}</script>
 
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=2"><link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="icon" type="image/x-icon" href="images/favicon-v3.ico"><link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon-v3.png">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
   <link rel="stylesheet" href="css/style.min.css?v=21">
+  <link rel="stylesheet" href="/css/site-legacy.css?v=1">
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="hDTsJjbsuIFfEsb2icX72w" async></script>
 
   <style>
     /* Page-scoped tweaks that piggyback on the site's existing dark + indigo/violet system */
-    .pbs-prose{max-width:780px;margin:0 auto;font-size:16px;line-height:1.7;color:rgba(255,255,255,.72);}
+    .pbs-prose{max-width:780px;margin:0 auto;font-size:16px;line-height:1.7;color:var(--muted);}
     .pbs-prose p{margin:0 0 1.1em;}
-    .pbs-prose strong{color:#fff;font-weight:600;}
-    .pbs-prose a{color:#a5b4fc;text-decoration:none;border-bottom:1px solid rgba(165,180,252,.25);}
+    .pbs-prose strong{color:var(--ink);font-weight:600;}
+    .pbs-prose a{color:var(--blue-700);text-decoration:none;border-bottom:1px solid rgba(165,180,252,.25);}
     .pbs-prose a:hover{border-bottom-color:#a5b4fc;}
 
     .pbs-split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1100px;margin:0 auto;}
     @media(max-width:900px){.pbs-split{grid-template-columns:1fr;gap:36px;}}
     .pbs-split.flip{direction:rtl;}.pbs-split.flip>*{direction:ltr;}
-    .pbs-split h3{font-size:32px;line-height:1.15;margin:0 0 18px;color:#fff;}
+    .pbs-split h3{font-size:32px;line-height:1.15;margin:0 0 18px;color:var(--ink);}
     .pbs-split h3 .gradient-text{display:inline;}
     .pbs-figure{position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 60px rgba(0,0,0,.4);background:#0c0c0c;}
     /* override site-wide img rules that force object-fit:cover + max-height */
     .pbs-figure img,.pbs-tpl-grid .pbs-figure img,.pbs-hero-photo img{width:100% !important;height:auto !important;max-height:none !important;aspect-ratio:auto !important;object-fit:contain !important;display:block;}
-    .pbs-figcap{margin-top:14px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);}
+    .pbs-figcap{margin-top:14px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
 
     .pbs-ai-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1100px;margin:48px auto 0;}
     @media(max-width:900px){.pbs-ai-grid{grid-template-columns:repeat(2,1fr);}}
-    .pbs-ai-card{position:relative;overflow:hidden;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);aspect-ratio:2/3;}
+    .pbs-ai-card{position:relative;overflow:hidden;border-radius:12px;border:1px solid var(--line);background:#fff;aspect-ratio:2/3;}
     .pbs-ai-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
     .pbs-ai-card:hover img{transform:scale(1.04);}
     .pbs-ai-card .ai-tag{position:absolute;top:10px;left:10px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);padding:5px 9px;border-radius:6px;border:1px solid rgba(255,255,255,.1);font-weight:600;}
@@ -71,37 +72,37 @@
     .pbs-tpl-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;max-width:1100px;margin:36px auto 0;}
     @media(max-width:900px){.pbs-tpl-grid{grid-template-columns:1fr;}}
 
-    .pbs-cmp{max-width:1100px;margin:48px auto 0;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.02);}
+    .pbs-cmp{max-width:1100px;margin:48px auto 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;}
     .pbs-cmp-scroll{overflow-x:auto;}
     .pbs-cmp table{width:100%;border-collapse:collapse;min-width:720px;}
-    .pbs-cmp th,.pbs-cmp td{padding:16px 20px;text-align:left;font-size:14px;border-bottom:1px solid rgba(255,255,255,.06);}
-    .pbs-cmp thead th{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);background:rgba(255,255,255,.03);font-weight:600;}
-    .pbs-cmp tbody td:first-child{color:#fff;font-weight:500;}
-    .pbs-cmp .yes{color:#a5b4fc;font-weight:600;}
-    .pbs-cmp .no{color:rgba(255,255,255,.4);}
+    .pbs-cmp th,.pbs-cmp td{padding:16px 20px;text-align:left;font-size:14px;border-bottom:1px solid var(--line);}
+    .pbs-cmp thead th{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);background:#fff;font-weight:600;}
+    .pbs-cmp tbody td:first-child{color:var(--ink);font-weight:500;}
+    .pbs-cmp .yes{color:var(--blue-700);font-weight:600;}
+    .pbs-cmp .no{color:var(--muted);}
     .pbs-cmp .col-us{background:linear-gradient(180deg,rgba(99,102,241,.08),rgba(168,85,247,.04));}
-    .pbs-cmp tbody tr:hover td{background:rgba(255,255,255,.02);}
+    .pbs-cmp tbody tr:hover td{background:#fff;}
 
     .pbs-price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:900px;margin:48px auto 0;}
     @media(max-width:700px){.pbs-price-grid{grid-template-columns:1fr;}}
-    .pbs-price-card{border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:32px;background:rgba(255,255,255,.02);position:relative;}
+    .pbs-price-card{border:1px solid var(--line);border-radius:16px;padding:32px;background:#fff;position:relative;}
     .pbs-price-card.feat{border-color:rgba(168,85,247,.5);background:linear-gradient(160deg,rgba(99,102,241,.08),rgba(168,85,247,.04),rgba(255,255,255,.02));}
     .pbs-price-card.feat::before{content:"Most popular";position:absolute;top:-12px;right:24px;background:linear-gradient(90deg,#6366f1,#a855f7);color:#fff;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:999px;font-weight:600;}
-    .pbs-price-tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:8px;font-weight:600;}
-    .pbs-price-name{font-size:24px;color:#fff;margin:0 0 14px;font-weight:700;}
-    .pbs-price-num{font-size:48px;font-weight:700;line-height:1;color:#fff;display:flex;align-items:baseline;gap:6px;}
-    .pbs-price-num span{font-size:16px;color:rgba(255,255,255,.55);font-weight:500;}
-    .pbs-price-suf{font-size:13px;color:rgba(255,255,255,.55);margin-top:8px;}
+    .pbs-price-tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:600;}
+    .pbs-price-name{font-size:24px;color:var(--ink);margin:0 0 14px;font-weight:700;}
+    .pbs-price-num{font-size:48px;font-weight:700;line-height:1;color:var(--ink);display:flex;align-items:baseline;gap:6px;}
+    .pbs-price-num span{font-size:16px;color:var(--muted);font-weight:500;}
+    .pbs-price-suf{font-size:13px;color:var(--muted);margin-top:8px;}
     .pbs-price-list{list-style:none;padding:0;margin:24px 0 28px;display:flex;flex-direction:column;gap:10px;}
-    .pbs-price-list li{font-size:14px;color:rgba(255,255,255,.72);padding-left:24px;position:relative;line-height:1.5;}
+    .pbs-price-list li{font-size:14px;color:var(--muted);padding-left:24px;position:relative;line-height:1.5;}
     .pbs-price-list li::before{content:"";position:absolute;left:0;top:6px;width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a855f7);}
     .pbs-price-list li::after{content:"";position:absolute;left:4px;top:10px;width:6px;height:3px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg);}
     .pbs-price-card .btn{width:100%;justify-content:center;}
 
-    .pbs-hero-photo{position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:0 40px 80px rgba(0,0,0,.5);max-width:600px;margin-left:auto;}
+    .pbs-hero-photo{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 40px 80px rgba(0,0,0,.5);max-width:600px;margin-left:auto;}
     .pbs-hero-photo img{width:100%;display:block;}
     .pbs-hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(0,0,0,.35) 100%);pointer-events:none;}
-    .pbs-hero-cap{position:absolute;left:18px;bottom:16px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.85);font-weight:600;z-index:2;}
+    .pbs-hero-cap{position:absolute;left:18px;bottom:16px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);font-weight:600;z-index:2;}
     .pbs-hero-cap::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#22c55e;margin-right:8px;vertical-align:middle;box-shadow:0 0 0 4px rgba(34,197,94,.2);}
   </style>
   <!-- Schema: Organization -->
@@ -109,8 +110,8 @@
   <!-- Schema: BreadcrumbList -->
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://boothledger.com/"},{"@type":"ListItem","position":2,"name":"Photo Booth Software","item":"https://boothledger.com/photobooth-software"}]}</script>
 </head>
-<body>
-  <nav class="nav" id="nav"><div class="nav-container"><a href="/" class="nav-logo"><img class="logo-icon" src="images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="40" height="40"><span class="logo-text">Booth<span class="logo-accent">Ledger</span></span></a><a href="https://www.photoboothguys.ie" target="_blank" rel="noopener" class="nav-brought-by"><span>Brought to you by</span><img src="images/photobooth-guys-logo.webp" width="31" height="28" alt="PhotoBooth Guys"></a><button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button><ul class="nav-links" id="navLinks"><li><a href="/#features">Features</a></li><li><a href="/ai-photo-booth">AI Effects</a></li><li><a href="/compare">Compare</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/#download" class="nav-cta">Download Trial</a></li></ul></div></nav>
+<body class="ml">
+  <nav class="nav" id="nav"><div class="nav-container"><a href="/" class="nav-logo"><img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="40" height="40"><span class="logo-text">Booth<span class="logo-accent">Ledger</span></span></a><a href="https://www.photoboothguys.ie" target="_blank" rel="noopener" class="nav-brought-by"><span>Brought to you by</span><img src="images/photobooth-guys-logo.webp" width="31" height="28" alt="PhotoBooth Guys"></a><button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button><ul class="nav-links" id="navLinks"><li><a href="/#features">Features</a></li><li><a href="/ai-photo-booth">AI Effects</a></li><li><a href="/compare">Compare</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/#download" class="nav-cta">Download Trial</a></li></ul></div></nav>
 
   <!-- HERO -->
   <section class="hero" id="hero">
@@ -137,7 +138,7 @@
       </div>
       <div class="hero-visual fade-in">
         <div class="pbs-hero-photo">
-          <img src="images/landing/IMG_1333.webp" alt="Guests at a BoothLedger magic mirror photo booth holding a printed strip with cartoon AI effects." width="1200" height="900" fetchpriority="high">
+          <img src="images/landing/IMG_1333.webp" alt="Guests at a BoothLedger selfie mirror photo booth holding a printed strip with cartoon AI effects." width="1200" height="900" fetchpriority="high">
           <div class="pbs-hero-cap">Live event &middot; Real BoothLedger booth</div>
         </div>
       </div>
@@ -176,10 +177,10 @@
           </div>
         </div>
         <figure class="pbs-figure">
-          <img src="images/landing/IMG_1338.webp" alt="A BoothLedger magic mirror photo booth installation with hexagon backdrop and ring light at a corporate event." width="1200" height="900" loading="lazy">
+          <img src="images/landing/IMG_1338.webp" alt="A BoothLedger selfie mirror photo booth installation with hexagon backdrop and ring light at a corporate event." width="1200" height="900" loading="lazy">
         </figure>
       </div>
-      <p class="pbs-figcap" style="text-align:center;margin-top:18px;">Magic mirror install &middot; Canon DSLR + dye-sub printer &middot; Corporate venue</p>
+      <p class="pbs-figcap" style="text-align:center;margin-top:18px;">Selfie mirror install &middot; Canon DSLR + dye-sub printer &middot; Corporate venue</p>
     </div>
   </section>
 
@@ -270,7 +271,7 @@
       <div class="section-header fade-in">
         <span class="section-tag">Compared</span>
         <h2 class="section-title">How BoothLedger<br><span class="gradient-text">Stacks Up</span></h2>
-        <p class="section-subtitle">The short version. Detailed line-by-line breakdowns live on each <a href="/compare" style="color:#a5b4fc;">comparison page</a>.</p>
+        <p class="section-subtitle">The short version. Detailed line-by-line breakdowns live on each <a href="/compare" style="color:var(--blue-700);">comparison page</a>.</p>
       </div>
       <div class="pbs-cmp fade-in">
         <div class="pbs-cmp-scroll">
@@ -354,18 +355,18 @@
         <h2 class="section-title">Photo Booth Software<br><span class="gradient-text">Common Questions</span></h2>
       </div>
       <div class="faq-list fade-in">
-        <details class="faq-item"><summary>What is the best photo booth software for Windows?</summary><p>It depends on what you need to bill for. If you only print and never use AI, dslrBooth still works. If you want one tool that does DSLR tether + AI + cloud + mirror + green screen on a single subscription, BoothLedger is built specifically for that brief. The detailed answer is in our <a href="/blog/best-photo-booth-software" style="color:#a5b4fc;">best photo booth software</a> roundup.</p></details>
+        <details class="faq-item"><summary>What is the best photo booth software for Windows?</summary><p>It depends on what you need to bill for. If you only print and never use AI, dslrBooth still works. If you want one tool that does DSLR tether + AI + cloud + mirror + green screen on a single subscription, BoothLedger is built specifically for that brief. The detailed answer is in our <a href="/blog/best-photo-booth-software" style="color:var(--blue-700);">best photo booth software</a> roundup.</p></details>
         <details class="faq-item"><summary>Is BoothLedger really free for 30 days?</summary><p>Yes. Full features for 30 days, no credit card, no watermarks, no nag screens. Print, share, run AI &mdash; the trial is the real product.</p></details>
-        <details class="faq-item"><summary>Does this photo booth software work with Canon DSLRs?</summary><p>Yes. BoothLedger uses Canon's EDSDK to tether to most Canon EOS bodies (R-series mirrorless and recent DSLRs) for full live view, focus and exposure control, and full-resolution capture. <a href="/dslr-photo-booth-software" style="color:#a5b4fc;">More on DSLR support</a>.</p></details>
+        <details class="faq-item"><summary>Does this photo booth software work with Canon DSLRs?</summary><p>Yes. BoothLedger uses Canon's EDSDK to tether to most Canon EOS bodies (R-series mirrorless and recent DSLRs) for full live view, focus and exposure control, and full-resolution capture. <a href="/dslr-photo-booth-software" style="color:var(--blue-700);">More on DSLR support</a>.</p></details>
         <details class="faq-item"><summary>Does BoothLedger run on Mac or iPad?</summary><p>Today it runs on Windows 10 and Windows 11 (64-bit). macOS is on the roadmap. There's no iPad version &mdash; serious DSLR tethering, dye-sub print drivers and offline reliability are simply easier to deliver well on Windows.</p></details>
         <details class="faq-item"><summary>What is the difference between &ldquo;photo booth software&rdquo; and &ldquo;photobooth software&rdquo;?</summary><p>None &mdash; both are valid spellings. BoothLedger ranks for both because it is both.</p></details>
         <details class="faq-item"><summary>Can I print from BoothLedger directly?</summary><p>Yes. Native drivers for DNP and HiTi dye-sub printers, custom layouts in the template editor, prints in 12&ndash;15 seconds. No middleware.</p></details>
         <details class="faq-item"><summary>Does it include cloud sharing?</summary><p>Yes &mdash; BoothLedger Cloud galleries, SMS, email and QR sharing are all included on every plan. No separate cloud subscription.</p></details>
         <details class="faq-item"><summary>Will it work with no internet?</summary><p>Yes. The booth is offline-first &mdash; capture, print and queue shares without a network, then sync the full event the next time it connects.</p></details>
         <details class="faq-item"><summary>How many computers can use one licence?</summary><p>Two devices per plan. Run two booths in parallel, or keep a hot-swap spare on the road.</p></details>
-        <details class="faq-item"><summary>Is BoothLedger an alternative to dslrBooth, Snappic, LumaBooth or Simple Booth?</summary><p>Yes &mdash; especially for operators tired of stacking add-ons. See the <a href="/vs-dslrbooth" style="color:#a5b4fc;">vs dslrBooth</a>, <a href="/vs-snappic" style="color:#a5b4fc;">vs Snappic</a>, <a href="/vs-lumabooth" style="color:#a5b4fc;">vs LumaBooth</a> and <a href="/vs-simple-booth" style="color:#a5b4fc;">vs Simple Booth</a> comparisons.</p></details>
-        <details class="faq-item"><summary>What does photo booth software typically cost?</summary><p>The market sits between $59/month (Snappic, Simple Booth) and one-off licences in the $199&ndash;$229 range (dslrBooth, LumaBooth) plus add-ons for AI and cloud. BoothLedger starts at €12/month all-in for two devices, or €35/month with full AI. <a href="/pricing" style="color:#a5b4fc;">See pricing</a>.</p></details>
-        <details class="faq-item"><summary>Can I use it for a photo booth rental business?</summary><p>Yes &mdash; that's exactly who it's built for. Two device licences per plan, unlimited events, unlimited cloud galleries, white-labelled SMS and email, and an operator dashboard across every booth. Our parent company, <a href="https://www.photoboothguys.ie" target="_blank" rel="noopener" style="color:#a5b4fc;">PhotoBooth Guys</a>, runs on it every weekend.</p></details>
+        <details class="faq-item"><summary>Is BoothLedger an alternative to dslrBooth, Snappic, LumaBooth or Simple Booth?</summary><p>Yes &mdash; especially for operators tired of stacking add-ons. See the <a href="/vs-dslrbooth" style="color:var(--blue-700);">vs dslrBooth</a>, <a href="/vs-snappic" style="color:var(--blue-700);">vs Snappic</a>, <a href="/vs-lumabooth" style="color:var(--blue-700);">vs LumaBooth</a> and <a href="/vs-simple-booth" style="color:var(--blue-700);">vs Simple Booth</a> comparisons.</p></details>
+        <details class="faq-item"><summary>What does photo booth software typically cost?</summary><p>The market sits between $59/month (Snappic, Simple Booth) and one-off licences in the $199&ndash;$229 range (dslrBooth, LumaBooth) plus add-ons for AI and cloud. BoothLedger starts at €12/month all-in for two devices, or €35/month with full AI. <a href="/pricing" style="color:var(--blue-700);">See pricing</a>.</p></details>
+        <details class="faq-item"><summary>Can I use it for a photo booth rental business?</summary><p>Yes &mdash; that's exactly who it's built for. Two device licences per plan, unlimited events, unlimited cloud galleries, white-labelled SMS and email, and an operator dashboard across every booth. Our parent company, <a href="https://www.photoboothguys.ie" target="_blank" rel="noopener" style="color:var(--blue-700);">PhotoBooth Guys</a>, runs on it every weekend.</p></details>
       </div>
     </div>
   </section>
@@ -394,7 +395,7 @@
       <div class="footer-content">
         <div class="footer-brand">
           <a href="/" class="nav-logo">
-            <img class="logo-icon" src="/images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="32" height="32">
+            <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="32" height="32">
             <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
           </a>
           <p class="footer-tagline">Professional photo booth software for event professionals worldwide.</p>
@@ -452,7 +453,7 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 PhotoBooth Guys. All rights reserved.</p>
-        <p><a href="mailto:info@photoboothguys.ie" style="color:rgba(255,255,255,.6);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:rgba(255,255,255,.6);text-decoration:none;">Privacy</a></p>
+        <p><a href="mailto:info@photoboothguys.ie" style="color:var(--muted);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;">Privacy</a></p>
       </div>
     </div>
   </footer>

@@ -101,38 +101,39 @@
   }
   </script>
 
-  <link rel="icon" type="image/x-icon" href="/images/favicon.ico?v=2">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=2">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=2">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=2">
+  <link rel="icon" type="image/x-icon" href="/images/favicon-v3.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-v3-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-v3-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-v3.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
   <link rel="stylesheet" href="/css/style.min.css?v=21">
+  <link rel="stylesheet" href="/css/site-legacy.css?v=1">
 
   <style>
-    .blog-article { max-width: 900px; margin: 0 auto; padding: 120px 24px 80px; color: rgba(255,255,255,.88); line-height: 1.75; }
-    .blog-article h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 16px; color: #fff; }
-    .blog-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; font-size: .9rem; color: rgba(255,255,255,.5); }
-    .blog-meta time { color: rgba(255,255,255,.6); }
+    .blog-article { max-width: 900px; margin: 0 auto; padding: 120px 24px 80px; color:var(--slate); line-height: 1.75; }
+    .blog-article h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 16px; color:var(--ink); }
+    .blog-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; font-size: .9rem; color:var(--muted); }
+    .blog-meta time { color:var(--muted); }
     .blog-meta .reading-time { display: flex; align-items: center; gap: 6px; }
-    .blog-article h2 { font-size: 1.6rem; font-weight: 700; margin: 56px 0 16px; color: #fff; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.08); }
+    .blog-article h2 { font-size: 1.6rem; font-weight: 700; margin: 56px 0 16px; color:var(--ink); padding-top: 16px; border-top: 1px solid var(--line); }
     .blog-article h2:first-of-type { border-top: none; }
-    .blog-article h3 { font-size: 1.2rem; font-weight: 600; margin: 32px 0 12px; color: rgba(255,255,255,.95); }
+    .blog-article h3 { font-size: 1.2rem; font-weight: 600; margin: 32px 0 12px; color:var(--slate); }
     .blog-article p { margin-bottom: 20px; }
     .blog-article ul, .blog-article ol { margin: 0 0 20px 24px; }
     .blog-article li { margin-bottom: 8px; }
     .blog-article a { color: var(--accent, #6c63ff); text-decoration: underline; text-underline-offset: 3px; }
-    .blog-article a:hover { color: #fff; }
-    .blog-article strong { color: rgba(255,255,255,.95); }
+    .blog-article a:hover { color:var(--ink); }
+    .blog-article strong { color:var(--slate); }
 
-    .comparison-table-wrap { overflow-x: auto; margin: 32px 0; border-radius: 12px; border: 1px solid rgba(255,255,255,.1); }
+    .comparison-table-wrap { overflow-x: auto; margin: 32px 0; border-radius: 12px; border: 1px solid var(--line); }
     .comparison-table { width: 100%; border-collapse: collapse; font-size: .88rem; min-width: 700px; }
-    .comparison-table th, .comparison-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,.07); }
-    .comparison-table thead th { background: rgba(255,255,255,.05); color: rgba(255,255,255,.7); font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .5px; }
-    .comparison-table .pros { color: #4ade80; }
-    .comparison-table .cons { color: #f87171; }
+    .comparison-table th, .comparison-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--line); }
+    .comparison-table thead th { background: #fff; color:var(--muted); font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .5px; }
+    .comparison-table .pros { color: #15803d; }
+    .comparison-table .cons { color: #b91c1c; }
 
     .verdict-box { background: linear-gradient(135deg, rgba(108,99,255,.12), rgba(99,200,255,.08)); border: 1px solid rgba(108,99,255,.2); border-radius: 14px; padding: 28px 32px; margin: 32px 0; }
     .verdict-box h3 { margin-top: 0 !important; color: var(--accent, #6c63ff); }
@@ -141,37 +142,37 @@
     .blog-cta .btn-primary:hover { transform: translateY(-2px) !important; box-shadow: 0 16px 40px -10px rgba(99,102,241,.7), 0 0 0 1px rgba(255,255,255,.18) inset !important; }
     .blog-cta { text-align: center; padding: 48px 32px; margin: 56px 0 0; border-radius: 16px; background: linear-gradient(135deg, rgba(108,99,255,.12), rgba(99,200,255,.08)); border: 1px solid rgba(108,99,255,.2); }
     .blog-cta h2 { border: none; margin-top: 0; padding-top: 0; }
-    .blog-cta p { color: rgba(255,255,255,.65); max-width: 500px; margin: 0 auto 24px; }
+    .blog-cta p { color:var(--muted); max-width: 500px; margin: 0 auto 24px; }
 
-    .breadcrumbs { font-size: .85rem; color: rgba(255,255,255,.4); margin-bottom: 24px; }
-    .breadcrumbs a { color: rgba(255,255,255,.5); text-decoration: none; }
+    .breadcrumbs { font-size: .85rem; color:var(--muted); margin-bottom: 24px; }
+    .breadcrumbs a { color:var(--muted); text-decoration: none; }
     .breadcrumbs a:hover { color: var(--accent, #6c63ff); }
     .breadcrumbs span { margin: 0 8px; }
 
-    .toc { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 24px 28px; margin: 32px 0 40px; }
-    .toc h3 { font-size: 1rem; margin: 0 0 12px; color: rgba(255,255,255,.7); }
+    .toc { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 24px 28px; margin: 32px 0 40px; }
+    .toc h3 { font-size: 1rem; margin: 0 0 12px; color:var(--muted); }
     .toc ol { margin: 0; padding-left: 20px; }
     .toc li { margin-bottom: 6px; font-size: .9rem; }
-    .toc a { color: rgba(255,255,255,.6); text-decoration: none; }
+    .toc a { color:var(--muted); text-decoration: none; }
     .toc a:hover { color: var(--accent, #6c63ff); }
 
     .related-posts { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
-    .related-posts h2 { font-size: 1.4rem; margin-bottom: 24px; color: #fff; }
+    .related-posts h2 { font-size: 1.4rem; margin-bottom: 24px; color:var(--ink); }
     .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-    .related-card { display: block; padding: 20px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; text-decoration: none !important; color: inherit; transition: border-color .2s, background .2s; }
-    .related-card:hover { border-color: rgba(108,99,255,.4); background: rgba(255,255,255,.05); }
+    .related-card { display: block; padding: 20px; background: #fff; border: 1px solid var(--line); border-radius: 12px; text-decoration: none !important; color: inherit; transition: border-color .2s, background .2s; }
+    .related-card:hover { border-color: rgba(108,99,255,.4); background: #fff; }
     .related-card .tag { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #6c63ff; }
-    .related-card h3 { font-size: 1rem; margin: 8px 0 0; color: #fff; line-height: 1.4; }
+    .related-card h3 { font-size: 1rem; margin: 8px 0 0; color:var(--ink); line-height: 1.4; }
   </style>
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="hDTsJjbsuIFfEsb2icX72w" async></script>
 </head>
-<body>
+<body class="ml">
 
   <!-- Navigation -->
   <nav class="nav" id="nav">
     <div class="nav-container">
       <a href="/" class="nav-logo">
-        <img class="logo-icon" src="/images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="40" height="40">
+        <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="40" height="40">
         <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
       </a>
       <a href="https://www.photoboothguys.ie" target="_blank" rel="noopener" class="nav-brought-by">
@@ -425,7 +426,7 @@
       <div class="footer-content">
         <div class="footer-brand">
           <a href="/" class="nav-logo">
-            <img class="logo-icon" src="/images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="32" height="32">
+            <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="32" height="32">
             <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
           </a>
           <p class="footer-tagline">Professional photo booth software for event professionals worldwide.</p>
@@ -483,7 +484,7 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 PhotoBooth Guys. All rights reserved.</p>
-        <p><a href="mailto:info@photoboothguys.ie" style="color:rgba(255,255,255,.6);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:rgba(255,255,255,.6);text-decoration:none;">Privacy</a></p>
+        <p><a href="mailto:info@photoboothguys.ie" style="color:var(--muted);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;">Privacy</a></p>
       </div>
     </div>
   </footer>

@@ -59,10 +59,10 @@
     }
   }
   </script>
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=2">
+  <link rel="icon" type="image/x-icon" href="images/favicon-v3.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -401,8 +401,9 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://boothledger.com/"},{"@type":"ListItem","position":2,"name":"Pricing","item":"https://boothledger.com/pricing"}]}</script>
   <!-- Schema: Organization -->
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"BoothLedger","url":"https://boothledger.com/","logo":{"@type":"ImageObject","url":"https://boothledger.com/images/boothledger-logo-full.png","width":1000,"height":1000},"description":"Professional photo booth software for event professionals worldwide","sameAs":["https://www.instagram.com/booth_ledger"]}</script>
+  <link rel="stylesheet" href="/css/site-legacy.css?v=1">
 </head>
-<body>
+<body class="ml ml-pricing">
 
 <div class="pricing-bg"></div>
 
@@ -453,7 +454,7 @@
       </div>
       <div class="modal-field">
         <label for="m_country">Country (for VAT)</label>
-        <select id="m_country" required onchange="updateVatHint()" style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:#fff;font:inherit;">
+        <select id="m_country" required onchange="updateVatHint()" style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;color:#fff;font:inherit;">
           <option value="">Select your country…</option>
         </select>
       </div>
@@ -479,7 +480,7 @@
 <nav class="nav">
   <div class="nav-container">
     <a href="https://boothledger.com" class="nav-logo">
-      <img src="images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="32" height="32">
+      <img src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="32" height="32">
       <span>Booth<span class="nav-logo-accent">Ledger</span></span>
     </a>
     <ul class="nav-links">
@@ -566,11 +567,11 @@
 
 <!-- Prepaid (one-off) terms -->
 <section class="prepaid" id="prepaid" style="max-width:960px;margin:8px auto 56px;padding:0 24px;">
-  <div style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:16px;padding:28px 28px 22px;">
+  <div style="border:1px solid var(--line);background:#fff;border-radius:16px;padding:28px 28px 22px;">
     <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between;">
       <div style="flex:1 1 320px;">
-        <h3 style="margin:0 0 6px;font-size:20px;color:#fff;">Prefer to pay once?</h3>
-        <p style="margin:0;font-size:14px;line-height:1.6;color:#a3a8b3;">Pay for 6 or 12 months up front. No subscription, nothing renews automatically, and every plan still includes 2 devices. Recommended if your bank blocks recurring international card payments (common in India, the Philippines and several other countries) &mdash; a single one-off charge goes through where a subscription won't.</p>
+        <h3 style="margin:0 0 6px;font-size:20px;color:var(--ink);">Prefer to pay once?</h3>
+        <p style="margin:0;font-size:14px;line-height:1.6;color:var(--muted);">Pay for 6 or 12 months up front. No subscription, nothing renews automatically, and every plan still includes 2 devices. Recommended if your bank blocks recurring international card payments (common in India, the Philippines and several other countries) &mdash; a single one-off charge goes through where a subscription won't.</p>
       </div>
       <div style="flex:1 1 380px;display:grid;grid-template-columns:1fr 1fr;gap:10px;" id="prepaidGrid">
         <button type="button" class="card-cta card-cta--outline" style="margin:0;" onclick="handleSubscribe('basic_6mo'); return false;">Basic &middot; 6 months <span data-prepaid="basic_6mo">&euro;66</span></button>
@@ -617,7 +618,7 @@
       <div class="footer-content">
         <div class="footer-brand">
           <a href="/" class="nav-logo">
-            <img class="logo-icon" src="/images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="32" height="32">
+            <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="32" height="32">
             <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
           </a>
           <p class="footer-tagline">Professional photo booth software for event professionals worldwide.</p>
@@ -675,7 +676,7 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 PhotoBooth Guys. All rights reserved.</p>
-        <p><a href="mailto:info@photoboothguys.ie" style="color:rgba(255,255,255,.6);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:rgba(255,255,255,.6);text-decoration:none;">Privacy</a></p>
+        <p><a href="mailto:info@photoboothguys.ie" style="color:var(--muted);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;">Privacy</a></p>
       </div>
     </div>
   </footer>

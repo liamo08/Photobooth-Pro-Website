@@ -1,0 +1,286 @@
+/* ==========================================================================
+   boothledger.com — light-theme layer for the pages still built on
+   css/style.min.css (feature, solution, compare, blog pages).
+
+   Load AFTER style.min.css, with <body class="ml">. style.min.css keeps doing
+   the layout; this file re-points its colour variables at the new light
+   palette, fixes the rules that hard-code dark colours, and restyles the
+   shared pieces (nav, hero, cards, buttons, download, FAQ, footer) to match
+   the homepage (css/site.css).
+   ========================================================================== */
+:root {
+  /* legacy variable names → new palette */
+  --bg: #f6f8fb;
+  --bg-subtle: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8fafc;
+  --text: #0b1220;
+  --text-muted: #475569;
+  --text-subtle: #64748b;
+  --accent: #2563eb;
+  --accent-light: #1d4ed8;
+  --blue: #2563eb;
+  --blue-light: #3b82f6;
+  --cyan: #0891b2;
+  --green: #16a34a;
+  --amber: #d97706;
+  --rose: #e11d48;
+  --orange: #ea580c;
+  --purple: #7c3aed;
+  --teal: #0d9488;
+  --gradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  --gradient-text: linear-gradient(120deg, #1d4ed8, #2563eb 45%, #0891b2);
+  --shadow-sm: 0 1px 2px rgba(15,23,42,.04), 0 1px 1px rgba(15,23,42,.03);
+  --shadow: 0 6px 16px -8px rgba(15,23,42,.18);
+  --shadow-lg: 0 12px 32px -14px rgba(15,23,42,.22);
+  --shadow-xl: 0 24px 60px -20px rgba(15,23,42,.35);
+  --radius: 13px;
+  --radius-lg: 22px;
+  /* new tokens (same as site.css) */
+  --ink: #0b1220; --ink-2: #1e293b; --slate: #475569; --muted: #64748b; --faint: #94a3b8;
+  --line: #e6eaf1; --line-2: #d7dde8; --blue-700: #1d4ed8; --blue-50: #eef3ff; --blue-100: #dbe6ff;
+  --navy: linear-gradient(150deg, #0c1735 0%, #132449 42%, #2b3a55 100%);
+  --bright: linear-gradient(160deg, #3b7bff 0%, #2563eb 45%, #1d4ed8 100%);
+}
+
+html:has(body.ml) { overflow-x: clip; }
+body.ml {
+  overflow-x: clip;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--ink);
+  font-feature-settings: "cv11", "ss01", "ss03";
+  background:
+    radial-gradient(1000px 480px at 10% -140px, rgba(37,99,235,.10), transparent 70%),
+    radial-gradient(1000px 480px at 95% -180px, rgba(56,189,248,.10), transparent 70%),
+    #f6f8fb;
+  background-repeat: no-repeat;
+  background-color: #f6f8fb;
+}
+.ml ::selection { background: #bfdbfe; color: var(--ink); }
+.ml h1, .ml h2, .ml h3, .ml h4 { color: var(--ink); }
+
+/* ---------- Nav: floating pill (markup unchanged, main.js still drives it) ---------- */
+.ml .nav, .ml .nav.scrolled { top: 14px; left: 0; right: 0; padding: 0 12px; background: transparent; border: 0; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.ml .nav-container {
+  max-width: 1200px; height: 62px; padding: 0 10px 0 14px; border-radius: 999px;
+  background: rgba(255,255,255,.82); -webkit-backdrop-filter: blur(16px) saturate(1.5); backdrop-filter: blur(16px) saturate(1.5);
+  border: 1px solid rgba(15,23,42,.07); box-shadow: 0 12px 32px -14px rgba(15,23,42,.22); transition: box-shadow .25s;
+}
+.ml .nav.scrolled .nav-container { box-shadow: 0 24px 60px -20px rgba(15,23,42,.35); }
+.ml .nav-logo { color: var(--ink); text-decoration: none; }
+.ml .logo-icon { width: 34px !important; height: 34px !important; border-radius: 9px; object-fit: cover; }
+.ml .logo-text { font-size: 18px; font-weight: 800; letter-spacing: -.03em; color: var(--ink); }
+.ml .logo-accent { background: none; -webkit-text-fill-color: currentColor; color: var(--blue); }
+.ml .nav-brought-by { border-left-color: var(--line); }
+.ml .nav-brought-by span { color: var(--muted); }
+.ml .nav-brought-by img { height: 22px; opacity: .85; }
+.ml .nav-links { gap: 2px; }
+.ml .nav-links a { display: block; padding: 8px 13px; border-radius: 999px; font-size: 14.5px; font-weight: 500; text-decoration: none; }
+.ml .nav-links a, .ml .nav-links a[style] { color: var(--slate) !important; }
+.ml .nav-links a:hover { background: #f1f4f9; color: var(--ink) !important; }
+.ml .nav-links a.nav-cta, .ml .nav-links a.nav-cta[style] { background: var(--blue); color: #fff !important; padding: 10px 16px; margin-left: 8px; font-weight: 600 !important; box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 10px 22px -10px rgba(37,99,235,.8); }
+.ml .nav-links a.nav-cta:hover { background: var(--blue-700); opacity: 1; transform: none; }
+.ml .nav-toggle { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: #fff; align-items: center; justify-content: center; gap: 4px; padding: 0; }
+.ml .nav-toggle span { width: 18px; background: var(--ink); }
+@media (max-width: 1100px) {
+  .ml .nav-links a { padding: 8px 10px; }
+}
+
+/* ---------- Hero ---------- */
+.ml .hero { min-height: 0; padding-top: 130px; padding-bottom: 20px; }
+.ml .hero-gradient { background: radial-gradient(circle, rgba(37,99,235,.10) 0%, rgba(56,189,248,.06) 40%, transparent 70%); }
+.ml .hero-grid { background-image: linear-gradient(rgba(37,99,235,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,.05) 1px, transparent 1px); }
+.ml .hero-content { padding: 40px 0; }
+.ml .hero-badge { background: #fff; border: 1px solid var(--blue-100); color: var(--blue-700); font-weight: 600; box-shadow: var(--shadow-sm); }
+.ml .badge-dot { background: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,.18); }
+.ml .hero-title { font-weight: 800; letter-spacing: -.045em; line-height: 1.04; color: var(--ink); }
+.ml .hero-subtitle { color: var(--slate); }
+.ml .stat-value { color: var(--ink); font-weight: 800; letter-spacing: -.03em; }
+.ml .stat-label { color: var(--muted); }
+.ml .stat-divider { background: var(--line); }
+
+/* Titles: the gradient word becomes the soft grey second line, as on the homepage */
+.ml .gradient-text { background: var(--gradient-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.ml .hero-title .gradient-text, .ml .section-title .gradient-text, .ml h1 .gradient-text, .ml h2 .gradient-text {
+  background: none; -webkit-text-fill-color: currentColor; color: #7a889f;
+}
+
+/* compare.html: its hero title was a white→indigo text gradient */
+.ml .compare-hero h1 { background: none; -webkit-text-fill-color: currentColor; color: var(--ink); }
+
+/* ---------- Section headers ---------- */
+.ml .section-tag { color: var(--blue-700); font-size: 12px; font-weight: 700; letter-spacing: .09em; }
+.ml .section-title { font-weight: 800; letter-spacing: -.04em; line-height: 1.06; color: var(--ink); }
+.ml .section-subtitle { color: var(--slate); }
+
+/* ---------- Cards ---------- */
+.ml .feature-card { background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-sm); }
+.ml .feature-card:hover { background: #fff; border-color: var(--line-2); box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.ml .feature-icon, .ml .feature-icon[class*="icon-"] { background: var(--blue-50); border-radius: 13px; }
+.ml .feature-icon svg, .ml .feature-icon[class*="icon-"] svg { color: var(--blue); }
+.ml .feature-card h3 { color: var(--ink); letter-spacing: -.02em; }
+.ml .feature-card p { color: var(--muted); }
+
+/* ---------- Buttons ---------- */
+.ml .btn { border-radius: 13px; }
+.ml .btn-primary, .ml a.btn-primary { background: var(--blue); color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 10px 22px -10px rgba(37,99,235,.8); }
+.ml .btn-primary:hover { background: var(--blue-700); transform: none; box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 12px 26px -10px rgba(37,99,235,.9); }
+.ml .btn-outline { background: #fff; color: var(--ink-2); border: 1px solid var(--line-2); }
+.ml .btn-outline:hover { background: #fff; border-color: #b9c3d4; box-shadow: var(--shadow-sm); transform: none; }
+
+/* ---------- Download / trial block → bright blue card ---------- */
+.ml .download-card { background: var(--bright); border: 0; color: #fff; border-radius: 28px; position: relative; overflow: hidden; }
+/* Everything inside the blue card reads its colours from these, so any page's
+   own rules (notes, links, soft title words) turn white without per-page CSS. */
+.ml .download-card { --ink: #fff; --ink-2: #fff; --slate: rgba(255,255,255,.9); --muted: rgba(255,255,255,.82); --text: #fff; --text-muted: rgba(255,255,255,.85); --text-subtle: rgba(255,255,255,.78); --blue-700: #fff; --accent-light: #fff; }
+.ml .download-card h1 .gradient-text, .ml .download-card h2 .gradient-text, .ml .download-card .gradient-text { color: rgba(255,255,255,.78); background: none; -webkit-text-fill-color: currentColor; }
+.ml .download-card a:not(.btn), .ml .download-card p a:not(.btn), .ml .container .download-card p a:not(.btn) { color: #fff !important; text-decoration: underline; text-underline-offset: 3px; }
+.ml .download-card::after { content: ""; position: absolute; right: -70px; bottom: -90px; width: 300px; height: 300px; border-radius: 50%; border: 44px solid rgba(255,255,255,.07); pointer-events: none; }
+.ml .download-card > * { position: relative; z-index: 1; }
+.ml .download-card .section-title, .ml .download-card h2, .ml .download-card h3 { color: #fff; }
+.ml .download-card .section-title .gradient-text { color: rgba(255,255,255,.8); }
+.ml .download-card .section-subtitle, .ml .download-card p { color: rgba(255,255,255,.85); }
+.ml .download-card .download-check { color: #fff; }
+.ml .download-card .download-check svg { color: #fff; }
+.ml .download-card .download-version { color: rgba(255,255,255,.92); }
+.ml .download-card .section-tag { color: rgba(255,255,255,.85); }
+.ml .download-card .btn-primary { background: #fff; color: #1d4ed8; box-shadow: 0 10px 24px -10px rgba(0,0,0,.35); }
+.ml .download-card .btn-primary:hover { background: #f0f5ff; }
+.ml .download-card .btn-outline { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.3); color: #fff; }
+.ml .download-card a:not(.btn) { color: #fff; }
+
+/* ---------- FAQ ---------- */
+.ml .faq-item { background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow-sm); }
+.ml .faq-item:hover { background: #fff; border-color: var(--line-2); }
+.ml .faq-item[open] { background: #fff; border-color: var(--blue-100); }
+.ml .faq-item summary { color: var(--ink); letter-spacing: -.01em; }
+.ml .faq-item summary::after { color: var(--blue); }
+.ml .faq-item[open] summary::after { color: var(--blue); }
+.ml .faq-item p { color: var(--slate); }
+
+/* ---------- Newsletter / misc hard-coded dark rules ---------- */
+.ml .newsletter-content p, .ml .newsletter-privacy { color: var(--muted); }
+.ml .newsletter-input { border: 1px solid var(--line-2); background: #fff; color: var(--ink); }
+.ml .newsletter-input::placeholder { color: var(--faint); }
+.ml .social-proof { border-bottom-color: var(--line); }
+.ml .proof-label { color: var(--muted); }
+.ml .proof-divider { background: var(--line); }
+.ml .ai-section { background: transparent; }
+.ml .comparison-slider, .ml .showcase-original, .ml .showcase-card, .ml .gallery-main { border-color: var(--line); }
+.ml .comparison-badge-before, .ml .showcase-tag { background: rgba(255,255,255,.92); color: var(--slate); border-color: var(--line); }
+.ml .comparison-style-label { color: var(--muted); }
+.ml .gallery-label { background: rgba(255,255,255,.92); color: var(--ink); border-color: var(--line); }
+.ml .app-camera-view { background: #0f172a; }
+.ml .comparison-badge-after { color: #1d4ed8; background: rgba(255,255,255,.94); border-color: var(--blue-100); }
+
+/* ---------- Tables (comparison pages, blog) ---------- */
+.ml table { color: var(--ink-2); }
+.ml th { color: var(--ink); }
+.ml .comparison-table-wrap, .ml .table-wrap { background: #fff; border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow-sm); }
+
+/* ---------- Links in body copy ---------- */
+.ml main a:not(.btn):not(.nav-cta), .ml article a:not(.btn), .ml .container p a:not(.btn) { color: var(--blue-700); }
+
+/* ---------- Footer: dark band, as on the homepage ---------- */
+.ml .footer { background: #0b1220; border-top: 0; margin-top: 64px; padding: 64px 0 28px; }
+.ml .footer .nav-logo, .ml .footer .logo-text { color: #fff; }
+.ml .footer .logo-accent { color: #60a5fa; }
+.ml .footer-tagline { color: #94a3b8; }
+.ml .footer-links { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+.ml .footer-col h3, .ml .footer-col h4 { color: #fff; font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.ml .footer-col a { color: #94a3b8; text-decoration: none; }
+.ml .footer-col a:hover { color: #fff; }
+.ml .footer-bottom { border-top-color: rgba(255,255,255,.08); color: #64748b; }
+.ml .footer-bottom a { color: #94a3b8 !important; }
+
+/* ---------- Mobile drawer ---------- */
+@media (max-width: 768px) {
+  .ml .nav-links { background: #fff; border-left: 1px solid var(--line); box-shadow: -24px 0 60px -20px rgba(15,23,42,.35); top: -14px; }
+  .ml .nav-links a { font-size: 16px; padding: 12px 14px; border-radius: 12px; }
+  .ml .nav-links a.nav-cta { margin-left: 0; text-align: center; }
+  .ml .hero { padding-top: 110px; }
+  .ml .download-card { border-radius: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ml *, .ml *::before, .ml *::after { animation: none !important; transition: none !important; }
+}
+
+/* ==========================================================================
+   /pricing (body.ml.ml-pricing) — self-styled page (no style.min.css), so its
+   own dark rules are overridden one by one. Markup, ids and the checkout JS
+   are untouched.
+   ========================================================================== */
+.ml-pricing .pricing-bg { background: none; }
+.ml-pricing .nav { position: fixed; }
+.ml-pricing .nav-logo { font-size: 18px; font-weight: 800; letter-spacing: -.03em; }
+.ml-pricing .nav-logo img { width: 34px; height: 34px; border-radius: 9px; object-fit: cover; }
+.ml-pricing .nav-logo-accent { color: var(--blue); }
+.ml-pricing .pricing-hero__badge { background: #fff; border-color: var(--blue-100); color: var(--blue-700); box-shadow: var(--shadow-sm); }
+.ml-pricing .pricing-hero h1 { background: none; -webkit-text-fill-color: currentColor; color: var(--ink); letter-spacing: -.045em; }
+.ml-pricing .pricing-hero p { color: var(--slate); }
+.ml-pricing .toggle-label { color: var(--muted); }
+.ml-pricing .toggle-label.active { color: var(--ink); }
+.ml-pricing .toggle-track { background: #dfe5ee; border-color: var(--line-2); }
+.ml-pricing .toggle-track.yearly { background: var(--blue); border-color: var(--blue); }
+.ml-pricing .toggle-thumb { box-shadow: 0 1px 3px rgba(15,23,42,.25); }
+.ml-pricing .pricing-card { background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-sm); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.ml-pricing .pricing-card:hover { border-color: var(--line-2); box-shadow: var(--shadow-lg); }
+.ml-pricing .pricing-card.featured { background: #fff; border: 2px solid var(--blue); box-shadow: 0 18px 40px -22px rgba(37,99,235,.55); }
+.ml-pricing .pricing-card.featured::before { background: var(--blue); color: #fff; }
+.ml-pricing .card-name { color: var(--ink); letter-spacing: -.02em; }
+.ml-pricing .card-desc, .ml-pricing .card-features li { color: var(--slate); }
+.ml-pricing .card-features li.highlight { color: var(--ink); }
+.ml-pricing .card-features li svg { color: var(--blue); }
+.ml-pricing .card-price__currency { color: var(--muted); }
+.ml-pricing .card-price__amount { background: none; -webkit-text-fill-color: currentColor; color: var(--ink); letter-spacing: -.05em; }
+.ml-pricing .card-price__period, .ml-pricing .card-billed { color: var(--muted); }
+.ml-pricing .card-cta--outline { background: #fff; color: var(--ink-2); border: 1px solid var(--line-2); }
+.ml-pricing .card-cta--outline:hover { border-color: #b9c3d4; box-shadow: var(--shadow-sm); }
+.ml-pricing .card-cta--primary { background: var(--blue); color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 10px 22px -10px rgba(37,99,235,.8); }
+.ml-pricing .card-cta--primary:hover { background: var(--blue-700); }
+.ml-pricing .card-divider { border-top-color: var(--line); }
+.ml-pricing .devices-badge { background: var(--blue-50); border-color: var(--blue-100); color: var(--blue-700); }
+.ml-pricing .faq h2 { color: var(--ink); letter-spacing: -.03em; }
+.ml-pricing .faq .faq-item { padding: 18px 22px; margin-bottom: 10px; border: 1px solid var(--line); }
+.ml-pricing .faq-q { color: var(--ink); }
+.ml-pricing .faq-q:hover { color: var(--blue-700); }
+.ml-pricing .faq-q svg { color: var(--blue); }
+.ml-pricing .faq-a { color: var(--slate); }
+.ml-pricing .pricing-footer { border-top-color: var(--line); color: var(--muted); }
+.ml-pricing .pricing-footer a { color: var(--blue-700); }
+.ml-pricing .success-banner { background: #e9f9ef; border-color: #bfe9cd; color: #15803d; }
+/* footer layout (the other pages get this from style.min.css) */
+.ml-pricing .footer .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.ml-pricing .footer-content { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; margin-bottom: 48px; }
+.ml-pricing .footer-brand .nav-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.ml-pricing .footer-links { display: grid; gap: 32px; }
+.ml-pricing .footer-col a { display: block; font-size: 14px; padding: 4px 0; }
+.ml-pricing .footer-col h3 { margin-bottom: 14px; }
+.ml-pricing .footer-bottom { display: flex; justify-content: space-between; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.08); font-size: 13px; }
+@media (max-width: 768px) {
+  .ml-pricing .footer-content { grid-template-columns: 1fr; gap: 40px; }
+  .ml-pricing .footer-links { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .ml-pricing .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
+/* sign-up / checkout modal */
+.ml-pricing .modal-backdrop { background: rgba(11,18,32,.45); }
+.ml-pricing .modal-card { background: #fff; border: 1px solid var(--line); color: var(--ink); box-shadow: var(--shadow-xl); }
+.ml-pricing .modal-card h2, .ml-pricing .modal-card h3 { color: var(--ink); }
+.ml-pricing .modal-card p { color: var(--slate); }
+.ml-pricing .modal-close { background: #f1f4f9; color: var(--slate); }
+.ml-pricing .modal-close:hover { background: #e6eaf1; color: var(--ink); }
+.ml-pricing .modal-plan { background: var(--blue-50); border-color: var(--blue-100); color: var(--blue-700); }
+.ml-pricing .modal-tabs { background: #eef1f6; border-color: var(--line); }
+.ml-pricing .modal-tab { color: var(--slate); background: transparent; }
+.ml-pricing .modal-tab.active { background: #fff; color: var(--ink); box-shadow: 0 1px 3px rgba(15,23,42,.12); }
+.ml-pricing .modal-tab:not(.active):hover { color: var(--ink); }
+.ml-pricing .modal-error { background: #fdecec; border-color: #f5c2c2; color: #b91c1c; }
+.ml-pricing .modal-error svg { color: #dc2626; }
+.ml-pricing .modal-field label { color: var(--ink-2); }
+.ml-pricing .modal-field input { background: #fff; border: 1px solid var(--line-2); color: var(--ink); }
+.ml-pricing .modal-field input::placeholder { color: var(--faint); }
+.ml-pricing .modal-field input:focus { background: #fff; border-color: var(--blue); box-shadow: 0 0 0 4px rgba(37,99,235,.14); }
+.ml-pricing .modal-submit { background: var(--blue); color: #fff; }
+.ml-pricing .modal-submit:hover:not(:disabled) { background: var(--blue-700); box-shadow: 0 8px 24px -8px rgba(37,99,235,.6); }
+.ml-pricing .modal-footer { color: var(--muted); }
+.ml-pricing .modal-footer a { color: var(--blue-700); }

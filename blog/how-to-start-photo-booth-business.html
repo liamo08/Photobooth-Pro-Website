@@ -197,15 +197,16 @@
   }
   </script>
 
-  <link rel="icon" type="image/x-icon" href="/images/favicon.ico?v=2">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=2">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=2">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=2">
+  <link rel="icon" type="image/x-icon" href="/images/favicon-v3.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-v3-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-v3-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-v3.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
   <link rel="stylesheet" href="/css/style.min.css?v=21">
+  <link rel="stylesheet" href="/css/site-legacy.css?v=1">
 
   <style>
     .blog-hero {
@@ -238,7 +239,7 @@
       gap: 16px;
       margin-bottom: 24px;
       font-size: 14px;
-      color: #94a3b8;
+      color:var(--muted);
     }
     .blog-meta-divider {
       width: 4px;
@@ -251,13 +252,13 @@
       font-weight: 700;
       line-height: 1.15;
       margin-bottom: 24px;
-      color: #f1f5f9;
+      color:var(--ink);
     }
     .blog-hero .hero-subtitle {
       max-width: 680px;
       margin: 0 auto;
       font-size: 1.15rem;
-      color: #94a3b8;
+      color:var(--muted);
       line-height: 1.7;
     }
 
@@ -269,26 +270,26 @@
     .blog-content h2 {
       font-size: 1.75rem;
       font-weight: 700;
-      color: #f1f5f9;
+      color:var(--ink);
       margin: 80px 0 28px; padding-top: 40px; border-top: 1px solid rgba(148,163,184,0.08);
       line-height: 1.3;
     }
     .blog-content h3 {
       font-size: 1.3rem;
       font-weight: 600;
-      color: #e2e8f0;
+      color:var(--ink-2);
       margin: 48px 0 20px;
       line-height: 1.4;
     }
     .blog-content p {
       font-size: 1.05rem;
       line-height: 1.8;
-      color: #cbd5e1;
+      color:var(--ink-2);
       margin-bottom: 28px;
     }
     .blog-content ul, .blog-content ol {
       margin: 0 0 32px 24px;
-      color: #cbd5e1;
+      color:var(--ink-2);
     }
     .blog-content li {
       font-size: 1.05rem;
@@ -296,11 +297,11 @@
       margin-bottom: 14px;
     }
     .blog-content strong {
-      color: #f1f5f9;
+      color:var(--ink);
       font-weight: 600;
     }
     .blog-content a {
-      color: #60a5fa;
+      color: #1d4ed8;
       text-decoration: underline;
       text-underline-offset: 3px;
     }
@@ -315,8 +316,8 @@
       margin: 40px 0;
     }
     .stat-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: #fff;
+      border: 1px solid var(--line);
       border-radius: 16px;
       padding: 28px 24px;
       text-align: center;
@@ -333,7 +334,7 @@
     }
     .stat-card .stat-label {
       font-size: 0.85rem;
-      color: #94a3b8;
+      color:var(--muted);
       line-height: 1.4;
     }
 
@@ -361,7 +362,7 @@
       margin: 36px 0;
     }
     .tip-box strong {
-      color: #60a5fa;
+      color: #1d4ed8;
     }
     .tip-box p {
       margin-bottom: 0;
@@ -376,24 +377,24 @@
     .pricing-table th {
       text-align: left;
       padding: 14px 16px;
-      background: rgba(255,255,255,0.06);
-      color: #f1f5f9;
+      background: #fff;
+      color:var(--ink);
       font-weight: 600;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid var(--line);
     }
     .pricing-table td {
       padding: 12px 16px;
-      color: #cbd5e1;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color:var(--ink-2);
+      border-bottom: 1px solid var(--line);
     }
     .pricing-table tr:hover td {
-      background: rgba(255,255,255,0.02);
+      background: #fff;
     }
 
     .pricing-table td.total-row,
     .pricing-table tr.total-row td {
       font-weight: 700;
-      color: #fff;
+      color:var(--ink);
       border-top: 2px solid rgba(96, 165, 250, 0.35);
     }
 
@@ -408,8 +409,8 @@
     }
 
     .toc-box {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: #fff;
+      border: 1px solid var(--line);
       border-radius: 12px;
       padding: 22px 26px;
       margin: 36px 0;
@@ -417,7 +418,7 @@
     .toc-box p {
       margin: 0 0 12px;
       font-weight: 600;
-      color: #fff;
+      color:var(--ink);
     }
     .toc-box ul {
       margin: 0;
@@ -435,8 +436,8 @@
     }
 
     .blog-cta {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: #fff;
+      border: 1px solid var(--line);
       border-radius: 20px;
       padding: 48px 40px;
       text-align: center;
@@ -455,8 +456,8 @@
       margin-top: 56px;
     }
     .blog-faq .faq-item {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: #fff;
+      border: 1px solid var(--line);
       border-radius: 12px;
       margin-bottom: 12px;
       overflow: hidden;
@@ -464,7 +465,7 @@
     .blog-faq .faq-item summary {
       padding: 20px 24px;
       font-weight: 600;
-      color: #e2e8f0;
+      color:var(--ink-2);
       cursor: pointer;
       font-size: 1.05rem;
       list-style: none;
@@ -478,7 +479,7 @@
     .blog-faq .faq-item summary::after {
       content: "+";
       font-size: 1.4rem;
-      color: #60a5fa;
+      color: #1d4ed8;
       font-weight: 300;
       transition: transform 0.2s;
     }
@@ -488,7 +489,7 @@
     .blog-faq .faq-item p {
       padding: 0 24px 20px;
       margin: 0;
-      color: #94a3b8;
+      color:var(--muted);
       font-size: 1rem;
       line-height: 1.7;
     }
@@ -556,13 +557,13 @@
   <!-- Schema: BreadcrumbList -->
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://boothledger.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://boothledger.com/blog/"},{"@type":"ListItem","position":3,"name":"How to Start a Photo Booth Business in 2026","item":"https://boothledger.com/blog/how-to-start-photo-booth-business"}]}</script>
 </head>
-<body>
+<body class="ml">
 
   <!-- Navigation -->
   <nav class="nav" id="nav">
     <div class="nav-container">
       <a href="/" class="nav-logo">
-        <img class="logo-icon" src="/images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="40" height="40">
+        <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="40" height="40">
         <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
       </a>
       <a href="https://www.photoboothguys.ie" target="_blank" rel="noopener" class="nav-brought-by">
@@ -1070,7 +1071,7 @@
       <div class="footer-content">
         <div class="footer-brand">
           <a href="/" class="nav-logo">
-            <img class="logo-icon" src="/images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="32" height="32">
+            <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="32" height="32">
             <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
           </a>
           <p class="footer-tagline">Professional photo booth software for event professionals worldwide.</p>
@@ -1128,7 +1129,7 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 PhotoBooth Guys. All rights reserved.</p>
-        <p><a href="mailto:info@photoboothguys.ie" style="color:rgba(255,255,255,.6);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:rgba(255,255,255,.6);text-decoration:none;">Privacy</a></p>
+        <p><a href="mailto:info@photoboothguys.ie" style="color:var(--muted);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;">Privacy</a></p>
       </div>
     </div>
   </footer>

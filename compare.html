@@ -38,11 +38,12 @@
   <meta name="twitter:description" content="Compare the top photo booth software platforms side by side. Pricing, features, AI effects, and more.">
   <meta name="twitter:image" content="https://boothledger.com/images/boothledger-logo-full.png">
 
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=2">
+  <link rel="icon" type="image/x-icon" href="images/favicon-v3.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.min.css?v=21">
+  <link rel="stylesheet" href="/css/site-legacy.css?v=1">
   <style>
     .compare-hero {
       position: relative; z-index: 1; text-align: center; padding: 140px 24px 60px;
@@ -86,8 +87,8 @@
       margin-bottom: 40px; max-width: 580px; margin-left: auto; margin-right: auto;
     }
     .compare-table-wrap {
-      overflow-x: auto; border-radius: 16px; border: 1px solid rgba(255,255,255,.08);
-      background: rgba(17,24,39,.6); backdrop-filter: blur(20px);
+      overflow-x: auto; border-radius: 16px; border: 1px solid var(--line);
+      background: #f8fafc; backdrop-filter: blur(20px);
       animation: fadeUp .6s .4s cubic-bezier(.16,1,.3,1) both;
     }
     .compare-table {
@@ -95,7 +96,7 @@
     }
     .compare-table thead th {
       padding: 20px 20px 16px; text-align: left; font-weight: 700; font-size: 15px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid var(--line);
       color: var(--text, #f8fafc);
     }
     .compare-table thead th:first-child { color: var(--text-muted, #94a3b8); font-weight: 600; }
@@ -104,7 +105,7 @@
       color: var(--accent-light, #818cf8);
     }
     .compare-table tbody td {
-      padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,.04);
+      padding: 14px 20px; border-bottom: 1px solid var(--line);
       color: var(--text-muted, #94a3b8); vertical-align: middle;
     }
     .compare-table tbody td:first-child {
@@ -135,8 +136,8 @@
       display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
     }
     .advantage-card {
-      border-radius: 14px; padding: 24px; border: 1px solid rgba(255,255,255,.08);
-      background: rgba(17,24,39,.5);
+      border-radius: 14px; padding: 24px; border: 1px solid var(--line);
+      background: #f8fafc;
     }
     .advantage-card h3 {
       font-size: 15px; font-weight: 700; margin-bottom: 8px;
@@ -247,7 +248,7 @@
   <!-- Schema: Organization -->
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"BoothLedger","url":"https://boothledger.com/","logo":{"@type":"ImageObject","url":"https://boothledger.com/images/boothledger-logo-full.png","width":1000,"height":1000},"description":"Professional photo booth software for event professionals worldwide","sameAs":["https://www.instagram.com/booth_ledger"]}</script>
 </head>
-<body>
+<body class="ml">
 
   <div class="compare-bg"></div>
 
@@ -255,7 +256,7 @@
   <nav class="nav" id="nav">
     <div class="nav-container">
       <a href="/" class="nav-logo">
-        <img class="logo-icon" src="images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="40" height="40">
+        <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="40" height="40">
         <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
       </a>
       <a href="https://www.photoboothguys.ie" target="_blank" rel="noopener" class="nav-brought-by">
@@ -422,7 +423,7 @@
       <div class="footer-content">
         <div class="footer-brand">
           <a href="/" class="nav-logo">
-            <img class="logo-icon" src="/images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="32" height="32">
+            <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="32" height="32">
             <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
           </a>
           <p class="footer-tagline">Professional photo booth software for event professionals worldwide.</p>
@@ -480,7 +481,7 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 PhotoBooth Guys. All rights reserved.</p>
-        <p><a href="mailto:info@photoboothguys.ie" style="color:rgba(255,255,255,.6);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:rgba(255,255,255,.6);text-decoration:none;">Privacy</a></p>
+        <p><a href="mailto:info@photoboothguys.ie" style="color:var(--muted);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;">Privacy</a></p>
       </div>
     </div>
   </footer>

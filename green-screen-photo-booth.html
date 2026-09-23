@@ -136,15 +136,16 @@
   }
   </script>
 
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=2">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=2">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="icon" type="image/x-icon" href="images/favicon-v3.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-v3-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-v3-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon-v3.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
   <link rel="stylesheet" href="css/style.min.css?v=21">
+  <link rel="stylesheet" href="/css/site-legacy.css?v=1">
 
   <!-- 4K Display Scaling -->
   <style>
@@ -201,13 +202,13 @@
   <!-- Schema: BreadcrumbList -->
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://boothledger.com/"},{"@type":"ListItem","position":2,"name":"Green Screen Photo Booth","item":"https://boothledger.com/green-screen-photo-booth"}]}</script>
 </head>
-<body>
+<body class="ml">
 
   <!-- Navigation -->
   <nav class="nav" id="nav">
     <div class="nav-container">
       <a href="/" class="nav-logo">
-        <img class="logo-icon" src="images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="40" height="40">
+        <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="40" height="40">
         <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
       </a>
       <a href="https://www.photoboothguys.ie" target="_blank" rel="noopener" class="nav-brought-by">
@@ -307,10 +308,10 @@
         <p class="section-subtitle">Custom backgrounds, themed events, branded backdrops &mdash; from real BoothLedger green screen setups.</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:1100px;margin:0 auto;">
-        <img src="images/green/green-1.webp" alt="Green screen photo booth at event" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,0.08);">
-        <img src="images/green/green-2.webp" alt="Green screen photo booth at event" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,0.08);">
-        <img src="images/green/green-3.webp" alt="Green screen photo booth at event" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,0.08);">
-        <img src="images/green/green-4.webp" alt="Green screen photo booth at event" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,0.08);">
+        <img src="images/green/green-1.webp" alt="Green screen photo booth at event" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;border:1px solid var(--line);">
+        <img src="images/green/green-2.webp" alt="Green screen photo booth at event" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;border:1px solid var(--line);">
+        <img src="images/green/green-3.webp" alt="Green screen photo booth at event" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;border:1px solid var(--line);">
+        <img src="images/green/green-4.webp" alt="Green screen photo booth at event" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;border:1px solid var(--line);">
       </div>
     </div>
   </section>
@@ -387,44 +388,44 @@
 
       <div class="fade-in" style="max-width:800px;margin:0 auto;">
         <div style="overflow-x:auto;">
-          <table style="width:100%;border-collapse:collapse;background:rgba(255,255,255,.03);border-radius:12px;overflow:hidden;font-size:.95rem;">
+          <table style="width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;font-size:.95rem;">
             <thead>
-              <tr style="background:rgba(255,255,255,.06);">
-                <th style="padding:16px 20px;text-align:left;font-weight:600;border-bottom:1px solid rgba(255,255,255,.08);"></th>
-                <th style="padding:16px 20px;text-align:center;font-weight:600;border-bottom:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.7);">Traditional Green Screen</th>
-                <th style="padding:16px 20px;text-align:center;font-weight:600;border-bottom:1px solid rgba(255,255,255,.08);color:var(--accent);">AI Background Removal</th>
+              <tr style="background:#fff;">
+                <th style="padding:16px 20px;text-align:left;font-weight:600;border-bottom:1px solid var(--line);"></th>
+                <th style="padding:16px 20px;text-align:center;font-weight:600;border-bottom:1px solid var(--line);color:var(--muted);">Traditional Green Screen</th>
+                <th style="padding:16px 20px;text-align:center;font-weight:600;border-bottom:1px solid var(--line);color:var(--accent);">AI Background Removal</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);font-weight:500;">Physical backdrop needed</td>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);text-align:center;">Yes &mdash; green/blue screen</td>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);text-align:center;color:var(--accent);font-weight:600;">No backdrop required</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);font-weight:500;">Physical backdrop needed</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);text-align:center;">Yes &mdash; green/blue screen</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);text-align:center;color:var(--accent);font-weight:600;">No backdrop required</td>
               </tr>
               <tr>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);font-weight:500;">Setup time</td>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);text-align:center;">15&ndash;30 minutes</td>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);text-align:center;color:var(--accent);font-weight:600;">Zero &mdash; just software</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);font-weight:500;">Setup time</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);text-align:center;">15&ndash;30 minutes</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);text-align:center;color:var(--accent);font-weight:600;">Zero &mdash; just software</td>
               </tr>
               <tr>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);font-weight:500;">Lighting requirements</td>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);text-align:center;">Even lighting on backdrop critical</td>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);text-align:center;color:var(--accent);font-weight:600;">Works in any lighting</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);font-weight:500;">Lighting requirements</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);text-align:center;">Even lighting on backdrop critical</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);text-align:center;color:var(--accent);font-weight:600;">Works in any lighting</td>
               </tr>
               <tr>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);font-weight:500;">Green clothing issue</td>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);text-align:center;">Green clothes become transparent</td>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);text-align:center;color:var(--accent);font-weight:600;">No colour restrictions</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);font-weight:500;">Green clothing issue</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);text-align:center;">Green clothes become transparent</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);text-align:center;color:var(--accent);font-weight:600;">No colour restrictions</td>
               </tr>
               <tr>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);font-weight:500;">Edge quality</td>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);text-align:center;">Excellent (controlled setup)</td>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);text-align:center;">Very good (AI-powered)</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);font-weight:500;">Edge quality</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);text-align:center;">Excellent (controlled setup)</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);text-align:center;">Very good (AI-powered)</td>
               </tr>
               <tr>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);font-weight:500;">Venue flexibility</td>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);text-align:center;">Needs space for backdrop</td>
-                <td style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06);text-align:center;color:var(--accent);font-weight:600;">Works anywhere</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);font-weight:500;">Venue flexibility</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);text-align:center;">Needs space for backdrop</td>
+                <td style="padding:14px 20px;border-bottom:1px solid var(--line);text-align:center;color:var(--accent);font-weight:600;">Works anywhere</td>
               </tr>
               <tr>
                 <td style="padding:14px 20px;font-weight:500;">BoothLedger plan</td>
@@ -434,7 +435,7 @@
             </tbody>
           </table>
         </div>
-        <p style="text-align:center;color:rgba(255,255,255,.5);font-size:.875rem;margin-top:16px;">BoothLedger includes both methods &mdash; switch between green screen and AI removal at any time.</p>
+        <p style="text-align:center;color:var(--muted);font-size:.875rem;margin-top:16px;">BoothLedger includes both methods &mdash; switch between green screen and AI removal at any time.</p>
       </div>
     </div>
   </section>
@@ -582,7 +583,7 @@
       <div class="footer-content">
         <div class="footer-brand">
           <a href="/" class="nav-logo">
-            <img class="logo-icon" src="/images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="32" height="32">
+            <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="32" height="32">
             <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
           </a>
           <p class="footer-tagline">Professional photo booth software for event professionals worldwide.</p>
@@ -640,7 +641,7 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 PhotoBooth Guys. All rights reserved.</p>
-        <p><a href="mailto:info@photoboothguys.ie" style="color:rgba(255,255,255,.6);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:rgba(255,255,255,.6);text-decoration:none;">Privacy</a></p>
+        <p><a href="mailto:info@photoboothguys.ie" style="color:var(--muted);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;">Privacy</a></p>
       </div>
     </div>
   </footer>

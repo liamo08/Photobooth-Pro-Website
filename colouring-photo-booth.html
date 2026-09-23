@@ -174,15 +174,16 @@
   <!-- Schema: Organization -->
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"BoothLedger","url":"https://boothledger.com/","logo":{"@type":"ImageObject","url":"https://boothledger.com/images/boothledger-logo-full.png","width":1000,"height":1000},"description":"Professional photo booth software for event professionals worldwide","sameAs":["https://www.instagram.com/booth_ledger"]}</script>
 
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico?v=2">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png?v=2">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="icon" type="image/x-icon" href="images/favicon-v3.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-v3-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-v3-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon-v3.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
   <link rel="stylesheet" href="css/style.min.css?v=21">
+  <link rel="stylesheet" href="/css/site-legacy.css?v=1">
 
   <!-- 4K Display Scaling -->
   <style>
@@ -235,20 +236,20 @@
       max-width: 400px;
       height: auto;
       border-radius: 6px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--line);
       box-shadow: 0 24px 60px rgba(0,0,0,.5);
       margin: 0 auto;
       display: block;
     }
     .cp-callouts { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
     .cp-callout {
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.06);
+      background: #fff;
+      border: 1px solid var(--line);
       border-radius: 14px;
       padding: 18px 20px;
     }
     .cp-callout h3 { margin: 0 0 6px; font-size: 1.02rem; display: flex; align-items: center; gap: 10px; }
-    .cp-callout p { color: rgba(255,255,255,.7); font-size: .92rem; line-height: 1.55; margin: 0; }
+    .cp-callout p { color:var(--muted); font-size: .92rem; line-height: 1.55; margin: 0; }
     .cp-callout .cp-num {
       flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%;
       background: linear-gradient(135deg, #F97316, #FACC15); color: #fff; font-size: .8rem; font-weight: 700;
@@ -259,7 +260,7 @@
     /* Plain-paper band */
     .cp-paper-band {
       background: linear-gradient(135deg, rgba(249,115,22,.10), rgba(250,204,21,.06));
-      border: 1px solid rgba(255,255,255,.08);
+      border: 1px solid var(--line);
       border-radius: var(--radius-lg);
       padding: 40px;
       max-width: 1040px;
@@ -272,19 +273,19 @@
     .cp-a4-figure {
       width: 140px; height: 198px; margin: 0 auto;
       border: 2px solid #FDBA74; border-radius: 6px;
-      background: rgba(255,255,255,.04);
+      background: #fff;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
     }
     .cp-a4-figure span { font-weight: 700; font-size: 1.6rem; color: var(--text); }
     .cp-a4-figure small { color: var(--text-muted); font-size: .72rem; margin-top: 4px; }
     .cp-paper-band h2 { margin: 0 0 12px; }
-    .cp-paper-band p { color: rgba(255,255,255,.78); margin: 0 0 14px; line-height: 1.65; }
+    .cp-paper-band p { color:var(--muted); margin: 0 0 14px; line-height: 1.65; }
     .cp-chips { display: flex; flex-wrap: wrap; gap: 10px; }
     .cp-chip {
-      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
+      background: #fff; border: 1px solid var(--line);
       border-radius: var(--radius-full); padding: 7px 16px; font-size: .85rem; color: var(--text);
     }
-    .cp-chip strong { color: #FDBA74; }
+    .cp-chip strong { color: #c2410c; }
     @media (max-width: 720px) { .cp-paper-band { grid-template-columns: 1fr; gap: 24px; padding: 28px; } }
 
     /* Use cases */
@@ -294,23 +295,23 @@
       gap: 20px;
     }
     .cp-usecase {
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.06);
+      background: #fff;
+      border: 1px solid var(--line);
       border-radius: 14px;
       padding: 24px;
     }
     .cp-usecase h3 { margin: 0 0 8px; font-size: 1.1rem; }
-    .cp-usecase p { color: rgba(255,255,255,.7); font-size: .95rem; line-height: 1.6; margin: 0; }
+    .cp-usecase p { color:var(--muted); font-size: .95rem; line-height: 1.6; margin: 0; }
   </style>
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="hDTsJjbsuIFfEsb2icX72w" async></script>
 </head>
-<body>
+<body class="ml">
 
   <!-- Navigation -->
   <nav class="nav" id="nav">
     <div class="nav-container">
       <a href="/" class="nav-logo">
-        <img class="logo-icon" src="images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="40" height="40">
+        <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="40" height="40">
         <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
       </a>
       <a href="https://www.photoboothguys.ie" target="_blank" rel="noopener" class="nav-brought-by">
@@ -693,7 +694,7 @@
       <div class="footer-content">
         <div class="footer-brand">
           <a href="/" class="nav-logo">
-            <img class="logo-icon" src="/images/boothledger-logo-80.webp?v=2" alt="BoothLedger" width="32" height="32">
+            <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="32" height="32">
             <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
           </a>
           <p class="footer-tagline">Professional photo booth software for event professionals worldwide.</p>
@@ -751,7 +752,7 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 PhotoBooth Guys. All rights reserved.</p>
-        <p><a href="mailto:info@photoboothguys.ie" style="color:rgba(255,255,255,.6);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:rgba(255,255,255,.6);text-decoration:none;">Privacy</a></p>
+        <p><a href="mailto:info@photoboothguys.ie" style="color:var(--muted);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;">Privacy</a></p>
       </div>
     </div>
   </footer>
