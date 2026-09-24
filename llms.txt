@@ -19,7 +19,9 @@ BoothLedger is a Windows photo booth application designed for professional event
 - [dslrBooth Alternative](https://boothledger.com/vs-dslrbooth): BoothLedger vs dslrBooth (LumaBooth) — features, DSLR support, AI, pricing, migration
 - [AI Background Removal vs Green Screen](https://boothledger.com/blog/ai-background-removal-vs-green-screen): How AI background removal compares to a physical green screen for photo booths
 - [Photo Booth Software for Canon](https://boothledger.com/blog/photo-booth-software-for-canon): Guide to running Canon DSLR and mirrorless cameras with photo booth software
-- [Photo Booth Software for Windows](https://boothledger.com/photobooth-software): Overview of the Windows photo booth software - DSLR and webcam capture, AI features, templates, printing and cloud galleries
+- [Photo Booth Software](https://boothledger.com/photobooth-software): Overview of BoothLedger photo booth software (also called a photo booth program) - what photo booth software does, DSLR and webcam capture, AI features, templates, printing and cloud galleries
+- [Photo Booth Software for Windows](https://boothledger.com/photo-booth-software-windows): Photo booth app for Windows 10/11 (64-bit) laptops, PCs, mini PCs and Windows tablets - system requirements, laptop vs mini-PC vs tablet setups, camera options (Canon DSLR or any USB webcam), setup steps and pricing
+- [DSLR Photo Booth Software](https://boothledger.com/dslr-photo-booth-software): DSLR photo booth software for Canon DSLR and mirrorless cameras - what a DSLR photo booth is, tethered live view and autofocus, requirements and setup; Nikon and Sony coming soon
 - [How to Start a Photo Booth Business](https://boothledger.com/blog/how-to-start-photo-booth-business): Complete guide to starting a photo booth business in 2026
 - [Best Photo Booth Software](https://boothledger.com/blog/best-photo-booth-software): Comparison of the 7 best photo booth software options in 2026
 
