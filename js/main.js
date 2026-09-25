@@ -7,6 +7,8 @@
 
   // --- Google Click ID (gclid) capture & persistence ---
   (function(){try{var KEY='__bl_gclid';var TTL=90*24*60*60*1000;var p=new URLSearchParams(window.location.search);var g=p.get('gclid');if(g){try{localStorage.setItem(KEY,JSON.stringify({v:g,t:Date.now()}));}catch(e){}}window.BL_getGclid=function(){try{var raw=localStorage.getItem(KEY);if(!raw)return '';var o=JSON.parse(raw);if(!o||!o.v||!o.t)return '';if(Date.now()-o.t>TTL){localStorage.removeItem(KEY);return '';}return o.v;}catch(e){return '';}};}catch(e){}})();
+  // Carry the gclid across to the BoothLedger Cloud sign-up page (different domain, so localStorage can't).
+  document.addEventListener('DOMContentLoaded',function(){try{var g=window.BL_getGclid&&window.BL_getGclid();if(!g)return;document.querySelectorAll('a[href*="boothledgercloud.photoboothguys.ie/user/register"]').forEach(function(a){try{var u=new URL(a.href);if(!u.searchParams.get('gclid')){u.searchParams.set('gclid',g);a.href=u.toString();}}catch(e){}});}catch(e){}});
 
 
   // --- Scroll-triggered fade-in animations ---

@@ -971,6 +971,7 @@
           display_name: displayName || undefined,
           country: country,
           vat_number: vatNumber || undefined,
+          gclid: (function(){try{var o=JSON.parse(localStorage.getItem('__bl_gclid')||'null');return (o&&o.v&&Date.now()-o.t<7776000000)?o.v:undefined;}catch(e){return undefined;}})(),
         }),
       });
 
