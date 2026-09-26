@@ -179,6 +179,17 @@
   <link rel="stylesheet" href="css/site.css?v=4">
   <script>document.documentElement.className += " js";</script>
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="hDTsJjbsuIFfEsb2icX72w" async></script>
+  <style>
+    .m-crm { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 36px; align-items: center; padding: 34px; overflow: hidden; }
+    .m-crm h2 { margin: 12px 0 12px; }
+    .m-crm ol { list-style: none; counter-reset: s; padding: 0; margin: 18px 0 22px; display: grid; gap: 10px; }
+    .m-crm li { counter-increment: s; display: grid; grid-template-columns: 28px 1fr; gap: 10px; color: var(--slate); font-size: 15px; line-height: 1.5; }
+    .m-crm li::before { content: counter(s); width: 26px; height: 26px; border-radius: 999px; background: var(--blue-50); color: var(--blue-700); font-weight: 800; font-size: 13px; display: grid; place-items: center; }
+    .m-crm li b { color: var(--ink); }
+    .m-crm-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .m-crm img { width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 30px 60px -30px rgba(15,23,42,.45); display: block; }
+    @media (max-width: 900px) { .m-crm { grid-template-columns: minmax(0, 1fr); padding: 22px; gap: 22px; } }
+  </style>
 </head>
 <body class="m">
 
@@ -197,6 +208,7 @@
         <li><a href="#features">Features</a></li>
         <li><a href="/ai-photo-booth">AI Photo Booth</a></li>
         <li><a href="#ecosystem">Ecosystem</a></li>
+        <li><a href="/photo-booth-crm">CRM</a></li>
         <li><a href="/pricing">Pricing</a></li>
         <li class="m-links-cta"><a href="https://boothledgercloud.photoboothguys.ie/user/login" target="_blank" rel="noopener noreferrer">Customer Login</a></li>
         <li class="m-links-cta"><a href="#download">Download Trial</a></li>
@@ -489,6 +501,34 @@
             Replay
           </button>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo booth CRM -->
+  <section class="m-sec" id="crm">
+    <div class="m-wrap">
+      <div class="m-card m-crm fade-in">
+        <div>
+          <span class="m-eyebrow"><span class="dot"></span>New &mdash; Photo booth CRM</span>
+          <h2 class="m-h2">From booking to booth <span class="soft">in one click.</span></h2>
+          <p class="m-lede">Quotes customers can book, deposits, invoices and staff scheduling &mdash; built into BoothLedger. Every booking becomes a booth event with the client&rsquo;s design and artwork ready to go.</p>
+          <ol>
+            <li><span><b>Send a quote.</b> The customer picks their booth and extras and pays a deposit.</span></li>
+            <li><span><b>They choose the design.</b> Their template, their wording and their logo, from their own booking page.</span></li>
+            <li><span><b>Create the event.</b> It syncs to the booth with their design and your settings.</span></li>
+          </ol>
+          <div class="m-crm-actions">
+            <a class="m-btn m-btn-primary" href="/photo-booth-crm">See the photo booth CRM</a>
+            <a class="m-btn m-btn-ghost" href="https://boothledgercloud.photoboothguys.ie/user/register">Try it free</a>
+          </div>
+        </div>
+        <a href="/photo-booth-crm" aria-label="See the photo booth CRM">
+          <img src="images/crm/photo-booth-crm-booking-linked-to-booth-event.webp"
+               srcset="images/crm/photo-booth-crm-booking-linked-to-booth-event-sm.webp 700w, images/crm/photo-booth-crm-booking-linked-to-booth-event.webp 1400w"
+               sizes="(max-width: 900px) 100vw, 640px" width="1400" height="875" loading="lazy"
+               alt="Photo booth CRM booking linked to its BoothLedger event with the client's print template">
+        </a>
       </div>
     </div>
   </section>
