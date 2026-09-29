@@ -29,6 +29,7 @@ BoothLedger is a Windows photo booth application designed for professional event
 - [Best Photo Booth Software](https://boothledger.com/blog/best-photo-booth-software): Comparison of the 7 best photo booth software options in 2026
 - [Photo Booth Software Languages](https://boothledger.com/blog/photo-booth-software-languages): BoothLedger runs in 11 languages: English, Spanish, French, German, Italian, Portuguese, Polish, Dutch, Filipino, Hindi and Bahasa Indonesia
 - [Software para fotomatón (Español)](https://boothledger.com/es/software-fotomaton): Spanish-language page. BoothLedger photo booth software, fully in Spanish, for Spain and Latin America
+- [Software para cabine de fotos (Português)](https://boothledger.com/pt/software-cabine-de-fotos): Portuguese-language page (Brazilian Portuguese). BoothLedger photo booth software, fully in Portuguese
 
 ## Key Features
 
