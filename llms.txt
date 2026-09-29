@@ -27,6 +27,7 @@ BoothLedger is a Windows photo booth application designed for professional event
 - [DSLR Photo Booth Software](https://boothledger.com/dslr-photo-booth-software): DSLR photo booth software for Canon DSLR and mirrorless cameras - what a DSLR photo booth is, tethered live view and autofocus, requirements and setup; Nikon and Sony coming soon
 - [How to Start a Photo Booth Business](https://boothledger.com/blog/how-to-start-photo-booth-business): Complete guide to starting a photo booth business in 2026
 - [Best Photo Booth Software](https://boothledger.com/blog/best-photo-booth-software): Comparison of the 7 best photo booth software options in 2026
+- [Photo Booth Software Languages](https://boothledger.com/blog/photo-booth-software-languages): BoothLedger runs in 11 languages: English, Spanish, French, German, Italian, Portuguese, Polish, Dutch, Filipino, Hindi and Bahasa Indonesia
 
 ## Key Features
 
