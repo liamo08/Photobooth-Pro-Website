@@ -334,6 +334,22 @@
     .register-only { display: none; }
     .modal-card[data-mode="register"] .register-only { display: block; }
 
+    /* Sign in: check the account first, then offer only the plans above it */
+    .modal-card[data-mode="login"]:not(.need-country) .tax-field { display: none !important; }
+    .modal-card.verified .cred-field { display: none; }
+    #planPicker { display: none; margin-bottom: 18px; }
+    .modal-card.verified #planPicker { display: block; }
+    .pp-head { font-size: 14px; line-height: 1.5; color: #334155; margin: 0 0 12px; }
+    .pp-head b { color: #0f172a; }
+    .pp-opt { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; padding: 14px 16px; margin-bottom: 8px; border: 1px solid #e2e8f0; border-radius: 12px; background: #fff; color: #0f172a; font: inherit; text-align: left; cursor: pointer; }
+    .pp-opt:hover { border-color: #c4b5fd; }
+    .pp-opt.sel { border-color: #7c3aed; background: #f5f3ff; box-shadow: 0 0 0 3px rgba(124,58,237,.15); }
+    .pp-opt .pp-name { font-weight: 600; font-size: 15px; }
+    .pp-opt .pp-tag { display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 100px; background: #7c3aed; color: #fff; font-size: 11px; font-weight: 700; vertical-align: 2px; }
+    .pp-opt .pp-price { font-weight: 700; white-space: nowrap; }
+    .pp-note { font-size: 13px; color: #64748b; margin: 4px 0 0; }
+    .pp-note a, .pp-head a { color: #7c3aed; font-weight: 600; }
+
     /* Submit */
     .modal-submit {
       width: 100%;
@@ -442,11 +458,11 @@
         <label for="m_name">Display Name</label>
         <input type="text" id="m_name" placeholder="Your name or business">
       </div>
-      <div class="modal-field">
+      <div class="modal-field cred-field">
         <label for="m_email">Email</label>
         <input type="email" id="m_email" placeholder="you@company.com" required>
       </div>
-      <div class="modal-field">
+      <div class="modal-field cred-field">
         <label for="m_password">Password</label>
         <input type="password" id="m_password" placeholder="Min. 6 characters" minlength="6" required>
       </div>
@@ -454,17 +470,18 @@
         <label for="m_confirm">Confirm Password</label>
         <input type="password" id="m_confirm" placeholder="Re-enter password">
       </div>
-      <div class="modal-field">
+      <div id="planPicker" aria-live="polite"></div>
+      <div class="modal-field tax-field">
         <label for="m_country">Country (for VAT)</label>
-        <select id="m_country" required onchange="updateVatHint()" style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;color:#fff;font:inherit;">
+        <select id="m_country" onchange="updateVatHint()" style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;color:#0f172a;font:inherit;">
           <option value="">Select your country…</option>
         </select>
       </div>
-      <div class="modal-field" id="vatField" style="display:none;">
+      <div class="modal-field tax-field" id="vatField" style="display:none;">
         <label for="m_vat">VAT number <span style="opacity:.6;font-weight:400;">(EU businesses — leave blank if you don't have one)</span></label>
         <input type="text" id="m_vat" placeholder="e.g. DE123456789" autocomplete="off">
       </div>
-      <p id="vatHint" style="margin:-4px 0 14px;font-size:12px;color:#9ca3af;line-height:1.5;">Prices shown exclude VAT.</p>
+      <p id="vatHint" class="tax-field" style="margin:-4px 0 14px;font-size:12px;color:#9ca3af;line-height:1.5;">Prices shown exclude VAT.</p>
 
       <button type="submit" class="modal-submit" id="modalSubmit">
         <div class="modal-spinner"></div>
@@ -831,6 +848,7 @@
     document.getElementById('modalPlanLabel').textContent = (PLAN_LABELS[labelKey] || labelKey) + curNote;
     clearError();
     document.getElementById('authForm').reset();
+    resetSignIn();
     updateVatHint();
     document.getElementById('authModal').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -858,6 +876,7 @@
     tabs[0].classList.toggle('active', mode === 'register');
     tabs[1].classList.toggle('active', mode === 'login');
     clearError();
+    resetSignIn();
 
     const footer = document.getElementById('modalFooter');
     if (mode === 'register') {
@@ -923,6 +942,55 @@
     if (b) { b.classList.remove('loading'); b.disabled = false; }
   });
 
+  // ── Sign in: check the account first, then offer only plans above the one
+  //    they already pay for (priced at their device count). ──
+  let signedIn = null;  // {email, password, options, needsCountry}
+  function setSubmitText(t) { document.querySelector('#modalSubmit .modal-submit-text').textContent = t; }
+  function resetSignIn() {
+    signedIn = null;
+    const card = document.querySelector('.modal-card');
+    card.classList.remove('verified', 'need-country');
+    document.getElementById('planPicker').innerHTML = '';
+    document.getElementById('modalSubmit').style.display = '';
+    setSubmitText(card.dataset.mode === 'login' ? 'Sign In' : 'Continue to Payment');
+  }
+  function esc(t) { return String(t == null ? '' : t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
+  function pickPlan(key) {
+    selectedPriceKey = key;
+    document.querySelectorAll('#planPicker .pp-opt').forEach(b => b.classList.toggle('sel', b.dataset.key === key));
+    const o = (signedIn.options || []).find(x => x.key === key);
+    if (o) document.getElementById('modalPlanLabel').textContent = o.label + (o.currency === 'USD' ? ' (USD)' : '');
+  }
+  function renderPlanPicker(data) {
+    const card = document.querySelector('.modal-card');
+    const box = document.getElementById('planPicker');
+    card.classList.add('verified');
+    card.classList.toggle('need-country', !!data.needs_country);
+    const manage = '<a href="' + esc(data.manage_url) + '">Go to my account</a>';
+    if (!data.options.length) {
+      box.innerHTML = '<p class="pp-head">Signed in as <b>' + esc(data.name) + '</b>.</p>'
+        + '<p class="pp-head">' + esc(data.message) + '</p><p class="pp-note">' + manage + '</p>';
+      document.getElementById('modalSubmit').style.display = 'none';
+      card.classList.remove('need-country');
+      return;
+    }
+    const head = data.current
+      ? 'You\'re on <b>' + esc(data.current.label) + '</b>. Upgrade to:'
+      : 'Signed in as <b>' + esc(data.name) + '</b>. Choose your plan:';
+    const note = data.message ? '<p class="pp-note" style="margin:-4px 0 10px;">' + esc(data.message) + '</p>' : '';
+    box.innerHTML = '<p class="pp-head">' + head + '</p>' + note + data.options.map(o =>
+      '<button type="button" class="pp-opt" data-key="' + esc(o.key) + '">'
+      + '<span class="pp-name">' + esc(o.label) + (o.recommended && data.current ? '<span class="pp-tag">Next step</span>' : '') + '</span>'
+      + '<span class="pp-price">' + esc(o.price_str) + '</span></button>').join('')
+      + (data.current ? '<p class="pp-note">Your current plan stays active until the new one is paid, and the days you have left carry over. ' + manage + '</p>' : '');
+    box.querySelectorAll('.pp-opt').forEach(b => b.addEventListener('click', () => pickPlan(b.dataset.key)));
+    // Keep the plan they clicked on the page if it's on offer; otherwise the next step up.
+    const keys = data.options.map(o => o.key);
+    pickPlan(keys.includes(selectedPriceKey) ? selectedPriceKey : keys[0]);
+    setSubmitText('Continue to Payment');
+    updateVatHint();
+  }
+
   async function handleAuthSubmit(e) {
     e.preventDefault();
     if (checkoutInFlight) return;
@@ -930,8 +998,32 @@
 
     const card = document.querySelector('.modal-card');
     const isRegister = card.dataset.mode === 'register';
-    const email = document.getElementById('m_email').value.trim();
-    const password = document.getElementById('m_password').value;
+
+    // Step 1 of sign in: check the password and fetch what they can buy.
+    if (!isRegister && !signedIn) {
+      const email = document.getElementById('m_email').value.trim();
+      const password = document.getElementById('m_password').value;
+      if (!email || !password) { showError('Please enter your email and password.'); return; }
+      const btn = document.getElementById('modalSubmit');
+      btn.classList.add('loading'); btn.disabled = true;
+      try {
+        const r = await fetch(`${API}/auth/plan-options`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password, currency }),
+        });
+        const data = await r.json().catch(() => ({}));
+        if (!r.ok) { showError(r.status === 429 ? 'Too many attempts. Please wait a moment and try again.' : (data.detail || 'Could not sign in. Please try again.')); return; }
+        signedIn = { email, password, options: data.options || [], needsCountry: !!data.needs_country };
+        renderPlanPicker(data);
+      } catch (err) {
+        showError('Network error. Please check your connection and try again.');
+      } finally {
+        btn.classList.remove('loading'); btn.disabled = false;
+      }
+      return;
+    }
+    const email = signedIn ? signedIn.email : document.getElementById('m_email').value.trim();
+    const password = signedIn ? signedIn.password : document.getElementById('m_password').value;
 
     if (!email || !password) {
       showError('Please fill in all fields.');
@@ -941,12 +1033,13 @@
       showError('Password must be at least 6 characters.');
       return;
     }
-    const country = document.getElementById('m_country').value;
-    if (!country) {
+    const askCountry = isRegister || (signedIn && signedIn.needsCountry);
+    const country = askCountry ? document.getElementById('m_country').value : '';
+    if (askCountry && !country) {
       showError('Please select your country so we can apply the right VAT.');
       return;
     }
-    const vatNumber = document.getElementById('m_vat').value.trim();
+    const vatNumber = askCountry ? document.getElementById('m_vat').value.trim() : '';
 
     let displayName = '';
     if (isRegister) {
@@ -978,7 +1071,7 @@
           price_key: selectedPriceKey,
           is_register: isRegister,
           display_name: displayName || undefined,
-          country: country,
+          country: country || undefined,
           vat_number: vatNumber || undefined,
           gclid: (function(){try{var o=JSON.parse(localStorage.getItem('__bl_gclid')||'null');return (o&&o.v&&Date.now()-o.t<7776000000)?o.v:undefined;}catch(e){return undefined;}})(),
         }),
