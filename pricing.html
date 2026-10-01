@@ -125,6 +125,8 @@
     .toggle-thumb { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; transition: transform .3s cubic-bezier(.16,1,.3,1); }
     .toggle-track.yearly .toggle-thumb { transform: translateX(24px); }
     .save-badge { display: inline-block; background: linear-gradient(135deg, var(--green), #059669); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 100px; letter-spacing: .03em; }
+    .save-badge:not(.on) { opacity: 0; visibility: hidden; }
+    .save-badge { transition: opacity .2s; }
 
     /* ── Cards ── */
     .pricing-cards { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 840px; margin: 0 auto; padding: 0 24px 80px; }
@@ -507,7 +509,7 @@
     <div class="toggle-thumb"></div>
   </div>
   <span class="toggle-label" id="yearlyLabel">Yearly</span>
-  <span class="save-badge">2 months free</span>
+  <span class="save-badge" id="saveBadge">2 months free</span>
 </div>
 
 <!-- Cards -->
@@ -577,9 +579,9 @@
       </div>
       <div style="flex:1 1 380px;display:grid;grid-template-columns:1fr 1fr;gap:10px;" id="prepaidGrid">
         <button type="button" class="card-cta card-cta--outline" style="margin:0;" onclick="handleSubscribe('basic_6mo'); return false;">Basic &middot; 6 months <span data-prepaid="basic_6mo">&euro;66</span></button>
-        <button type="button" class="card-cta card-cta--outline" style="margin:0;" onclick="handleSubscribe('basic_12mo'); return false;">Basic &middot; 12 months <span data-prepaid="basic_12mo">&euro;130</span></button>
+        <button type="button" class="card-cta card-cta--outline" style="margin:0;" onclick="handleSubscribe('basic_12mo'); return false;">Basic &middot; 12 months <span data-prepaid="basic_12mo">&euro;120</span></button>
         <button type="button" class="card-cta card-cta--primary" style="margin:0;" onclick="handleSubscribe('ai_6mo'); return false;">AI &middot; 6 months <span data-prepaid="ai_6mo">&euro;192</span></button>
-        <button type="button" class="card-cta card-cta--primary" style="margin:0;" onclick="handleSubscribe('ai_12mo'); return false;">AI &middot; 12 months <span data-prepaid="ai_12mo">&euro;380</span></button>
+        <button type="button" class="card-cta card-cta--primary" style="margin:0;" onclick="handleSubscribe('ai_12mo'); return false;">AI &middot; 12 months <span data-prepaid="ai_12mo">&euro;350</span></button>
       </div>
     </div>
     <p style="margin:14px 0 0;font-size:12px;color:#8a8f98;">Need more than 2 devices? Each extra device is 50% of the plan price; you can add one for the rest of your term at any time from Account &rarr; Devices.</p>
@@ -799,6 +801,8 @@
     toggle.classList.toggle('yearly', isYearly);
     monthlyLabel.classList.toggle('active', !isYearly);
     yearlyLabel.classList.toggle('active', isYearly);
+    toggle.setAttribute('aria-checked', String(isYearly));
+    document.getElementById('saveBadge').classList.toggle('on', isYearly);
     updatePrices();
   });
   toggle.addEventListener('keydown', (e) => {
