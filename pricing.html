@@ -967,6 +967,15 @@
     card.classList.add('verified');
     card.classList.toggle('need-country', !!data.needs_country);
     const manage = '<a href="' + esc(data.manage_url) + '">Go to my account</a>';
+    // A pay-once term they clicked on the page is kept as-is (the server
+    // refuses it for anyone with a live subscription, with its own message).
+    if (PREPAID_KEYS.has(selectedPriceKey.replace(/^usd_/, '')) && data.status === 'open') {
+      box.innerHTML = '<p class="pp-head">Signed in as <b>' + esc(data.name) + '</b>. You are paying once for <b>'
+        + esc(document.getElementById('modalPlanLabel').textContent) + '</b>. Nothing renews automatically.</p>';
+      setSubmitText('Continue to Payment');
+      updateVatHint();
+      return;
+    }
     if (!data.options.length) {
       box.innerHTML = '<p class="pp-head">Signed in as <b>' + esc(data.name) + '</b>.</p>'
         + '<p class="pp-head">' + esc(data.message) + '</p><p class="pp-note">' + manage + '</p>';
