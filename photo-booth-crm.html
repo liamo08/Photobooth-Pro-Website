@@ -290,7 +290,7 @@
         No copying jobs between a booking system and a booth app.
       </p>
       <div class="hero-actions fade-in">
-        <a href="https://boothledgercloud.photoboothguys.ie/user/register" class="btn btn-primary btn-lg">
+        <a href="https://boothledger.com/user/register" class="btn btn-primary btn-lg">
           Try the CRM free
         </a>
         <a href="/#download" class="btn btn-outline btn-lg">
@@ -573,7 +573,7 @@
           </div>
 
           <div class="download-actions" style="justify-content:center;flex-wrap:wrap;gap:12px;">
-            <a href="https://boothledgercloud.photoboothguys.ie/user/register" class="btn btn-primary btn-xl">Try the CRM free</a>
+            <a href="https://boothledger.com/user/register" class="btn btn-primary btn-xl">Try the CRM free</a>
             <button class="btn btn-outline btn-xl" id="downloadBtn">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -627,7 +627,7 @@
         </details>
         <details class="faq-item">
           <summary>How much does the photo booth CRM cost?</summary>
-          <p>The photo booth CRM is included with BoothLedger. Plans start at &euro;12/month with a free 30-day trial &mdash; see <a href="/pricing">pricing &rarr;</a>. <a href="https://boothledgercloud.photoboothguys.ie/user/register">Create a free account</a> and try the CRM with sample data straight away.</p>
+          <p>The photo booth CRM is included with BoothLedger. Plans start at &euro;12/month with a free 30-day trial &mdash; see <a href="/pricing">pricing &rarr;</a>. <a href="https://boothledger.com/user/register">Create a free account</a> and try the CRM with sample data straight away.</p>
         </details>
       </div>
     </div>
@@ -696,7 +696,7 @@
             <a href="/#faq">FAQ</a>
             <a href="https://www.instagram.com/booth_ledger" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="mailto:info@photoboothguys.ie">Contact</a>
-            <a href="https://boothledgercloud.photoboothguys.ie/user/login" target="_blank" rel="noopener noreferrer">Customer Login</a>
+            <a href="https://boothledger.com/user/login" target="_blank" rel="noopener noreferrer">Customer Login</a>
           </div>
         </div>
       </div>
@@ -724,10 +724,10 @@
         duration: dur || Math.round((Date.now() - start) / 1000)
       };
       if (navigator.sendBeacon) {
-        navigator.sendBeacon("https://boothledgercloud.photoboothguys.ie/api/v1/analytics/track",
+        navigator.sendBeacon("https://boothledger.com/api/v1/analytics/track",
           new Blob([JSON.stringify(data)], {type: "application/json"}));
       } else {
-        fetch("https://boothledgercloud.photoboothguys.ie/api/v1/analytics/track", {
+        fetch("https://boothledger.com/api/v1/analytics/track", {
           method: "POST", body: JSON.stringify(data),
           headers: {"Content-Type": "application/json"}, keepalive: true
         }).catch(function(){});

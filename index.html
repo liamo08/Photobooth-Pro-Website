@@ -211,11 +211,11 @@
         <li><a href="#ecosystem">Ecosystem</a></li>
         <li><a href="/photo-booth-crm">CRM</a></li>
         <li><a href="/pricing">Pricing</a></li>
-        <li class="m-links-cta"><a href="https://boothledgercloud.photoboothguys.ie/user/login" target="_blank" rel="noopener noreferrer">Customer Login</a></li>
+        <li class="m-links-cta"><a href="https://boothledger.com/user/login" target="_blank" rel="noopener noreferrer">Customer Login</a></li>
         <li class="m-links-cta"><a href="#download">Download Trial</a></li>
       </ul>
       <div class="m-nav-right">
-        <a class="m-btn m-btn-ghost m-btn-sm m-login" href="https://boothledgercloud.photoboothguys.ie/user/login" target="_blank" rel="noopener noreferrer">Customer Login</a>
+        <a class="m-btn m-btn-ghost m-btn-sm m-login" href="https://boothledger.com/user/login" target="_blank" rel="noopener noreferrer">Customer Login</a>
         <a class="m-btn m-btn-primary m-btn-sm m-dl-cta" href="#download">Download Trial</a>
         <button class="m-toggle" id="navToggle" aria-label="Toggle menu" aria-controls="navLinks"><span></span><span></span><span></span></button>
       </div>
@@ -446,7 +446,7 @@
             <span class="m-kicker">Behind the scenes</span>
             <h3>BoothLedger Cloud</h3>
             <p>Cloud backend &amp; storage. Create and configure events, manage galleries, templates, devices and AI credits from any browser.</p>
-            <a href="https://boothledgercloud.photoboothguys.ie/user/login" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-ghost m-btn-sm">
+            <a href="https://boothledger.com/user/login" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-ghost m-btn-sm">
               Customer login
               <svg class="m-i" viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -474,7 +474,7 @@
             <span class="m-kicker">In guests&rsquo; hands</span>
             <h3>BoothLedger Share</h3>
             <p>A guest share station on any tablet, phone or laptop: guests browse the event gallery and send photos to themselves by SMS, email, QR code or download &mdash; no queue at the booth.</p>
-            <a href="https://boothledgercloud.photoboothguys.ie/user/register" class="m-btn m-btn-primary m-btn-sm">Create a free account</a>
+            <a href="https://boothledger.com/user/register" class="m-btn m-btn-primary m-btn-sm">Create a free account</a>
           </div>
         </article>
       </div>
@@ -521,7 +521,7 @@
           </ol>
           <div class="m-crm-actions">
             <a class="m-btn m-btn-primary" href="/photo-booth-crm">See the photo booth CRM</a>
-            <a class="m-btn m-btn-ghost" href="https://boothledgercloud.photoboothguys.ie/user/register">Try it free</a>
+            <a class="m-btn m-btn-ghost" href="https://boothledger.com/user/register">Try it free</a>
           </div>
         </div>
         <a href="/photo-booth-crm" aria-label="See the photo booth CRM">
@@ -776,7 +776,7 @@
             <a href="/#faq">FAQ</a>
             <a href="https://www.instagram.com/booth_ledger" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="mailto:info@photoboothguys.ie">Contact</a>
-            <a href="https://boothledgercloud.photoboothguys.ie/user/login" target="_blank" rel="noopener noreferrer">Customer Login</a>
+            <a href="https://boothledger.com/user/login" target="_blank" rel="noopener noreferrer">Customer Login</a>
           </div>
         </div>
       </div>
@@ -805,10 +805,10 @@
         duration: dur || Math.round((Date.now() - start) / 1000)
       };
       if (navigator.sendBeacon) {
-        navigator.sendBeacon("https://boothledgercloud.photoboothguys.ie/api/v1/analytics/track",
+        navigator.sendBeacon("https://boothledger.com/api/v1/analytics/track",
           new Blob([JSON.stringify(data)], {type: "application/json"}));
       } else {
-        fetch("https://boothledgercloud.photoboothguys.ie/api/v1/analytics/track", {
+        fetch("https://boothledger.com/api/v1/analytics/track", {
           method: "POST", body: JSON.stringify(data),
           headers: {"Content-Type": "application/json"}, keepalive: true
         }).catch(function(){});

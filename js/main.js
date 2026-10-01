@@ -123,7 +123,7 @@
       // Track download click
       try {
         navigator.sendBeacon(
-          'https://boothledgercloud.photoboothguys.ie/api/v1/analytics/track-download',
+          'https://boothledger.com/api/v1/analytics/track-download',
           new Blob([JSON.stringify({referrer: document.referrer || '', gclid: (typeof window.BL_getGclid === 'function' ? window.BL_getGclid() : '')})], {type: 'application/json'})
         );
       } catch(e) {}
@@ -476,7 +476,7 @@
     if (!email) return;
     btn.textContent = "Subscribing...";
     btn.disabled = true;
-    fetch("https://boothledgercloud.photoboothguys.ie/api/v1/newsletter/subscribe", {
+    fetch("https://boothledger.com/api/v1/newsletter/subscribe", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: email })
