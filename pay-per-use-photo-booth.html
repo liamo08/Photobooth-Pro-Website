@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2L4B7DR1YK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2L4B7DR1YK');
+    gtag('config', 'AW-755417118');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pay-Per-Use Photo Booth Software for Venues | BoothLedger</title>
+  <meta name="description" content="Pay-per-use photo booth software for pubs, nightclubs, tourist attractions and Santa's grottos. Guests tap a card or insert coins to start, credits come back if a session is cancelled, and card and coin payments go straight to you.">
+  <meta name="keywords" content="pay per use photo booth, pay per use photo booth software, unattended photo booth software, coin operated photo booth software, card payment photo booth, contactless photo booth, Nayax photo booth, self service photo booth, photo booth for pubs, photo booth for bars, nightclub photo booth, tourist attraction photo booth, santa's grotto photo booth, photo booth revenue share, photo booth webhooks, photo booth API">
+  <meta name="author" content="BoothLedger">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://boothledger.com/pay-per-use-photo-booth">
+  <link rel="alternate" hreflang="en" href="https://boothledger.com/pay-per-use-photo-booth">
+  <link rel="alternate" hreflang="x-default" href="https://boothledger.com/pay-per-use-photo-booth">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pay-Per-Use Photo Booth Software for Venues | BoothLedger">
+  <meta property="og:description" content="Put a booth in a pub, club, attraction or grotto and let it earn on its own. Card and coin payments before each session, credits back if cancelled, lights on the countdown, every session to Zapier or your CRM. No commission on card and coin payments.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://boothledger.com/pay-per-use-photo-booth">
+  <meta property="og:site_name" content="BoothLedger">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://boothledger.com/images/boothledger-logo-full.png">
+  <meta property="og:image:width" content="2000">
+  <meta property="og:image:height" content="2000">
+  <meta property="og:image:alt" content="BoothLedger pay-per-use photo booth software">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pay-Per-Use Photo Booth Software | BoothLedger">
+  <meta name="twitter:description" content="Card and coin payments with no commission, lights and effects, webhooks and a local API for unattended photo booths in venues.">
+  <meta name="twitter:image" content="https://boothledger.com/images/boothledger-logo-full.png">
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "BoothLedger Pay-Per-Use Photo Booth",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Windows 10, Windows 11",
+    "description": "Pay-per-use photo booth software for venues. Guests pay by card or coin before each session (pay to play, in beta), the booth switches lights, relays and Home Assistant at each moment of a session, BoothLedger sends signed webhooks to Zapier, Make or any https address, and a local control API lets venue systems start sessions and add credits.",
+    "url": "https://boothledger.com/pay-per-use-photo-booth",
+    "image": "https://boothledger.com/images/boothledger-logo-full.png",
+    "offers": {
+      "@type": "AggregateOffer",
+      "offerCount": "2",
+      "lowPrice": "12",
+      "highPrice": "35",
+      "priceCurrency": "EUR",
+      "description": "Free 30-day trial. Plans from EUR 12/month. Integrations (pay to play, triggers, webhooks and the control API) are part of the AI Photobooth plan at EUR 35/month."
+    },
+    "featureList": [
+      "Pay to Play: card or coin payment before each session (beta)",
+      "No commission on card-reader and coin payments",
+      "Nayax VPOS Touch support in pulse mode",
+      "Coin and note acceptors via a pulse-to-USB adapter",
+      "Credits returned automatically if a session is cancelled before the first photo",
+      "Triggers for WLED lights, Shelly relays and Home Assistant",
+      "Signed webhooks to Zapier, Make, CRMs or your own server",
+      "Local control API: status, start session, lock, unlock, add credits",
+      "HMAC-SHA256 signed payloads",
+      "Works offline on the venue network",
+      "Guest screens in 11 languages"
+    ],
+    "author": {
+      "@type": "Organization",
+      "name": "BoothLedger",
+      "url": "https://boothledger.com"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a pay-per-use photo booth?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A pay-per-use photo booth, also called a self-service or unattended booth, runs without an attendant and charges guests before each session. Guests walk up, start a session on the touchscreen, take their photos and get them printed or sent to their phone. BoothLedger adds what an unattended booth in a venue needs: payment before each session, lights and effects that react to the session, and a record of every session sent to your own systems."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can guests pay by card at the photo booth?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, with pay to play, which is in beta. A Nayax VPOS Touch card reader in pulse mode connects to the booth PC through a pulse-to-USB keyboard adapter. Each successful payment adds credits, and the booth shows \"Tap your card to start\" until a session is paid for. Test it before you rely on it at a live venue."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work with a coin or note acceptor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Any coin or note acceptor with a pulse output can feed the booth through a pulse-to-USB keyboard adapter set to send F13. One pulse is one credit, and you choose how many credits a session costs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if a guest pays and the session fails?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Credits are only taken when the session really starts, and they are given back automatically if the session ends before the first photo, whether it was cancelled, hit an error or the app closed. The balance is saved on the booth PC, so a restart loses nothing and the next guest tap starts a session. Pulse mode is one-way, so the card payment itself is not voided automatically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does BoothLedger take a commission on card or coin payments?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. With a Nayax reader in pulse mode, or a coin or note acceptor, the money goes straight to you: card payments land in your own Nayax merchant account, and BoothLedger only counts the credits. Nayax charges its own fees and you need a Nayax account."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can the photo booth control lights, smart plugs or effects?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Triggers make the booth call devices on the venue network at moments in a session, such as session start, countdown, photo taken, print and session end. There are presets for WLED LED controllers, Shelly relays and Home Assistant, and any other web address works too. The booth calls the device directly, so triggers keep working without internet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can BoothLedger send sessions and photos to Zapier, Make or our CRM?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Webhooks from BoothLedger send each moment to any https address, including Zapier and Make. A photo uploaded webhook includes the guest's share link, so you can log photos to a Google Sheet, post to Slack or add a CRM record. Failed deliveries retry for about a day and every delivery is listed so you can resend it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a photo booth API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The booth runs a local control API that venue systems can call with a token: read the booth's status, start a photo, boomerang or video session, lock and unlock the booth, and add paid credits with a unique payment id so a payment is never counted twice. It listens only on the booth PC unless you turn on network access."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are photo booth integrations secure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every webhook and signed trigger carries an HMAC-SHA256 signature so the receiver can prove it came from your booth. The control API needs a token, refuses requests from web pages and only listens on the booth PC by default. Webhooks only go to public https addresses and their secrets are stored encrypted. If the booth cannot confirm your plan, for example while offline, pay to play stays on rather than giving sessions away."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I run a photo booth at a Santa's grotto or Christmas market?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Charge per session at the booth by card or coin, or let staff add a free session from the booth's settings for families who paid at the till. Triggers can switch fairy lights or a smart plug on the countdown, and families get their photo printed and on their phone by QR code."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does a self-service photo booth work offline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Pay to play, triggers and the control API all run on the booth itself, so they work without internet. Photos and moments are sent to BoothLedger when the connection comes back, and webhooks go out from there."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which BoothLedger plan includes integrations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pay to play, triggers, webhooks and the control API are part of the AI Photobooth plan at EUR 35 a month, and you can try them in the free 30-day trial. Integrations are in early access while they roll out, so email info@photoboothguys.ie to have them switched on for your account."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema: BreadcrumbList -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://boothledger.com/"},{"@type":"ListItem","position":2,"name":"Pay-Per-Use Photo Booth","item":"https://boothledger.com/pay-per-use-photo-booth"}]}</script>
+
+  <!-- Schema: Organization -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"BoothLedger","url":"https://boothledger.com/","logo":{"@type":"ImageObject","url":"https://boothledger.com/images/boothledger-logo-full.png","width":1000,"height":1000},"description":"Professional photo booth software for event professionals worldwide","sameAs":["https://www.instagram.com/booth_ledger"]}</script>
+
+  <link rel="icon" type="image/x-icon" href="images/favicon-v3.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-v3-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-v3-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon-v3.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+  <link rel="stylesheet" href="css/style.min.css?v=21">
+  <link rel="stylesheet" href="/css/site-legacy.css?v=2">
+
+  <!-- 4K Display Scaling -->
+  <style>
+    @media (min-width: 2400px) {
+      .container { max-width: 2200px !important; padding: 0 60px !important; }
+      .compare-section, .blog-body, .blog-article, article { max-width: 1400px !important; }
+      .section-title, h2 { font-size: 52px !important; }
+      .section-subtitle { font-size: 20px !important; }
+      h1 { font-size: 64px !important; }
+      h3 { font-size: 24px !important; }
+      p, li, td, th, summary { font-size: 18px !important; line-height: 1.7 !important; }
+      .btn, button[type="submit"] { font-size: 18px !important; padding: 16px 32px !important; }
+      .nav-links a { font-size: 18px !important; }
+      .logo-text { font-size: 26px !important; }
+      .nav-container { max-width: 2200px !important; }
+      .section-tag, .badge { font-size: 16px !important; }
+    }
+    @media (min-width: 3600px) {
+      .container { max-width: 3000px !important; padding: 0 120px !important; }
+      .section-title, h2 { font-size: 72px !important; }
+      .section-subtitle { font-size: 28px !important; }
+      h1 { font-size: 88px !important; line-height: 1.05 !important; }
+      h3 { font-size: 32px !important; }
+      p, li, td, th, summary { font-size: 22px !important; line-height: 1.8 !important; }
+      .btn, button[type="submit"] { font-size: 22px !important; padding: 22px 44px !important; }
+      .nav-links a { font-size: 22px !important; }
+      .logo-text { font-size: 32px !important; }
+    }
+
+    /* Self-service page specific styling */
+    .ss-flow {
+      display: grid;
+      grid-template-columns: 1fr auto 1.1fr auto 1fr;
+      align-items: center;
+      gap: 14px;
+      max-width: 980px;
+      margin: 40px auto 0;
+      text-align: left;
+    }
+    .ss-col { display: grid; gap: 10px; }
+    .ss-chip {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: .92rem;
+      line-height: 1.35;
+      box-shadow: 0 6px 18px rgba(15,23,42,.05);
+    }
+    .ss-chip strong { display: block; font-size: .95rem; }
+    .ss-chip span { color: var(--muted); font-size: .82rem; }
+    .ss-booth {
+      border-radius: 18px;
+      padding: 22px 20px;
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(135deg, #6d28d9, #a21caf);
+      box-shadow: 0 20px 50px rgba(109,40,217,.28);
+    }
+    .ss-booth strong { display: block; font-size: 1.15rem; margin-bottom: 4px; }
+    .ss-booth span { font-size: .85rem; opacity: .9; }
+    .ss-arrow { color: var(--muted); font-size: 1.6rem; line-height: 1; }
+    @media (max-width: 760px) {
+      .hero .hero-content { padding-left: 16px; padding-right: 16px; }
+      .ss-flow { grid-template-columns: 1fr; }
+      .ss-arrow { transform: rotate(90deg); justify-self: center; }
+    }
+    .ss-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
+    .ss-stat { font-size: 24px; font-weight: 700; background: linear-gradient(90deg,#6d28d9,#a21caf); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .ss-stat-label { color: var(--muted); font-size: 12px; letter-spacing: .04em; }
+    @media (max-width: 760px) { .ss-stats { grid-template-columns: repeat(2, 1fr); } }
+    .ss-beta {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      vertical-align: middle;
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .ss-note {
+      max-width: 820px;
+      margin: 28px auto 0;
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 1px solid #fde68a;
+      background: #fffbeb;
+      color: #78350f;
+      font-size: .95rem;
+      line-height: 1.6;
+      text-align: left;
+    }
+    .ss-note a { color: #92400e; font-weight: 600; }
+    .ss-usecases {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .ss-usecase {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .ss-usecase h3 { margin: 0 0 8px; font-size: 1.1rem; }
+    .ss-usecase p { color: var(--muted); font-size: .95rem; line-height: 1.6; margin: 0; }
+    .ss-steps {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      counter-reset: ss;
+      display: grid;
+      gap: 14px;
+    }
+    .ss-steps li {
+      counter-increment: ss;
+      position: relative;
+      padding: 18px 20px 18px 64px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      line-height: 1.6;
+    }
+    .ss-steps li::before {
+      content: counter(ss);
+      position: absolute;
+      left: 18px;
+      top: 16px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, #6d28d9, #a21caf);
+    }
+    .ss-code {
+      max-width: 820px;
+      margin: 24px auto 0;
+      padding: 18px 20px;
+      border-radius: 14px;
+      background: #0f172a;
+      color: #e2e8f0;
+      font: 13px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace;
+      overflow-x: auto;
+      white-space: pre;
+    }
+  </style>
+  <script src="https://analytics.ahrefs.com/analytics.js" data-key="hDTsJjbsuIFfEsb2icX72w" async></script>
+</head>
+<body class="ml">
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="40" height="40">
+        <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
+      </a>
+      <a href="https://www.photoboothguys.ie" target="_blank" rel="noopener" class="nav-brought-by">
+        <span>Brought to you by</span>
+        <img src="images/photobooth-guys-logo.webp" width="31" height="28" alt="PhotoBooth Guys">
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/ai-photo-booth">AI Effects</a></li>
+        <li><a href="/ai-video-booth">AI Video</a></li>
+        <li><a href="/#ecosystem">Ecosystem</a></li>
+        <li><a href="/photo-booth-crm">CRM</a></li>
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/#download" class="nav-cta">Download Trial</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" style="padding-bottom:24px;">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-badge fade-in">
+        <span class="badge-dot"></span>
+        New: pay to play (beta), triggers, webhooks &amp; API
+      </div>
+      <h1 class="hero-title fade-in">
+        Pay-Per-Use Photo Booth Software<br>
+        <span class="gradient-text">for Pubs, Attractions &amp; Grottos</span>
+      </h1>
+      <p class="hero-subtitle fade-in">
+        Put a self-service booth in a pub, nightclub, tourist attraction or Santa&rsquo;s grotto and
+        let it earn on its own. Guests tap a card or drop in coins before each session, the booth fires
+        your lights on the countdown, and every session can flow to Zapier, Make or your own systems.
+        Card and coin payments go straight to you, with no commission to us.
+      </p>
+      <div class="hero-actions fade-in">
+        <a href="mailto:info@photoboothguys.ie?subject=Integrations%20early%20access" class="btn btn-primary btn-lg">
+          Request Early Access
+        </a>
+        <a href="#how-it-works" class="btn btn-outline btn-lg">
+          See How It Works
+        </a>
+      </div>
+
+      <div class="ss-flow fade-in" aria-label="How the booth connects: payments come in, the booth runs the session, lights, webhooks and your systems react">
+        <div class="ss-col">
+          <div class="ss-chip"><strong>Card reader</strong><span>Nayax VPOS Touch, pulse mode</span></div>
+          <div class="ss-chip"><strong>Coin or note acceptor</strong><span>Via a pulse-to-USB adapter</span></div>
+          <div class="ss-chip"><strong>Your till or app</strong><span>Adds credits through the API</span></div>
+        </div>
+        <div class="ss-arrow" aria-hidden="true">&rarr;</div>
+        <div class="ss-booth"><strong>BoothLedger booth</strong><span>&ldquo;Tap your card to start&rdquo; &rarr; photos &rarr; print &amp; QR</span></div>
+        <div class="ss-arrow" aria-hidden="true">&rarr;</div>
+        <div class="ss-col">
+          <div class="ss-chip"><strong>Lights &amp; relays</strong><span>WLED, Shelly, Home Assistant</span></div>
+          <div class="ss-chip"><strong>Zapier &amp; Make</strong><span>Signed webhooks from BoothLedger</span></div>
+          <div class="ss-chip"><strong>Your systems</strong><span>Sheets, Slack, CRM, reports</span></div>
+        </div>
+      </div>
+
+      <div class="ss-note fade-in">
+        <strong>Early access.</strong> Integrations are rolling out now on the AI Photobooth plan.
+        Pay to play is in <strong>beta</strong>: test it before you rely on it at a live venue.
+        <a href="mailto:info@photoboothguys.ie?subject=Integrations%20early%20access">Email us</a> and we&rsquo;ll switch them on for your account.
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Stats -->
+  <section style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#f4f6fa;padding:28px 0;">
+    <div class="container ss-stats">
+      <div><div class="ss-stat">0%</div><div class="ss-stat-label">Commission on card &amp; coin sales</div></div>
+      <div><div class="ss-stat">Credits back</div><div class="ss-stat-label">If cancelled before the first photo</div></div>
+      <div><div class="ss-stat">Offline</div><div class="ss-stat-label">Payments, lights &amp; API need no internet</div></div>
+      <div><div class="ss-stat">Signed</div><div class="ss-stat-label">HMAC-SHA256 on every webhook</div></div>
+    </div>
+  </section>
+
+  <!-- What it does -->
+  <section class="features" id="features" style="padding-top:64px;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Integrations</span>
+        <h2 class="section-title">Four Ways Your Booth<br><span class="gradient-text">Connects to the Venue</span></h2>
+        <p class="section-subtitle">An unattended booth needs more than a camera and a printer. It has to take the money, put on a show and tell you what happened. BoothLedger does all three from the same Windows app you already run.</p>
+      </div>
+
+      <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          </div>
+          <h3>Pay to Play <span class="ss-beta">Beta</span></h3>
+          <p>Charge for every session. A Nayax card reader or a coin acceptor adds credits, the booth shows &ldquo;Tap your card to start&rdquo; until the session is paid for, and credits come back automatically if a session is cancelled before the first photo. The money goes to your own merchant account, with no commission to us.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>
+          </div>
+          <h3>Lights &amp; Effects</h3>
+          <p>Triggers switch things on at moments in a session: an LED strip goes bright white on the countdown, a relay fires a bubble machine on each photo, Home Assistant dims the room. Presets for WLED, Shelly and Home Assistant. Works without internet.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <h3>Webhooks</h3>
+          <p>BoothLedger sends each session moment to Zapier, Make, your CRM or your own server, including the guest&rsquo;s share link when a photo uploads. Signed, retried for about a day if your server is down, and every delivery is logged.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3>Control API</h3>
+          <p>A local API on the booth for venue systems, a Stream Deck or a phone shortcut: check status, start a session, lock the booth between bookings and add paid credits. Token-protected, and each payment id only ever counts once.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Venues -->
+  <section class="features" id="venues" style="padding-top:64px;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Venues</span>
+        <h2 class="section-title">Where a Pay-Per-Use<br><span class="gradient-text">Photo Booth Earns</span></h2>
+        <p class="section-subtitle">Anywhere people gather, celebrate or queue, a booth that takes its own payments turns spare floor space into income, without anyone standing beside it.</p>
+      </div>
+
+      <div class="ss-usecases fade-in">
+        <div class="ss-usecase">
+          <h3>Pubs &amp; Bars</h3>
+          <p>A card-operated booth by the bar for birthdays, leaving dos and match nights. Log every session to a Google Sheet with a webhook and the revenue-share report with the landlord writes itself.</p>
+        </div>
+        <div class="ss-usecase">
+          <h3>Nightclubs</h3>
+          <p>Groups pay by card, the LED strip goes white on the countdown and back to club colours when the session ends. Guests scan a QR code for their photos before they&rsquo;ve left the booth.</p>
+        </div>
+        <div class="ss-usecase">
+          <h3>Tourist Attractions &amp; Landmarks</h3>
+          <p>A souvenir photo at the viewpoint, the castle gate or the gift shop. Contactless payment suits overseas visitors, and the guest screens speak <a href="/blog/photo-booth-software-languages" style="color:var(--accent);">11 languages</a>.</p>
+        </div>
+        <div class="ss-usecase">
+          <h3>Santa&rsquo;s Grotto &amp; Christmas Markets</h3>
+          <p>Families pay at the booth, or staff add a free session for those who paid at the till. A smart plug switches the fairy lights on the countdown, and the photo prints while Santa waves goodbye.</p>
+        </div>
+        <div class="ss-usecase">
+          <h3>Shopping Centres &amp; Retail</h3>
+          <p>A branded booth in the mall or a flagship store. Webhooks count sessions per day for the landlord or the brand, and photos land in the brand&rsquo;s gallery with <a href="/photo-booth-data-capture" style="color:var(--accent);">opt-in data capture</a>.</p>
+        </div>
+        <div class="ss-usecase">
+          <h3>Arcades &amp; Family Entertainment</h3>
+          <p>Sits next to the other machines and takes coins or cards the same way. One pulse is one credit, and you set how many credits a session costs.</p>
+        </div>
+        <div class="ss-usecase">
+          <h3>Hotels &amp; Wedding Venues</h3>
+          <p>A permanent booth in the function room that couples can add to their package. Lock it through the API between bookings so nobody wanders in for a free go.</p>
+        </div>
+        <div class="ss-usecase">
+          <h3>Zoos, Museums &amp; Visitor Centres</h3>
+          <p>Drop visitors into an exhibit with <a href="/ai-photo-booth" style="color:var(--accent);">AI backgrounds</a>, take the payment at the booth, and send each photo&rsquo;s link to your visitor CRM.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How pay to play works -->
+  <section class="features" id="how-it-works" style="padding-top:64px;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">How It Works</span>
+        <h2 class="section-title">Pay to Play,<br><span class="gradient-text">Step by Step</span></h2>
+        <p class="section-subtitle">Pay to play is in beta. Set it up and test it at home or in the office before you put it in front of the public.</p>
+      </div>
+
+      <ol class="ss-steps fade-in">
+        <li><strong>Set the price.</strong> Turn on <em>Charge for sessions</em> and choose how many credits a session costs, on the booth or on BoothLedger for the whole event.</li>
+        <li><strong>Connect the payment device.</strong> Put a Nayax VPOS Touch in pulse mode, or use a coin or note acceptor, and wire its pulse output to a pulse-to-USB keyboard adapter that sends F13. Each pulse adds one credit.</li>
+        <li><strong>The guest pays.</strong> The booth shows &ldquo;Tap your card to start&rdquo;. Once enough credits arrive, the start screen opens.</li>
+        <li><strong>The session runs.</strong> Credits are taken when the session really starts. If it&rsquo;s cancelled, fails or the app closes before the first photo, the credits go straight back.</li>
+        <li><strong>Everything is recorded.</strong> Each credit and session can fire a trigger on the venue network and a webhook from BoothLedger, so your lights, sheets and reports keep up on their own.</li>
+      </ol>
+
+      <div class="ss-code fade-in" aria-label="Example webhook payload">{"v":1, "type":"session.started", "at":"2026-12-12T18:00:00Z",
+ "event":{"id":"&hellip;", "cloud_id":"&hellip;"},
+ "session":"&hellip;", "test":false,
+ "data":{"mode":"photo", "photo_count":3}}
+
+X-BoothLedger-Signature: t=&lt;unix time&gt;,v1=&lt;HMAC-SHA256&gt;</div>
+    </div>
+  </section>
+
+  <!-- Security -->
+  <section class="features" id="security" style="padding-top:64px;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Built Secure</span>
+        <h2 class="section-title">Connected Without<br><span class="gradient-text">Leaving the Door Open</span></h2>
+        <p class="section-subtitle">A booth in a public venue is on someone else&rsquo;s network, in front of strangers. The integrations were built with that in mind.</p>
+      </div>
+
+      <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+        <div class="feature-card fade-in">
+          <h3>Signed Messages</h3>
+          <p>Webhooks and signed triggers carry an HMAC-SHA256 signature and a timestamp, so your server can prove a message came from your booth and reject old ones replayed later.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <h3>Locked-Down API</h3>
+          <p>The control API needs a token, refuses calls from web pages and listens only on the booth PC until you choose to open it to the venue network.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <h3>Safe Webhook Targets</h3>
+          <p>Webhooks only go to public https addresses, never into a private network. Signing secrets are stored encrypted and can be rotated at any time.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <h3>Fails Closed</h3>
+          <p>If the booth can&rsquo;t confirm your plan, for example while offline, pay to play stays on. A dropped connection never turns a paid booth into a free one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download CTA -->
+  <section class="download" id="download" style="padding-top:64px;">
+    <div class="container">
+      <div class="download-card fade-in">
+        <div class="download-content">
+          <span class="section-tag">Start Free</span>
+          <h2>Run a Pay-Per-Use<br><span class="gradient-text">Photo Booth</span></h2>
+          <p>30-day free trial, no credit card. Integrations are part of the AI Photobooth plan (&euro;35/month) and are in early access: <a href="mailto:info@photoboothguys.ie?subject=Integrations%20early%20access" style="color:var(--accent);">email us</a> to switch them on.</p>
+
+          <div class="download-checks">
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Card &amp; coin pay to play (beta)</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Lights, relays &amp; Home Assistant</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Zapier &amp; Make webhooks</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Local control API</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Print, QR &amp; SMS sharing</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Guest screens in 11 languages</span>
+            </div>
+          </div>
+
+          <div class="download-actions" style="justify-content:center;">
+            <button class="btn btn-primary btn-xl" id="downloadBtn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download Free Trial
+            </button>
+            <span class="download-version" id="downloadVersion">Windows 10/11 &middot; 64-bit &middot; Free 30-day trial</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">FAQ</span>
+        <h2 class="section-title">Pay-Per-Use Photo Booth<br><span class="gradient-text">Questions Answered</span></h2>
+      </div>
+      <div class="faq-list fade-in">
+        <details class="faq-item">
+          <summary>What is a pay-per-use photo booth?</summary>
+          <p>A pay-per-use photo booth, also called a self-service or unattended booth, runs without an attendant and charges guests before each session. Guests walk up, start a session on the touchscreen, take their photos and get them printed or sent to their phone. BoothLedger adds what an unattended booth in a venue needs: payment before each session, lights and effects that react to the session, and a record of every session sent to your own systems. For the install itself, see <a href="/permanent-photo-booth-install">permanent photo booth installs &rarr;</a></p>
+        </details>
+        <details class="faq-item">
+          <summary>Can guests pay by card at the photo booth?</summary>
+          <p>Yes, with pay to play, which is in beta. A Nayax VPOS Touch card reader in pulse mode connects to the booth PC through a pulse-to-USB keyboard adapter. Each successful payment adds credits, and the booth shows &ldquo;Tap your card to start&rdquo; until a session is paid for. Test it before you rely on it at a live venue.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does it work with a coin or note acceptor?</summary>
+          <p>Yes. Any coin or note acceptor with a pulse output can feed the booth through a pulse-to-USB keyboard adapter set to send F13. One pulse is one credit, and you choose how many credits a session costs.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What happens if a guest pays and the session fails?</summary>
+          <p>Credits are only taken when the session really starts, and they are given back automatically if the session ends before the first photo, whether it was cancelled, hit an error or the app closed. The balance is saved on the booth PC, so a restart loses nothing and the next guest tap starts a session. Pulse mode is one-way, so the card payment itself is not voided automatically.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does BoothLedger take a commission on card or coin payments?</summary>
+          <p>No. With a Nayax reader in pulse mode, or a coin or note acceptor, the money goes straight to you: card payments land in your own Nayax merchant account, and BoothLedger only counts the credits. Nayax charges its own fees and you need a Nayax account.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can the photo booth control lights, smart plugs or effects?</summary>
+          <p>Yes. Triggers make the booth call devices on the venue network at moments in a session, such as session start, countdown, photo taken, print and session end. There are presets for WLED LED controllers, Shelly relays and Home Assistant, and any other web address works too. The booth calls the device directly, so triggers keep working without internet.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can BoothLedger send sessions and photos to Zapier, Make or our CRM?</summary>
+          <p>Yes. Webhooks from BoothLedger send each moment to any https address, including Zapier and Make. A photo uploaded webhook includes the guest&rsquo;s share link, so you can log photos to a Google Sheet, post to Slack or add a CRM record. Failed deliveries retry for about a day and every delivery is listed so you can resend it. See also the <a href="/photo-booth-crm">photo booth CRM &rarr;</a></p>
+        </details>
+        <details class="faq-item">
+          <summary>Is there a photo booth API?</summary>
+          <p>Yes. The booth runs a local control API that venue systems can call with a token: read the booth&rsquo;s status, start a photo, boomerang or video session, lock and unlock the booth, and add paid credits with a unique payment id so a payment is never counted twice. It listens only on the booth PC unless you turn on network access.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Are photo booth integrations secure?</summary>
+          <p>Every webhook and signed trigger carries an HMAC-SHA256 signature so the receiver can prove it came from your booth. The control API needs a token, refuses requests from web pages and only listens on the booth PC by default. Webhooks only go to public https addresses and their secrets are stored encrypted. If the booth cannot confirm your plan, for example while offline, pay to play stays on rather than giving sessions away.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I run a photo booth at a Santa&rsquo;s grotto or Christmas market?</summary>
+          <p>Yes. Charge per session at the booth by card or coin, or let staff add a free session from the booth&rsquo;s settings for families who paid at the till. Triggers can switch fairy lights or a smart plug on the countdown, and families get their photo printed and on their phone by QR code.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does a self-service photo booth work offline?</summary>
+          <p>Yes. Pay to play, triggers and the control API all run on the booth itself, so they work without internet. Photos and moments are sent to BoothLedger when the connection comes back, and webhooks go out from there.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Which BoothLedger plan includes integrations?</summary>
+          <p>Pay to play, triggers, webhooks and the control API are part of the AI Photobooth plan at &euro;35 a month, and you can try them in the free 30-day trial. Integrations are in early access while they roll out, so <a href="mailto:info@photoboothguys.ie?subject=Integrations%20early%20access">email info@photoboothguys.ie</a> to have them switched on for your account. See the full <a href="/pricing">pricing page &rarr;</a></p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo">
+            <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="32" height="32">
+            <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
+          </a>
+          <p class="footer-tagline">Professional photo booth software for event professionals worldwide.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h3>Product</h3>
+            <a href="/#features">Features</a>
+            <a href="/ai-photo-booth">AI Photo Booth</a>
+            <a href="/ai-video-booth">AI Video Booth</a>
+            <a href="/dslr-photo-booth-software">DSLR Photo Booth</a>
+            <a href="/mirror-booth">Mirror Booth</a>
+            <a href="/green-screen-photo-booth">Green Screen</a>
+            <a href="/trading-card-photo-booth">Trading Cards</a>
+            <a href="/pay-per-use-photo-booth">Pay-Per-Use Booths</a>
+            <a href="/photo-booth-crm">Photo Booth CRM</a>
+            <a href="/photo-booth-software-windows">Windows Software</a>
+            <a href="/photo-booth-data-capture">Data Capture</a>
+            <a href="/photobooth-software">Photobooth Software</a>
+            <a href="/newspaper-photo-booth">Newspaper</a>
+            <a href="/colouring-photo-booth">Colouring In</a>
+            <a href="/photo-mosaic">Photo Mosaic</a>
+            <a href="/glam-booth">Glam Booth</a>
+            <a href="/pricing">Pricing</a>
+          </div>
+          <div class="footer-col">
+            <h3>Solutions</h3>
+            <a href="/wedding-photo-booth-software">Weddings</a>
+            <a href="/corporate-photo-booth-software">Corporate</a>
+            <a href="/event-photo-booth-software">Events</a>
+            <a href="/brand-activation-photo-booth">Brand Activations</a>
+            <a href="/permanent-photo-booth-install">Permanent Installs</a>
+            <a href="/roaming-photographer-software">Roaming Photography</a>
+          </div>
+          <div class="footer-col">
+            <h3>Compare</h3>
+            <a href="/compare">All Comparisons</a>
+            <a href="/vs-dslrbooth">vs dslrBooth</a>
+            <a href="/vs-snappic">vs Snappic</a>
+            <a href="/vs-lumabooth">vs LumaBooth</a>
+            <a href="/lumabooth-alternatives">LumaBooth Alternatives</a>
+            <a href="/vs-darkroom-booth">vs Darkroom Booth</a>
+            <a href="/vs-simple-booth">vs Simple Booth</a>
+            <a href="/vs-boothbook">vs BoothBook</a>
+          </div>
+          <div class="footer-col">
+            <h3>Resources</h3>
+            <a href="/blog/best-photo-booth-software">Best Software 2026</a>
+            <a href="/blog/how-to-start-photo-booth-business">Start a Business</a>
+            <a href="/blog/photo-booth-pricing-guide">Pricing Guide</a>
+            <a href="/blog/dslr-vs-ipad-photo-booth">DSLR vs iPad</a>
+            <a href="/blog/ai-background-removal-vs-green-screen">AI vs Green Screen</a>
+            <a href="/blog/photo-booth-software-languages">11 Languages</a>
+            <a href="/blog/photo-booth-software-for-canon">Canon Software</a>
+            <a href="/#faq">FAQ</a>
+            <a href="https://www.instagram.com/booth_ledger" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="mailto:info@photoboothguys.ie">Contact</a>
+            <a href="https://boothledger.com/user/login" target="_blank" rel="noopener noreferrer">Customer Login</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 PhotoBooth Guys. All rights reserved.</p>
+        <p><a href="mailto:info@photoboothguys.ie" style="color:var(--muted);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;">Privacy</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=15"></script>
+
+  <!-- Analytics -->
+  <script>
+  (function(){
+    var start = Date.now();
+    var sent = false;
+    function track(dur) {
+      if (sent) return;
+      sent = true;
+      var data = {
+        path: location.pathname,
+        referrer: document.referrer || "",
+        screen_width: screen.width,
+        duration: dur || Math.round((Date.now() - start) / 1000)
+      };
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon("https://boothledger.com/api/v1/analytics/track",
+          new Blob([JSON.stringify(data)], {type: "application/json"}));
+      } else {
+        fetch("https://boothledger.com/api/v1/analytics/track", {
+          method: "POST", body: JSON.stringify(data),
+          headers: {"Content-Type": "application/json"}, keepalive: true
+        }).catch(function(){});
+      }
+    }
+    document.addEventListener("visibilitychange", function() {
+      if (document.visibilityState === "hidden") track();
+    });
+    window.addEventListener("beforeunload", function() { track(); });
+  })();
+  </script>
+</body>
+</html>
