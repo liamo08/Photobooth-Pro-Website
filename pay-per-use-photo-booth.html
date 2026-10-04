@@ -14,7 +14,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pay-Per-Use Photo Booth Software for Venues | BoothLedger</title>
-  <meta name="description" content="Pay-per-use photo booth software for pubs, nightclubs, tourist attractions and Santa's grottos. Guests tap a card or insert coins to start, credits come back if a session is cancelled, and card and coin payments go straight to you.">
+  <meta name="description" content="Pay-per-use photo booth software for pubs, nightclubs, tourist attractions and Santa's grottos. Guests tap a card, insert coins or scan a QR code to pay on their phone, credits come back if a session is cancelled, and card and coin payments go straight to you.">
   <meta name="keywords" content="pay per use photo booth, pay per use photo booth software, unattended photo booth software, coin operated photo booth software, card payment photo booth, contactless photo booth, Nayax photo booth, self service photo booth, photo booth for pubs, photo booth for bars, nightclub photo booth, tourist attraction photo booth, santa's grotto photo booth, photo booth revenue share, photo booth webhooks, photo booth API">
   <meta name="author" content="BoothLedger">
   <meta name="robots" content="index, follow">
@@ -64,6 +64,7 @@
       "No commission on card-reader and coin payments",
       "Nayax VPOS Touch support in pulse mode",
       "Coin and note acceptors via a pulse-to-USB adapter",
+      "QR code payments by phone through Stripe (Apple Pay, Google Pay, card) - no card reader needed (beta)",
       "Credits returned automatically if a session is cancelled before the first photo",
       "Triggers for WLED lights, Shelly relays and Home Assistant",
       "Signed webhooks to Zapier, Make, CRMs or your own server",
@@ -104,6 +105,14 @@
       },
       {
         "@type": "Question",
+        "name": "Can guests pay by QR code without a card reader?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, in beta. Connect your own Stripe account on BoothLedger and the booth shows a QR code on screen. Guests scan it and pay on their phone with Apple Pay, Google Pay or a card, and the session starts as soon as the payment arrives. The money goes to your Stripe account. BoothLedger keeps 3% of each QR payment and Stripe's own fees apply. QR payments need internet, are switched off in test mode, and a payment the booth doesn't use within 15 minutes is refunded automatically."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Does it work with a coin or note acceptor?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -123,7 +132,7 @@
         "name": "Does BoothLedger take a commission on card or coin payments?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. With a Nayax reader in pulse mode, or a coin or note acceptor, the money goes straight to you: card payments land in your own Nayax merchant account, and BoothLedger only counts the credits. Nayax charges its own fees and you need a Nayax account."
+          "text": "No. With a Nayax reader in pulse mode, or a coin or note acceptor, the money goes straight to you: card payments land in your own Nayax merchant account, and BoothLedger only counts the credits. Nayax charges its own fees and you need a Nayax account. QR code payments through Stripe are different: BoothLedger keeps 3% of each one, and Stripe's fees apply."
         }
       },
       {
@@ -403,7 +412,8 @@
       </h1>
       <p class="hero-subtitle fade-in">
         Put a self-service booth in a pub, nightclub, tourist attraction or Santa&rsquo;s grotto and
-        let it earn on its own. Guests tap a card or drop in coins before each session, the booth fires
+        let it earn on its own. Guests tap a card, drop in coins or scan a QR code on the screen to pay
+        on their phone before each session, the booth fires
         your lights on the countdown, and every session can flow to Zapier, Make or your own systems.
         Card and coin payments go straight to you, with no commission to us.
       </p>
@@ -418,6 +428,7 @@
 
       <div class="ss-flow fade-in" aria-label="How the booth connects: payments come in, the booth runs the session, lights, webhooks and your systems react">
         <div class="ss-col">
+          <div class="ss-chip"><strong>QR code on screen</strong><span>Apple Pay, Google Pay or card</span></div>
           <div class="ss-chip"><strong>Card reader</strong><span>Nayax VPOS Touch, pulse mode</span></div>
           <div class="ss-chip"><strong>Coin or note acceptor</strong><span>Via a pulse-to-USB adapter</span></div>
           <div class="ss-chip"><strong>Your till or app</strong><span>Adds credits through the API</span></div>
@@ -464,7 +475,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
           </div>
           <h3>Pay to Play <span class="ss-beta">Beta</span></h3>
-          <p>Charge for every session. A Nayax card reader or a coin acceptor adds credits, the booth shows &ldquo;Tap your card to start&rdquo; until the session is paid for, and credits come back automatically if a session is cancelled before the first photo. The money goes to your own merchant account, with no commission to us.</p>
+          <p>Charge for every session. Guests scan a QR code and pay on their phone, or use a Nayax card reader or a coin acceptor. The booth waits until the session is paid for, and credits come back automatically if a session is cancelled before the first photo. The money goes to your own merchant account, with no commission to us.</p>
         </div>
 
         <div class="feature-card fade-in">
@@ -551,8 +562,8 @@
 
       <ol class="ss-steps fade-in">
         <li><strong>Set the price.</strong> Turn on <em>Charge for sessions</em> and choose how many credits a session costs, on the booth or on BoothLedger for the whole event.</li>
-        <li><strong>Connect the payment device.</strong> Put a Nayax VPOS Touch in pulse mode, or use a coin or note acceptor, and wire its pulse output to a pulse-to-USB keyboard adapter that sends F13. Each pulse adds one credit.</li>
-        <li><strong>The guest pays.</strong> The booth shows &ldquo;Tap your card to start&rdquo;. Once enough credits arrive, the start screen opens.</li>
+        <li><strong>Choose how guests pay.</strong> No hardware: connect your Stripe account on BoothLedger and the booth shows a QR code guests pay on their phone. Or put a Nayax VPOS Touch in pulse mode, or use a coin or note acceptor, and wire its pulse output to a pulse-to-USB keyboard adapter that sends F13. Each pulse adds one credit.</li>
+        <li><strong>The guest pays.</strong> The booth shows the QR code and/or &ldquo;Tap your card to start&rdquo;. Once the payment arrives, the start screen opens.</li>
         <li><strong>The session runs.</strong> Credits are taken when the session really starts. If it&rsquo;s cancelled, fails or the app closes before the first photo, the credits go straight back.</li>
         <li><strong>Everything is recorded.</strong> Each credit and session can fire a trigger on the venue network and a webhook from BoothLedger, so your lights, sheets and reports keep up on their own.</li>
       </ol>
@@ -608,7 +619,7 @@ X-BoothLedger-Signature: t=&lt;unix time&gt;,v1=&lt;HMAC-SHA256&gt;</div>
           <div class="download-checks">
             <div class="download-check">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Card &amp; coin pay to play (beta)</span>
+              <span>QR, card &amp; coin pay to play (beta)</span>
             </div>
             <div class="download-check">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
@@ -665,6 +676,10 @@ X-BoothLedger-Signature: t=&lt;unix time&gt;,v1=&lt;HMAC-SHA256&gt;</div>
           <p>Yes, with pay to play, which is in beta. A Nayax VPOS Touch card reader in pulse mode connects to the booth PC through a pulse-to-USB keyboard adapter. Each successful payment adds credits, and the booth shows &ldquo;Tap your card to start&rdquo; until a session is paid for. Test it before you rely on it at a live venue.</p>
         </details>
         <details class="faq-item">
+          <summary>Can guests pay by QR code without a card reader?</summary>
+          <p>Yes, in beta. Connect your own Stripe account on BoothLedger and the booth shows a QR code on screen. Guests scan it and pay on their phone with Apple Pay, Google Pay or a card, and the session starts as soon as the payment arrives. The money goes to your Stripe account. BoothLedger keeps 3% of each QR payment and Stripe&rsquo;s own fees apply. QR payments need internet, are switched off in test mode, and a payment the booth doesn&rsquo;t use within 15 minutes is refunded automatically.</p>
+        </details>
+        <details class="faq-item">
           <summary>Does it work with a coin or note acceptor?</summary>
           <p>Yes. Any coin or note acceptor with a pulse output can feed the booth through a pulse-to-USB keyboard adapter set to send F13. One pulse is one credit, and you choose how many credits a session costs.</p>
         </details>
@@ -674,7 +689,7 @@ X-BoothLedger-Signature: t=&lt;unix time&gt;,v1=&lt;HMAC-SHA256&gt;</div>
         </details>
         <details class="faq-item">
           <summary>Does BoothLedger take a commission on card or coin payments?</summary>
-          <p>No. With a Nayax reader in pulse mode, or a coin or note acceptor, the money goes straight to you: card payments land in your own Nayax merchant account, and BoothLedger only counts the credits. Nayax charges its own fees and you need a Nayax account.</p>
+          <p>No. With a Nayax reader in pulse mode, or a coin or note acceptor, the money goes straight to you: card payments land in your own Nayax merchant account, and BoothLedger only counts the credits. Nayax charges its own fees and you need a Nayax account. QR code payments through Stripe are different: BoothLedger keeps 3% of each one, and Stripe&rsquo;s fees apply.</p>
         </details>
         <details class="faq-item">
           <summary>Can the photo booth control lights, smart plugs or effects?</summary>
