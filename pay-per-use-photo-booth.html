@@ -24,7 +24,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Pay-Per-Use Photo Booth Software for Venues | BoothLedger">
-  <meta property="og:description" content="Put a booth in a pub, club, attraction or grotto and let it earn on its own. Card and coin payments before each session, credits back if cancelled, lights on the countdown, every session to Zapier or your CRM. No commission on card and coin payments.">
+  <meta property="og:description" content="Put a booth in a pub, club, attraction or grotto and let it earn on its own. Card and coin payments before each session, credits back if cancelled, lights on the countdown, every session to Zapier or your CRM.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://boothledger.com/pay-per-use-photo-booth">
   <meta property="og:site_name" content="BoothLedger">
@@ -37,7 +37,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Pay-Per-Use Photo Booth Software | BoothLedger">
-  <meta name="twitter:description" content="Card and coin payments with no commission, lights and effects, webhooks and a local API for unattended photo booths in venues.">
+  <meta name="twitter:description" content="QR, card and coin payments, lights and effects, webhooks and a local API for unattended photo booths in venues.">
   <meta name="twitter:image" content="https://boothledger.com/images/boothledger-logo-full.png">
 
   <!-- Structured Data: SoftwareApplication -->
@@ -61,7 +61,6 @@
     },
     "featureList": [
       "Pay to Play: card or coin payment before each session (beta)",
-      "No commission on card-reader and coin payments",
       "Nayax VPOS Touch support in pulse mode",
       "Coin and note acceptors via a pulse-to-USB adapter",
       "QR code payments by phone through Stripe (Apple Pay, Google Pay, card) - no card reader needed (beta)",
@@ -129,10 +128,10 @@
       },
       {
         "@type": "Question",
-        "name": "Does BoothLedger take a commission on card or coin payments?",
+        "name": "What does BoothLedger charge on payments?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. With a Nayax reader in pulse mode, or a coin or note acceptor, the money goes straight to you: card payments land in your own Nayax merchant account, and BoothLedger only counts the credits. Nayax charges its own fees and you need a Nayax account. QR code payments through Stripe are different: BoothLedger keeps 3% of each one, and Stripe's fees apply."
+          "text": "QR code payments through Stripe: BoothLedger keeps 3% of each payment, and Stripe's own fees apply. Card reader and coin payments go straight to you: card payments land in your own Nayax merchant account, Nayax charges its own fees and you need a Nayax account. Pay to play itself is part of the AI Photobooth plan."
         }
       },
       {
@@ -415,7 +414,6 @@
         let it earn on its own. Guests tap a card, drop in coins or scan a QR code on the screen to pay
         on their phone before each session, the booth fires
         your lights on the countdown, and every session can flow to Zapier, Make or your own systems.
-        Card and coin payments go straight to you, with no commission to us.
       </p>
       <div class="hero-actions fade-in">
         <a href="#download" class="btn btn-primary btn-lg">
@@ -453,7 +451,7 @@
   <!-- Stats -->
   <section style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#f4f6fa;padding:28px 0;">
     <div class="container ss-stats">
-      <div><div class="ss-stat">0%</div><div class="ss-stat-label">Commission on card &amp; coin sales</div></div>
+      <div><div class="ss-stat">QR</div><div class="ss-stat-label">Apple Pay, Google Pay or card</div></div>
       <div><div class="ss-stat">Credits back</div><div class="ss-stat-label">If cancelled before the first photo</div></div>
       <div><div class="ss-stat">Offline</div><div class="ss-stat-label">Payments, lights &amp; API need no internet</div></div>
       <div><div class="ss-stat">Signed</div><div class="ss-stat-label">HMAC-SHA256 on every webhook</div></div>
@@ -475,7 +473,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
           </div>
           <h3>Pay to Play <span class="ss-beta">Beta</span></h3>
-          <p>Charge for every session. Guests scan a QR code and pay on their phone, or use a Nayax card reader or a coin acceptor. The booth waits until the session is paid for, and credits come back automatically if a session is cancelled before the first photo. The money goes to your own merchant account, with no commission to us.</p>
+          <p>Charge for every session. Guests scan a QR code and pay on their phone, or use a Nayax card reader or a coin acceptor. The booth waits until the session is paid for, and credits come back automatically if a session is cancelled before the first photo. The money goes to your own account.</p>
         </div>
 
         <div class="feature-card fade-in">
@@ -688,8 +686,8 @@ X-BoothLedger-Signature: t=&lt;unix time&gt;,v1=&lt;HMAC-SHA256&gt;</div>
           <p>Credits are only taken when the session really starts, and they are given back automatically if the session ends before the first photo, whether it was cancelled, hit an error or the app closed. The balance is saved on the booth PC, so a restart loses nothing and the next guest tap starts a session. Pulse mode is one-way, so the card payment itself is not voided automatically.</p>
         </details>
         <details class="faq-item">
-          <summary>Does BoothLedger take a commission on card or coin payments?</summary>
-          <p>No. With a Nayax reader in pulse mode, or a coin or note acceptor, the money goes straight to you: card payments land in your own Nayax merchant account, and BoothLedger only counts the credits. Nayax charges its own fees and you need a Nayax account. QR code payments through Stripe are different: BoothLedger keeps 3% of each one, and Stripe&rsquo;s fees apply.</p>
+          <summary>What does BoothLedger charge on payments?</summary>
+          <p>QR code payments through Stripe: BoothLedger keeps 3% of each payment, and Stripe&rsquo;s own fees apply. Card reader and coin payments go straight to you: card payments land in your own Nayax merchant account, Nayax charges its own fees and you need a Nayax account. Pay to play itself is part of the AI Photobooth plan.</p>
         </details>
         <details class="faq-item">
           <summary>Can the photo booth control lights, smart plugs or effects?</summary>
