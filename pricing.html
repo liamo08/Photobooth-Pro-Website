@@ -350,6 +350,15 @@
     .pp-note { font-size: 13px; color: #64748b; margin: 4px 0 0; }
     .pp-note a, .pp-head a { color: #7c3aed; font-weight: 600; }
 
+    /* Trial-ready notice: shown when someone comes back from an unpaid Revolut checkout */
+    .trial-ready-card { max-width: 520px; text-align: center; }
+    .trial-ready-icon { width: 52px; height: 52px; margin: 0 auto 16px; border-radius: 50%; background: #dcfce7; color: #16a34a; display: flex; align-items: center; justify-content: center; }
+    .trial-ready-icon svg { width: 26px; height: 26px; }
+    .trial-ready-card h2 { font-size: 22px; font-weight: 700; margin: 0 0 12px; }
+    .trial-ready-card .pp-head { word-break: break-word; }
+    a.modal-submit { text-decoration: none; }
+    .trial-ready-alt { display: block; margin-top: 14px; font-size: 14px; }
+
     /* Submit */
     .modal-submit {
       width: 100%;
@@ -428,7 +437,7 @@
 <!-- Success banner -->
 <div class="success-banner" id="successBanner">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-  Payment successful! Your subscription is now active. Any remaining days from your previous plan have been added to your new subscription.
+  Payment successful! Your subscription is now active.
 </div>
 
 <!-- ═══ AUTH MODAL ═══ -->
@@ -492,6 +501,23 @@
     <div class="modal-footer" id="modalFooter">
       Already have an account? <a onclick="setAuthMode('login')">Sign in</a>
     </div>
+  </div>
+</div>
+
+<!-- ═══ TRIAL-READY NOTICE ═══ (kept after #authModal: other code uses querySelector('.modal-card')) -->
+<div class="modal-backdrop" id="trialReadyModal" role="dialog" aria-modal="true" aria-labelledby="trialReadyTitle">
+  <div class="modal-card trial-ready-card">
+    <button class="modal-close" onclick="closeTrialReady()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="trial-ready-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h2 id="trialReadyTitle">Your account is ready</h2>
+    <p class="pp-head">Your BoothLedger account for <b id="trialReadyEmail"></b> is set up and your <b>free trial is already active</b>. You don't need to pay to start.</p>
+    <p class="pp-note" style="margin-bottom:20px;">Download the app and sign in with this email and the password you just chose. If you didn't finish paying, you haven't been charged. You can subscribe any time from your account.</p>
+    <a class="modal-submit" href="https://boothledger.com/#download">Download the app</a>
+    <a class="pp-note trial-ready-alt" href="https://boothledger.com/user/login">Go to my account</a>
   </div>
 </div>
 
@@ -592,12 +618,10 @@
     <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between;">
       <div style="flex:1 1 320px;">
         <h3 style="margin:0 0 6px;font-size:20px;color:var(--ink);">Prefer to pay once?</h3>
-        <p style="margin:0;font-size:14px;line-height:1.6;color:var(--muted);">Pay for 6 or 12 months up front. No subscription, nothing renews automatically, and every plan still includes 2 devices. Recommended if your bank blocks recurring international card payments (common in India, the Philippines and several other countries) &mdash; a single one-off charge goes through where a subscription won't.</p>
+        <p style="margin:0;font-size:14px;line-height:1.6;color:var(--muted);">Pay for 12 months up front. No subscription, nothing renews automatically, and every plan still includes 2 devices. Recommended if your bank blocks recurring international card payments (common in India, the Philippines and several other countries) &mdash; a single one-off charge goes through where a subscription won't.</p>
       </div>
       <div style="flex:1 1 380px;display:grid;grid-template-columns:1fr 1fr;gap:10px;" id="prepaidGrid">
-        <button type="button" class="card-cta card-cta--outline" style="margin:0;" onclick="handleSubscribe('basic_6mo'); return false;">Basic &middot; 6 months <span data-prepaid="basic_6mo">&euro;66</span></button>
         <button type="button" class="card-cta card-cta--outline" style="margin:0;" onclick="handleSubscribe('basic_12mo'); return false;">Basic &middot; 12 months <span data-prepaid="basic_12mo">&euro;120</span></button>
-        <button type="button" class="card-cta card-cta--primary" style="margin:0;" onclick="handleSubscribe('ai_6mo'); return false;">AI &middot; 6 months <span data-prepaid="ai_6mo">&euro;192</span></button>
         <button type="button" class="card-cta card-cta--primary" style="margin:0;" onclick="handleSubscribe('ai_12mo'); return false;">AI &middot; 12 months <span data-prepaid="ai_12mo">&euro;350</span></button>
       </div>
     </div>
@@ -626,7 +650,7 @@
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="toggleFaq(this)">Can I pay once instead of subscribing?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-    <div class="faq-a">Yes. Choose a 6 or 12 month prepaid term above: one payment, nothing renews automatically, and you get a reminder before it ends. This is the reliable option if your bank declines recurring international card payments, which is common in India, the Philippines, Indonesia and some other countries.</div>
+    <div class="faq-a">Yes. Choose a 12-month prepaid term above: one payment, nothing renews automatically, and you get a reminder before it ends. This is the reliable option if your bank declines recurring international card payments, which is common in India, the Philippines, Indonesia and some other countries.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="toggleFaq(this)">Is there a free trial of the AI features?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
@@ -941,6 +965,35 @@
     checkoutInFlight = false;
     const b = document.getElementById('modalSubmit');
     if (b) { b.classList.remove('loading'); b.disabled = false; }
+    maybeShowTrialReady();
+  });
+
+  // ── Back from an unpaid checkout: /auth/checkout creates the account and
+  //    starts its free trial BEFORE payment. People who leave the Revolut page
+  //    assume nothing was created and sign up again under a second email.
+  //    Shown once per checkout, only within 2 hours, never after ?success=true. ──
+  const TRIAL_READY_KEY = 'bl_checkout_new_account';
+  function maybeShowTrialReady() {
+    let pending = null;
+    try { pending = JSON.parse(sessionStorage.getItem(TRIAL_READY_KEY) || 'null'); } catch (e) {}
+    if (!pending || !pending.email) return;
+    try { sessionStorage.removeItem(TRIAL_READY_KEY); } catch (e) {}
+    if (Date.now() - (pending.t || 0) > 2 * 3600 * 1000) return;
+    if (new URLSearchParams(window.location.search).get('success') === 'true') return;
+    closeModal();
+    document.getElementById('trialReadyEmail').textContent = pending.email;
+    document.getElementById('trialReadyModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeTrialReady() {
+    document.getElementById('trialReadyModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('trialReadyModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeTrialReady();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeTrialReady();
   });
 
   // ── Sign in: check the account first, then offer only plans above the one
@@ -992,7 +1045,7 @@
       '<button type="button" class="pp-opt" data-key="' + esc(o.key) + '">'
       + '<span class="pp-name">' + esc(o.label) + (o.recommended && data.current ? '<span class="pp-tag">Next step</span>' : '') + '</span>'
       + '<span class="pp-price">' + esc(o.price_str) + '</span></button>').join('')
-      + (data.current ? '<p class="pp-note">Your current plan stays active until the new one is paid, and the days you have left carry over. ' + manage + '</p>' : '');
+      + (data.current ? '<p class="pp-note">Your current plan stays active until the new one is paid. ' + manage + '</p>' : '');
     box.querySelectorAll('.pp-opt').forEach(b => b.addEventListener('click', () => pickPlan(b.dataset.key)));
     // Keep the plan they clicked on the page if it's on offer; otherwise the next step up.
     const keys = data.options.map(o => o.key);
@@ -1111,6 +1164,13 @@
         btn.disabled = false;
         checkoutInFlight = false;
         return;
+      }
+
+      // The account (and its free trial) already exists at this point, before
+      // payment. Remember that, so if they come back without paying we can
+      // tell them instead of letting them sign up again with another email.
+      if (isRegister) {
+        try { sessionStorage.setItem(TRIAL_READY_KEY, JSON.stringify({ email: email, t: Date.now() })); } catch (e) {}
       }
 
       // Redirect to Revolut checkout (button intentionally stays disabled)
