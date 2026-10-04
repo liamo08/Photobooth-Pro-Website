@@ -29,16 +29,16 @@
   <meta property="og:url" content="https://boothledger.com/pay-per-use-photo-booth">
   <meta property="og:site_name" content="BoothLedger">
   <meta property="og:locale" content="en_US">
-  <meta property="og:image" content="https://boothledger.com/images/boothledger-logo-full.png">
-  <meta property="og:image:width" content="2000">
-  <meta property="og:image:height" content="2000">
-  <meta property="og:image:alt" content="BoothLedger pay-per-use photo booth software">
+  <meta property="og:image" content="https://boothledger.com/images/pay-per-use/pay-per-use-photo-booth-qr-payment.webp">
+  <meta property="og:image:width" content="776">
+  <meta property="og:image:height" content="982">
+  <meta property="og:image:alt" content="Pay-per-use photo booth screen: scan to pay with Apple Pay, Google Pay or card">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Pay-Per-Use Photo Booth Software | BoothLedger">
   <meta name="twitter:description" content="QR, card and coin payments, lights and effects, webhooks and a local API for unattended photo booths in venues.">
-  <meta name="twitter:image" content="https://boothledger.com/images/boothledger-logo-full.png">
+  <meta name="twitter:image" content="https://boothledger.com/images/pay-per-use/pay-per-use-photo-booth-qr-payment.webp">
 
   <!-- Structured Data: SoftwareApplication -->
   <script type="application/ld+json">
@@ -50,7 +50,7 @@
     "operatingSystem": "Windows 10, Windows 11",
     "description": "Pay-per-use photo booth software for venues. Guests pay by card or coin before each session (pay to play), the booth switches lights, relays and Home Assistant at each moment of a session, BoothLedger sends signed webhooks to Zapier, Make or any https address, and a local control API lets venue systems start sessions and add credits.",
     "url": "https://boothledger.com/pay-per-use-photo-booth",
-    "image": "https://boothledger.com/images/boothledger-logo-full.png",
+    "image": "https://boothledger.com/images/pay-per-use/pay-per-use-photo-booth-qr-payment.webp",
     "offers": {
       "@type": "AggregateOffer",
       "offerCount": "2",
@@ -277,6 +277,13 @@
       .ss-flow { grid-template-columns: 1fr; }
       .ss-arrow { transform: rotate(90deg); justify-self: center; }
     }
+    .ss-shot { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 48px; align-items: center; max-width: 980px; margin: 0 auto; }
+    .ss-shot img { width: 100%; height: auto; border-radius: 22px; box-shadow: 0 30px 70px rgba(15,23,42,.28), 0 0 0 1px rgba(15,23,42,.06); display: block; }
+    .ss-shot ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+    .ss-shot li { padding-left: 28px; position: relative; line-height: 1.55; color: var(--muted); }
+    .ss-shot li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: #7c3aed; font-weight: 700; }
+    .ss-shot li strong { color: inherit; color: #0f172a; }
+    @media (max-width: 760px) { .ss-shot { grid-template-columns: 1fr; gap: 28px; } .ss-shot img { max-width: 340px; margin: 0 auto; } }
     .ss-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
     .ss-stat { font-size: 24px; font-weight: 700; background: linear-gradient(90deg,#6d28d9,#a21caf); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .ss-stat-label { color: var(--muted); font-size: 12px; letter-spacing: .04em; }
@@ -442,6 +449,31 @@
       <div><div class="ss-stat">Credits back</div><div class="ss-stat-label">If cancelled before the first photo</div></div>
       <div><div class="ss-stat">Offline</div><div class="ss-stat-label">Payments, lights &amp; API need no internet</div></div>
       <div><div class="ss-stat">Signed</div><div class="ss-stat-label">HMAC-SHA256 on every webhook</div></div>
+    </div>
+  </section>
+
+
+  <!-- What guests see -->
+  <section class="features" id="guest-view" style="padding-top:64px;">
+    <div class="container">
+      <div class="ss-shot fade-in">
+        <picture>
+          <source media="(max-width: 760px)" srcset="/images/pay-per-use/pay-per-use-photo-booth-qr-payment-sm.webp">
+          <img src="/images/pay-per-use/pay-per-use-photo-booth-qr-payment.webp" width="776" height="982" loading="lazy"
+               alt="BoothLedger pay-per-use photo booth screen asking the guest to scan a QR code to pay 5 euro for a photo, with Apple Pay, Google Pay or card">
+        </picture>
+        <div>
+          <span class="section-tag">What Guests See</span>
+          <h2 class="section-title" style="text-align:left;">Scan, Pay,<br><span class="gradient-text">Strike a Pose</span></h2>
+          <p class="section-subtitle" style="text-align:left;margin-left:0;">The guest picks a package, scans the code with their phone and pays with Apple Pay, Google Pay or a card. The moment the payment lands, the booth is ready to shoot. No card reader to buy, nothing for staff to do.</p>
+          <ul>
+            <li><strong>Price on screen:</strong> the amount and package are always clear, with a Change button to pick another.</li>
+            <li><strong>Money goes to you:</strong> paid straight into your own Stripe account.</li>
+            <li><strong>Card reader too:</strong> show the QR on its own or next to &ldquo;Tap your card&rdquo; for a Nayax terminal or coins.</li>
+            <li><strong>Fair to guests:</strong> a payment the booth doesn&rsquo;t use is refunded automatically.</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
