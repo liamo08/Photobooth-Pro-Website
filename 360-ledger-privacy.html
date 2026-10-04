@@ -30,7 +30,7 @@
 <body>
 <div class="wrap">
   <h1>360<span class="deg">°</span>Ledger — Privacy Policy</h1>
-  <p class="updated">Last updated: 3 June 2026</p>
+  <p class="updated">Last updated: 27 September 2026</p>
 
   <p class="lead">
     360Ledger is an operator app for 360&deg; spinning-arm video booths, provided by
@@ -55,8 +55,15 @@
       branding and effect settings).</li>
     <li><strong>Captured video</strong> — the video clips and thumbnails recorded by the
       booth and uploaded to our cloud so they can be shared with the people filmed.</li>
+    <li><strong>Billing details</strong> — if you pay for a plan, an event pass or SMS
+      credit: your billing name, country, VAT number and address (they decide the VAT
+      and are printed on your invoices), and the invoices themselves. Card payments are
+      handled by Revolut; we never see or store your card details.</li>
+    <li><strong>Guest contact details</strong> — a guest&rsquo;s email address or mobile
+      number, when they ask to receive their clip by email or text (see
+      <a href="#guests">Guest contact details</a> below).</li>
     <li><strong>Limited technical data</strong> — your IP address at sign-up and login,
-      used only to secure the service and prevent abuse of the free trial.</li>
+      used only to secure the service and prevent abuse of the free plan.</li>
   </ul>
 
   <h2>How we use your information</h2>
@@ -64,7 +71,8 @@
     <li>To provide and operate the app and your account.</li>
     <li>To process captured clips on the device, store them, and generate a share link so
       a guest can view and download their own clip.</li>
-    <li>To manage your free trial and licence.</li>
+    <li>To manage your plan, payments, SMS credit and invoices.</li>
+    <li>To send a guest their clip by email or text message when they ask for it.</li>
     <li>To keep the service secure and prevent fraud or abuse.</li>
     <li>To contact you about your account when necessary.</li>
   </ul>
@@ -81,11 +89,54 @@
     obtaining any consent required from the people who are filmed.
   </p>
 
+  <h2 id="guests">Guest contact details</h2>
+  <p>
+    A guest can ask for their clip to be sent to their email address or mobile number
+    from the booth. We use that address or number to send the link to their clip, and we
+    keep a short log of each message sent (to prevent abuse). The destination in that log
+    is removed after 90 days.
+  </p>
+  <p>
+    The event host (the booth operator or the person running the event) may also ask the
+    guest whether they agree to the host keeping their contact details. The guest answers
+    Yes or No &mdash; nothing is pre-selected &mdash; and gets their clip either way. The
+    contact is kept <strong>only if the guest says Yes</strong>, and only if the host has
+    this option turned on for the event.
+  </p>
+  <ul>
+    <li><strong>Who is responsible</strong> &mdash; for contact details kept with consent,
+      the event host is the <em>data controller</em>: they decide what the details are
+      used for, and must use them only for the purpose explained to the guest.
+      360Ledger (Photobooth Guys) is the <em>data processor</em>, storing the details on
+      the host&rsquo;s behalf.</li>
+    <li><strong>How long</strong> &mdash; kept contact details are deleted automatically
+      12 months after they were collected, or earlier if the host deletes them or the
+      event or host account is deleted.</li>
+    <li><strong>Removal</strong> &mdash; a guest can ask the event host to delete their
+      details at any time, or write to
+      <a href="mailto:info@photoboothguys.ie">info@photoboothguys.ie</a> and we will
+      arrange it.</li>
+  </ul>
+
   <h2>Where your data is stored</h2>
   <p>
     Data is stored on servers located in the European Union (Hetzner, Finland and
     Germany). We use Cloudflare for DNS and security. These providers process data only
     to host and protect the service on our behalf.
+  </p>
+  <p>We also use these sub-processors:</p>
+  <ul>
+    <li><strong>Twilio</strong> &mdash; delivers text messages to guests (the mobile
+      number and the message).</li>
+    <li><strong>Our email provider</strong> &mdash; delivers emails to guests (the email
+      address and the message).</li>
+    <li><strong>Revolut</strong> &mdash; processes card payments for plans, event passes
+      and SMS credit (your email, the amount and the payment).</li>
+  </ul>
+  <p>
+    Some of these providers may process data outside the European Union; where they do,
+    they rely on the safeguards the GDPR requires, such as the European Commission&rsquo;s
+    standard contractual clauses.
   </p>
 
   <h2>Data retention and deletion</h2>
@@ -104,8 +155,23 @@
       delete it for you.</li>
   </ul>
   <p>
-    Deleting your account permanently removes your account, your events, and every
-    captured clip and thumbnail from our database and storage. This cannot be undone.
+    Deleting your account permanently removes your account, your events, every
+    captured clip and thumbnail, the guest contact details kept for your events, your
+    message logs and your SMS credit history from our database and storage. This cannot
+    be undone. Any monthly subscription is cancelled first.
+  </p>
+  <p>
+    <strong>Invoices are the exception:</strong> invoices and the payment records behind
+    them are kept for the period required by Irish tax law (currently six years), even
+    after your account is deleted. They are unlinked from the deleted account.
+  </p>
+  <p>
+    <strong>Free-credit abuse prevention:</strong> new accounts receive a one-off free
+    SMS credit. To stop the same email address claiming it again by deleting and
+    re-creating an account, we keep a one-way cryptographic hash (SHA-256) of the
+    account's email address after deletion. The hash cannot be turned back into your
+    email address, is not linked to any other data, and is used only to check whether
+    that address has already received the free credit.
   </p>
 
   <h2>Your rights</h2>
