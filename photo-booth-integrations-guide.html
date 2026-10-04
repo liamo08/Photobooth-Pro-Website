@@ -132,7 +132,6 @@
     .ig-article a { color: var(--blue-700); text-decoration: underline; text-underline-offset: 2px; }
     .ig-article code { font: .88em/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; background: var(--blue-50); border-radius: 6px; padding: 1px 5px; overflow-wrap: anywhere; }
     .ig-article .ig-path { font-weight: 600; color: var(--ink); }
-    .ig-beta { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: .68rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; vertical-align: middle; background: #fef3c7; color: #92400e; }
     .ig-note { padding: 14px 16px; border-radius: 14px; border: 1px solid var(--blue-100); background: var(--blue-50); margin: 0 0 18px; }
     .ig-note.warn { border-color: #fde68a; background: #fffbeb; color: #78350f; }
     .ig-note p:last-child, .ig-note ul:last-child { margin-bottom: 0; }
@@ -202,7 +201,7 @@
       .ig-codewrap, .ig-faq, .ig-card, .ig-note, .ig-article tr { break-inside: avoid; page-break-inside: avoid; }
       .ig-table-wrap { overflow: visible; }
       .ig-article td code { white-space: normal; }
-      .ig-steps > li::before, .ig-beta { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .ig-steps > li::before { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
   </style>
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="hDTsJjbsuIFfEsb2icX72w" async></script>
@@ -284,7 +283,7 @@
           <div class="ig-card"><span class="ig-dir">Booth &rarr; devices at the venue</span><h3>Triggers</h3><p>The booth calls a web address on the venue network at moments in a session: WLED lights, Shelly relays, smart plugs, Home Assistant. No internet needed.</p></div>
           <div class="ig-card"><span class="ig-dir">BoothLedger &rarr; internet services</span><h3>Webhooks</h3><p>BoothLedger posts signed JSON to Zapier, Make, a CRM or your own server, including a share link for every uploaded photo.</p></div>
           <div class="ig-card"><span class="ig-dir">Your devices &rarr; the booth</span><h3>Control API</h3><p>A local API on the booth PC: check status, start a session, lock and unlock, add paid credits. For terminals, scripts, Stream Decks and phone shortcuts.</p></div>
-          <div class="ig-card"><span class="ig-dir">Guests &rarr; the booth</span><h3>Pay to play <span class="ig-beta">Beta</span></h3><p>Guests pay before each session by card reader, coins or a QR code on screen (Stripe). Sell single goes or packages like Photo + Boomerang.</p></div>
+          <div class="ig-card"><span class="ig-dir">Guests &rarr; the booth</span><h3>Pay to play</h3><p>Guests pay before each session by card reader, coins or a QR code on screen (Stripe). Sell single goes or packages like Photo + Boomerang.</p></div>
         </div>
 
         <h3 id="which-one">Which one do I need?</h3>
@@ -302,7 +301,7 @@
         </table></div>
 
         <h3 id="plans-internet">Plans &amp; internet</h3>
-        <p>Triggers, webhooks, the control API and pay to play are included in the <strong>AI Photobooth plan</strong> and the <strong>free 30-day trial</strong>. They are not part of the Basic plan. Pay to play and QR payments are in <strong>beta</strong>: test them at home or in the office before you rely on them at a live event.</p>
+        <p>Triggers, webhooks, the control API and pay to play are included in the <strong>AI Photobooth plan</strong> and the <strong>free 30-day trial</strong>. They are not part of the Basic plan. Before your first event with pay to play or QR payments, run a test payment at home or in the office so you know everything is set up right.</p>
         <div class="ig-table-wrap"><table>
           <thead><tr><th>Feature</th><th>Needs internet?</th></tr></thead>
           <tbody>
@@ -737,8 +736,8 @@ Invoke-RestMethod -Method Post -Uri "$api/v1/session/start" -Headers $h `
 
 <!-- ================================================================ 6 -->
       <section id="pay-to-play">
-        <h2>6. Pay to play <span class="ig-beta">Beta</span></h2>
-        <div class="ig-note warn"><p>Pay to play is in beta. Try it at home with your payment device first, and don&rsquo;t rely on it at a live event yet.</p></div>
+        <h2>6. Pay to play</h2>
+        <div class="ig-note"><p><strong>Tip:</strong> set it up and try a paid session at home with your payment device before the event, so you know the reader, coins or QR code work end to end.</p></div>
         <p>With pay to play, guests pay before each session. Payments arrive at the booth as <strong>credits</strong>, and a session only starts once enough credits are paid in. Until then the capture screen shows the ways to pay, such as &ldquo;Tap your card to start&rdquo; and/or a QR code.</p>
 
         <h3>Switch it on</h3>
@@ -788,7 +787,7 @@ Invoke-RestMethod -Method Post -Uri "$api/v1/session/start" -Headers $h `
         </ul>
         <p>Card reader and coin payments go straight to your own Nayax account or cash box; BoothLedger takes nothing from them. Nayax charges its own fees.</p>
 
-        <h3 id="qr-payments">QR payments with Stripe <span class="ig-beta">Beta</span></h3>
+        <h3 id="qr-payments">QR payments with Stripe</h3>
         <p>No card reader needed: the booth shows a QR code, the guest scans it and pays on their phone with Apple Pay, Google Pay or a card, and the session starts once the payment arrives. The money goes to <strong>your own Stripe account</strong>.</p>
         <ol class="ig-steps">
           <li>On BoothLedger open the event&rsquo;s <span class="ig-path">Integrations</span> tab. In <strong>Pay to play</strong>, under <em>Ways to pay</em>, switch on <strong>QR code (Stripe)</strong>.</li>
