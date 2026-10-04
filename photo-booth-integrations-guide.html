@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2L4B7DR1YK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2L4B7DR1YK');
+    gtag('config', 'AW-755417118');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Booth Integrations Guide: Webhooks, Triggers, API &amp; Payments | BoothLedger</title>
+  <meta name="description" content="Step-by-step setup guide for BoothLedger integrations: booth triggers for WLED lights, Shelly relays and Home Assistant, signed webhooks to Zapier and Make, the local control API, pay to play with card, coin and QR payments, fees and invoices.">
+  <meta name="keywords" content="photo booth webhooks, photo booth API, photo booth Zapier, photo booth Home Assistant, WLED photo booth, Shelly relay photo booth, photo booth triggers, pay to play photo booth, photo booth QR payment, Stripe photo booth, Nayax photo booth, BoothLedger integrations">
+  <meta name="author" content="BoothLedger">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://boothledger.com/photo-booth-integrations-guide">
+  <link rel="alternate" hreflang="en" href="https://boothledger.com/photo-booth-integrations-guide">
+  <link rel="alternate" hreflang="x-default" href="https://boothledger.com/photo-booth-integrations-guide">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Photo Booth Integrations Guide: Webhooks, Triggers, API &amp; Payments | BoothLedger">
+  <meta property="og:description" content="How to connect a BoothLedger photo booth to lights, relays, Home Assistant, Zapier, Make, your own server and payment devices, with copy-paste examples.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://boothledger.com/photo-booth-integrations-guide">
+  <meta property="og:site_name" content="BoothLedger">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://boothledger.com/images/boothledger-logo-full.png">
+  <meta property="og:image:width" content="2000">
+  <meta property="og:image:height" content="2000">
+  <meta property="og:image:alt" content="BoothLedger photo booth integrations guide">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Photo Booth Integrations Guide | BoothLedger">
+  <meta name="twitter:description" content="Triggers, webhooks, the control API and pay to play, set up step by step with real examples.">
+  <meta name="twitter:image" content="https://boothledger.com/images/boothledger-logo-full.png">
+
+  <!-- Structured Data: TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Photo Booth Integrations Guide: Webhooks, Triggers, API & Payments",
+    "description": "Step-by-step setup guide for BoothLedger integrations: booth triggers for lights and relays, signed webhooks to Zapier, Make and your own server, the local control API, and pay to play with card, coin and QR payments.",
+    "url": "https://boothledger.com/photo-booth-integrations-guide",
+    "mainEntityOfPage": "https://boothledger.com/photo-booth-integrations-guide",
+    "image": "https://boothledger.com/images/boothledger-logo-full.png",
+    "inLanguage": "en",
+    "datePublished": "2026-10-04",
+    "dateModified": "2026-10-04",
+    "proficiencyLevel": "Beginner",
+    "about": ["Photo booth software", "Webhooks", "Home automation", "Payments"],
+    "author": {"@type": "Organization", "name": "BoothLedger", "url": "https://boothledger.com"},
+    "publisher": {"@type": "Organization", "name": "BoothLedger", "url": "https://boothledger.com", "logo": {"@type": "ImageObject", "url": "https://boothledger.com/images/boothledger-logo-full.png"}}
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Why doesn't my trigger fire during a session?", "acceptedAnswer": {"@type": "Answer", "text": "Check that Triggers on (or Triggers enabled on BoothLedger) is switched on, the trigger itself is on, and the right moments are ticked. Then tap Send test on the booth. A test that fails with \"couldn't reach the device\" or \"no answer in time\" means the booth can't reach that address: check the device's IP, that it is on the same network as the booth PC, and that the address works when opened on the booth PC. Changes made on BoothLedger take about 45 seconds to reach the booth."}},
+      {"@type": "Question", "name": "Why did my light or relay fire late, or not at all, when several moments happened together?", "acceptedAnswer": {"@type": "Answer", "text": "The booth runs at most 4 calls at once and drops any cue that has waited more than 30 seconds, so lights never fire long after the moment. Slow devices that take close to the 3-second timeout can hold up the queue. Give devices a fixed IP and avoid ticking moments you don't need."}},
+      {"@type": "Question", "name": "Why does my receiver reject the signature with a 401?", "acceptedAnswer": {"@type": "Answer", "text": "The usual causes are: the body was parsed and re-encoded before checking (always use the raw bytes), the secret wasn't base64url-decoded before use, the wrong secret was used (each webhook and each booth trigger has its own), the secret was replaced with New secret, or the clocks are more than 5 minutes apart. If a booth trigger's address was moved to another device, the booth sends it unsigned until you create a new secret."}},
+      {"@type": "Question", "name": "Why won't BoothLedger accept my webhook address?", "acceptedAnswer": {"@type": "Answer", "text": "Webhook addresses must start with https://, use port 443 or 8443, and point at a public internet address. Local names (localhost, .local, .internal) and private IP addresses are refused. To call a device on the venue network, use a trigger on the booth instead."}},
+      {"@type": "Question", "name": "Why was my webhook turned off?", "acceptedAnswer": {"@type": "Answer", "text": "After 50 failed tries in a row, BoothLedger turns the webhook off and shows \"Turned off after 50 failed deliveries in a row\". Open Deliveries to see the errors, fix the receiver, click Turn on and use Retry on the failed deliveries you still need."}},
+      {"@type": "Question", "name": "Why do I receive the same moment twice?", "acceptedAnswer": {"@type": "Answer", "text": "If your server answers slowly or the connection drops, BoothLedger can't tell whether the delivery arrived and sends it again. Store the X-BoothLedger-Delivery id of every request you handle and answer 200 without repeating the work when the same id comes back."}},
+      {"@type": "Question", "name": "Why are webhook moments arriving late?", "acceptedAnswer": {"@type": "Answer", "text": "When the booth is offline, it keeps its moments (up to 500, for 3 days) and forwards them when it is online again. Photo uploads also wait for the internet. Use the at field for when the moment happened."}},
+      {"@type": "Question", "name": "Why isn't the QR code showing on the booth?", "acceptedAnswer": {"@type": "Answer", "text": "The QR only shows when all of these are true: the event is live, not in test mode (test mode says \"QR payments start when you go live\") the booth PC is online Charge for sessions and QR code (Stripe) are on, and the event is saved on BoothLedger Stripe is connected and set up (Connected on the Integrations tab) a price per credit is set and is at least Stripe's minimum for your currency the Capture screen is showing and the guest is short of credits"}},
+      {"@type": "Question", "name": "A guest paid by QR but didn't get a session. What happens?", "acceptedAnswer": {"@type": "Answer", "text": "The booth collects a paid QR payment as soon as it can, including after a restart or when it comes back online. If it can't collect it within 15 minutes, BoothLedger refunds the guest in full automatically. You can see each payment's status on the Payments page and refund it yourself there."}},
+      {"@type": "Question", "name": "Why does the booth say \"Payment isn't available right now\"?", "acceptedAnswer": {"@type": "Answer", "text": "Card reader / coin (tap) is switched off and the QR code can't be shown (offline, Stripe not connected or an error), or none of your packages can be offered at this event, for example a package that includes a boomerang when boomerang is switched off. Switch on another way to pay or fix the package."}},
+      {"@type": "Question", "name": "Why does the control API answer unauthorized, forbidden or too_many_attempts?", "acceptedAnswer": {"@type": "Answer", "text": "401 unauthorized means the Authorization: Bearer header is missing or the token is wrong (New token replaces it). 403 forbidden means the request came from a web browser or used a hostname: call the booth by its IP address. 429 too_many_attempts means 10 wrong tokens came from that device; wait 10 minutes. From another device, also check Allow other devices on the network is on."}},
+      {"@type": "Question", "name": "Can a guest switch payments off on the booth?", "acceptedAnswer": {"@type": "Answer", "text": "Not on a protected booth. While a paying event is live, the booth needs a settings PIN, runs in fullscreen kiosk mode, and asks for the PIN before Charge for sessions, Add 1 or Clear can be used."}}
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://boothledger.com/"},{"@type":"ListItem","position":2,"name":"Pay-Per-Use Photo Booth","item":"https://boothledger.com/pay-per-use-photo-booth"},{"@type":"ListItem","position":3,"name":"Integrations Guide","item":"https://boothledger.com/photo-booth-integrations-guide"}]}</script>
+
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"BoothLedger","url":"https://boothledger.com/","logo":{"@type":"ImageObject","url":"https://boothledger.com/images/boothledger-logo-full.png","width":1000,"height":1000},"description":"Professional photo booth software for event professionals worldwide","sameAs":["https://www.instagram.com/booth_ledger"]}</script>
+
+  <link rel="icon" type="image/x-icon" href="images/favicon-v3.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-v3-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-v3-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon-v3.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+  <link rel="stylesheet" href="css/style.min.css?v=21">
+  <link rel="stylesheet" href="/css/site-legacy.css?v=2">
+
+  <style>
+    /* ---------- Integrations guide (page-specific) ---------- */
+    .ig-hero { padding: 132px 0 28px; }
+    .ig-hero .container, .ig-wrap { padding-left: 16px; padding-right: 16px; }
+    .ig-crumbs { font-size: .85rem; color: var(--muted); margin-bottom: 14px; }
+    .ig-crumbs a { color: var(--blue-700); }
+    .ig-hero h1 { font-size: clamp(30px, 5vw, 48px); line-height: 1.12; letter-spacing: -.02em; margin: 0 0 14px; max-width: 900px; }
+    .ig-grad { background: var(--gradient-text); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+    .ig-lede { font-size: 1.1rem; color: var(--slate); max-width: 820px; line-height: 1.65; margin: 0 0 22px; }
+    .ig-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .ig-meta { color: var(--muted); font-size: .85rem; margin-top: 14px; }
+    .ig-wrap { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 40px; padding-bottom: 72px; }
+    .ig-toc { position: sticky; top: 96px; align-self: start; max-height: calc(100vh - 110px); overflow: auto;
+      background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px 14px; font-size: .9rem; }
+    .ig-toc strong { display: block; font-size: .72rem; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px 6px; }
+    .ig-toc ol { list-style: none; margin: 0; padding: 0; }
+    .ig-toc li a { display: block; padding: 6px 8px; border-radius: 8px; color: var(--ink-2); line-height: 1.35; }
+    .ig-toc li a:hover { background: var(--blue-50); color: var(--blue-700); }
+    .ig-toc li li a { padding-left: 20px; font-size: .84rem; color: var(--slate); }
+    .ig-toc .ig-toc-pdf { display: block; margin-top: 12px; padding: 9px 10px; border-radius: 10px; text-align: center; font-weight: 600; background: var(--blue-50); color: var(--blue-700); border: 1px solid var(--blue-100); }
+    .ig-article { min-width: 0; color: var(--ink-2); font-size: 1rem; line-height: 1.7; }
+    .ig-article section { scroll-margin-top: 96px; padding-top: 8px; margin-bottom: 44px; }
+    .ig-article [id] { scroll-margin-top: 96px; }
+    .ig-article h2 { font-size: clamp(24px, 3.4vw, 32px); line-height: 1.2; letter-spacing: -.015em; margin: 0 0 14px; padding-top: 28px; border-top: 1px solid var(--line); }
+    .ig-article section:first-child h2 { border-top: 0; padding-top: 0; }
+    .ig-article h3 { font-size: 1.22rem; margin: 30px 0 10px; line-height: 1.3; }
+    .ig-article h4 { font-size: 1.02rem; margin: 22px 0 8px; }
+    .ig-article p { margin: 0 0 14px; }
+    .ig-article ul, .ig-article ol { margin: 0 0 16px; padding-left: 24px; }
+    .ig-article li { margin: 5px 0; }
+    .ig-article a { color: var(--blue-700); text-decoration: underline; text-underline-offset: 2px; }
+    .ig-article code { font: .88em/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; background: var(--blue-50); border-radius: 6px; padding: 1px 5px; overflow-wrap: anywhere; }
+    .ig-article .ig-path { font-weight: 600; color: var(--ink); }
+    .ig-beta { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: .68rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; vertical-align: middle; background: #fef3c7; color: #92400e; }
+    .ig-note { padding: 14px 16px; border-radius: 14px; border: 1px solid var(--blue-100); background: var(--blue-50); margin: 0 0 18px; }
+    .ig-note.warn { border-color: #fde68a; background: #fffbeb; color: #78350f; }
+    .ig-note p:last-child, .ig-note ul:last-child { margin-bottom: 0; }
+    .ig-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 0 0 20px; }
+    .ig-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+    .ig-card h3 { margin: 0 0 6px; font-size: 1.05rem; }
+    .ig-card p { margin: 0; font-size: .93rem; color: var(--slate); line-height: 1.55; }
+    .ig-card .ig-dir { display: block; font-size: .78rem; font-weight: 600; color: var(--blue-700); margin-bottom: 6px; }
+    .ig-table-wrap { overflow-x: auto; margin: 0 0 20px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+    .ig-article table { width: 100%; border-collapse: collapse; font-size: .9rem; line-height: 1.5; }
+    .ig-article th { text-align: left; background: #f8fafc; font-weight: 600; color: var(--ink); padding: 10px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+    .ig-article td { padding: 9px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+    .ig-article tr:first-child td { border-top: 0; }
+    .ig-article td code { white-space: nowrap; }
+    .ig-steps { counter-reset: igs; list-style: none; padding-left: 0 !important; }
+    .ig-steps > li { counter-increment: igs; position: relative; padding: 2px 0 2px 42px; margin: 10px 0; }
+    .ig-steps > li::before { content: counter(igs); position: absolute; left: 0; top: 2px; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: .85rem; color: #fff; background: linear-gradient(135deg, #6d28d9, #a21caf); }
+    .ig-codewrap { position: relative; margin: 0 0 18px; }
+    .ig-article .ig-label { display: block; font-size: .78rem; font-weight: 600; color: var(--muted); margin: 16px 0 6px; }
+    .ig-code { margin: 0; padding: 16px 18px; border-radius: 12px; background: #0f172a; color: #e2e8f0; font: 13px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; overflow-x: auto; white-space: pre; tab-size: 2; }
+    .ig-code code { background: none; padding: 0; font: inherit; color: inherit; overflow-wrap: normal; }
+    .ig-copy { position: absolute; top: 8px; right: 8px; font: 600 12px/1 Inter, system-ui, sans-serif; padding: 7px 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.08); color: #e2e8f0; cursor: pointer; }
+    .ig-codebox { position: relative; margin: 0 0 18px; }
+    .ig-copy:hover { background: rgba(255,255,255,.18); }
+    .ig-faq { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin: 0 0 12px; }
+    .ig-faq h3 { margin: 0 0 6px; font-size: 1.04rem; }
+    .ig-faq p { margin: 0; color: var(--slate); }
+    .ig-faq p + p, .ig-faq p + ul, .ig-faq ul + p { margin-top: 8px; }
+    .ig-faq ul { margin-bottom: 0; }
+    .ig-print-only { display: none; }
+    @media (max-width: 1023px) {
+      .ig-wrap { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+      .ig-toc { position: static; max-height: none; }
+      .ig-toc li li { display: none; }
+    }
+    @media (max-width: 560px) { .ig-cards { grid-template-columns: minmax(0, 1fr); } }
+    @media (max-width: 640px) {
+      .ig-hero { padding-top: 112px; }
+      .ig-article { font-size: .97rem; }
+      .ig-code { font-size: 12px; padding: 14px; }
+      .ig-actions .btn { width: 100%; justify-content: center; }
+    }
+
+    /* ---------- Print / PDF ---------- */
+    @page { size: A4; margin: 16mm 14mm 16mm 14mm; }
+    @media print {
+      html, body, body.ml { background: #fff !important; color: #0b1220 !important; overflow: visible !important; }
+      .nav, .footer, .ig-copy, .ig-actions, .ig-crumbs, .ig-toc .ig-toc-pdf { display: none !important; }
+      .ig-print-only { display: block; }
+      .ig-hero { padding: 0 0 8px; }
+      .ig-hero h1 { font-size: 26pt; }
+      .ig-grad { background: none; color: #6d28d9; -webkit-text-fill-color: #6d28d9; }
+      .ig-toc li li { display: list-item; }
+      .ig-lede { font-size: 11.5pt; }
+      .ig-wrap { display: block; padding: 0; max-width: none; }
+      .ig-hero .container, .ig-wrap { padding-left: 0; padding-right: 0; }
+      .ig-toc { position: static; max-height: none; overflow: visible; border: 1px solid #d7dde8; margin: 0 0 8mm; page-break-after: always; break-after: page; }
+      .ig-toc li a { padding: 2px 6px; }
+      .ig-article { font-size: 10.5pt; line-height: 1.55; }
+      .ig-article > section { break-before: page; page-break-before: always; margin-bottom: 0; }
+      .ig-article > section:first-child { break-before: auto; page-break-before: auto; }
+      .ig-article h2 { border-top: 0; padding-top: 0; font-size: 19pt; }
+      .ig-article h3 { font-size: 13pt; break-after: avoid; page-break-after: avoid; }
+      .ig-article h4 { break-after: avoid; page-break-after: avoid; }
+      .ig-article a { color: #4c1d95; text-decoration: none; }
+      .ig-code { white-space: pre-wrap; word-break: break-word; overflow: visible; font-size: 8.4pt; line-height: 1.45; background: #f5f3ff !important; color: #1e1b4b !important; border: 1px solid #ddd6fe; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .ig-codewrap, .ig-faq, .ig-card, .ig-note, .ig-article tr { break-inside: avoid; page-break-inside: avoid; }
+      .ig-table-wrap { overflow: visible; }
+      .ig-article td code { white-space: normal; }
+      .ig-steps > li::before, .ig-beta { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+  <script src="https://analytics.ahrefs.com/analytics.js" data-key="hDTsJjbsuIFfEsb2icX72w" async></script>
+</head>
+<body class="ml">
+
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="40" height="40">
+        <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
+      </a>
+      <a href="https://www.photoboothguys.ie" target="_blank" rel="noopener" class="nav-brought-by">
+        <span>Brought to you by</span>
+        <img src="images/photobooth-guys-logo.webp" width="31" height="28" alt="PhotoBooth Guys">
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/ai-photo-booth">AI Effects</a></li>
+        <li><a href="/ai-video-booth">AI Video</a></li>
+        <li><a href="/#ecosystem">Ecosystem</a></li>
+        <li><a href="/photo-booth-crm">CRM</a></li>
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/#download" class="nav-cta">Download Trial</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+  <!-- Hero -->
+  <section class="ig-hero">
+    <div class="container">
+      <nav class="ig-crumbs" aria-label="Breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/pay-per-use-photo-booth">Pay-Per-Use Photo Booth</a> &rsaquo; Integrations Guide</nav>
+      <p class="ig-print-only" style="font-weight:700;color:#6d28d9;margin:0 0 6px">BoothLedger &middot; boothledger.com/photo-booth-integrations-guide</p>
+      <h1>Photo Booth Integrations Guide: <span class="ig-grad">Webhooks, Triggers, API &amp; Payments</span></h1>
+      <p class="ig-lede">How to connect a BoothLedger photo booth to the world around it: lights and relays that react to each session, signed webhooks to Zapier, Make or your own server, a local API for terminals and scripts, and pay to play with card, coin and QR payments. Every step uses the real menu names, with copy-paste examples.</p>
+      <div class="ig-actions">
+        <a class="btn btn-primary btn-lg" href="/downloads/boothledger-integrations-guide.pdf" download>Download PDF</a>
+        <a class="btn btn-outline btn-lg" href="#overview">Start reading</a>
+      </div>
+      <p class="ig-meta">Last updated 4 October 2026 &middot; Integrations are part of the AI Photobooth plan and the free 30-day trial.</p>
+    </div>
+  </section>
+
+  <div class="ig-wrap">
+    <aside class="ig-toc" aria-label="On this page">
+      <strong>On this page</strong>
+      <ol>
+        <li><a href="#overview">1. Overview</a>
+          <ol><li><a href="#which-one">Which one do I need?</a></li><li><a href="#plans-internet">Plans &amp; internet</a></li></ol></li>
+        <li><a href="#moments">2. Session moments</a></li>
+        <li><a href="#triggers">3. Triggers (lights &amp; relays)</a>
+          <ol><li><a href="#triggers-setup">Set up a trigger</a></li><li><a href="#triggers-how">How the booth calls</a></li><li><a href="#trigger-examples">Worked examples</a></li></ol></li>
+        <li><a href="#webhooks">4. Webhooks</a>
+          <ol><li><a href="#webhooks-setup">Add a webhook</a></li><li><a href="#webhooks-delivery">Delivery &amp; retries</a></li><li><a href="#webhooks-payload">What BoothLedger sends</a></li><li><a href="#verify-signature">Verify the signature</a></li><li><a href="#recipes">Zapier &amp; Make recipes</a></li></ol></li>
+        <li><a href="#control-api">5. Control API</a>
+          <ol><li><a href="#control-api-endpoints">Endpoints</a></li><li><a href="#control-api-examples">Examples</a></li></ol></li>
+        <li><a href="#pay-to-play">6. Pay to play</a>
+          <ol><li><a href="#packages">Packages &amp; bundles</a></li><li><a href="#tap-payments">Card reader &amp; coins</a></li><li><a href="#qr-payments">QR payments (Stripe)</a></li><li><a href="#pin-protection">PIN protection</a></li></ol></li>
+        <li><a href="#payments">7. Payments, fees &amp; invoices</a>
+          <ol><li><a href="#fees">Fees &amp; VAT</a></li><li><a href="#invoices">Invoices</a></li></ol></li>
+        <li><a href="#troubleshooting">8. Troubleshooting</a></li>
+      </ol>
+      <a class="ig-toc-pdf" href="/downloads/boothledger-integrations-guide.pdf" download>Download PDF</a>
+    </aside>
+
+    <article class="ig-article">
+
+<!-- ================================================================ 1 -->
+      <section id="overview">
+        <h2>1. Overview</h2>
+        <p>BoothLedger integrations have four building blocks. They can be used on their own or together.</p>
+        <div class="ig-cards">
+          <div class="ig-card"><span class="ig-dir">Booth &rarr; devices at the venue</span><h3>Triggers</h3><p>The booth calls a web address on the venue network at moments in a session: WLED lights, Shelly relays, smart plugs, Home Assistant. No internet needed.</p></div>
+          <div class="ig-card"><span class="ig-dir">BoothLedger &rarr; internet services</span><h3>Webhooks</h3><p>BoothLedger posts signed JSON to Zapier, Make, a CRM or your own server, including a share link for every uploaded photo.</p></div>
+          <div class="ig-card"><span class="ig-dir">Your devices &rarr; the booth</span><h3>Control API</h3><p>A local API on the booth PC: check status, start a session, lock and unlock, add paid credits. For terminals, scripts, Stream Decks and phone shortcuts.</p></div>
+          <div class="ig-card"><span class="ig-dir">Guests &rarr; the booth</span><h3>Pay to play <span class="ig-beta">Beta</span></h3><p>Guests pay before each session by card reader, coins or a QR code on screen (Stripe). Sell single goes or packages like Photo + Boomerang.</p></div>
+        </div>
+
+        <h3 id="which-one">Which one do I need?</h3>
+        <div class="ig-table-wrap"><table>
+          <thead><tr><th>I want to&hellip;</th><th>Use</th></tr></thead>
+          <tbody>
+            <tr><td>Turn a ring light white on the countdown, fire a bubble machine, dim the room</td><td><a href="#triggers">Triggers</a></td></tr>
+            <tr><td>Log every photo to Google Sheets, ping Slack, update a CRM, email a link</td><td><a href="#webhooks">Webhooks</a></td></tr>
+            <tr><td>Start a session from a phone or Stream Deck, pause the booth between bookings</td><td><a href="#control-api">Control API</a></td></tr>
+            <tr><td>Add credits from my own till, kiosk or payment bridge</td><td><a href="#control-api">Control API</a> (<code>/v1/credits/add</code>)</td></tr>
+            <tr><td>Charge guests before each session</td><td><a href="#pay-to-play">Pay to play</a></td></tr>
+            <tr><td>Call my own server on the venue network with signed JSON</td><td><a href="#triggers">Triggers</a> (Signed message)</td></tr>
+            <tr><td>Call my own server on the internet</td><td><a href="#webhooks">Webhooks</a></td></tr>
+          </tbody>
+        </table></div>
+
+        <h3 id="plans-internet">Plans &amp; internet</h3>
+        <p>Triggers, webhooks, the control API and pay to play are included in the <strong>AI Photobooth plan</strong> and the <strong>free 30-day trial</strong>. They are not part of the Basic plan. Pay to play and QR payments are in <strong>beta</strong>: test them at home or in the office before you rely on them at a live event.</p>
+        <div class="ig-table-wrap"><table>
+          <thead><tr><th>Feature</th><th>Needs internet?</th></tr></thead>
+          <tbody>
+            <tr><td>Triggers</td><td>No. The booth calls devices on the venue network directly.</td></tr>
+            <tr><td>Control API</td><td>No. It runs on the booth PC.</td></tr>
+            <tr><td>Pay to play by card reader or coins</td><td>No.</td></tr>
+            <tr><td>Pay to play by QR code</td><td>Yes. The QR only shows while the booth PC is online.</td></tr>
+            <tr><td>Webhooks</td><td>BoothLedger sends them, so they reach your services even while the booth is offline. The booth keeps its session moments and forwards them once it is back online (see <a href="#webhooks-delivery">Delivery</a>).</td></tr>
+          </tbody>
+        </table></div>
+        <div class="ig-note"><p>Some features in this guide (packages, ways to pay, QR payments and PIN protection) need the latest version of the BoothLedger app on the booth PC. If a setting described here is missing on your booth, update the app first.</p></div>
+      </section>
+
+<!-- ================================================================ 2 -->
+      <section id="moments">
+        <h2>2. Session moments</h2>
+        <p>Triggers and webhooks fire on <strong>moments</strong> in a guest session. You pick the moments per trigger or per webhook. The names in the first column are what your device or server receives in the <code>type</code> field; the second column is the label you tick in BoothLedger.</p>
+        <div class="ig-table-wrap"><table>
+          <thead><tr><th>Moment (<code>type</code>)</th><th>Label</th><th>When it fires</th><th>Key <code>data</code> fields</th></tr></thead>
+          <tbody>
+            <tr><td><code>session.started</code></td><td>Session starts</td><td>A guest starts a session (after any design or background pick)</td><td><code>mode</code> (<code>photo</code>, <code>boomerang</code>, <code>video</code>, <code>import</code>), <code>photo_count</code>; with packages also <code>package</code> and <code>bundle_part</code> (1, 2&hellip;)</td></tr>
+            <tr><td><code>countdown.started</code></td><td>Countdown starts</td><td>Each countdown begins (once per photo)</td><td><code>index</code>, <code>total</code>, <code>seconds</code></td></tr>
+            <tr><td><code>photo.captured</code></td><td>Photo taken</td><td>Each photo is taken</td><td><code>index</code>, <code>total</code></td></tr>
+            <tr><td><code>recording.started</code></td><td>Recording starts</td><td>A boomerang or video starts recording</td><td><code>mode</code></td></tr>
+            <tr><td><code>recording.stopped</code></td><td>Recording stops</td><td>The recording ends</td><td><code>mode</code></td></tr>
+            <tr><td><code>processing.done</code></td><td>Photo ready (on the booth)</td><td>The result is saved on the booth</td><td><code>mode</code></td></tr>
+            <tr><td><code>preview.shown</code></td><td>Preview shown</td><td>The final preview screen opens</td><td>&mdash;</td></tr>
+            <tr><td><code>print.submitted</code></td><td>Print sent</td><td>A print is sent to the printer</td><td><code>copies</code>, <code>auto</code>, <code>success</code></td></tr>
+            <tr><td><code>share.sent</code></td><td>Shared (email, SMS or QR)</td><td>The guest shares by email, SMS/WhatsApp or opens the QR</td><td><code>channel</code> (<code>email</code>, <code>sms</code>, <code>whatsapp</code>, <code>qr</code>), <code>status</code> (<code>sent</code>, <code>queued</code>, <code>failed</code>, <code>shown</code>)</td></tr>
+            <tr><td><code>session.ended</code></td><td>Session ends</td><td>The session is over</td><td><code>reason</code> (<code>done</code>, <code>cancelled</code>, <code>error</code>, <code>abandoned</code>, <code>superseded</code>), <code>photos</code></td></tr>
+            <tr><td><code>credit.added</code></td><td>Credit added (pay to play)</td><td>A payment credit arrives at the booth</td><td><code>amount</code>, <code>source</code> (e.g. <code>key</code>, <code>stripe_qr</code>, <code>operator</code>, or the source sent to the API), <code>balance</code></td></tr>
+            <tr><td><code>photo.uploaded</code></td><td>Photo uploaded to BoothLedger (with share link)</td><td><strong>Webhooks only.</strong> A photo or video reaches BoothLedger</td><td><code>photo_id</code>, <code>share_url</code>, <code>media</code> (<code>image</code> or <code>video</code>)</td></tr>
+          </tbody>
+        </table></div>
+        <p>Moments never contain guest contact details or file paths. Test sends use their own types: <code>test</code> from a booth trigger&rsquo;s <strong>Send test</strong>, and <code>webhook.test</code> from a webhook&rsquo;s <strong>Send test</strong>.</p>
+      </section>
+
+<!-- ================================================================ 3 -->
+      <section id="triggers">
+        <h2>3. Triggers: lights, relays &amp; local devices</h2>
+        <p>A trigger is a web address, a method and the moments it fires on. The booth calls the address itself over the venue network, so triggers keep working with no internet. Each event can have up to <strong>20 triggers</strong>.</p>
+
+        <h3 id="triggers-setup">Set up a trigger on the booth</h3>
+        <ol class="ig-steps">
+          <li>On the booth PC open <span class="ig-path">Settings &rsaquo; Integrations</span> and find <strong>Triggers</strong>. Switch <strong>Triggers on</strong>.</li>
+          <li>Tap <strong>Add a trigger</strong>. Under <em>What do you want to connect?</em> pick <strong>WLED lights</strong>, <strong>Home Assistant</strong>, <strong>Shelly relay</strong> or <strong>Other web address</strong>. Each preset fills in an example address and moments.</li>
+          <li>Give it a <strong>Name</strong> and type the device&rsquo;s <strong>Address</strong>. It must start with <code>http://</code> or <code>https://</code> and can&rsquo;t contain a username or password.</li>
+          <li>Under <strong>How to call it</strong> choose <strong>Simple call (GET)</strong> for lights and relays, or <strong>Signed message (POST)</strong> for Home Assistant and your own receivers.</li>
+          <li>Under <strong>Call it when</strong>, tick the moments, for example <em>Countdown starts</em> and <em>Session ends</em>.</li>
+          <li>For a signed message, create a <strong>Signing secret</strong> (<em>Create</em>, then <em>Show</em> and <em>Copy</em>) and paste it into your receiver.</li>
+          <li>Tap <strong>Send test</strong>. You&rsquo;ll see <em>Test sent &mdash; the device answered in &hellip; ms</em> or the reason it failed. Then save. The trigger list shows <em>Working</em> or <em>Failing</em> for each trigger.</li>
+        </ol>
+
+        <h3>Or set it up on BoothLedger</h3>
+        <p>Triggers belong to the event, so you can also set them up from any computer: open the event in BoothLedger, go to the <span class="ig-path">Integrations</span> tab and use the <strong>Triggers</strong> card.</p>
+        <ol class="ig-steps">
+          <li>Switch on <strong>Triggers enabled</strong>.</li>
+          <li>Click <strong>+ WLED</strong>, <strong>+ Home Assistant</strong>, <strong>+ Shelly relay</strong> or <strong>+ Other web address</strong>.</li>
+          <li>Fill in the name, choose <strong>GET</strong> or <strong>POST (signed JSON)</strong>, enter the address and tick the moments under <strong>Call it when</strong>.</li>
+          <li>Click <strong>Save integrations</strong>. The booth picks the change up within about 45 seconds.</li>
+        </ol>
+        <div class="ig-note"><p><strong>Two things only happen on the booth:</strong> <em>Send test</em>, and signing secrets. Secrets are made on the booth, kept in Windows secure storage and never uploaded to BoothLedger. A secret is tied to the device (host and port) it was made for: if the address is later changed to a different device, for example from the web, the booth sends the calls <strong>unsigned</strong> until you create a new secret. The <em>Add the moment to the address</em> option is also set on the booth.</p></div>
+
+        <h3 id="triggers-how">How the booth calls your device</h3>
+        <h4>Simple call (GET)</h4>
+        <p>The booth opens the address once. It is <strong>not retried</strong>: switching a relay twice is worse than missing one cue. Turn on <strong>Add the moment to the address</strong> to append <code>event=&lt;type&gt;&amp;session=&lt;id&gt;</code>, so one address can handle every moment:</p>
+<pre class="ig-code"><code>http://192.168.1.80/booth?event=session.started&amp;session=7f2c…</code></pre>
+        <h4>Signed message (POST)</h4>
+        <p>The booth sends a JSON body with these headers: <code>Content-Type: application/json</code>, <code>User-Agent: BoothLedger-Booth</code>, <code>X-BoothLedger-Event</code> (the moment), <code>X-BoothLedger-Delivery</code> (an id that stays the same on retries) and, with a signing secret, <code>X-BoothLedger-Signature</code>.</p>
+        <span class="ig-label">Body of a booth trigger</span>
+<pre class="ig-code"><code>{
+  "v": 1,
+  "id": "&lt;delivery id&gt;",
+  "type": "session.started",
+  "at": "2026-12-12T18:00:00.000Z",
+  "event": { "id": "&lt;booth event id&gt;", "cloud_id": "&lt;BoothLedger event id&gt;" },
+  "session": "&lt;session id&gt;",
+  "test": false,
+  "data": { "mode": "photo", "photo_count": 3 }
+}</code></pre>
+        <p>The signature works exactly like a webhook signature, so the same code verifies both: see <a href="#verify-signature">Verify the signature</a>. Use the trigger&rsquo;s own secret from the booth.</p>
+        <h4>Limits</h4>
+        <ul>
+          <li>Every call times out after <strong>3 seconds</strong>. A 2xx answer counts as success.</li>
+          <li>A POST is tried up to <strong>3 times</strong> (retries after 1 and 3 seconds) on a timeout, network error or 5xx. A 3xx or 4xx answer is final, and redirects are never followed.</li>
+          <li>At most 4 calls run at once, and a cue that has waited more than 30 seconds is dropped, so lights never fire late.</li>
+          <li>Send test bypasses the <em>Triggers on</em> switch, so you can check a device before you turn triggers on.</li>
+        </ul>
+        <div class="ig-note"><p><strong>Tip:</strong> give each device a fixed address. Reserve its IP in the venue router (a &ldquo;DHCP reservation&rdquo;) or set a static IP on the device, then use that IP in the trigger. Your devices and the booth PC must be on the same network.</p></div>
+
+        <h3 id="trigger-examples">Worked examples</h3>
+
+        <h4 id="example-wled">A. WLED ring light: bright white on the countdown, back to a party preset afterwards</h4>
+        <p>In WLED, first save the look you want between sessions as a preset (for example preset 2, a rainbow effect). Then add two triggers on the booth, both <strong>WLED lights</strong> with <strong>Simple call (GET)</strong>:</p>
+        <div class="ig-table-wrap"><table>
+          <thead><tr><th>Name</th><th>Address</th><th>Call it when</th></tr></thead>
+          <tbody>
+            <tr><td>Ring light white</td><td><code>http://192.168.1.50/win&amp;T=1&amp;A=255&amp;R=255&amp;G=255&amp;B=255&amp;W=255&amp;FX=0</code></td><td>Countdown starts</td></tr>
+            <tr><td>Ring light party</td><td><code>http://192.168.1.50/win&amp;PL=2</code></td><td>Session ends</td></tr>
+          </tbody>
+        </table></div>
+        <p>In WLED&rsquo;s HTTP API, <code>T=1</code> turns the light on, <code>A</code> is brightness (0&ndash;255), <code>R G B W</code> are the colour channels (leave out <code>W</code> on an RGB-only strip), <code>FX=0</code> is the solid effect and <code>PL=2</code> loads preset 2.</p>
+
+        <h4 id="example-shelly">B. Shelly relay: a 5-second pulse on every photo (bubble machine, confetti, spotlight)</h4>
+        <p>Add a <strong>Shelly relay</strong> trigger with <strong>Simple call (GET)</strong> and tick <em>Photo taken</em>. For a Shelly Plus / Pro (Gen2 or newer) device:</p>
+<pre class="ig-code"><code>http://192.168.1.60/rpc/Switch.Set?id=0&amp;on=true&amp;toggle_after=5</code></pre>
+        <p><code>toggle_after=5</code> makes the relay switch itself back off after 5 seconds, so it never stays on if the booth goes quiet. On an older Gen1 Shelly use <code>http://192.168.1.60/relay/0?turn=on&amp;timer=5</code>. Change the number for a shorter or longer burst. Follow the equipment maker&rsquo;s instructions for wiring a relay to a bubble machine or confetti launcher, and make sure the relay is rated for the load.</p>
+
+        <h4 id="example-home-assistant">C. Home Assistant: dim the room lights during a session</h4>
+        <ol class="ig-steps">
+          <li>On the booth add a <strong>Home Assistant</strong> trigger. It uses <strong>Signed message (POST)</strong> and ticks <em>Session starts</em> and <em>Session ends</em>.</li>
+          <li>Set the address to your Home Assistant webhook, using the IP of your Home Assistant box and a webhook id that is hard to guess:<br><code>http://192.168.1.20:8123/api/webhook/photobooth-k7q2x9</code></li>
+          <li>In Home Assistant create this automation (Settings &rsaquo; Automations &rsaquo; Create &rsaquo; Edit in YAML). Change <code>light.function_room</code> to your own light.</li>
+        </ol>
+        <span class="ig-label">Home Assistant automation (2024.10 or newer)</span>
+<pre class="ig-code"><code>alias: Photo booth - dim the room during a session
+mode: queued
+triggers:
+  - trigger: webhook
+    webhook_id: photobooth-k7q2x9
+    allowed_methods: [POST]
+    local_only: true
+actions:
+  - choose:
+      - conditions: "{{ trigger.json.type == 'session.started' }}"
+        sequence:
+          - action: light.turn_on
+            target: { entity_id: light.function_room }
+            data: { brightness_pct: 25, transition: 1 }
+      - conditions: "{{ trigger.json.type == 'session.ended' }}"
+        sequence:
+          - action: light.turn_on
+            target: { entity_id: light.function_room }
+            data: { brightness_pct: 100, transition: 2 }</code></pre>
+        <p>The booth&rsquo;s JSON is available as <code>trigger.json</code>, so <code>trigger.json.data.mode</code> or <code>trigger.json.data.reason</code> work too. Home Assistant doesn&rsquo;t check BoothLedger signatures, so keep the webhook id private and <code>local_only: true</code> on. On Home Assistant versions before 2024.10, use the older keys: <code>trigger:</code> and <code>action:</code> as the section names, <code>platform: webhook</code> for the trigger and <code>service: light.turn_on</code> for each step.</p>
+
+        <h4 id="example-smart-plug">D. Smart plug: fairy lights in a Santa&rsquo;s grotto</h4>
+        <p>Turn a plug-in string of fairy lights or a spotlight on while a family is having their photo taken, and off afterwards. With a Shelly Plus Plug, add two <strong>Shelly relay</strong> triggers (GET):</p>
+        <div class="ig-table-wrap"><table>
+          <thead><tr><th>Name</th><th>Address</th><th>Call it when</th></tr></thead>
+          <tbody>
+            <tr><td>Grotto lights on</td><td><code>http://192.168.1.70/rpc/Switch.Set?id=0&amp;on=true</code></td><td>Session starts</td></tr>
+            <tr><td>Grotto lights off</td><td><code>http://192.168.1.70/rpc/Switch.Set?id=0&amp;on=false</code></td><td>Session ends</td></tr>
+          </tbody>
+        </table></div>
+        <p>A Tasmota plug works the same way with <strong>Other web address</strong> and <code>http://192.168.1.71/cm?cmnd=Power%20On</code> / <code>Power%20Off</code>. Any device that can be switched by opening a web address works.</p>
+      </section>
+
+<!-- ================================================================ 4 -->
+      <section id="webhooks">
+        <h2>4. Webhooks from BoothLedger</h2>
+        <p>Webhooks send your booth&rsquo;s moments to services on the internet: Zapier, Make, a CRM or your own server. BoothLedger sends them, not the booth, and every request is signed.</p>
+        <ul>
+          <li>Webhooks are set up <strong>per account</strong>, not per event: up to <strong>10 webhooks</strong>. Each one receives the moments you tick from every event you own. Use <code>event.id</code> or <code>event.name</code> in the payload to tell events apart.</li>
+          <li>Moments from an event shared with you go to the event <strong>owner&rsquo;s</strong> webhooks.</li>
+          <li>You can tick every <a href="#moments">session moment</a>, plus <strong>Photo uploaded to BoothLedger (with share link)</strong>, which BoothLedger sends itself when a photo or video arrives.</li>
+        </ul>
+
+        <h3 id="webhooks-setup">Add a webhook</h3>
+        <ol class="ig-steps">
+          <li>In BoothLedger go to <span class="ig-path">Automations &rsaquo; Webhooks</span> and click <strong>Add webhook</strong>.</li>
+          <li>Paste the <strong>Address (https)</strong> of the service, for example a Zapier &ldquo;Catch Hook&rdquo; address. Add an optional <strong>Name</strong> such as <em>Zapier &ndash; photo log</em>.</li>
+          <li>Under <strong>Send it when</strong>, tick the moments. <em>Session ends</em> and <em>Photo uploaded</em> are ticked for you.</li>
+          <li>Click <strong>Create webhook</strong>. The <strong>Signing secret</strong> appears: click <strong>Copy</strong>, store it in your receiving app, then <strong>Done</strong>.</li>
+          <li>Click <strong>Send test</strong> on the webhook&rsquo;s card. BoothLedger sends a <code>webhook.test</code> straight away and shows the answer, for example <em>Delivered &mdash; HTTP 200 in 312 ms</em> or <em>Failed: HTTP 401</em>. You can send up to 5 tests a minute.</li>
+        </ol>
+        <p>Each webhook card also has <strong>Turn off</strong>/<strong>Turn on</strong>, <strong>Edit</strong> (address, name, moments), <strong>Deliveries</strong>, <strong>Show secret</strong>, <strong>New secret</strong> and <strong>Delete</strong> (which also removes its delivery log), plus the time of the last success and last failure.</p>
+
+        <h4>Address rules</h4>
+        <ul>
+          <li>It must start with <code>https://</code> and use the standard port (443) or 8443.</li>
+          <li>It must be a public internet address. <code>localhost</code>, <code>.local</code> and <code>.internal</code> names and private, loopback or link-local IPs are refused, and every send checks the address again. For devices on the venue network, use <a href="#triggers">triggers</a> instead.</li>
+          <li>No username or password in the address and no spaces.</li>
+        </ul>
+
+        <h3 id="webhooks-delivery">Delivery, retries &amp; the deliveries log</h3>
+        <ul>
+          <li>Your server has <strong>10 seconds</strong> to answer (15 seconds at most for the whole request). Any <strong>2xx</strong> answer is a success. Anything else, including a redirect, a 4xx, a timeout or a connection error, is a failure. The response body is ignored, so answer quickly and do any slow work afterwards.</li>
+          <li>A failed delivery is retried after <strong>1 minute, 5 minutes, 30 minutes, 2 hours, 6 hours and 12 hours</strong>: 7 tries over about 21 hours. After that it is marked <em>Failed</em>.</li>
+          <li><strong>Deliveries</strong> on the webhook card shows the latest 50: when, the moment, the result (<em>OK</em>, <em>Retrying &mdash; reason &middot; next &hellip;</em> or <em>Failed &mdash; reason</em>) and the number of tries. Click <strong>Retry</strong> on a failed delivery to send it again once your server is fixed. Test sends can&rsquo;t be retried: use Send test again. The log keeps 30 days.</li>
+          <li>After <strong>50 failed tries in a row</strong> the webhook is turned off and shows <em>Turned off after 50 failed deliveries in a row</em>. Fix the receiver and click <strong>Turn on</strong>. While a webhook is off, nothing is queued for it.</li>
+          <li>If one webhook has more than 2,000 deliveries waiting, new moments for it are dropped until the queue clears.</li>
+          <li><strong>Offline booths:</strong> the booth keeps its moments in an outbox on the PC (up to 500 moments, kept for 3 days) and forwards them when it&rsquo;s online again. It only forwards moments that one of your webhooks has ticked. So a moment can arrive late: use the <code>at</code> time, not the time it arrived. Moments can also arrive out of order.</li>
+          <li>Moments from a <strong>test-mode</strong> event arrive with <code>"test": true</code>. Filter them out in your automations.</li>
+        </ul>
+
+        <h3 id="webhooks-payload">What BoothLedger sends</h3>
+        <p>A <code>POST</code> with a compact JSON body and these headers:</p>
+<pre class="ig-code"><code>Content-Type: application/json
+User-Agent: BoothLedger-Webhooks/1
+X-BoothLedger-Event: photo.uploaded
+X-BoothLedger-Delivery: photo:3f1d…
+X-BoothLedger-Signature: t=1797098400,v1=5c1f…</code></pre>
+        <span class="ig-label">Body (shown formatted)</span>
+<pre class="ig-code"><code>{
+  "v": 1,
+  "id": "photo:3f1d…",
+  "type": "photo.uploaded",
+  "at": "2026-12-12T18:02:11Z",
+  "source": "cloud",
+  "event": { "id": "9b7e…", "name": "Smith Wedding" },
+  "session": "a41c…",
+  "test": false,
+  "data": {
+    "photo_id": "3f1d…",
+    "share_url": "https://…/p/…",
+    "media": "image"
+  }
+}</code></pre>
+        <div class="ig-table-wrap"><table>
+          <thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td><code>v</code></td><td>Payload version, currently <code>1</code>.</td></tr>
+            <tr><td><code>id</code></td><td>The moment&rsquo;s id: <code>booth:&hellip;</code> for booth moments, <code>photo:&lt;photo id&gt;</code> for uploads, <code>test:&hellip;</code> for test sends. The same as the <code>X-BoothLedger-Delivery</code> header. It stays the same on every retry.</td></tr>
+            <tr><td><code>type</code></td><td>The moment, see <a href="#moments">Session moments</a>.</td></tr>
+            <tr><td><code>at</code></td><td>When it happened, in UTC.</td></tr>
+            <tr><td><code>source</code></td><td><code>booth</code> (forwarded by the booth) or <code>cloud</code> (sent by BoothLedger itself: uploads and tests).</td></tr>
+            <tr><td><code>event</code></td><td>The BoothLedger event&rsquo;s <code>id</code> and <code>name</code>.</td></tr>
+            <tr><td><code>session</code></td><td>The guest session id, so you can group moments and photos of one session.</td></tr>
+            <tr><td><code>test</code></td><td><code>true</code> for test-mode events and test sends.</td></tr>
+            <tr><td><code>data</code></td><td>The moment&rsquo;s details (flat; text values up to 200 characters).</td></tr>
+          </tbody>
+        </table></div>
+        <p><strong>Ignore duplicates with the delivery id.</strong> A retry after a timeout can reach you twice. Store each <code>X-BoothLedger-Delivery</code> you have processed and answer <code>200</code> without doing the work again when you see it a second time.</p>
+
+        <h4>The signing secret</h4>
+        <ul>
+          <li>Each webhook has its own secret. It is shown when you create the webhook and again with <strong>Show secret</strong>, and it is stored encrypted.</li>
+          <li><strong>New secret</strong> replaces it at once: requests signed with the old secret stop verifying, so update your receiver straight away.</li>
+          <li>Booth triggers have their own secrets on the booth. The format and the check are the same.</li>
+        </ul>
+
+        <h3 id="verify-signature">Verify the signature</h3>
+        <p>The <code>X-BoothLedger-Signature</code> header looks like <code>t=&lt;unix seconds&gt;,v1=&lt;hex&gt;</code>. To check it:</p>
+        <ol class="ig-steps">
+          <li>Read the <strong>raw request body</strong> as bytes, before any JSON parsing. Re-encoding the JSON changes the bytes and breaks the check.</li>
+          <li>Decode the secret as <strong>base64url</strong> (add <code>=</code> padding if your library needs it). The decoded bytes are the HMAC key.</li>
+          <li>Compute HMAC-SHA256 over <code>&lt;t&gt;.&lt;raw body&gt;</code> (the <code>t</code> value, a dot, then the body) and write it as lowercase hex.</li>
+          <li>Compare it with <code>v1</code> using a constant-time comparison.</li>
+          <li>Reject the request if <code>t</code> is more than 300 seconds (5 minutes) from your clock. This stops someone replaying an old request.</li>
+        </ol>
+        <span class="ig-label">Python 3</span>
+<pre class="ig-code"><code>import base64, hashlib, hmac, time
+
+def verify_boothledger(secret: str, header: str, body: bytes, tolerance: int = 300) -> bool:
+    """secret: the signing secret as shown. header: X-BoothLedger-Signature.
+    body: the raw request body (bytes)."""
+    try:
+        parts = dict(p.split("=", 1) for p in header.split(","))
+        t = int(parts["t"])
+        sent = parts["v1"]
+    except (KeyError, ValueError):
+        return False
+    if abs(time.time() - t) > tolerance:
+        return False  # too old (or the clocks are far apart)
+    key = base64.urlsafe_b64decode(secret + "=" * (-len(secret) % 4))
+    expected = hmac.new(key, f"{t}.".encode() + body, hashlib.sha256).hexdigest()
+    return hmac.compare_digest(expected, sent)</code></pre>
+        <span class="ig-label">Node.js 16 or newer</span>
+<pre class="ig-code"><code>const crypto = require('crypto');
+
+function verifyBoothLedger(secret, header, rawBody, tolerance = 300) {
+  const parts = {};
+  for (const p of String(header || '').split(',')) {
+    const i = p.indexOf('=');
+    if (i > 0) parts[p.slice(0, i)] = p.slice(i + 1);
+  }
+  const t = Number(parts.t);
+  if (!Number.isInteger(t) || !parts.v1) return false;
+  if (Math.abs(Date.now() / 1000 - t) > tolerance) return false;
+  const key = Buffer.from(secret, 'base64url');
+  const expected = crypto.createHmac('sha256', key)
+    .update(`${t}.`).update(rawBody).digest('hex');
+  const a = Buffer.from(expected), b = Buffer.from(parts.v1);
+  return a.length === b.length &amp;&amp; crypto.timingSafeEqual(a, b);
+}</code></pre>
+        <p>For booth triggers the timestamp comes from the booth PC&rsquo;s clock, so keep Windows&rsquo; automatic time setting on.</p>
+
+        <h4 id="own-server">A small receiver on your own server</h4>
+        <span class="ig-label">Python (Flask)</span>
+<pre class="ig-code"><code>import os
+from flask import Flask, request, abort
+
+app = Flask(__name__)
+SECRET = os.environ["BOOTHLEDGER_WEBHOOK_SECRET"]
+seen = set()  # use a database table in production
+
+@app.post("/boothledger")
+def boothledger():
+    body = request.get_data()  # raw bytes: verify BEFORE parsing
+    if not verify_boothledger(SECRET, request.headers.get("X-BoothLedger-Signature", ""), body):
+        abort(401)
+    delivery = request.headers.get("X-BoothLedger-Delivery", "")
+    if delivery in seen:
+        return "", 200  # already handled: say OK so it isn't retried
+    seen.add(delivery)
+    msg = request.get_json()
+    if msg["type"] == "photo.uploaded" and not msg["test"]:
+        print(msg["event"]["name"], msg["data"]["share_url"])
+    return "", 204</code></pre>
+        <span class="ig-label">Node.js (Express)</span>
+<pre class="ig-code"><code>const express = require('express');
+const app = express();
+const seen = new Set(); // use a database in production
+
+app.post('/boothledger', express.raw({ type: 'application/json' }), (req, res) => {
+  const ok = verifyBoothLedger(process.env.BOOTHLEDGER_WEBHOOK_SECRET,
+    req.get('X-BoothLedger-Signature'), req.body);
+  if (!ok) return res.sendStatus(401);
+  const delivery = req.get('X-BoothLedger-Delivery');
+  if (seen.has(delivery)) return res.sendStatus(200);
+  seen.add(delivery);
+  const msg = JSON.parse(req.body);
+  if (msg.type === 'session.ended' &amp;&amp; !msg.test) {
+    console.log(`${msg.event.name}: session over, ${msg.data.photos} photos`);
+  }
+  res.sendStatus(204);
+});
+
+app.listen(3000);</code></pre>
+        <p>Run it behind HTTPS (for example nginx or Caddy with a certificate) on a public address, then add that address as a webhook.</p>
+
+        <h3 id="recipes">Recipes: Zapier &amp; Make</h3>
+        <div class="ig-note"><p>Zapier and Make can&rsquo;t check BoothLedger&rsquo;s signature. Treat their hook address like a password, and filter out <code>test</code> moments. Webhooks by Zapier is a premium Zapier app, so check your Zapier plan includes it.</p></div>
+
+        <h4 id="recipe-sheets">Zapier: a Google Sheets row for every photo, with its share link</h4>
+        <ol class="ig-steps">
+          <li>In Zapier, create a Zap. Trigger: <strong>Webhooks by Zapier &rsaquo; Catch Hook</strong>. Copy the webhook URL it gives you.</li>
+          <li>In BoothLedger, <span class="ig-path">Automations &rsaquo; Webhooks &rsaquo; Add webhook</span>: paste the URL, tick only <strong>Photo uploaded to BoothLedger (with share link)</strong> and click <strong>Create webhook</strong>.</li>
+          <li>Give Zapier a real sample: take a photo on a booth with a <strong>test-mode</strong> event, wait for it to upload, then click <strong>Test trigger</strong> in Zapier. (Send test also reaches Zapier, but a <code>webhook.test</code> has no share link to map.)</li>
+          <li>Add <strong>Filter by Zapier</strong>: only continue if <code>Type</code> exactly matches <code>photo.uploaded</code> and <code>Test</code> is false.</li>
+          <li>Add <strong>Google Sheets &rsaquo; Create Spreadsheet Row</strong>. Make a sheet with columns <em>Time, Event, Session, Share link, Media</em> and map them to <code>At</code>, <code>Event Name</code>, <code>Session</code>, <code>Data Share Url</code> and <code>Data Media</code>.</li>
+          <li>Turn the Zap on. Every photo and video now lands in the sheet with a link the client can open.</li>
+        </ol>
+
+        <h4 id="recipe-slack">Zapier: a Slack message when a booth starts its first session of the night</h4>
+        <ol class="ig-steps">
+          <li>Create a Zap with <strong>Catch Hook</strong> and add a BoothLedger webhook that ticks only <strong>Session starts</strong>.</li>
+          <li>Filter: continue only if <code>Test</code> is false.</li>
+          <li><strong>Formatter by Zapier &rsaquo; Date / Time &rsaquo; Format</strong>: turn <code>At</code> into a date like <code>YYYY-MM-DD</code> in your time zone.</li>
+          <li><strong>Storage by Zapier &rsaquo; Get Value</strong> with the key <code>first-session-</code> plus <code>Event Id</code>.</li>
+          <li>Filter: continue only if the stored value does not exactly match the formatted date.</li>
+          <li><strong>Storage by Zapier &rsaquo; Set Value</strong>: the same key, set to the formatted date.</li>
+          <li><strong>Slack &rsaquo; Send Channel Message</strong>: &ldquo;<code>Event Name</code> is live: first session started at <code>At</code> (<code>Data Mode</code>).&rdquo;</li>
+        </ol>
+
+        <h4 id="recipe-make">Make: email each photo&rsquo;s link to the client as it uploads</h4>
+        <ol class="ig-steps">
+          <li>In Make, create a scenario that starts with <strong>Webhooks &rsaquo; Custom webhook</strong>. Click <strong>Add</strong>, name it and copy the address.</li>
+          <li>In BoothLedger add a webhook with that address, tick <strong>Photo uploaded to BoothLedger (with share link)</strong>, and create it.</li>
+          <li>In Make click <strong>Redetermine data structure</strong>, then take a photo at a test-mode event so Make learns the fields.</li>
+          <li>Add a filter after the webhook: <code>type</code> equal to <code>photo.uploaded</code> and <code>test</code> equal to <code>false</code>.</li>
+          <li>Look up who to send to: for example <strong>Google Sheets &rsaquo; Search Rows</strong> in a sheet that lists <em>Event name</em> and <em>Client email</em>, matched on <code>event.name</code>.</li>
+          <li>Add <strong>Gmail &rsaquo; Send an email</strong> (or any email module) to that address with <code>data.share_url</code> in the message. Turn the scenario on.</li>
+        </ol>
+        <p>The webhook carries one share link per photo or video. To send one email per session instead, collect the links by <code>session</code> (for example with a Make data store) and send them when you want.</p>
+      </section>
+
+<!-- ================================================================ 5 -->
+      <section id="control-api">
+        <h2>5. Control API (local)</h2>
+        <p>The control API lets other programs and devices control the booth: check its status, start a session, lock and unlock it, and add paid credits. It runs on the booth PC and needs no internet. It is <strong>off by default</strong> and its settings belong to that PC only.</p>
+
+        <h3>Turn it on</h3>
+        <ol class="ig-steps">
+          <li>On the booth open <span class="ig-path">Settings &rsaquo; Integrations &rsaquo; Control API</span> and switch on <strong>Control API on</strong>.</li>
+          <li>Under <strong>Access token</strong>, tap <strong>Show</strong> and copy the token. Send it with every request as the header <code>Authorization: Bearer &lt;token&gt;</code>. <strong>New token</strong> makes a new one and the old one stops working.</li>
+          <li><strong>Status</strong> shows the address: <em>Programs on this PC: http://127.0.0.1:8643</em>. To use a phone or another device, switch on <strong>Allow other devices on the network</strong>; the status then also shows <em>Phones and other devices: http://&lt;this PC&rsquo;s IP&gt;:8643</em>.</li>
+        </ol>
+        <p>The port is always <strong>8643</strong>. If another program already uses it, the status says <em>Port 8643 is already in use by another program</em>. Opening the address in a web browser shows a short notice and &ldquo;unauthorized&rdquo;: that&rsquo;s normal, because the API is for apps, not browsers.</p>
+
+        <h3>Security rules</h3>
+        <ul>
+          <li>Every request needs the token. Keep it private: anyone with it can start sessions and add credits.</li>
+          <li>Requests from web browsers (anything with an <code>Origin</code> header) are refused with <code>403</code>, and so are requests whose <code>Host</code> is a hostname instead of an IP address. Call the booth by its <strong>IP address</strong> (or <code>127.0.0.1</code> / <code>localhost</code> on the PC itself), never by a name like <code>booth-pc.local</code>.</li>
+          <li>10 wrong tokens from another device lock that device out for 10 minutes (<code>429</code>). Programs on the booth PC are never locked out.</li>
+          <li><strong>Network mode is plain HTTP.</strong> Anyone on the same Wi-Fi could read the token and add free credits. Only allow other devices on a private network you control, never on guest Wi-Fi.</li>
+          <li><code>/v1/unlock</code> only works from the booth PC itself.</li>
+        </ul>
+
+        <h3 id="control-api-endpoints">Endpoints</h3>
+        <div class="ig-table-wrap"><table>
+          <thead><tr><th>Request</th><th>Body</th><th>Success</th><th>Refusals</th></tr></thead>
+          <tbody>
+            <tr><td><code>GET /v1/status</code></td><td>&mdash;</td><td><code>200</code> with <code>state</code> (<code>ready</code>, <code>busy</code>, <code>locked</code>, <code>not_ready</code>), <code>event</code> (<code>id</code>, <code>name</code>), <code>credits</code>, <code>credits_required</code>, <code>session</code></td><td>&mdash;</td></tr>
+            <tr><td><code>POST /v1/session/start</code></td><td><code>{"mode":"photo"}</code> &mdash; <code>photo</code> (default), <code>boomerang</code> or <code>video</code></td><td><code>200 {"ok":true,"mode":"photo"}</code></td><td><code>409</code> <code>busy</code>, <code>not_ready</code>, <code>needs_payment</code>, <code>locked</code>, <code>bad_mode</code> (mode not available); <code>400</code> <code>bad_mode</code> (unknown mode), <code>bad_json</code></td></tr>
+            <tr><td><code>POST /v1/lock</code></td><td>&mdash;</td><td><code>200 {"ok":true,"locked":true}</code>: the booth shows its &ldquo;paused&rdquo; lock screen</td><td><code>409 no_pin</code>: set a settings PIN first (Settings &rsaquo; Security)</td></tr>
+            <tr><td><code>POST /v1/unlock</code></td><td>&mdash;</td><td><code>200 {"ok":true,"locked":false}</code></td><td><code>403 local_only</code> from another device</td></tr>
+            <tr><td><code>POST /v1/credits/add</code></td><td><code>{"amount":1,"id":"tx-1234","source":"till"}</code> &mdash; <code>amount</code> 1&ndash;100 (default 1); <code>id</code> optional, up to 128 characters; <code>source</code> optional, up to 32 characters (default <code>api</code>)</td><td><code>200 {"ok":true,"balance":3}</code>, or <code>200 {"ok":true,"duplicate":true}</code> if that <code>id</code> was already credited</td><td><code>400</code> <code>bad_amount</code>, <code>bad_id</code>, <code>bad_json</code>; <code>409 balance_full</code> (the balance is capped at 1,000)</td></tr>
+          </tbody>
+        </table></div>
+        <p>Every endpoint can also answer <code>401 unauthorized</code> (missing or wrong token), <code>403 forbidden</code> (browser request or hostname) and <code>429 too_many_attempts</code>. Bodies are JSON, up to 4 KB.</p>
+        <p><strong>About <code>session/start</code>:</strong> it follows the same rules as a guest tap. It only works while the booth is idle on the Capture screen, never in import-only mode, and pay to play still applies (<code>needs_payment</code> if the credits or bundle don&rsquo;t cover it). A <code>200</code> means the start was <em>requested</em>: the guest can still back out of a design or background choice. If you need certainty, watch for the <code>session.started</code> moment.</p>
+        <p><strong>About <code>credits/add</code>:</strong> always send a unique <code>id</code> per payment (your till&rsquo;s transaction number, for example). If your request times out and you send it again, the booth recognises the id and doesn&rsquo;t add the credits twice.</p>
+
+        <h3 id="control-api-examples">Examples</h3>
+        <span class="ig-label">curl (on the booth PC, or from another device with network access on)</span>
+<pre class="ig-code"><code># Check status
+curl -s -H "Authorization: Bearer $TOKEN" http://127.0.0.1:8643/v1/status
+
+# Start a photo session
+curl -s -X POST -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+     -d '{"mode":"photo"}' http://127.0.0.1:8643/v1/session/start
+
+# Add one paid credit with a unique id
+curl -s -X POST -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+     -d '{"amount":1,"id":"till-000123","source":"till"}' http://127.0.0.1:8643/v1/credits/add
+
+# Pause the booth between bookings (from another device: use the booth's IP)
+curl -s -X POST -H "Authorization: Bearer $TOKEN" http://192.168.1.30:8643/v1/lock</code></pre>
+        <span class="ig-label">PowerShell on the booth PC</span>
+<pre class="ig-code"><code>$h = @{ Authorization = "Bearer $env:BOOTH_TOKEN" }
+$api = "http://127.0.0.1:8643"
+
+Invoke-RestMethod -Uri "$api/v1/status" -Headers $h
+
+# Lock now, unlock later (unlock works from this PC only)
+Invoke-RestMethod -Method Post -Uri "$api/v1/lock" -Headers $h
+Invoke-RestMethod -Method Post -Uri "$api/v1/unlock" -Headers $h
+
+# Start a boomerang
+Invoke-RestMethod -Method Post -Uri "$api/v1/session/start" -Headers $h `
+  -ContentType "application/json" -Body '{"mode":"boomerang"}'</code></pre>
+        <h4>Ideas</h4>
+        <ul>
+          <li><strong>A &ldquo;Start&rdquo; button on a phone.</strong> iPhone Shortcuts (<em>Get Contents of URL</em>, method POST, header <code>Authorization</code>) or the Android app HTTP Shortcuts, pointed at <code>http://&lt;booth IP&gt;:8643/v1/session/start</code>. Needs <em>Allow other devices on the network</em> and a private network.</li>
+          <li><strong>A Stream Deck on the booth PC.</strong> Save the PowerShell lines above as small scripts and run them with the Stream Deck&rsquo;s <em>System &rsaquo; Open</em> action: one key to start, one to lock, one to unlock.</li>
+          <li><strong>Pause during speeches.</strong> Lock the booth before the speeches and unlock it afterwards.</li>
+          <li><strong>Your own payment system.</strong> A till, kiosk or Raspberry Pi bridge adds credits with <code>/v1/credits/add</code> after each payment.</li>
+        </ul>
+      </section>
+
+<!-- ================================================================ 6 -->
+      <section id="pay-to-play">
+        <h2>6. Pay to play <span class="ig-beta">Beta</span></h2>
+        <div class="ig-note warn"><p>Pay to play is in beta. Try it at home with your payment device first, and don&rsquo;t rely on it at a live event yet.</p></div>
+        <p>With pay to play, guests pay before each session. Payments arrive at the booth as <strong>credits</strong>, and a session only starts once enough credits are paid in. Until then the capture screen shows the ways to pay, such as &ldquo;Tap your card to start&rdquo; and/or a QR code.</p>
+
+        <h3>Switch it on</h3>
+        <p>Set it up on the booth in <span class="ig-path">Settings &rsaquo; Integrations &rsaquo; Pay to play</span>, or on BoothLedger in the event&rsquo;s <span class="ig-path">Integrations</span> tab, <strong>Pay to play</strong> card. The event settings sync both ways.</p>
+        <ol class="ig-steps">
+          <li>Switch on <strong>Charge for sessions</strong>.</li>
+          <li>Set <strong>Credits per session</strong>: what one go costs, in credits (1&ndash;20). Or add <a href="#packages">packages</a>.</li>
+          <li>Under <strong>Ways to pay</strong>, choose <strong>Card reader / coin (tap)</strong>, <strong>QR code (Stripe)</strong> or both. If no way to pay is on, the booth warns you that guests can&rsquo;t start a session.</li>
+          <li>On BoothLedger click <strong>Save integrations</strong>.</li>
+          <li>Test it: on the booth, <strong>Add 1</strong> gives a free credit, so you can try a full session. <strong>Clear</strong> empties the balance.</li>
+        </ol>
+        <h4>How credits work</h4>
+        <ul>
+          <li>Credits are taken when the session really starts, after any design or background choice.</li>
+          <li>If the session ends before the first photo (cancelled, an error or the app closed), the credits go back on the booth automatically, so the next guest can start.</li>
+          <li>The balance (<em>Credits on this booth</em>) is saved on the PC, so a restart loses nothing. It is capped at 1,000 credits.</li>
+          <li><strong>Upload Photo is never sold.</strong> It&rsquo;s a tool for testing AI effects. With Charge for sessions on, it is free in test mode and hidden on the capture screen at a live event.</li>
+        </ul>
+
+        <h3 id="packages">Packages &amp; bundles</h3>
+        <p>Instead of one price for any go, sell up to <strong>3 packages</strong>, for example <em>Photo</em> for 2 credits and <em>Photo + Boomerang</em> for 3.</p>
+        <ol class="ig-steps">
+          <li>Under <strong>Packages</strong> click <strong>Add package</strong>.</li>
+          <li>For each package choose what&rsquo;s included: a number of photos, boomerangs and videos (0&ndash;5 each), or <strong>Any one</strong> (one go of photo, boomerang or video; the guest chooses).</li>
+          <li>Set its <strong>Credits</strong> (1&ndash;20). With QR payments on, each package shows its price, for example &ldquo;&euro;7.50 by QR&rdquo;.</li>
+          <li>For bundles, set <strong>Time to finish a bundle</strong> (0.5&ndash;15 minutes, default 2).</li>
+        </ol>
+        <p><strong>What guests see:</strong> with one package there&rsquo;s no choice. With two or three, the booth first shows <em>Choose your package</em> with big buttons and their prices; after picking one, the guest sees the ways to pay and a <strong>Change</strong> button. Once paid, only the start buttons included in the package are shown.</p>
+        <p><strong>Bundles:</strong> the credits are taken when the first part starts. After it, a banner says what&rsquo;s left (for example &ldquo;Boomerang included &mdash; tap Boomerang when you&rsquo;re ready&rdquo;) with a countdown and a <strong>Skip</strong> button. The countdown pauses while a part is running. When it runs out, or the guest taps Skip, the rest is dropped. If the first part ends before its first photo, the credits are refunded to the booth and the bundle is cancelled.</p>
+        <p>A package is only offered if every mode in it has a start button at the event (for example, boomerang switched on). Settings warn you about a package guests won&rsquo;t be offered. Booths on older app versions (v1.0.247 and earlier) charge the first package&rsquo;s credits for every go.</p>
+
+        <h3 id="tap-payments">Card reader &amp; coin acceptor (tap)</h3>
+        <p>Card readers and coin or note acceptors send credits to the booth as a key press. The booth counts each press of the <strong>Payment device key</strong> as one credit. Choose a key from F13 to F24, which no normal keyboard has.</p>
+        <h4>Nayax VPOS Touch in pulse mode</h4>
+        <ol class="ig-steps">
+          <li>In Nayax Core, set the device to <strong>pulse</strong> output and set the price so that one successful payment sends the number of pulses you want as credits.</li>
+          <li>Wire the pulse output to a <strong>pulse-to-USB keyboard (HID) adapter</strong> set to send <code>F13</code> per pulse, and plug it into the booth PC.</li>
+          <li>On the booth, set <strong>Payment device key</strong> to <code>F13</code> and <strong>Credits per session</strong> to match.</li>
+          <li>Make a test payment: the gate shows the credits arriving, then &ldquo;Ready &mdash; press Start&rdquo;.</li>
+        </ol>
+        <p>Coin and note acceptors with a pulse output work the same way: one pulse, one credit.</p>
+        <ul>
+          <li>Key presses only count while the BoothLedger app is in front. Close EOS Utility and similar apps (the booth offers to).</li>
+          <li>Presses closer together than 50 ms count as one, and at most 60 count per minute.</li>
+          <li>Keep the PC&rsquo;s USB ports out of guests&rsquo; reach: a programmable keyboard can send F13.</li>
+          <li>Pulse mode is one-way. If a session fails after payment, the card payment isn&rsquo;t voided, but the booth keeps the credits so the next tap starts a session.</li>
+        </ul>
+        <p>Card reader and coin payments go straight to your own Nayax account or cash box; BoothLedger takes nothing from them. Nayax charges its own fees.</p>
+
+        <h3 id="qr-payments">QR payments with Stripe <span class="ig-beta">Beta</span></h3>
+        <p>No card reader needed: the booth shows a QR code, the guest scans it and pays on their phone with Apple Pay, Google Pay or a card, and the session starts once the payment arrives. The money goes to <strong>your own Stripe account</strong>.</p>
+        <ol class="ig-steps">
+          <li>On BoothLedger open the event&rsquo;s <span class="ig-path">Integrations</span> tab. In <strong>Pay to play</strong>, under <em>Ways to pay</em>, switch on <strong>QR code (Stripe)</strong>.</li>
+          <li>Click <strong>Connect Stripe</strong> and complete Stripe&rsquo;s sign-up (or sign in to an existing Stripe account). You come back to the Integrations tab. If Stripe still needs details, the button says <strong>Finish Stripe setup</strong>. When it&rsquo;s done you&rsquo;ll see <em>&#10003; Connected</em> and <em>Payments in</em> your Stripe account&rsquo;s currency. You only connect once per account.</li>
+          <li>Set the <strong>Price per credit</strong>, in your Stripe currency. The lowest price is Stripe&rsquo;s minimum charge for that currency (for example &euro;0.50 or &pound;0.30); the highest is 1,000. A package costs its credits times this price.</li>
+          <li>Click <strong>Save integrations</strong>. QR payments and the price can also be changed on the booth (<span class="ig-path">Settings &rsaquo; Integrations &rsaquo; Pay to play</span>); until Stripe is connected, the booth&rsquo;s QR switch stays disabled with a hint.</li>
+          <li>Start the event live (<strong>START LIVE EVENT</strong>) and check the QR appears on the capture screen.</li>
+        </ol>
+        <p>Payments always go to the <strong>event owner&rsquo;s</strong> Stripe account. On an event shared with you, the owner connects Stripe.</p>
+        <h4>What the guest sees</h4>
+        <ul>
+          <li>&ldquo;Scan to pay &euro;5.00&rdquo; with &ldquo;Apple Pay, Google Pay or card&rdquo;. Scanning opens a Stripe Checkout page with your business name. The QR asks for exactly the credits still missing.</li>
+          <li>After paying, the booth shows &ldquo;Payment received&rdquo; and the guest presses Start.</li>
+          <li>With only QR switched on, the gate shows &ldquo;Getting the payment code ready&hellip;&rdquo; while it loads, and &ldquo;Payment isn&rsquo;t available right now &mdash; please ask a member of staff&rdquo; if no QR can be shown.</li>
+        </ul>
+        <h4>Rules to know</h4>
+        <ul>
+          <li><strong>Test mode takes no real payments.</strong> In a test-mode event the booth says &ldquo;QR payments start when you go live&rdquo;. Use <strong>Add 1</strong> to try a session.</li>
+          <li><strong>Needs internet.</strong> The QR shows only while the booth PC is online, Charge for sessions and QR payments are on, the event is on BoothLedger, the Capture screen is showing and the guest is short of credits. Offline, card readers and coins keep working.</li>
+          <li><strong>Automatic refund.</strong> If a guest pays but the booth doesn&rsquo;t collect the payment within <strong>15 minutes</strong> (for example the PC crashed or went offline), BoothLedger refunds the guest in full, including BoothLedger&rsquo;s fee.</li>
+          <li>If a paid session fails before its first photo, the credits go back on the booth for the next go; the guest&rsquo;s money isn&rsquo;t refunded automatically. You can refund it from the <a href="#payments">Payments</a> page.</li>
+          <li>BoothLedger keeps <strong>3.7%</strong> of each QR payment, plus VAT where it applies, and Stripe&rsquo;s own fees apply too. See <a href="#fees">Fees &amp; VAT</a>.</li>
+        </ul>
+
+        <h3 id="pin-protection">PIN protection for paying events</h3>
+        <p>A booth that charges guests must not let a guest open Settings and switch payments off or add free credits. So while an event is <strong>live</strong> and <strong>Charge for sessions</strong> is on, the booth needs a <strong>settings PIN</strong>:</p>
+        <ul>
+          <li>If no PIN is set, the booth asks: &ldquo;This event charges guests &mdash; protect it with a PIN&rdquo;. Set a 4-digit PIN on the on-screen pad, or tap <strong>Turn off Charge for sessions</strong>.</li>
+          <li>Tapping <strong>START LIVE EVENT</strong> asks you to set a PIN first, if none is set. Cancel keeps the event in test mode.</li>
+          <li>Once protected, the booth goes to fullscreen kiosk mode, and the Charge for sessions switch, <strong>Add 1</strong> and <strong>Clear</strong> ask for the PIN.</li>
+          <li>In test mode there&rsquo;s no PIN requirement, so you can set things up freely.</li>
+        </ul>
+      </section>
+
+<!-- ================================================================ 7 -->
+      <section id="payments">
+        <h2>7. Payments, fees &amp; invoices</h2>
+        <h3>The Payments page</h3>
+        <p>In BoothLedger, <strong>Payments</strong> (in the main menu, once QR payments are available on your account) shows what guests paid by QR code.</p>
+        <ul>
+          <li>Pick a period (<em>This month</em>, <em>Last month</em>, <em>This year</em>, <em>All time</em>) and an event, or all events. <em>Include test payments</em> adds payments made while testing.</li>
+          <li>Totals: <strong>Takings</strong>, <strong>Refunded</strong>, <strong>BoothLedger fee</strong> (with VAT shown separately where it applies) and <strong>You receive</strong>, which is before Stripe&rsquo;s own processing fees.</li>
+          <li><strong>By event</strong> and <strong>By month</strong> breakdowns, and the list of <strong>Payments</strong> with their status: <em>Paid</em>, <em>Paid (not yet used)</em>, <em>Refunded</em> (by you, in Stripe, or because the booth didn&rsquo;t collect it), <em>Failed</em>, or <em>Refund failed &ndash; please refund it</em>.</li>
+          <li>Refund a payment from the list. A refund returns BoothLedger&rsquo;s fee too.</li>
+          <li><strong>Download CSV</strong> exports the payments for your bookkeeping.</li>
+        </ul>
+        <h3>How you get paid</h3>
+        <p>QR payments are charged on <strong>your own Stripe account</strong>, so the money is yours from the start. BoothLedger&rsquo;s fee is taken by Stripe at the moment of payment, and Stripe pays the rest out to your bank account on your Stripe payout schedule. Payouts, Stripe&rsquo;s fees and disputes are managed in your Stripe Dashboard. Card reader and coin payments never pass through BoothLedger.</p>
+
+        <h3 id="fees">Fees &amp; VAT</h3>
+        <p>BoothLedger keeps <strong>3.7% of each QR payment</strong>. The fee is <strong>VAT-exclusive</strong>: where VAT applies, it is added on top. BoothLedger is based in Ireland, so the rules are:</p>
+        <div class="ig-table-wrap"><table>
+          <thead><tr><th>Your billing details</th><th>VAT on the fee</th></tr></thead>
+          <tbody>
+            <tr><td>Business in Ireland</td><td>Irish VAT at 23% added</td></tr>
+            <tr><td>In another EU country, with a VAT number on your account</td><td>No VAT: reverse charge</td></tr>
+            <tr><td>In another EU country, without a VAT number</td><td>Irish VAT at 23% added</td></tr>
+            <tr><td>Outside the EU</td><td>No VAT (outside the scope of Irish VAT)</td></tr>
+            <tr><td>No billing country on file</td><td>Irish VAT at 23% added; add your billing details to fix this</td></tr>
+          </tbody>
+        </table></div>
+        <p>The VAT treatment is fixed for each payment when the guest pays, using your billing details at that time. On BoothLedger and on the booth the fee is shown as &ldquo;3.7% (+ VAT)&rdquo; when VAT is added for you.</p>
+        <p><strong>Example:</strong> a &euro;5.00 payment from an Irish business. Fee: 3.7% of &euro;5.00 = &euro;0.185, rounded to &euro;0.19. VAT: 23% of &euro;0.19 = &euro;0.04. BoothLedger keeps &euro;0.23 in total; Stripe&rsquo;s own processing fee is separate.</p>
+
+        <h3 id="invoices">Monthly invoices</h3>
+        <ul>
+          <li>On the <strong>1st of each month</strong> you get one invoice for the previous month&rsquo;s BoothLedger fees, per currency, if there were any. Refunded payments are left out.</li>
+          <li>It is emailed to you with a PDF, and listed under <strong>Invoices</strong> on the Payments page, where you can view or download it.</li>
+          <li>The fee was already taken by Stripe, so there&rsquo;s nothing more to pay. The invoice is your VAT record.</li>
+          <li>Invoice numbers look like <code>BLQ-2026-0001</code>.</li>
+        </ul>
+      </section>
+
+<!-- ================================================================ 8 -->
+      <section id="troubleshooting">
+        <h2>8. Troubleshooting</h2>
+
+        <div class="ig-faq">
+          <h3>Why doesn't my trigger fire during a session?</h3>
+          <p>Check that Triggers on (or Triggers enabled on BoothLedger) is switched on, the trigger itself is on, and the right moments are ticked. Then tap Send test on the booth. A test that fails with "couldn't reach the device" or "no answer in time" means the booth can't reach that address: check the device's IP, that it is on the same network as the booth PC, and that the address works when opened on the booth PC. Changes made on BoothLedger take about 45 seconds to reach the booth.</p>
+        </div>
+        <div class="ig-faq">
+          <h3>Why did my light or relay fire late, or not at all, when several moments happened together?</h3>
+          <p>The booth runs at most 4 calls at once and drops any cue that has waited more than 30 seconds, so lights never fire long after the moment. Slow devices that take close to the 3-second timeout can hold up the queue. Give devices a fixed IP and avoid ticking moments you don't need.</p>
+        </div>
+        <div class="ig-faq">
+          <h3>Why does my receiver reject the signature with a 401?</h3>
+          <p>The usual causes are: the body was parsed and re-encoded before checking (always use the raw bytes), the secret wasn't base64url-decoded before use, the wrong secret was used (each webhook and each booth trigger has its own), the secret was replaced with New secret, or the clocks are more than 5 minutes apart. If a booth trigger's address was moved to another device, the booth sends it unsigned until you create a new secret.</p>
+        </div>
+        <div class="ig-faq">
+          <h3>Why won't BoothLedger accept my webhook address?</h3>
+          <p>Webhook addresses must start with https://, use port 443 or 8443, and point at a public internet address. Local names (localhost, .local, .internal) and private IP addresses are refused. To call a device on the venue network, use a trigger on the booth instead.</p>
+        </div>
+        <div class="ig-faq">
+          <h3>Why was my webhook turned off?</h3>
+          <p>After 50 failed tries in a row, BoothLedger turns the webhook off and shows "Turned off after 50 failed deliveries in a row". Open Deliveries to see the errors, fix the receiver, click Turn on and use Retry on the failed deliveries you still need.</p>
+        </div>
+        <div class="ig-faq">
+          <h3>Why do I receive the same moment twice?</h3>
+          <p>If your server answers slowly or the connection drops, BoothLedger can't tell whether the delivery arrived and sends it again. Store the X-BoothLedger-Delivery id of every request you handle and answer 200 without repeating the work when the same id comes back.</p>
+        </div>
+        <div class="ig-faq">
+          <h3>Why are webhook moments arriving late?</h3>
+          <p>When the booth is offline, it keeps its moments (up to 500, for 3 days) and forwards them when it is online again. Photo uploads also wait for the internet. Use the at field for when the moment happened.</p>
+        </div>
+        <div class="ig-faq">
+          <h3>Why isn't the QR code showing on the booth?</h3>
+          <p>The QR only shows when all of these are true:</p>
+          <ul>
+            <li>the event is live, not in test mode (test mode says "QR payments start when you go live")</li>
+            <li>the booth PC is online</li>
+            <li>Charge for sessions and QR code (Stripe) are on, and the event is saved on BoothLedger</li>
+            <li>Stripe is connected and set up (Connected on the Integrations tab)</li>
+            <li>a price per credit is set and is at least Stripe's minimum for your currency</li>
+            <li>the Capture screen is showing and the guest is short of credits</li>
+          </ul>
+        </div>
+        <div class="ig-faq">
+          <h3>A guest paid by QR but didn't get a session. What happens?</h3>
+          <p>The booth collects a paid QR payment as soon as it can, including after a restart or when it comes back online. If it can't collect it within 15 minutes, BoothLedger refunds the guest in full automatically. You can see each payment's status on the Payments page and refund it yourself there.</p>
+        </div>
+        <div class="ig-faq">
+          <h3>Why does the booth say "Payment isn't available right now"?</h3>
+          <p>Card reader / coin (tap) is switched off and the QR code can't be shown (offline, Stripe not connected or an error), or none of your packages can be offered at this event, for example a package that includes a boomerang when boomerang is switched off. Switch on another way to pay or fix the package.</p>
+        </div>
+        <div class="ig-faq">
+          <h3>Why does the control API answer unauthorized, forbidden or too_many_attempts?</h3>
+          <p>401 unauthorized means the Authorization: Bearer header is missing or the token is wrong (New token replaces it). 403 forbidden means the request came from a web browser or used a hostname: call the booth by its IP address. 429 too_many_attempts means 10 wrong tokens came from that device; wait 10 minutes. From another device, also check Allow other devices on the network is on.</p>
+        </div>
+        <div class="ig-faq">
+          <h3>Can a guest switch payments off on the booth?</h3>
+          <p>Not on a protected booth. While a paying event is live, the booth needs a settings PIN, runs in fullscreen kiosk mode, and asks for the PIN before Charge for sessions, Add 1 or Clear can be used.</p>
+        </div>
+
+        <p>Still stuck? Email <a href="mailto:info@photoboothguys.ie">info@photoboothguys.ie</a> or use the help assistant in BoothLedger. For an overview of running an unattended booth, see <a href="/pay-per-use-photo-booth">Pay-Per-Use Photo Booth Software</a>.</p>
+      </section>
+
+    </article>
+  </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo">
+            <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="32" height="32">
+            <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
+          </a>
+          <p class="footer-tagline">Professional photo booth software for event professionals worldwide.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h3>Product</h3>
+            <a href="/#features">Features</a>
+            <a href="/ai-photo-booth">AI Photo Booth</a>
+            <a href="/ai-video-booth">AI Video Booth</a>
+            <a href="/dslr-photo-booth-software">DSLR Photo Booth</a>
+            <a href="/mirror-booth">Mirror Booth</a>
+            <a href="/green-screen-photo-booth">Green Screen</a>
+            <a href="/trading-card-photo-booth">Trading Cards</a>
+            <a href="/pay-per-use-photo-booth">Pay-Per-Use Booths</a>
+            <a href="/photo-booth-crm">Photo Booth CRM</a>
+            <a href="/photo-booth-software-windows">Windows Software</a>
+            <a href="/photo-booth-data-capture">Data Capture</a>
+            <a href="/photobooth-software">Photobooth Software</a>
+            <a href="/newspaper-photo-booth">Newspaper</a>
+            <a href="/colouring-photo-booth">Colouring In</a>
+            <a href="/photo-mosaic">Photo Mosaic</a>
+            <a href="/glam-booth">Glam Booth</a>
+            <a href="/pricing">Pricing</a>
+          </div>
+          <div class="footer-col">
+            <h3>Solutions</h3>
+            <a href="/wedding-photo-booth-software">Weddings</a>
+            <a href="/corporate-photo-booth-software">Corporate</a>
+            <a href="/event-photo-booth-software">Events</a>
+            <a href="/brand-activation-photo-booth">Brand Activations</a>
+            <a href="/permanent-photo-booth-install">Permanent Installs</a>
+            <a href="/roaming-photographer-software">Roaming Photography</a>
+          </div>
+          <div class="footer-col">
+            <h3>Compare</h3>
+            <a href="/compare">All Comparisons</a>
+            <a href="/vs-dslrbooth">vs dslrBooth</a>
+            <a href="/vs-snappic">vs Snappic</a>
+            <a href="/vs-lumabooth">vs LumaBooth</a>
+            <a href="/lumabooth-alternatives">LumaBooth Alternatives</a>
+            <a href="/vs-darkroom-booth">vs Darkroom Booth</a>
+            <a href="/vs-simple-booth">vs Simple Booth</a>
+            <a href="/vs-boothbook">vs BoothBook</a>
+          </div>
+          <div class="footer-col">
+            <h3>Resources</h3>
+            <a href="/blog/best-photo-booth-software">Best Software 2026</a>
+            <a href="/blog/how-to-start-photo-booth-business">Start a Business</a>
+            <a href="/blog/photo-booth-pricing-guide">Pricing Guide</a>
+            <a href="/blog/dslr-vs-ipad-photo-booth">DSLR vs iPad</a>
+            <a href="/blog/ai-background-removal-vs-green-screen">AI vs Green Screen</a>
+            <a href="/blog/photo-booth-software-languages">11 Languages</a>
+            <a href="/blog/photo-booth-software-for-canon">Canon Software</a>
+            <a href="/photo-booth-integrations-guide">Integrations Guide</a>
+            <a href="/#faq">FAQ</a>
+            <a href="https://www.instagram.com/booth_ledger" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="mailto:info@photoboothguys.ie">Contact</a>
+            <a href="https://boothledger.com/user/login" target="_blank" rel="noopener noreferrer">Customer Login</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 PhotoBooth Guys. All rights reserved.</p>
+        <p><a href="mailto:info@photoboothguys.ie" style="color:var(--muted);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;">Privacy</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=15"></script>
+
+  <!-- Analytics -->
+  <script>
+  (function(){
+    var start = Date.now();
+    var sent = false;
+    function track(dur) {
+      if (sent) return;
+      sent = true;
+      var data = {
+        path: location.pathname,
+        referrer: document.referrer || "",
+        screen_width: screen.width,
+        duration: dur || Math.round((Date.now() - start) / 1000)
+      };
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon("https://boothledger.com/api/v1/analytics/track",
+          new Blob([JSON.stringify(data)], {type: "application/json"}));
+      } else {
+        fetch("https://boothledger.com/api/v1/analytics/track", {
+          method: "POST", body: JSON.stringify(data),
+          headers: {"Content-Type": "application/json"}, keepalive: true
+        }).catch(function(){});
+      }
+    }
+    document.addEventListener("visibilitychange", function() {
+      if (document.visibilityState === "hidden") track();
+    });
+    window.addEventListener("beforeunload", function() { track(); });
+  })();
+  </script>
+
+  <!-- Copy buttons for code blocks -->
+  <script>
+  (function(){
+    function copyText(t, done){
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(t).then(done, function(){ fallback(t, done); });
+      } else { fallback(t, done); }
+    }
+    function fallback(t, done){
+      var ta = document.createElement('textarea');
+      ta.value = t; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+    var blocks = document.querySelectorAll('pre.ig-code');
+    for (var i = 0; i < blocks.length; i++) {
+      (function(pre){
+        var box = document.createElement('div');
+        box.className = 'ig-codebox';
+        pre.parentNode.insertBefore(box, pre);
+        box.appendChild(pre);
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'ig-copy'; b.textContent = 'Copy';
+        b.setAttribute('aria-label', 'Copy code');
+        b.addEventListener('click', function(){
+          copyText(pre.innerText.replace(/\n$/, ''), function(){
+            b.textContent = 'Copied';
+            setTimeout(function(){ b.textContent = 'Copy'; }, 1600);
+          });
+        });
+        box.appendChild(b);
+      })(blocks[i]);
+    }
+  })();
+  </script>
+</body>
+</html>
