@@ -738,15 +738,32 @@
   let isYearly = false;
   let selectedPriceKey = '';
 
-  // ── Currency: EUR inside the EU, USD everywhere else ──
+  // ── Currency: EUR inside the EU, GBP in the UK, AUD in Australia, USD
+  // everywhere else. GBP/AUD are only offered once the server has prices
+  // for them (bookLive), otherwise those visitors see USD as before. ──
   const EU_TZ = new Set(['Europe/Dublin','Europe/Lisbon','Atlantic/Madeira','Atlantic/Azores','Atlantic/Canary','Europe/Madrid','Europe/Paris','Europe/Brussels','Europe/Amsterdam','Europe/Luxembourg','Europe/Berlin','Europe/Busingen','Europe/Rome','Europe/Vatican','Europe/San_Marino','Europe/Malta','Europe/Vienna','Europe/Prague','Europe/Copenhagen','Europe/Stockholm','Europe/Helsinki','Europe/Mariehamn','Europe/Warsaw','Europe/Budapest','Europe/Bratislava','Europe/Ljubljana','Europe/Zagreb','Europe/Bucharest','Europe/Sofia','Europe/Athens','Europe/Tallinn','Europe/Riga','Europe/Vilnius','Asia/Nicosia','Europe/Nicosia']);
-  let currency = localStorage.getItem('bl_currency');
-  if (currency !== 'EUR' && currency !== 'USD') {
-    try { currency = EU_TZ.has(Intl.DateTimeFormat().resolvedOptions().timeZone) ? 'EUR' : 'USD'; }
-    catch (e) { currency = 'EUR'; }
+  const GBP_TZ = new Set(['Europe/London','Europe/Belfast','Europe/Guernsey','Europe/Isle_of_Man','Europe/Jersey']);
+  const BOOK_PREFIX = { EUR: '', USD: 'usd_', GBP: 'gbp_', AUD: 'aud_' };
+  const BOOK_SYMBOL = { EUR: '\u20ac', USD: '$', GBP: '\u00a3', AUD: 'A$' };
+  const BOOK_KEY_RE = /^(usd|gbp|aud)_/;
+  function detectCurrency() {
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+      if (EU_TZ.has(tz)) return 'EUR';
+      if (GBP_TZ.has(tz)) return 'GBP';
+      if (tz.indexOf('Australia/') === 0) return 'AUD';
+      return 'USD';
+    } catch (e) { return 'EUR'; }
   }
-  function curSymbol() { return currency === 'USD' ? '$' : '\u20ac'; }
-  function curPrefix() { return currency === 'USD' ? 'usd_' : ''; }
+  let currency = localStorage.getItem('bl_currency');
+  if (!(currency in BOOK_PREFIX)) currency = detectCurrency();
+  function bookLive(c) {
+    if (!dynamicPricing) return c === 'EUR' || c === 'USD';
+    const p = BOOK_PREFIX[c];
+    return ['basic_monthly', 'basic_yearly', 'ai_monthly', 'ai_yearly'].every(k => dynamicPricing[p + k]);
+  }
+  function curSymbol() { return BOOK_SYMBOL[currency] || '\u20ac'; }
+  function curPrefix() { return BOOK_PREFIX[currency] || ''; }
   function priceOf(key) { return dynamicPricing ? dynamicPricing[curPrefix() + key] : null; }
   function setCurrency(c) {
     currency = c;
@@ -764,8 +781,9 @@
       const t = document.getElementById('billingToggle');
       if (t && t.parentElement) t.parentElement.appendChild(el);
     }
-    const other = currency === 'USD' ? 'EUR' : 'USD';
-    el.innerHTML = 'Prices in <strong>' + currency + '</strong> \u00b7 <a href="javascript:void(0)" onclick="setCurrency(\'' + other + '\')" style="color:#6C63FF;">Switch to ' + other + '</a>';
+    const others = Object.keys(BOOK_PREFIX).filter(c => c !== currency && bookLive(c));
+    el.innerHTML = 'Prices in <strong>' + currency + '</strong> \u00b7 Switch to ' + others.map(c =>
+      '<a href="javascript:void(0)" onclick="setCurrency(\'' + c + '\')" style="color:#6C63FF;">' + c + '</a>').join(' \u00b7 ');
   }
   const API = 'https://boothledger.com/api/v1';
 
@@ -776,12 +794,15 @@
       const resp = await fetch(API + '/pricing');
       if (resp.ok) {
         dynamicPricing = await resp.json();
-        applyPricing();
       }
     } catch (e) {
       // Silently fall back to hardcoded prices
       console.log('Using default prices');
     }
+    // Without server prices only EUR/USD are known; never quote a book the
+    // page can't price.
+    if (!bookLive(currency)) currency = (currency === 'EUR') ? 'EUR' : 'USD';
+    applyPricing();
     renderCurrencySwitch();
   }
 
@@ -869,8 +890,8 @@
     selectedPriceKey = PREPAID_KEYS.has(plan)
       ? curPrefix() + plan
       : curPrefix() + plan + (isYearly ? '_yearly' : '_monthly');
-    const labelKey = selectedPriceKey.replace(/^usd_/, '');
-    const curNote = currency === 'USD' ? ' (USD)' : '';
+    const labelKey = selectedPriceKey.replace(BOOK_KEY_RE, '');
+    const curNote = currency !== 'EUR' ? ' (' + currency + ')' : '';
     document.getElementById('modalPlanLabel').textContent = (PLAN_LABELS[labelKey] || labelKey) + curNote;
     clearError();
     document.getElementById('authForm').reset();
@@ -1014,7 +1035,7 @@
     selectedPriceKey = key;
     document.querySelectorAll('#planPicker .pp-opt').forEach(b => b.classList.toggle('sel', b.dataset.key === key));
     const o = (signedIn.options || []).find(x => x.key === key);
-    if (o) document.getElementById('modalPlanLabel').textContent = o.label + (o.currency === 'USD' ? ' (USD)' : '');
+    if (o) document.getElementById('modalPlanLabel').textContent = o.label + (o.currency && o.currency !== 'EUR' ? ' (' + o.currency + ')' : '');
   }
   function renderPlanPicker(data) {
     const card = document.querySelector('.modal-card');
@@ -1024,7 +1045,7 @@
     const manage = '<a href="' + esc(data.manage_url) + '">Go to my account</a>';
     // A pay-once term they clicked on the page is kept as-is (the server
     // refuses it for anyone with a live subscription, with its own message).
-    if (PREPAID_KEYS.has(selectedPriceKey.replace(/^usd_/, '')) && data.status === 'open') {
+    if (PREPAID_KEYS.has(selectedPriceKey.replace(BOOK_KEY_RE, '')) && data.status === 'open') {
       box.innerHTML = '<p class="pp-head">Signed in as <b>' + esc(data.name) + '</b>. You are paying once for <b>'
         + esc(document.getElementById('modalPlanLabel').textContent) + '</b>. Nothing renews automatically.</p>';
       setSubmitText('Continue to Payment');
