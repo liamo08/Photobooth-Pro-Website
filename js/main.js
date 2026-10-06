@@ -100,10 +100,110 @@
     });
   }
 
+  // --- Phones and tablets: email the download link instead ---
+  // The app is Windows-only, so on a phone the installer download is useless.
+  // There the button opens a small form that emails the link (the visitor
+  // opens it on their PC). Desktop behaviour below is unchanged.
+  function isPhoneOrTablet() {
+    var ua = navigator.userAgent || '';
+    if (/Android|iPhone|iPad|iPod|Mobile|Silk|Kindle/i.test(ua)) return true;
+    return /Macintosh/.test(ua) && navigator.maxTouchPoints > 1; // iPadOS reports as a Mac
+  }
+
+  function initEmailLinkButton(downloadBtn) {
+    downloadBtn.innerHTML =
+      '<svg class="m-i" viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px;"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>' +
+      ' Email me the download link';
+    var version = document.getElementById('downloadVersion');
+    if (version) version.textContent = 'BoothLedger runs on a Windows 10/11 PC. We’ll email you the link so you can install it there.';
+
+    var form = document.createElement('form');
+    form.id = 'emailLinkForm';
+    form.noValidate = true;
+    form.style.cssText = 'display:none;margin-top:16px;max-width:460px;';
+
+    var row = document.createElement('div');
+    row.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;';
+    var input = document.createElement('input');
+    input.type = 'email';
+    input.name = 'email';
+    input.required = true;
+    input.autocomplete = 'email';
+    input.placeholder = 'you@example.com';
+    input.setAttribute('aria-label', 'Your email address');
+    input.style.cssText = 'flex:1 1 220px;min-width:0;padding:14px 16px;border-radius:12px;border:0;font-size:16px;color:#0f172a;background:#fff;';
+    var send = document.createElement('button');
+    send.type = 'submit';
+    send.className = 'm-btn m-btn-white';
+    send.textContent = 'Send link';
+    // Honeypot: hidden from people, filled in by most bots.
+    var trap = document.createElement('input');
+    trap.type = 'text';
+    trap.name = 'website';
+    trap.tabIndex = -1;
+    trap.autocomplete = 'off';
+    trap.setAttribute('aria-hidden', 'true');
+    trap.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px;opacity:0;';
+    row.appendChild(input);
+    row.appendChild(send);
+    form.appendChild(row);
+    form.appendChild(trap);
+
+    var note = document.createElement('p');
+    note.style.cssText = 'margin:10px 0 0;font-size:13.5px;color:rgba(255,255,255,.85);';
+    note.textContent = 'One email with the link. No newsletter.';
+    form.appendChild(note);
+
+    var actions = downloadBtn.parentNode;
+    actions.parentNode.insertBefore(form, actions.nextSibling);
+
+    downloadBtn.addEventListener('click', function () {
+      form.style.display = 'block';
+      input.focus();
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = (input.value || '').trim();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+        note.textContent = 'Please enter a valid email address.';
+        input.focus();
+        return;
+      }
+      send.disabled = true;
+      send.textContent = 'Sending…';
+      fetch('/api/v1/analytics/email-download-link', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email: email, website: trap.value})
+      }).then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (data) { return {ok: r.ok, data: data}; });
+      }).then(function (res) {
+        if (res.ok) {
+          row.style.display = 'none';
+          note.textContent = 'Sent! Open the email on your Windows PC to download BoothLedger. (Check spam if it hasn’t arrived in a few minutes.)';
+          if (typeof gtag === 'function') gtag('event', 'download_link_request', {'event_category': 'download'});
+        } else {
+          note.textContent = (res.data && res.data.error) || 'Something went wrong. Please try again.';
+          send.disabled = false;
+          send.textContent = 'Send link';
+        }
+      }).catch(function () {
+        note.textContent = 'Something went wrong. Please try again.';
+        send.disabled = false;
+        send.textContent = 'Send link';
+      });
+    });
+  }
+
   // --- Download button click handler ---
   function initDownloadButton() {
     var downloadBtn = document.getElementById('downloadBtn');
     if (!downloadBtn) return;
+    if (isPhoneOrTablet()) {
+      initEmailLinkButton(downloadBtn);
+      return;
+    }
 
     // GitHub latest release URL - always points to newest version
     var downloadUrl = 'https://github.com/liamo08/boothledger-releases/releases/latest/download/BoothLedger-Setup.exe';
