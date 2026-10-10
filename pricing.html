@@ -549,6 +549,7 @@
   <div class="pricing-hero__badge">Simple, transparent pricing</div>
   <h1>Choose your plan</h1>
   <p>Professional photo booth software for events of any size. All plans include 2 device licenses.</p>
+  <p id="appSignedIn" style="display:none;margin-top:14px;font-size:14px;color:#5b21b6;background:#f5f0ff;border:1px solid #e4d8ff;border-radius:999px;padding:8px 16px;width:fit-content;margin-left:auto;margin-right:auto;"></p>
 </section>
 
 <!-- Toggle -->
@@ -763,6 +764,17 @@
   }
   let currency = localStorage.getItem('bl_currency');
   if (!(currency in BOOK_PREFIX)) currency = detectCurrency();
+  // Opened from the booth app (/api/v1/auth/pricing-link): the app's currency
+  // wins, and a signed 15-minute token stands in for the password. The token
+  // rides in the #fragment (never sent to a server, a Referer or analytics)
+  // and is cleared from the address bar straight away.
+  const APP_PARAMS = new URLSearchParams(window.location.search);
+  let HANDOFF = new URLSearchParams(location.hash.replace(/^#/, '')).get('handoff') || '';
+  const APP_CURRENCY = APP_PARAMS.get('currency');
+  if (APP_CURRENCY && Object.prototype.hasOwnProperty.call(BOOK_PREFIX, APP_CURRENCY)) currency = APP_CURRENCY;
+  if (HANDOFF) {
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+  }
   function bookLive(c) {
     if (!dynamicPricing) return c === 'EUR' || c === 'USD';
     const p = BOOK_PREFIX[c];
@@ -833,6 +845,27 @@
     });
   }
   loadPricing();
+
+  // Booth hand-off: say who they're signed in as, so picking a plan skips the
+  // password step. An expired link just falls back to the normal sign-in.
+  let handoffAccount = null;
+  async function fetchHandoffAccount() {
+    const r = await fetch(API + '/auth/plan-options', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ handoff: HANDOFF, currency }),
+    });
+    const data = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(data.detail || 'expired');
+    return data;
+  }
+  if (HANDOFF) {
+    fetchHandoffAccount().then(data => {
+      handoffAccount = data;
+      const el = document.getElementById('appSignedIn');
+      el.textContent = 'Signed in from the BoothLedger app as ' + (data.email || data.name) + '. Pick a plan below.';
+      el.style.display = 'block';
+    }).catch(() => { HANDOFF = ''; });
+  }
 
   const PLAN_LABELS = {
     basic_monthly: 'Basic - Monthly',
@@ -905,7 +938,25 @@
     updateVatHint();
     document.getElementById('authModal').classList.add('open');
     document.body.style.overflow = 'hidden';
+    if (HANDOFF) {  // fetches the account itself if the page-load call hasn't returned yet
+      openWithHandoff();
+      return;
+    }
     setTimeout(() => document.getElementById('m_email').focus(), 100);
+  }
+
+  async function openWithHandoff() {
+    setAuthMode('login');
+    let data = handoffAccount;
+    try { data = await fetchHandoffAccount(); } catch (e) {
+      HANDOFF = ''; handoffAccount = null;
+      document.getElementById('appSignedIn').style.display = 'none';
+      showWarning('Your link from the app has expired. Sign in to continue, or use Forgot password on the sign-in page if you signed up with Google.');
+      return;
+    }
+    document.getElementById('m_email').value = data.email || '';
+    signedIn = { email: data.email, password: '', handoff: HANDOFF, options: data.options || [], needsCountry: !!data.needs_country };
+    renderPlanPicker(data);
   }
 
   function closeModal() {
@@ -1116,11 +1167,12 @@
     const email = signedIn ? signedIn.email : document.getElementById('m_email').value.trim();
     const password = signedIn ? signedIn.password : document.getElementById('m_password').value;
 
-    if (!email || !password) {
+    const viaHandoff = !!(signedIn && signedIn.handoff);
+    if (!email || (!password && !viaHandoff)) {
       showError('Please fill in all fields.');
       return;
     }
-    if (password.length < 6) {
+    if (!viaHandoff && password.length < 6) {
       showError('Password must be at least 6 characters.');
       return;
     }
@@ -1164,6 +1216,7 @@
           display_name: displayName || undefined,
           country: country || undefined,
           vat_number: vatNumber || undefined,
+          handoff: viaHandoff ? signedIn.handoff : undefined,
           gclid: (function(){try{var o=JSON.parse(localStorage.getItem('__bl_gclid')||'null');return (o&&o.v&&Date.now()-o.t<7776000000)?o.v:undefined;}catch(e){return undefined;}})(),
         }),
       });
