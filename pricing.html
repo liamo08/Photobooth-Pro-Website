@@ -753,6 +753,14 @@
   const BOOK_PREFIX = { EUR: '', USD: 'usd_', GBP: 'gbp_', AUD: 'aud_' };
   const BOOK_SYMBOL = { EUR: '\u20ac', USD: '$', GBP: '\u00a3', AUD: 'A$' };
   const BOOK_KEY_RE = /^(usd|gbp|aud)_/;
+  // ── India: banks refuse recurring card charges from overseas merchants (RBI
+  // e-mandate rules), so a subscription can never be paid from there. Those
+  // visitors only see the 12-month pay-once terms; the server enforces it too. ──
+  const PAY_ONCE_TZ = new Set(['Asia/Kolkata', 'Asia/Calcutta']);
+  let payOnceMode = (function () {
+    try { return PAY_ONCE_TZ.has(Intl.DateTimeFormat().resolvedOptions().timeZone || ''); } catch (e) { return false; }
+  })();
+  const PAY_ONCE_NOTE = "Banks in India don't allow recurring card payments to overseas companies, so we've switched you to the 12-month plan, paid once. Nothing renews automatically.";
   function detectCurrency() {
     try {
       const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
@@ -843,6 +851,27 @@
         if (isYearly) billedEls[i].innerHTML = billedEls[i].dataset.yearly;
       }
     });
+    applyPayOnceMode();
+  }
+
+  // Pay-once mode: each card becomes its 12-month pay-once term.
+  function applyPayOnceMode() {
+    if (!payOnceMode) return;
+    const tw = document.querySelector('.toggle-wrap');
+    if (tw) tw.style.display = 'none';
+    const pp = document.getElementById('prepaid');
+    if (pp) pp.style.display = 'none';
+    const amountEls = document.querySelectorAll('.card-price__amount');
+    const periodEls = document.querySelectorAll('.card-price__period');
+    const billedEls = document.querySelectorAll('.card-billed');
+    const ctaEls = document.querySelectorAll('.pricing-card .card-cta');
+    ['basic', 'ai'].forEach((tier, i) => {
+      const c = prepaidPrices ? prepaidPrices[curPrefix() + tier + '_12mo'] : null;
+      if (amountEls[i] && c) amountEls[i].textContent = (c / 100).toFixed(0);
+      if (periodEls[i]) periodEls[i].textContent = ' for 12 months';
+      if (billedEls[i]) billedEls[i].innerHTML = 'Paid once &middot; nothing renews automatically';
+      if (ctaEls[i]) ctaEls[i].textContent = 'Pay for 12 months';
+    });
   }
   loadPricing();
 
@@ -891,6 +920,7 @@
       const c = prepaidPrices[curPrefix() + el.dataset.prepaid];
       if (c) el.textContent = curSymbol() + (c / 100).toFixed(0);
     });
+    applyPayOnceMode();
   }
   loadPrepaidPrices();
 
@@ -926,6 +956,7 @@
 
   // ── Modal ──
   function handleSubscribe(plan) {
+    if (payOnceMode && !PREPAID_KEYS.has(plan)) plan = plan + '_12mo';
     selectedPriceKey = PREPAID_KEYS.has(plan)
       ? curPrefix() + plan
       : curPrefix() + plan + (isYearly ? '_yearly' : '_monthly');
@@ -1022,6 +1053,7 @@
     const vf = document.getElementById('vatField');
     const hint = document.getElementById('vatHint');
     const vatNo = document.getElementById('m_vat').value.trim();
+    if (c === 'IN') switchToPayOnce();
     if (!c) { vf.style.display = 'none'; hint.textContent = 'Prices shown exclude VAT.'; return; }
     if (c === 'IE') { vf.style.display = 'block'; hint.textContent = 'Ireland: 23% VAT is added at checkout.'; return; }
     if (EU_CODES.has(c)) {
@@ -1034,6 +1066,21 @@
     vf.style.display = 'none'; hint.textContent = 'Outside the EU: no VAT is charged.';
   }
   document.getElementById('m_vat').addEventListener('input', updateVatHint);
+
+  // Picked India in the modal on a subscription plan: swap to the same tier's
+  // 12-month pay-once term (the server refuses the subscription anyway).
+  function switchToPayOnce() {
+    const base = selectedPriceKey.replace(BOOK_KEY_RE, '');
+    if (!base || PREPAID_KEYS.has(base)) return;
+    const tier = base.indexOf('ai_') === 0 ? 'ai' : 'basic';
+    if (!payOnceMode) { payOnceMode = true; applyPayOnceMode(); }
+    selectedPriceKey = curPrefix() + tier + '_12mo';
+    const curNote = currency !== 'EUR' ? ' (' + currency + ')' : '';
+    const price = prepaidPrices && prepaidPrices[selectedPriceKey];
+    document.getElementById('modalPlanLabel').textContent = PLAN_LABELS[tier + '_12mo'] + curNote
+      + (price ? ' — ' + curSymbol() + (price / 100).toFixed(0) : '');
+    showWarning(PAY_ONCE_NOTE);
+  }
 
   // One click, one checkout. The button stays disabled once we've handed off
   // to Revolut; coming back with the browser's Back button (bfcache) re-arms
