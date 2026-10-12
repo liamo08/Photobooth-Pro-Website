@@ -343,6 +343,13 @@
     /* Sign in: check the account first, then offer only the plans above it */
     .modal-card[data-mode="login"]:not(.need-country) .tax-field { display: none !important; }
     .modal-card.verified .cred-field { display: none; }
+    /* Continue with Google (shown once /auth/google-web/config says it's on) */
+    #googleBox { display: none; margin: -12px 0 20px; }
+    #googleBox.on { display: block; }
+    .modal-card.verified #googleBox { display: none; }
+    #googleBtn { display: flex; justify-content: center; min-height: 44px; }
+    .modal-or { display: flex; align-items: center; gap: 12px; margin-top: 18px; font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: .06em; }
+    .modal-or::before, .modal-or::after { content: ''; flex: 1; height: 1px; background: #e2e8f0; }
     #planPicker { display: none; margin-bottom: 18px; }
     .modal-card.verified #planPicker { display: block; }
     .pp-head { font-size: 14px; line-height: 1.5; color: #334155; margin: 0 0 12px; }
@@ -463,12 +470,17 @@
       <button class="modal-tab" onclick="setAuthMode('login')">Sign In</button>
     </div>
 
+    <div id="googleBox">
+      <div id="googleBtn"></div>
+      <div class="modal-or">or</div>
+    </div>
+
     <div class="modal-error" id="modalError">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
       <span id="modalErrorText"></span>
     </div>
 
-    <form id="authForm" onsubmit="handleAuthSubmit(event)">
+    <form id="authForm" novalidate onsubmit="handleAuthSubmit(event)">
       <div class="modal-field register-only">
         <label for="m_name">Display Name</label>
         <input type="text" id="m_name" placeholder="Your name or business">
@@ -965,6 +977,7 @@
     document.getElementById('modalPlanLabel').textContent = (PLAN_LABELS[labelKey] || labelKey) + curNote;
     clearError();
     document.getElementById('authForm').reset();
+    googleLink = '';
     resetSignIn();
     updateVatHint();
     document.getElementById('authModal').classList.add('open');
@@ -989,6 +1002,53 @@
     signedIn = { email: data.email, password: '', handoff: HANDOFF, options: data.options || [], needsCountry: !!data.needs_country };
     renderPlanPicker(data);
   }
+
+  // ── Continue with Google: Google's own button returns an ID token; the server
+  //    answers with a hand-off token, then it's the same path as the booth link.
+  //    A password account with that email signs in once to connect Google. ──
+  let googleLink = '';
+  function storedGclid() { try { var o = JSON.parse(localStorage.getItem('__bl_gclid') || 'null'); return (o && o.v && Date.now() - o.t < 7776000000) ? o.v : undefined; } catch (e) { return undefined; } }
+  async function onGoogleCredential(resp) {
+    clearError();
+    try {
+      const r = await fetch(API + '/auth/google-web', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ credential: resp.credential, price_key: selectedPriceKey, gclid: storedGclid() }),
+      });
+      const data = await r.json().catch(() => ({}));
+      if (r.status === 409 && r.headers.get('X-BoothLedger-Google-Link')) {
+        setAuthMode('login');
+        googleLink = r.headers.get('X-BoothLedger-Google-Link');
+        document.getElementById('m_email').value = r.headers.get('X-BoothLedger-Email') || '';
+        showWarning(data.detail || 'Sign in with your password once to connect Google.');
+        document.getElementById('m_password').focus();
+        return;
+      }
+      if (!r.ok) { showError(r.status === 429 ? 'Too many attempts. Please wait a moment and try again.' : (data.detail || 'Google sign-in did not complete. Please try again.')); return; }
+      if (data.created && typeof gtag === 'function') gtag('event', 'sign_up', { method: 'Google' });
+      HANDOFF = data.handoff; handoffAccount = null;
+      openWithHandoff();
+    } catch (e) {
+      showError('Network error. Please check your connection and try again.');
+    }
+  }
+  (async function initGoogle() {
+    try {
+      const cfg = await (await fetch(API + '/auth/google-web/config')).json();
+      if (!cfg.enabled) return;
+      const s = document.createElement('script');
+      s.src = 'https://accounts.google.com/gsi/client'; s.async = true;
+      s.onload = () => {
+        google.accounts.id.initialize({ client_id: cfg.client_id, callback: onGoogleCredential, ux_mode: 'popup' });
+        google.accounts.id.renderButton(document.getElementById('googleBtn'), {
+          theme: 'outline', size: 'large', shape: 'pill', text: 'continue_with',
+          width: Math.min(400, Math.max(220, window.innerWidth - 112)),
+        });
+        document.getElementById('googleBox').classList.add('on');
+      };
+      document.head.appendChild(s);
+    } catch (e) {}
+  })();
 
   function closeModal() {
     document.getElementById('authModal').classList.remove('open');
@@ -1198,7 +1258,7 @@
       try {
         const r = await fetch(`${API}/auth/plan-options`, {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password, currency }),
+          body: JSON.stringify({ email, password, currency, google_link: googleLink || undefined }),
         });
         const data = await r.json().catch(() => ({}));
         if (!r.ok) { showError(r.status === 429 ? 'Too many attempts. Please wait a moment and try again.' : (data.detail || 'Could not sign in. Please try again.')); return; }
