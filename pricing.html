@@ -435,6 +435,21 @@
       .pricing-hero { padding-top: 120px; }
       .modal-card { padding: 36px 28px 32px; max-width: 480px; }
     }
+    /* Free trial download card (pricing) */
+    .pr-dl { max-width: 960px; margin: 8px auto 32px; padding: 0 24px; }
+    .pr-dl__card { display: flex; flex-wrap: wrap; gap: 20px 32px; align-items: center; justify-content: space-between; padding: 28px; border-radius: 16px; color: #fff; background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 55%, #4f46e5 100%); box-shadow: 0 18px 40px -22px rgba(109,40,217,.7); }
+    .pr-dl__copy { flex: 1 1 340px; }
+    .pr-dl__kicker { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.75); margin-bottom: 6px; }
+    .pr-dl__card h2 { margin: 0 0 8px; font-size: 22px; line-height: 1.25; color: #fff; -webkit-text-fill-color: #fff; background: none; }
+    .pr-dl__card p { margin: 0; font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,.88); }
+    .pr-dl__actions { flex: 0 1 auto; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+    .pr-dl .download-version { font-size: 12.5px; color: rgba(255,255,255,.75); max-width: 300px; }
+    .pr-dl .m-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 50px; padding: 0 22px; border-radius: 13px; font: 600 15px/1 inherit; font-family: inherit; white-space: nowrap; border: 0; cursor: pointer; transition: transform .12s, background .2s; }
+    .pr-dl .m-btn:active { transform: translateY(1px) scale(.99); }
+    .pr-dl .m-btn-white { background: #fff; color: #6d28d9; }
+    .pr-dl .m-btn-white:hover { background: #f7f3ff; }
+    .pr-dl .m-i { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    @media (max-width: 600px) { .pr-dl__card { padding: 22px 20px; } .pr-dl__actions, .pr-dl .m-btn { width: 100%; } }
   </style>
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="hDTsJjbsuIFfEsb2icX72w" async></script>
   <!-- Schema: BreadcrumbList -->
@@ -551,7 +566,7 @@
       <li><a href="https://boothledger.com/#ai">AI Effects</a></li>
       <li><a href="/photo-booth-crm">CRM</a></li>
       <li><a href="#plans">Pricing</a></li>
-      <li><a href="https://boothledger.com/#download" class="nav-cta">Download</a></li>
+      <li><a href="#download" class="nav-cta">Download</a></li>
     </ul>
   </div>
 </nav>
@@ -630,6 +645,24 @@
     </ul>
   </div>
 </div>
+
+<!-- Free trial download (downloadBtn is wired in js/main.js: Ads conversion + download log; phones get "email me the link") -->
+<section class="pr-dl" id="download">
+  <div class="pr-dl__card">
+    <div class="pr-dl__copy">
+      <span class="pr-dl__kicker">Not ready to subscribe?</span>
+      <h2>Try BoothLedger free for 30 days</h2>
+      <p>Download the app and run real events before you pay. No credit card required. Trial photos carry a small watermark.</p>
+    </div>
+    <div class="pr-dl__actions">
+      <button class="m-btn m-btn-white" id="downloadBtn">
+        <svg class="m-i" viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Download for Windows
+      </button>
+      <span class="download-version" id="downloadVersion">Windows 10/11 &middot; 64-bit &middot; macOS &amp; Linux coming soon</span>
+    </div>
+  </div>
+</section>
 
 <!-- Prepaid (one-off) terms -->
 <section class="prepaid" id="prepaid" style="max-width:960px;margin:8px auto 56px;padding:0 24px;">
@@ -1425,5 +1458,6 @@
     // Also track after 2s as fallback (in case they leave quickly)
   })();
   </script>
+<script src="/js/main.js?v=16"></script>
 </body>
 </html>
