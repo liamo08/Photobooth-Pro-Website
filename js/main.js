@@ -119,7 +119,7 @@
   }
 
   // GitHub latest release URL - always points to newest version
-  var DOWNLOAD_URL = 'https://github.com/liamo08/boothledger-releases/releases/latest/download/BoothLedger-Setup.exe';
+  var DOWNLOAD_URL = 'https://boothledger.com/download/windows';
 
   // Windows download: Ads conversion + download log, then the installer.
   function startWindowsDownload(btn) {
