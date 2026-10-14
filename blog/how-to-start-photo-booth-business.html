@@ -451,6 +451,24 @@
       max-width: 540px;
       margin: 0 auto 28px;
     }
+    .blog-cta--inline {
+      margin: 40px 0;
+      padding: 32px 32px;
+    }
+    .blog-cta--inline h2 {
+      font-size: 1.375rem;
+      margin-bottom: 10px;
+      border-top: 0;
+      padding-top: 0;
+    }
+    .blog-cta a.btn,
+    .blog-cta a.btn:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+    .blog-cta--inline p {
+      margin-bottom: 20px;
+    }
 
     .blog-faq {
       margin-top: 56px;
@@ -498,6 +516,7 @@
       .blog-hero { padding: 120px 0 48px; }
       .blog-content { padding: 0 16px 60px; }
       .blog-cta { padding: 32px 24px; }
+      .blog-cta--inline { padding: 28px 20px; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
@@ -739,6 +758,22 @@
 
     <div class="tip-box">
       <p><strong>Where the money actually goes:</strong> on a standard setup, the printer and booth shell together are $1,300 of a $3,910 equipment bill &mdash; a third of your capital cost, spent on two things you can trade up to later. Start lean, book five events, then buy the printer with their money.</p>
+    </div>
+
+    <!-- Inline CTA: the software line of the budget -->
+    <div class="blog-cta blog-cta--inline">
+      <h2>Budgeting for software?</h2>
+      <p>BoothLedger runs your booth on a Windows 10/11 laptop with a Canon DSLR or webcam: templates, printing, QR sharing, cloud galleries and AI effects, from &euro;12/month. Try every feature free for 30 days, no credit card.</p>
+      <div class="blog-cta-actions">
+        <a href="/#download" class="btn btn-primary btn-lg" data-bl-download>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download the Free Trial
+        </a>
+      </div>
     </div>
 
     <!-- Profitability -->
@@ -1055,7 +1090,8 @@
     <div class="blog-cta">
       <h2>Ready to Launch Your Photo Booth Business?</h2>
       <p>Download BoothLedger and get started with a free 30-day trial. Full access to all features including AI effects, Canon DSLR support, cloud sync, and instant sharing. No credit card required.</p>
-      <a href="/#download" class="btn btn-primary btn-lg">
+      <div class="blog-cta-actions">
+      <a href="/#download" class="btn btn-primary btn-lg" data-bl-download>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
           <polyline points="7 10 12 15 17 10"/>
@@ -1063,6 +1099,7 @@
         </svg>
         Start 30-Day Free Trial
       </a>
+      </div>
     </div>
 
   </article>
@@ -1143,7 +1180,7 @@
     </div>
   </footer>
 
-  <script src="/js/main.js?v=16" defer></script>
+  <script src="/js/main.js?v=18" defer></script>
 
   <!-- Analytics -->
   <script>

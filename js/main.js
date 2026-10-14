@@ -100,27 +100,80 @@
     });
   }
 
-  // --- Phones and tablets: email the download link instead ---
+  // --- Download buttons: Windows installer, or a form on phones/Macs ---
   // The app is Windows-only, so on a phone the installer download is useless.
-  // There the button opens a small form that emails the link (the visitor
-  // opens it on their PC). Desktop behaviour below is unchanged.
+  // There the button opens a small form that emails the link (Apple devices
+  // also join the Mac & iPad waitlist).
   function isPhoneOrTablet() {
     var ua = navigator.userAgent || '';
     if (/Android|iPhone|iPad|iPod|Mobile|Silk|Kindle/i.test(ua)) return true;
     return /Macintosh/.test(ua) && navigator.maxTouchPoints > 1; // iPadOS reports as a Mac
   }
 
-  function initEmailLinkButton(downloadBtn) {
-    downloadBtn.innerHTML =
-      '<svg class="m-i" viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px;"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>' +
-      ' Email me the download link';
-    var version = document.getElementById('downloadVersion');
-    if (version) version.textContent = 'BoothLedger runs on a Windows 10/11 PC. We’ll email you the link so you can install it there.';
+  // 'mac' for a desktop Mac, 'ios' for iPhone/iPad, '' for everything else.
+  function applePlatform() {
+    var ua = navigator.userAgent || '';
+    if (/iPhone|iPad|iPod/.test(ua)) return 'ios';
+    if (/Macintosh/.test(ua)) return navigator.maxTouchPoints > 1 ? 'ios' : 'mac';
+    return '';
+  }
+
+  // GitHub latest release URL - always points to newest version
+  var DOWNLOAD_URL = 'https://github.com/liamo08/boothledger-releases/releases/latest/download/BoothLedger-Setup.exe';
+
+  // Windows download: Ads conversion + download log, then the installer.
+  function startWindowsDownload(btn) {
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-755417118/wYMsCPupm6gcEJ6Am-gC',
+        'value': 1.0,
+        'currency': 'EUR',
+        'event_category': 'download',
+        'event_label': 'windows_installer'
+      });
+    }
+
+    // Track download click
+    try {
+      navigator.sendBeacon(
+        'https://boothledger.com/api/v1/analytics/track-download',
+        new Blob([JSON.stringify({referrer: document.referrer || '', gclid: (typeof window.BL_getGclid === 'function' ? window.BL_getGclid() : '')})], {type: 'application/json'})
+      );
+    } catch(e) {}
+
+    window.location.href = DOWNLOAD_URL;
+
+    if (btn) {
+      var originalText = btn.innerHTML;
+      btn.innerHTML =
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Download Starting...';
+      setTimeout(function () {
+        btn.innerHTML = originalText;
+      }, 3000);
+    }
+  }
+
+  // Phones, tablets and Macs can't run the Windows app, so the button opens a
+  // small form instead. platform 'mac'/'ios' also joins the Mac & iPad
+  // waitlist; the server emails the Windows link either way.
+  function initEmailLinkButton(downloadBtn, platform) {
+    var waitlist = platform === 'mac' || platform === 'ios';
+    downloadBtn.innerHTML = waitlist
+      ? '<svg class="m-i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>' +
+        ' Join the Mac &amp; iPad waitlist'
+      : '<svg class="m-i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>' +
+        ' Email me the download link';
+    if (downloadBtn.id === 'downloadBtn') {
+      var version = document.getElementById('downloadVersion');
+      if (version) version.textContent = waitlist
+        ? 'BoothLedger runs on Windows 10/11 today. Mac & iPad versions are on the way.'
+        : 'BoothLedger runs on a Windows 10/11 PC. We’ll email you the link so you can install it there.';
+    }
 
     var form = document.createElement('form');
-    form.id = 'emailLinkForm';
+    form.className = 'bl-email-form';
     form.noValidate = true;
-    form.style.cssText = 'display:none;margin-top:16px;max-width:460px;';
+    form.style.cssText = 'display:none;margin:16px 0 0;max-width:460px;text-align:left;color:inherit;';
 
     var row = document.createElement('div');
     row.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;';
@@ -131,11 +184,12 @@
     input.autocomplete = 'email';
     input.placeholder = 'you@example.com';
     input.setAttribute('aria-label', 'Your email address');
-    input.style.cssText = 'flex:1 1 220px;min-width:0;padding:14px 16px;border-radius:12px;border:0;font-size:16px;color:#0f172a;background:#fff;';
+    input.style.cssText = 'flex:1 1 220px;min-width:0;padding:14px 16px;border-radius:12px;border:1px solid #cbd5e1;font-size:16px;color:#0f172a;background:#fff;';
     var send = document.createElement('button');
     send.type = 'submit';
-    send.className = 'm-btn m-btn-white';
-    send.textContent = 'Send link';
+    send.className = downloadBtn.className; // matches whatever background it sits on
+    var sendLabel = waitlist ? 'Join waitlist' : 'Send link';
+    send.textContent = sendLabel;
     // Honeypot: hidden from people, filled in by most bots.
     var trap = document.createElement('input');
     trap.type = 'text';
@@ -150,14 +204,39 @@
     form.appendChild(trap);
 
     var note = document.createElement('p');
-    note.style.cssText = 'margin:10px 0 0;font-size:13.5px;color:rgba(255,255,255,.85);';
-    note.textContent = 'One email with the link. No newsletter.';
+    note.style.cssText = 'margin:10px 0 0;font-size:13.5px;color:inherit;opacity:.85;';
+    note.textContent = waitlist
+      ? 'We’ll email you when BoothLedger for Mac & iPad launches, plus the Windows download link in case you have a Windows PC. No newsletter.'
+      : 'One email with the link. No newsletter.';
     form.appendChild(note);
+
+    if (platform === 'mac') {
+      // A Mac owner may still run the booth on a Windows PC.
+      var alt = document.createElement('p');
+      alt.style.cssText = 'margin:8px 0 0;font-size:13.5px;color:inherit;opacity:.85;';
+      var altLink = document.createElement('a');
+      altLink.href = DOWNLOAD_URL;
+      altLink.textContent = 'Download the Windows installer';
+      altLink.style.cssText = 'color:inherit;text-decoration:underline;';
+      altLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        startWindowsDownload(null);
+      });
+      alt.appendChild(document.createTextNode('Have a Windows PC for your booth? '));
+      alt.appendChild(altLink);
+      form.appendChild(alt);
+    }
 
     var actions = downloadBtn.parentNode;
     actions.parentNode.insertBefore(form, actions.nextSibling);
+    // Centre the form under a centred button (blog/compare CTAs).
+    if (window.getComputedStyle(actions.parentNode).textAlign === 'center') {
+      form.style.marginLeft = 'auto';
+      form.style.marginRight = 'auto';
+    }
 
-    downloadBtn.addEventListener('click', function () {
+    downloadBtn.addEventListener('click', function (e) {
+      e.preventDefault();
       form.style.display = 'block';
       input.focus();
     });
@@ -172,73 +251,53 @@
       }
       send.disabled = true;
       send.textContent = 'Sending…';
+      var payload = {email: email, website: trap.value};
+      if (waitlist) payload.platform = platform;
       fetch('/api/v1/analytics/email-download-link', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({email: email, website: trap.value})
+        body: JSON.stringify(payload)
       }).then(function (r) {
         return r.json().catch(function () { return {}; }).then(function (data) { return {ok: r.ok, data: data}; });
       }).then(function (res) {
         if (res.ok) {
           row.style.display = 'none';
-          note.textContent = 'Sent! Open the email on your Windows PC to download BoothLedger. (Check spam if it hasn’t arrived in a few minutes.)';
-          if (typeof gtag === 'function') gtag('event', 'download_link_request', {'event_category': 'download'});
+          note.textContent = waitlist
+            ? 'You’re on the list! We’ll email you when the Mac & iPad version is ready, and we’ve sent the Windows download link too. (Check spam if it hasn’t arrived in a few minutes.)'
+            : 'Sent! Open the email on your Windows PC to download BoothLedger. (Check spam if it hasn’t arrived in a few minutes.)';
+          if (typeof gtag === 'function') gtag('event', waitlist ? 'apple_waitlist_join' : 'download_link_request', {'event_category': 'download'});
         } else {
           note.textContent = (res.data && res.data.error) || 'Something went wrong. Please try again.';
           send.disabled = false;
-          send.textContent = 'Send link';
+          send.textContent = sendLabel;
         }
       }).catch(function () {
         note.textContent = 'Something went wrong. Please try again.';
         send.disabled = false;
-        send.textContent = 'Send link';
+        send.textContent = sendLabel;
       });
     });
   }
 
-  // --- Download button click handler ---
+  // #downloadBtn, plus any in-content button marked data-bl-download
+  // (e.g. blog CTAs), get the same platform handling.
   function initDownloadButton() {
-    var downloadBtn = document.getElementById('downloadBtn');
-    if (!downloadBtn) return;
-    if (isPhoneOrTablet()) {
-      initEmailLinkButton(downloadBtn);
-      return;
+    var buttons = [];
+    var main = document.getElementById('downloadBtn');
+    if (main) buttons.push(main);
+    var extra = document.querySelectorAll('[data-bl-download]');
+    for (var i = 0; i < extra.length; i++) {
+      if (extra[i] !== main) buttons.push(extra[i]);
     }
-
-    // GitHub latest release URL - always points to newest version
-    var downloadUrl = 'https://github.com/liamo08/boothledger-releases/releases/latest/download/BoothLedger-Setup.exe';
-
-    downloadBtn.addEventListener('click', function () {
-      // Fire Google Ads conversion event
-      if (typeof gtag === 'function') {
-        gtag('event', 'conversion', {
-          'send_to': 'AW-755417118/wYMsCPupm6gcEJ6Am-gC',
-          'value': 1.0,
-          'currency': 'EUR',
-          'event_category': 'download',
-          'event_label': 'windows_installer'
-        });
-      }
-
-      // Track download click
-      try {
-        navigator.sendBeacon(
-          'https://boothledger.com/api/v1/analytics/track-download',
-          new Blob([JSON.stringify({referrer: document.referrer || '', gclid: (typeof window.BL_getGclid === 'function' ? window.BL_getGclid() : '')})], {type: 'application/json'})
-        );
-      } catch(e) {}
-
-      // Start download
-      window.location.href = downloadUrl;
-
-      // Show feedback
-      var originalText = downloadBtn.innerHTML;
-      downloadBtn.innerHTML =
-        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Download Starting...';
-
-      setTimeout(function () {
-        downloadBtn.innerHTML = originalText;
-      }, 3000);
+    var apple = applePlatform();
+    var mobile = isPhoneOrTablet();
+    buttons.forEach(function (btn) {
+      if (apple) return initEmailLinkButton(btn, apple);
+      if (mobile) return initEmailLinkButton(btn, '');
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        startWindowsDownload(btn);
+      });
     });
   }
 
