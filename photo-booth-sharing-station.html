@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2L4B7DR1YK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2L4B7DR1YK');
+    gtag('config', 'AW-755417118');
+  </script>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Booth Sharing Station: QR, SMS &amp; Email | BoothLedger</title>
+  <meta name="description" content="Set up a photo booth sharing station on any tablet, phone or laptop. Guests share by QR code, SMS or email, even at no-internet venues. Free 30-day trial.">
+  <meta name="keywords" content="photo booth sharing station, photo booth share station app, QR code photo sharing for events, photo booth sharing tablet, photo booth SMS sharing, offline photo booth sharing, BoothLedger Share">
+  <meta name="author" content="BoothLedger">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://boothledger.com/photo-booth-sharing-station">
+  <link rel="alternate" hreflang="en" href="https://boothledger.com/photo-booth-sharing-station">
+  <link rel="alternate" hreflang="x-default" href="https://boothledger.com/photo-booth-sharing-station">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Photo Booth Sharing Station App | BoothLedger Share">
+  <meta property="og:description" content="Guests share their photos by QR code, SMS or email from a tablet, phone or laptop. Cloud mode, or an offline same Wi-Fi mode served by the booth.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://boothledger.com/photo-booth-sharing-station">
+  <meta property="og:site_name" content="BoothLedger">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://boothledger.com/images/boothledger-logo-full.png">
+  <meta property="og:image:alt" content="BoothLedger logo">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Photo Booth Sharing Station | BoothLedger Share">
+  <meta name="twitter:description" content="A guest sharing station on any tablet, phone or laptop. QR, SMS and email sharing, with an offline mode for no-internet venues.">
+  <meta name="twitter:image" content="https://boothledger.com/images/boothledger-logo-full.png">
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "BoothLedger Share",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Web browser (booth app: Windows 10, Windows 11)",
+  "description": "Photo booth sharing station web app. Guests browse the event gallery on a tablet, phone or laptop and share photos by QR code, SMS or email. Cloud mode, or served by the booth over local Wi-Fi at venues with no internet.",
+  "url": "https://boothledger.com/photo-booth-sharing-station",
+  "offers": {
+    "@type": "AggregateOffer",
+    "offerCount": "2",
+    "lowPrice": "12",
+    "highPrice": "35",
+    "priceCurrency": "EUR",
+    "description": "Included in every BoothLedger plan. Free 30-day trial. Plans from EUR 12/month."
+  },
+  "featureList": [
+    "Guest photo gallery on any browser",
+    "QR code sharing",
+    "SMS sharing",
+    "Email sharing",
+    "Slideshow with background music",
+    "Cloud mode",
+    "Offline same Wi-Fi mode served by the booth",
+    "Tablet pairing by QR or code",
+    "Optional Google review prompt"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "BoothLedger",
+    "url": "https://boothledger.com"
+  }
+}
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a photo booth sharing station?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A sharing station is a separate screen, usually a tablet on a stand near the booth, where guests find their photos and send them to their own phone. BoothLedger Share is the sharing station app: guests browse the event gallery and share by QR code, SMS or email while the booth keeps taking photos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to install an app on the tablet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. BoothLedger Share runs in a web browser, so any tablet, phone or laptop with a modern browser works. In cloud mode you open boothledgershare.photoboothguys.ie. In same Wi-Fi mode the booth serves the app itself, and the tablet opens it by scanning the booth's pairing QR."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the sharing station work without internet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, in same Wi-Fi mode. Put the tablet on the same Wi-Fi network as the booth and pair it. Guests can view photos and, on the same Wi-Fi, scan a QR code to download their photo, all without internet. SMS and email need the booth to have internet to send; if a photo hasn't uploaded yet, the message is queued and sent once it has."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is BoothLedger Share included in my subscription?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Share uses the same BoothLedger account as your booth and has no separate subscription. Every plan includes sharing by QR, email and SMS: Basic is EUR 12/month and AI Photobooth is EUR 35/month, both with a free 30-day trial and no credit card. Texts themselves are charged per message unless you connect your own Twilio account."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does it cost to send photos by SMS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With built-in BoothLedger SMS, each text costs a few cents depending on the destination country and is deducted from your BoothLedger credit balance, the same credit used for AI. Failed sends are refunded. If you connect your own Twilio account in Share app settings instead, BoothLedger charges nothing and you pay Twilio directly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can guests see photos from other events?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. In cloud mode the station shows the event you choose after signing in. In same Wi-Fi mode the booth only exposes its current event, and the tablet has to be paired with the booth's QR or 12-character code first. Reset pairing disconnects every tablet and stops older photo QR codes working."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are photos saved on the sharing station tablet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. There is no download button on the station itself. Guests take their photo away on their own phone by scanning the QR code, or by receiving a text or email with a link to it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which booth software does the sharing station work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BoothLedger Share works with the BoothLedger booth app, which runs on Windows 10 and 11 (64-bit) with Canon DSLR or mirrorless cameras or USB webcams. Photos sync to BoothLedger Cloud, and the same account signs in to all three."
+      }
+    }
+  ]
+}
+  </script>
+
+  <!-- Schema: BreadcrumbList -->
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://boothledger.com/"}, {"@type": "ListItem", "position": 2, "name": "Photo Booth Sharing Station", "item": "https://boothledger.com/photo-booth-sharing-station"}]}</script>
+
+  <!-- Schema: Organization -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"BoothLedger","url":"https://boothledger.com/","logo":{"@type":"ImageObject","url":"https://boothledger.com/images/boothledger-logo-full.png","width":1000,"height":1000},"description":"Professional photo booth software for event professionals worldwide","sameAs":["https://www.instagram.com/booth_ledger"]}</script>
+
+  <link rel="icon" type="image/x-icon" href="images/favicon-v3.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-v3-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-v3-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon-v3.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+  <link rel="stylesheet" href="css/style.min.css?v=21">
+  <link rel="stylesheet" href="/css/site-legacy.css?v=2">
+
+  <!-- 4K Display Scaling -->
+  <style>
+    @media (min-width: 2400px) {
+      .container { max-width: 2200px !important; padding: 0 60px !important; }
+      .compare-section, .blog-body, .blog-article, article { max-width: 1400px !important; }
+      .section-title, h2 { font-size: 52px !important; }
+      .section-subtitle { font-size: 20px !important; }
+      h1 { font-size: 64px !important; }
+      h3 { font-size: 24px !important; }
+      p, li, td, th, summary { font-size: 18px !important; line-height: 1.7 !important; }
+      .btn, button[type="submit"] { font-size: 18px !important; padding: 16px 32px !important; }
+      .nav-links a { font-size: 18px !important; }
+      .logo-text { font-size: 26px !important; }
+      .nav-container { max-width: 2200px !important; }
+      .section-tag, .badge { font-size: 16px !important; }
+    }
+    @media (min-width: 3600px) {
+      .container { max-width: 3000px !important; padding: 0 120px !important; }
+      .section-title, h2 { font-size: 72px !important; }
+      .section-subtitle { font-size: 28px !important; }
+      h1 { font-size: 88px !important; line-height: 1.05 !important; }
+      h3 { font-size: 32px !important; }
+      p, li, td, th, summary { font-size: 22px !important; line-height: 1.8 !important; }
+      .btn, button[type="submit"] { font-size: 22px !important; padding: 22px 44px !important; }
+      .nav-links a { font-size: 22px !important; }
+      .logo-text { font-size: 32px !important; }
+    }
+
+    /* Sharing-station page styling */
+    .ss-modes { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px; }
+    .ss-mode { background:#fff; border:1px solid var(--line); border-radius:14px; padding:24px; }
+    .ss-mode h3 { margin:0 0 10px; font-size:1.15rem; }
+    .ss-mode p { color:var(--muted); font-size:.95rem; line-height:1.65; margin:0 0 10px; }
+    .ss-mode ul { margin:8px 0 0; padding-left:20px; color:var(--muted); font-size:.95rem; line-height:1.65; }
+    .ss-mode li { margin-bottom:6px; }
+    .ss-table-wrap { margin-top:28px; overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--line); border-radius:14px; background:#fff; }
+    .ss-table { width:100%; border-collapse:collapse; font-size:.95rem; }
+    .ss-table th, .ss-table td { padding:12px 16px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top; }
+    .ss-table thead th { font-weight:700; background:#f8fafc; }
+    .ss-table tbody tr:last-child td { border-bottom:none; }
+    .ss-table td:first-child { font-weight:600; }
+    .ss-table td { color:var(--muted); }
+    .ss-table td:first-child { color:inherit; }
+    @media (max-width: 480px) { .ss-mode { padding:18px; } .ss-table { font-size:.85rem; } .ss-table th, .ss-table td { padding:10px 8px; } }
+  </style>
+  <script src="https://analytics.ahrefs.com/analytics.js" data-key="hDTsJjbsuIFfEsb2icX72w" async></script>
+</head>
+<body class="ml">
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="40" height="40">
+        <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
+      </a>
+      <a href="https://www.photoboothguys.ie" target="_blank" rel="noopener" class="nav-brought-by">
+        <span>Brought to you by</span>
+        <img src="images/photobooth-guys-logo.webp" width="31" height="28" alt="PhotoBooth Guys">
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/ai-photo-booth">AI Effects</a></li>
+        <li><a href="/ai-video-booth">AI Video</a></li>
+        <li><a href="/#ecosystem">Ecosystem</a></li>
+        <li><a href="/photo-booth-crm">CRM</a></li>
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/#download" class="nav-cta">Download Trial</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" style="padding-bottom:24px;">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-badge fade-in">
+        <span class="badge-dot"></span>
+        BoothLedger Share &mdash; the share station app
+      </div>
+      <h1 class="hero-title fade-in">
+        Photo Booth Sharing Station<br>
+        <span class="gradient-text">Let Guests Share From a Tablet</span>
+      </h1>
+      <p class="hero-subtitle fade-in">
+        BoothLedger Share turns any tablet, phone or laptop with a web browser into a guest sharing station.
+        Guests browse the event gallery and send photos to themselves by QR code, SMS or email, while the
+        booth keeps taking pictures. It signs in with the same account as your booth, and it still works
+        at venues with no internet.
+      </p>
+      <div class="hero-actions fade-in">
+        <a href="#download" class="btn btn-primary btn-lg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download Free Trial
+        </a>
+        <a href="/pricing" class="btn btn-outline btn-lg">
+          View Pricing
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is a sharing station -->
+  <section class="features" id="what-is">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">The Basics</span>
+        <h2 class="section-title">What Is a Photo Booth<br><span class="gradient-text">Sharing Station?</span></h2>
+        <p class="section-subtitle">A sharing station is a second screen, separate from the booth, where guests find their photos and send them to their own phone. The booth handles capture and printing. The station handles sharing. Two queues instead of one.</p>
+      </div>
+
+      <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>A shorter queue at the booth</h3>
+          <p>Guests who stop to type a phone number at the booth hold up everyone behind them. Move that step to a tablet on a side table and the booth is free for the next group straight away.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          </div>
+          <h3>More photos leave the room</h3>
+          <p>Guests come back to the station later in the night, find shots from earlier, and send them on. A photo that reaches a phone gets posted. A photo left on the booth&rsquo;s hard drive doesn&rsquo;t.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <h3>A live gallery and slideshow</h3>
+          <p>Between shares, the station can run a full-screen slideshow of the event with background music, so the screen draws people over instead of sitting idle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Two modes -->
+  <section class="features" id="modes" style="padding-top:64px;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">How It Works</span>
+        <h2 class="section-title">Cloud Mode or<br><span class="gradient-text">Same Wi&#8209;Fi Mode</span></h2>
+        <p class="section-subtitle">BoothLedger Share connects to your photos in one of two ways. Cloud mode is the default. Same Wi&#8209;Fi mode is for venues with no signal.</p>
+      </div>
+
+      <div class="ss-modes fade-in">
+        <div class="ss-mode">
+          <h3>Cloud mode (recommended)</h3>
+          <p>The booth uploads each photo to BoothLedger Cloud. On the tablet, open <strong>boothledgershare.photoboothguys.ie</strong> and sign in with the same BoothLedger account you use on the booth. Pick the event and its photos appear. No pairing and no shared network: the tablet only needs its own internet connection.</p>
+          <ul>
+            <li>The gallery checks for new photos every 15 seconds.</li>
+            <li>QR codes link to the photo&rsquo;s online page, so guests can scan on mobile data.</li>
+            <li>If the tablet loses signal, it can still show the photos it has already loaded.</li>
+          </ul>
+        </div>
+        <div class="ss-mode">
+          <h3>Same Wi&#8209;Fi mode (no-internet venues)</h3>
+          <p>The Windows booth app runs a small local server and serves the Share app itself. Put the tablet on the same Wi&#8209;Fi network as the booth, then scan the pairing QR on the booth or type its pairing code. The Share app opens in the tablet&rsquo;s browser, straight from the booth. Nothing to install.</p>
+          <ul>
+            <li>New photos appear on the tablet as soon as the booth takes them.</li>
+            <li>Only the booth&rsquo;s current event is shown, so guests can&rsquo;t browse an earlier client&rsquo;s photos.</li>
+            <li>Viewing and downloading work fully offline: a guest on the same Wi&#8209;Fi scans the QR and the photo downloads from the booth.</li>
+            <li>SMS and email still need an internet connection on the booth to send. If a photo hasn&rsquo;t uploaded yet, the message is queued and goes out with the link once it lands.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ss-table-wrap fade-in">
+        <table class="ss-table">
+          <thead>
+            <tr><th></th><th>Cloud mode</th><th>Same Wi&#8209;Fi mode</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Internet needed on the tablet</td><td>Yes</td><td>No</td></tr>
+            <tr><td>Tablet and booth on the same network</td><td>No</td><td>Yes</td></tr>
+            <tr><td>How the tablet connects</td><td>Sign in with your BoothLedger account</td><td>Scan the booth&rsquo;s pairing QR or type the code</td></tr>
+            <tr><td>QR code to guest&rsquo;s phone</td><td>Works on any connection</td><td>Guest joins the same Wi&#8209;Fi, works offline</td></tr>
+            <tr><td>SMS and email</td><td>Yes</td><td>Yes, when the booth has internet</td></tr>
+            <tr><td>New photos appear</td><td>Within about 15 seconds</td><td>Straight away</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Setup -->
+  <section class="features" id="setup" style="padding-top:64px;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Setup</span>
+        <h2 class="section-title">Set Up a Sharing Station<br><span class="gradient-text">in a Few Minutes</span></h2>
+        <p class="section-subtitle">All you need is the BoothLedger booth app on a Windows PC and a second device with a web browser.</p>
+      </div>
+
+      <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>1. Open the Share Station tab</h3>
+          <p>In the booth app&rsquo;s settings, the Share Station tab shows the Share web address and a QR code for it. Point the tablet&rsquo;s camera at the QR to open the site without typing.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3>2. Sign in and pick the event</h3>
+          <p>Sign in with the same BoothLedger account as the booth and choose the event. One account covers the booth, BoothLedger Cloud and Share.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <h3>3. Choose the share buttons</h3>
+          <p>QR code, SMS and email can each be switched on or off for the event. In BoothLedger Cloud&rsquo;s Share app settings you set up how texts and emails are sent (see below).</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+          </div>
+          <h3>No internet? Pair locally</h3>
+          <p>On the Share Station tab, tap &ldquo;Venue has no internet? Show local Wi&#8209;Fi sharing&rdquo;. Connect the tablet to the same Wi&#8209;Fi network as the booth, then scan the pairing QR or type the 12-character pairing code. &ldquo;Reset pairing&rdquo; disconnects every paired tablet when you need to.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What guests see -->
+  <section class="features" id="guests" style="padding-top:64px;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Guest View</span>
+        <h2 class="section-title">What Guests See<br><span class="gradient-text">on the Station</span></h2>
+        <p class="section-subtitle">A photo grid, newest first. Guests tap their photo and choose how to take it with them.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z"/></svg>
+          </div>
+          <h3>QR code</h3>
+          <p>A large QR appears on screen. The guest scans it with their phone camera and opens their photo to download or share. Nothing is typed and nothing is saved on the station.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>SMS</h3>
+          <p>An on-screen number pad with a country code picker. A leading 0 (as in Irish 087 or UK 07 numbers) is handled automatically. The guest gets a text with a link to their photo.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h3>Email</h3>
+          <p>The guest types an email address and receives a link to their photo. The address is checked before it sends.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <h3>Slideshow with music</h3>
+          <p>Full-screen slideshow with fade, slide, scale or flip transitions, adjustable speed, rotation, fit or fill, and a filter to show only the finished templates or only individual shots. Pick an audio file on the device for background music.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-rose">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          </div>
+          <h3>Optional print button</h3>
+          <p>Switch on printing in the Share app&rsquo;s settings and a Print button sits beside the share buttons. In a laptop browser it opens the browser&rsquo;s print dialog. Phone and tablet browsers can&rsquo;t print from the web app.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 6.91 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>Google review prompt</h3>
+          <p>Optional. Turn it on in BoothLedger Cloud and add your Google review link. When a guest opens their photo link and taps Download, they see a one-time invitation to review your business, asked once per device.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SMS and email costs -->
+  <section class="features" id="costs" style="padding-top:64px;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Pricing</span>
+        <h2 class="section-title">What a Sharing Station<br><span class="gradient-text">Costs to Run</span></h2>
+        <p class="section-subtitle">BoothLedger Share is part of BoothLedger. There is no separate Share subscription and no per-tablet fee.</p>
+      </div>
+
+      <div class="ss-modes fade-in">
+        <div class="ss-mode">
+          <h3>Included in your plan</h3>
+          <p>Every plan includes photo sharing by QR, email and SMS. The Basic plan is &euro;12/month (&euro;120/year) and the AI Photobooth plan is &euro;35/month (&euro;350/year). Both include 2 devices and a free 30-day trial with no credit card. Trial photos carry a small watermark. <a href="/pricing" style="color:var(--accent);">See full pricing &rarr;</a></p>
+          <p>QR sharing costs nothing extra.</p>
+        </div>
+        <div class="ss-mode">
+          <h3>SMS: pay per text, or bring your own Twilio</h3>
+          <p>Texts cost money to send, so SMS works one of two ways:</p>
+          <ul>
+            <li><strong>Built-in BoothLedger SMS:</strong> no setup. Each text costs a few cents, depending on the destination country, and comes off your BoothLedger credit balance (the same credit used for AI). With no credit left, texts don&rsquo;t send until you top up. Failed sends are refunded.</li>
+            <li><strong>Your own Twilio account:</strong> add your Twilio details in Share app settings and texts are free from BoothLedger&rsquo;s side. You pay Twilio directly.</li>
+          </ul>
+          <p><strong>Email</strong> has no per-message charge. Add your own SMTP server (Gmail, Outlook / Office 365, Amazon SES, SendGrid and others) in Share app settings so emails come from your own address.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Works with the rest of BoothLedger -->
+  <section class="features" style="padding-top:64px;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Ecosystem</span>
+        <h2 class="section-title">One Account,<br><span class="gradient-text">Three Apps</span></h2>
+        <p class="section-subtitle">The <a href="/photo-booth-software-windows" style="color:var(--accent);">BoothLedger booth app</a> captures and prints at the event on Windows 10/11 with a <a href="/dslr-photo-booth-software" style="color:var(--accent);">Canon DSLR or mirrorless camera</a> or a USB webcam. BoothLedger Cloud stores the photos, hosts the online gallery and holds your settings. BoothLedger Share puts the gallery in guests&rsquo; hands. Running a brand activation? Collect guest details on the booth with <a href="/photo-booth-data-capture" style="color:var(--accent);">data capture</a>, and see the <a href="/photobooth-software" style="color:var(--accent);">full feature list</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download CTA -->
+  <section class="download" id="download" style="padding-top:64px;">
+    <div class="container">
+      <div class="download-card fade-in">
+        <div class="download-content">
+          <span class="section-tag">Start Free</span>
+          <h2>Add a Sharing Station<br><span class="gradient-text">to Your Next Event</span></h2>
+          <p>Free 30-day trial of the BoothLedger booth app, with BoothLedger Cloud and BoothLedger Share on the same account. No credit card.</p>
+
+          <div class="download-checks">
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>QR, SMS &amp; email sharing</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Works on any browser</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Offline same Wi&#8209;Fi mode</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Slideshow with music</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Canon DSLR + webcam</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Cloud gallery sync</span>
+            </div>
+          </div>
+
+          <div class="download-actions" style="justify-content:center;">
+            <button class="btn btn-primary btn-xl" id="downloadBtn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download Free Trial
+            </button>
+            <span class="download-version" id="downloadVersion">Windows 10/11 &middot; 64-bit &middot; Free 30-day trial</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">FAQ</span>
+        <h2 class="section-title">Sharing Station<br><span class="gradient-text">Questions Answered</span></h2>
+      </div>
+      <div class="faq-list fade-in">
+        <details class="faq-item">
+          <summary>What is a photo booth sharing station?</summary>
+          <p>A sharing station is a separate screen, usually a tablet on a stand near the booth, where guests find their photos and send them to their own phone. BoothLedger Share is the sharing station app: guests browse the event gallery and share by QR code, SMS or email while the booth keeps taking photos.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need to install an app on the tablet?</summary>
+          <p>No. BoothLedger Share runs in a web browser, so any tablet, phone or laptop with a modern browser works. In cloud mode you open boothledgershare.photoboothguys.ie. In same Wi&#8209;Fi mode the booth serves the app itself, and the tablet opens it by scanning the booth&rsquo;s pairing QR.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does the sharing station work without internet?</summary>
+          <p>Yes, in same Wi&#8209;Fi mode. Put the tablet on the same Wi&#8209;Fi network as the booth and pair it. Guests can view photos and, on the same Wi&#8209;Fi, scan a QR code to download their photo, all without internet. SMS and email need the booth to have internet to send; if a photo hasn&rsquo;t uploaded yet, the message is queued and sent once it has.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is BoothLedger Share included in my subscription?</summary>
+          <p>Yes. Share uses the same BoothLedger account as your booth and has no separate subscription. Every plan includes sharing by QR, email and SMS: Basic is &euro;12/month and AI Photobooth is &euro;35/month, both with a free 30-day trial and no credit card. Texts themselves are charged per message unless you connect your own Twilio account.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How much does it cost to send photos by SMS?</summary>
+          <p>With built-in BoothLedger SMS, each text costs a few cents depending on the destination country and is deducted from your BoothLedger credit balance, the same credit used for AI. Failed sends are refunded. If you connect your own Twilio account in Share app settings instead, BoothLedger charges nothing and you pay Twilio directly.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can guests see photos from other events?</summary>
+          <p>No. In cloud mode the station shows the event you choose after signing in. In same Wi&#8209;Fi mode the booth only exposes its current event, and the tablet has to be paired with the booth&rsquo;s QR or 12-character code first. Reset pairing disconnects every tablet and stops older photo QR codes working.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Are photos saved on the sharing station tablet?</summary>
+          <p>No. There is no download button on the station itself. Guests take their photo away on their own phone by scanning the QR code, or by receiving a text or email with a link to it.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Which booth software does the sharing station work with?</summary>
+          <p>BoothLedger Share works with the BoothLedger booth app, which runs on Windows 10 and 11 (64-bit) with Canon DSLR or mirrorless cameras or USB webcams. Photos sync to BoothLedger Cloud, and the same account signs in to all three.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo">
+            <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="32" height="32">
+            <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
+          </a>
+          <p class="footer-tagline">Professional photo booth software for event professionals worldwide.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h3>Product</h3>
+            <a href="/#features">Features</a>
+            <a href="/ai-photo-booth">AI Photo Booth</a>
+            <a href="/ai-video-booth">AI Video Booth</a>
+            <a href="/dslr-photo-booth-software">DSLR Photo Booth</a>
+            <a href="/mirror-booth">Mirror Booth</a>
+            <a href="/green-screen-photo-booth">Green Screen</a>
+            <a href="/trading-card-photo-booth">Trading Cards</a>
+            <a href="/webcam-photo-booth-software">Webcam Booth</a>
+            <a href="/gif-boomerang-photo-booth">GIF &amp; Boomerang</a>
+            <a href="/photo-booth-sharing-station">Sharing Station</a>
+            <a href="/pay-per-use-photo-booth">Pay-Per-Use Booths</a>
+            <a href="/photo-booth-crm">Photo Booth CRM</a>
+            <a href="/photo-booth-software-windows">Windows Software</a>
+            <a href="/photo-booth-data-capture">Data Capture</a>
+            <a href="/photobooth-software">Photobooth Software</a>
+            <a href="/newspaper-photo-booth">Newspaper</a>
+            <a href="/colouring-photo-booth">Colouring In</a>
+            <a href="/photo-mosaic">Photo Mosaic</a>
+            <a href="/glam-booth">Glam Booth</a>
+            <a href="/pricing">Pricing</a>
+          </div>
+          <div class="footer-col">
+            <h3>Solutions</h3>
+            <a href="/wedding-photo-booth-software">Weddings</a>
+            <a href="/corporate-photo-booth-software">Corporate</a>
+            <a href="/event-photo-booth-software">Events</a>
+            <a href="/brand-activation-photo-booth">Brand Activations</a>
+            <a href="/permanent-photo-booth-install">Permanent Installs</a>
+            <a href="/roaming-photographer-software">Roaming Photography</a>
+          </div>
+          <div class="footer-col">
+            <h3>Compare</h3>
+            <a href="/compare">All Comparisons</a>
+            <a href="/vs-dslrbooth">vs dslrBooth</a>
+            <a href="/vs-snappic">vs Snappic</a>
+            <a href="/vs-lumabooth">vs LumaBooth</a>
+            <a href="/lumabooth-alternatives">LumaBooth Alternatives</a>
+            <a href="/dslrbooth-alternatives">dslrBooth Alternatives</a>
+            <a href="/vs-darkroom-booth">vs Darkroom Booth</a>
+            <a href="/vs-simple-booth">vs Simple Booth</a>
+            <a href="/vs-boothbook">vs BoothBook</a>
+          </div>
+          <div class="footer-col">
+            <h3>Resources</h3>
+            <a href="/blog/best-photo-booth-software">Best Software 2026</a>
+            <a href="/blog/how-to-start-photo-booth-business">Start a Business</a>
+            <a href="/blog/photo-booth-pricing-guide">Pricing Guide</a>
+            <a href="/blog/dslr-vs-ipad-photo-booth">DSLR vs iPad</a>
+            <a href="/blog/ai-background-removal-vs-green-screen">AI vs Green Screen</a>
+            <a href="/blog/photo-booth-software-languages">11 Languages</a>
+            <a href="/blog/photo-booth-software-for-canon">Canon Software</a>
+            <a href="/photo-booth-integrations-guide">Integrations Guide</a>
+            <a href="/#faq">FAQ</a>
+            <a href="https://www.instagram.com/booth_ledger" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="mailto:info@photoboothguys.ie">Contact</a>
+            <a href="https://boothledger.com/user/login" target="_blank" rel="noopener noreferrer">Customer Login</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 PhotoBooth Guys. All rights reserved.</p>
+        <p><a href="mailto:info@photoboothguys.ie" style="color:var(--muted);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;">Privacy</a> &middot; <a href="/third-party-software" style="color:var(--muted);text-decoration:none;">Third-party software</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=18"></script>
+
+  <!-- Analytics -->
+  <script>
+  (function(){
+    var start = Date.now();
+    var sent = false;
+    function track(dur) {
+      if (sent) return;
+      sent = true;
+      var data = {
+        path: location.pathname,
+        referrer: document.referrer || "",
+        screen_width: screen.width,
+        duration: dur || Math.round((Date.now() - start) / 1000)
+      };
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon("https://boothledger.com/api/v1/analytics/track",
+          new Blob([JSON.stringify(data)], {type: "application/json"}));
+      } else {
+        fetch("https://boothledger.com/api/v1/analytics/track", {
+          method: "POST", body: JSON.stringify(data),
+          headers: {"Content-Type": "application/json"}, keepalive: true
+        }).catch(function(){});
+      }
+    }
+    document.addEventListener("visibilitychange", function() {
+      if (document.visibilityState === "hidden") track();
+    });
+    window.addEventListener("beforeunload", function() { track(); });
+  })();
+  </script>
+</body>
+</html>

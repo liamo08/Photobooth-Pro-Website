@@ -22,6 +22,10 @@ BoothLedger is a Windows photo booth application designed for professional event
 - [Compare](https://boothledger.com/compare): BoothLedger vs DSLRBooth vs Snappic comparison
 - [dslrBooth Alternative](https://boothledger.com/vs-dslrbooth): BoothLedger vs dslrBooth (LumaBooth) — features, DSLR support, AI, pricing, migration
 - [LumaBooth Alternatives](https://boothledger.com/lumabooth-alternatives): LumaBooth pricing 2026 (Windows, Apple, Android) and 5 alternatives compared: BoothLedger, Simple Booth, Snappic, Touchpix, Darkroom Booth
+- [Webcam Photo Booth Software](https://boothledger.com/webcam-photo-booth-software): Run a photo booth on Windows with any USB (UVC) webcam or a laptop's built-in camera - when a webcam is enough vs a Canon DSLR, what works with a webcam, lighting and setup steps
+- [GIF & Boomerang Photo Booth](https://boothledger.com/gif-boomerang-photo-booth): Looping boomerangs exported as MP4 or animated GIF (1-4 s, speed and resolution options), shared by QR, email or SMS; Canon DSLR or webcam; digital-only (not printed)
+- [Photo Booth Sharing Station](https://boothledger.com/photo-booth-sharing-station): BoothLedger Share as a guest sharing station on any tablet, phone or laptop browser - QR, SMS and email sharing, slideshow, cloud mode or same-Wi-Fi mode at no-internet venues; included in every plan (SMS billed per text unless you connect your own Twilio)
+- [dslrBooth Alternatives](https://boothledger.com/dslrbooth-alternatives): Switching guide for dslrBooth (LumaBooth for Windows) users - 2026 pricing incl. fotoShare and AI credits, what to test, and a Canon/printer/template migration checklist
 - [AI Background Removal vs Green Screen](https://boothledger.com/blog/ai-background-removal-vs-green-screen): How AI background removal compares to a physical green screen for photo booths
 - [Photo Booth Software for Canon](https://boothledger.com/blog/photo-booth-software-for-canon): Guide to running Canon DSLR and mirrorless cameras with photo booth software
 - [Photo Booth Software](https://boothledger.com/photobooth-software): Overview of BoothLedger photo booth software (also called a photo booth program) - what photo booth software does, DSLR and webcam capture, AI features, templates, printing and cloud galleries
@@ -42,7 +46,7 @@ BoothLedger is a Windows photo booth application designed for professional event
 - SMS, email, and QR code sharing
 - Boomerang and GIF capture
 - Cloud sync via BoothLedger Cloud
-- BoothLedger Share (https://boothledgershare.photoboothguys.ie): guest share station web app for any tablet, phone or laptop — guests browse the event gallery and share by SMS, email, QR code or download; slideshow with music; same account as the booth. Cloud mode for venues with internet, or the booth serves it over its own Wi-Fi at no-internet venues (view/download work fully offline). The ecosystem is three apps: BoothLedger (desktop, at the event) + BoothLedger Cloud (backend/storage/config) + BoothLedger Share (guest-facing).
+- BoothLedger Share (https://boothledgershare.photoboothguys.ie): guest share station web app for any tablet, phone or laptop — guests browse the event gallery and share by SMS, email or QR code (guests download on their own phone via the QR link); slideshow with music; same account as the booth. Cloud mode for venues with internet, or at no-internet venues the tablet joins the same Wi-Fi network as the booth PC, which serves the current event's photos locally. The ecosystem is three apps: BoothLedger (desktop, at the event) + BoothLedger Cloud (backend/storage/config) + BoothLedger Share (guest-facing).
 - Photo booth CRM: bookings linked to booth events, quotes with deposits, invoices, customer booking pages, staff scheduling
 - Offline mode with automatic sync
 - Mirror booth support

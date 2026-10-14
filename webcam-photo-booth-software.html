@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2L4B7DR1YK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2L4B7DR1YK');
+    gtag('config', 'AW-755417118');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webcam Photo Booth Software for Windows | BoothLedger</title>
+  <meta name="description" content="Photo booth software for any USB webcam or laptop camera on Windows. Templates, prints, QR sharing, boomerangs and green screen. Free 30-day trial.">
+  <meta name="keywords" content="webcam photo booth software, photo booth software for webcam, USB webcam photo booth, laptop photo booth software, webcam photo booth Windows, budget photo booth software, photo booth with webcam">
+  <meta name="author" content="BoothLedger">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://boothledger.com/webcam-photo-booth-software">
+  <link rel="alternate" hreflang="en" href="https://boothledger.com/webcam-photo-booth-software">
+  <link rel="alternate" hreflang="x-default" href="https://boothledger.com/webcam-photo-booth-software">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Webcam Photo Booth Software &mdash; Start With a USB Webcam | BoothLedger">
+  <meta property="og:description" content="Run a full photo booth from a USB webcam or laptop camera on Windows: templates, prints, sharing, boomerangs and green screen. Move up to a Canon later on the same licence.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://boothledger.com/webcam-photo-booth-software">
+  <meta property="og:site_name" content="BoothLedger">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://boothledger.com/images/boothledger-logo-full.png">
+  <meta property="og:image:width" content="1000">
+  <meta property="og:image:height" content="1000">
+  <meta property="og:image:alt" content="BoothLedger photo booth software logo">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Webcam Photo Booth Software | BoothLedger">
+  <meta name="twitter:description" content="Run a photo booth from a USB webcam or laptop camera on Windows. Templates, prints, sharing, boomerangs and green screen. Free trial.">
+  <meta name="twitter:image" content="https://boothledger.com/images/boothledger-logo-full.png">
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "BoothLedger Webcam Photo Booth",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Windows 10, Windows 11",
+    "description": "Photo booth software for Windows that runs on any USB webcam or a laptop's built-in camera: live view, countdown, branded templates, dye-sub printing, QR/email/SMS sharing, boomerangs, video, green screen and AI effects. Move up to a Canon DSLR or mirrorless camera later on the same licence.",
+    "url": "https://boothledger.com/webcam-photo-booth-software",
+    "image": "https://boothledger.com/images/boothledger-logo-full.png",
+    "offers": {
+      "@type": "AggregateOffer",
+      "offerCount": "2",
+      "lowPrice": "12",
+      "highPrice": "35",
+      "priceCurrency": "EUR",
+      "description": "Free 30-day trial, no credit card. Basic plan EUR 12/month; AI Photobooth plan EUR 35/month."
+    },
+    "featureList": [
+      "Any USB webcam or built-in laptop camera",
+      "720p, 1080p or 4K capture setting",
+      "Live view rotation for portrait-mounted cameras",
+      "Branded print templates and dye-sub printing",
+      "QR, email and SMS sharing",
+      "Boomerang (MP4 or GIF) and video capture",
+      "Green screen chroma key",
+      "AI effects and AI background removal (AI plan)",
+      "Automatic fallback to a webcam if a Canon DSLR stops responding"
+    ],
+    "author": {
+      "@type": "Organization",
+      "name": "BoothLedger",
+      "url": "https://boothledger.com"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which webcams work with BoothLedger?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Any standard USB (UVC) webcam that Windows recognises as a camera, plus the built-in camera on a Windows laptop. There is no approved-model list to buy from. A quick check before an event: if the Windows Camera app shows a picture, the webcam is working in Windows."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use my laptop's built-in camera as a photo booth?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. BoothLedger works with a laptop's built-in camera, which is fine for testing and small home parties. Built-in cameras are usually 720p and sit at the wrong angle for guests, so for paid events most operators plug in an external USB webcam they can mount at eye level. When an external webcam is connected, BoothLedger picks it over the built-in camera automatically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What resolution does a webcam photo booth capture at?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You choose 720p, 1080p (the default) or 4K in the camera settings. BoothLedger captures at the best mode your webcam supports up to that setting, so a 720p webcam stays 720p even if you choose 4K. 4K uses more CPU and disk space, and older PCs may stutter between shots."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do boomerangs, GIFs and video work with a webcam?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Boomerangs (exported as MP4 or GIF) and video clips both work with a webcam. Webcam clips record at a lower frame rate than a Canon's live-view stream, so they look a little choppier. For photo-first events this rarely matters; for a video-led booth a Canon gives smoother clips."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do AI effects and green screen work with a webcam?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Green screen (chroma key), AI background removal and AI effects all work on the photo after it is taken, so they run the same way whether it came from a webcam or a Canon. A sharper, well-lit source photo gives better AI results. AI features need the AI Photobooth plan."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should I upgrade from a webcam to a Canon DSLR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Step up to a Canon DSLR or mirrorless camera when you are selling prints at weddings and corporate events, when venues are dark, or when you need smooth boomerangs and video. The same BoothLedger licence covers both, and your templates and events carry over, so the only change is plugging in the camera."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use Canon EOS Webcam Utility with BoothLedger?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Camera-as-webcam bridge software such as Canon EOS Webcam Utility is not supported, because it can hand the booth a placeholder frame instead of a real photo. Connect the Canon directly by USB instead: BoothLedger controls Canon DSLR and mirrorless cameras natively, with live view and full-resolution capture."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if Windows or another app is blocking the webcam?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BoothLedger checks for this and tells you what to do. If Windows camera privacy settings are blocking desktop apps, it explains which toggle to switch on and can open the Windows camera settings page for you. If another app such as Zoom, Teams, OBS or a webcam's own companion software is holding the camera, it asks you to close that app and try again."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema: BreadcrumbList -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://boothledger.com/"},{"@type":"ListItem","position":2,"name":"Webcam Photo Booth Software","item":"https://boothledger.com/webcam-photo-booth-software"}]}</script>
+
+  <!-- Schema: Organization -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"BoothLedger","url":"https://boothledger.com/","logo":{"@type":"ImageObject","url":"https://boothledger.com/images/boothledger-logo-full.png","width":1000,"height":1000},"description":"Professional photo booth software for event professionals worldwide","sameAs":["https://www.instagram.com/booth_ledger"]}</script>
+
+  <link rel="icon" type="image/x-icon" href="images/favicon-v3.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-v3-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-v3-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon-v3.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+  <link rel="stylesheet" href="css/style.min.css?v=21">
+  <link rel="stylesheet" href="/css/site-legacy.css?v=2">
+
+  <!-- 4K Display Scaling -->
+  <style>
+    @media (min-width: 2400px) {
+      .container { max-width: 2200px !important; padding: 0 60px !important; }
+      .compare-section, .blog-body, .blog-article, article { max-width: 1400px !important; }
+      .section-title, h2 { font-size: 52px !important; }
+      .section-subtitle { font-size: 20px !important; }
+      h1 { font-size: 64px !important; }
+      h3 { font-size: 24px !important; }
+      p, li, td, th, summary { font-size: 18px !important; line-height: 1.7 !important; }
+      .btn, button[type="submit"] { font-size: 18px !important; padding: 16px 32px !important; }
+      .nav-links a { font-size: 18px !important; }
+      .logo-text { font-size: 26px !important; }
+      .nav-container { max-width: 2200px !important; }
+      .section-tag, .badge { font-size: 16px !important; }
+    }
+    @media (min-width: 3600px) {
+      .container { max-width: 3000px !important; padding: 0 120px !important; }
+      .section-title, h2 { font-size: 72px !important; }
+      .section-subtitle { font-size: 28px !important; }
+      h1 { font-size: 88px !important; line-height: 1.05 !important; }
+      h3 { font-size: 32px !important; }
+      p, li, td, th, summary { font-size: 22px !important; line-height: 1.8 !important; }
+      .btn, button[type="submit"] { font-size: 22px !important; padding: 22px 44px !important; }
+      .nav-links a { font-size: 22px !important; }
+      .logo-text { font-size: 32px !important; }
+    }
+
+    /* Webcam page specific styling */
+    .wc-split {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .wc-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 24px;
+      min-width: 0;
+    }
+    .wc-card h3 { margin: 0 0 10px; font-size: 1.1rem; }
+    .wc-card p { color: var(--muted); font-size: .95rem; line-height: 1.6; margin: 0 0 10px; }
+    .wc-card ul { margin: 0; padding-left: 20px; color: var(--muted); font-size: .95rem; line-height: 1.65; }
+    .wc-card li { margin-bottom: 6px; }
+    .wc-card a, .wc-steps a, .wc-note a { color: var(--accent); }
+    .wc-steps {
+      max-width: 820px;
+      margin: 0 auto;
+      padding-left: 22px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+    .wc-steps li { margin-bottom: 14px; padding-left: 4px; }
+    .wc-steps strong { color: var(--text, #111827); }
+    .wc-note {
+      max-width: 820px;
+      margin: 28px auto 0;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px 24px;
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .wc-note p { margin: 0; }
+    .wc-prices {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .wc-price { font-size: 2rem; font-weight: 800; margin: 4px 0 8px; color: var(--text, #111827); }
+    .wc-price span { font-size: 1rem; font-weight: 500; color: var(--muted); }
+  </style>
+  <script src="https://analytics.ahrefs.com/analytics.js" data-key="hDTsJjbsuIFfEsb2icX72w" async></script>
+</head>
+<body class="ml">
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="40" height="40">
+        <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
+      </a>
+      <a href="https://www.photoboothguys.ie" target="_blank" rel="noopener" class="nav-brought-by">
+        <span>Brought to you by</span>
+        <img src="images/photobooth-guys-logo.webp" width="31" height="28" alt="PhotoBooth Guys">
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/ai-photo-booth">AI Effects</a></li>
+        <li><a href="/ai-video-booth">AI Video</a></li>
+        <li><a href="/#ecosystem">Ecosystem</a></li>
+        <li><a href="/photo-booth-crm">CRM</a></li>
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/#download" class="nav-cta">Download Trial</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" style="padding-bottom:24px;">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-badge fade-in">
+        <span class="badge-dot"></span>
+        Any USB webcam or laptop camera &middot; Windows 10/11
+      </div>
+      <h1 class="hero-title fade-in">
+        Webcam Photo Booth Software<br>
+        <span class="gradient-text">Start With a USB Webcam</span>
+      </h1>
+      <p class="hero-subtitle fade-in">
+        BoothLedger turns a Windows laptop or PC and a USB webcam into a working photo booth:
+        live view, countdown, branded templates, prints and QR sharing. It also runs on a laptop&rsquo;s
+        built-in camera. When you&rsquo;re ready for a Canon DSLR, plug it in &mdash; same app,
+        same licence, same templates.
+      </p>
+      <div class="hero-actions fade-in">
+        <a href="#download" class="btn btn-primary btn-lg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download Free Trial
+        </a>
+        <a href="/pricing" class="btn btn-outline btn-lg">
+          View Pricing
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Webcam vs Canon -->
+  <section class="features" id="webcam-or-dslr">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Webcam or DSLR?</span>
+        <h2 class="section-title">When a Webcam Is Enough<br><span class="gradient-text">and When to Step Up</span></h2>
+        <p class="section-subtitle">A webcam is the cheapest way to get a booth running, and plenty of booths never need more. But a Canon gives noticeably better prints, so here&rsquo;s the honest split.</p>
+      </div>
+
+      <div class="wc-split fade-in">
+        <div class="wc-card">
+          <h3>A webcam is enough for&hellip;</h3>
+          <ul>
+            <li>Learning the software and building your first templates before you spend money on a camera.</li>
+            <li>Birthday parties, office socials, school events and other casual bookings where most photos end up on phones.</li>
+            <li>Permanent installs in bars, venues and shops, where the booth runs every day and a cheap, simple camera is easy to replace.</li>
+            <li>A backup camera for your DSLR booth.</li>
+            <li>Bright, evenly lit rooms.</li>
+          </ul>
+        </div>
+        <div class="wc-card">
+          <h3>Step up to a Canon DSLR when&hellip;</h3>
+          <ul>
+            <li>You&rsquo;re selling prints at weddings and corporate events, where people look closely at a 4&times;6 or a strip.</li>
+            <li>Venues are dark. A bigger sensor and a proper lens cope with low light far better than a webcam.</li>
+            <li>You want smooth boomerangs and video. A Canon&rsquo;s live-view stream records at a higher frame rate than a webcam.</li>
+            <li>You lean on AI effects. A sharper source photo gives better AI output.</li>
+          </ul>
+          <p style="margin-top:12px;">See <a href="/dslr-photo-booth-software">DSLR photo booth software &rarr;</a> for supported Canon bodies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Works -->
+  <section class="features" id="features" style="padding-top:64px;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">What Works</span>
+        <h2 class="section-title">What You Get<br><span class="gradient-text">With a Webcam</span></h2>
+        <p class="section-subtitle">Nearly everything in BoothLedger works with a webcam. The camera only takes the photo &mdash; templates, printing, sharing, green screen and AI all happen afterwards in the app.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          </div>
+          <h3>Any USB Webcam</h3>
+          <p>Standard USB (UVC) webcams and laptop built-in cameras. No approved-model list to buy from.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 15V9l3 3 3-3v6"/><path d="M16 9v6"/></svg>
+          </div>
+          <h3>720p, 1080p or 4K</h3>
+          <p>Choose the capture resolution in camera settings. BoothLedger grabs full-resolution stills at the best mode your webcam supports up to that setting. 1080p is the default; 4K needs a stronger PC.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 1 1-3-6.7"/><polyline points="21 3 21 9 15 9"/></svg>
+          </div>
+          <h3>Portrait Mounting</h3>
+          <p>Mount the webcam on its side for a tall booth and set Live View Rotation to 90&deg;, 180&deg; or 270&deg; so the preview and the photo line up.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+          </div>
+          <h3>Templates, Prints &amp; Sharing</h3>
+          <p>Branded strips and 4&times;6 layouts, dye-sub printing, and digital copies by QR code, email or SMS, with photos synced to a BoothLedger Cloud gallery.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-rose">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          </div>
+          <h3>Boomerangs &amp; Video</h3>
+          <p>Boomerangs export as MP4 or GIF, and plain video clips work too. Webcam clips run at a lower frame rate than a Canon&rsquo;s, so expect them to look a little choppier.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <h3>Green Screen &amp; AI</h3>
+          <p>Chroma key green screen, AI background removal and AI effects all work on the captured photo, so they behave the same with a webcam. AI features are on the AI Photobooth plan. <a href="/green-screen-photo-booth" style="color:var(--accent);">Green screen &rarr;</a></p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+          </div>
+          <h3>Picks the Right Camera</h3>
+          <p>With several cameras connected, BoothLedger picks the best one: a Canon first, then an external webcam, then a laptop&rsquo;s built-in camera. You can pick a specific camera from the camera list instead.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Webcam as DSLR Backup</h3>
+          <p>Leave a webcam plugged in next to your Canon. If the Canon stops responding mid-event, BoothLedger switches to the webcam on its own, then switches back when the Canon returns.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon icon-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          </div>
+          <h3>Clear Error Messages</h3>
+          <p>If Windows privacy settings block the camera, or Zoom, Teams or OBS is holding it, BoothLedger says so in plain words and tells you what to switch off.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommended setup -->
+  <section class="features" id="setup-tips" style="padding-top:64px;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Recommended Setup</span>
+        <h2 class="section-title">Lighting Matters More<br><span class="gradient-text">Than the Webcam</span></h2>
+        <p class="section-subtitle">Webcams have small sensors. In a dim room they push up the gain and the photos turn grainy and soft, whatever the box says about 1080p or 4K. Spend on light before you spend on a better webcam.</p>
+      </div>
+
+      <div class="wc-split fade-in">
+        <div class="wc-card">
+          <h3>Light</h3>
+          <ul>
+            <li>Put a ring light or LED panel at the guests&rsquo; face height, just behind the camera.</li>
+            <li>Soft, even front light beats one bright spot. Two panels either side remove shadows on groups.</li>
+            <li>Keep windows and bright screens behind the camera, not behind the guests.</li>
+          </ul>
+        </div>
+        <div class="wc-card">
+          <h3>Camera</h3>
+          <ul>
+            <li>Use an external USB webcam you can mount at eye level, not a laptop camera pointing up at chins.</li>
+            <li>Fix it firmly: a tripod or a bracket on the booth shell, so it doesn&rsquo;t drift during the night.</li>
+            <li>Plug it into a USB port on the PC itself (a rear port on a desktop) rather than a long chain of hubs.</li>
+          </ul>
+        </div>
+        <div class="wc-card">
+          <h3>PC</h3>
+          <ul>
+            <li>Windows 10 or 11, 64-bit. A modest laptop handles 1080p; choose 4K only on a stronger machine.</li>
+            <li>Close Zoom, Teams, OBS and the webcam&rsquo;s own companion app &mdash; only one app can use a webcam at a time.</li>
+            <li>Add a touch screen so guests never touch the laptop. See <a href="/photo-booth-software-windows">Windows photo booth software</a> for full hardware notes.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step by step -->
+  <section class="features" id="how-to" style="padding-top:64px;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Step by Step</span>
+        <h2 class="section-title">Set Up a Webcam<br><span class="gradient-text">Photo Booth</span></h2>
+        <p class="section-subtitle">From a box on the table to a working booth in an afternoon.</p>
+      </div>
+
+      <ol class="wc-steps fade-in">
+        <li><strong>Plug in the webcam</strong> and open the Windows Camera app to check you get a picture. If not, open Settings &rarr; Privacy &amp; security &rarr; Camera and make sure camera access and &ldquo;Let desktop apps access your camera&rdquo; are both on.</li>
+        <li><strong>Close anything else using the camera</strong> &mdash; the Camera app you just opened, Zoom, Teams, OBS, and any webcam companion software in the system tray.</li>
+        <li><strong>Install BoothLedger</strong> from the <a href="#download">free trial download</a> and sign in. No credit card needed.</li>
+        <li><strong>Check the live view.</strong> BoothLedger picks the best camera it finds. If you have more than one, choose your webcam from the camera list.</li>
+        <li><strong>Set the camera options:</strong> resolution (1080p is a good start), countdown length and, if the webcam is mounted on its side, Live View Rotation.</li>
+        <li><strong>Pick or build a template</strong> for strips or 4&times;6 prints, add your event branding, and connect a printer if you&rsquo;re printing.</li>
+        <li><strong>Set up the light,</strong> then take a dozen test shots at the distance guests will stand. Adjust the light before you change anything else.</li>
+        <li><strong>Turn on sharing</strong> (QR, email or SMS) and run a full guest session end to end before the event.</li>
+      </ol>
+
+      <div class="wc-note fade-in">
+        <p><strong>Running a permanent install?</strong> A webcam suits a booth that lives in a bar, hotel or shop: no battery to charge, nothing to switch on each morning. Pair it with kiosk mode and remote management &mdash; see <a href="/permanent-photo-booth-install">permanent photo booth installs &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="features" id="pricing" style="padding-top:64px;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Pricing</span>
+        <h2 class="section-title">One Licence for<br><span class="gradient-text">Webcam and DSLR</span></h2>
+        <p class="section-subtitle">The camera doesn&rsquo;t change the price. Start on a webcam, add a Canon later, and keep the same plan. Each plan includes 2 devices.</p>
+      </div>
+
+      <div class="wc-prices fade-in">
+        <div class="wc-card">
+          <h3>Basic</h3>
+          <div class="wc-price">&euro;12<span>/month</span></div>
+          <p>Or &euro;120/year. Camera control and capture, templates, printing, QR/email/SMS sharing, cloud gallery and green screen chroma key.</p>
+        </div>
+        <div class="wc-card">
+          <h3>AI Photobooth</h3>
+          <div class="wc-price">&euro;35<span>/month</span></div>
+          <p>Or &euro;350/year. Everything in Basic plus AI effects, AI face swap and AI background removal.</p>
+        </div>
+      </div>
+      <p class="section-subtitle fade-in" style="text-align:center;margin:24px auto 0;">Free 30-day trial, no credit card. Trial photos carry a small watermark. <a href="/pricing" style="color:var(--accent);">Full pricing &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- Download CTA -->
+  <section class="download" id="download" style="padding-top:64px;">
+    <div class="container">
+      <div class="download-card fade-in">
+        <div class="download-content">
+          <span class="section-tag">Start Free</span>
+          <h2>Turn Your Webcam Into<br><span class="gradient-text">a Photo Booth</span></h2>
+          <p>30-day free trial on Windows 10/11. Plug in a webcam, pick a template and run a real event before you pay. No credit card.</p>
+
+          <div class="download-checks">
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Any USB webcam</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Laptop camera works too</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Templates &amp; printing</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>QR, email &amp; SMS sharing</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Boomerang &amp; GIF</span>
+            </div>
+            <div class="download-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Upgrade to Canon anytime</span>
+            </div>
+          </div>
+
+          <div class="download-actions" style="justify-content:center;">
+            <button class="btn btn-primary btn-xl" id="downloadBtn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download Free Trial
+            </button>
+            <span class="download-version" id="downloadVersion">Windows 10/11 &middot; 64-bit &middot; Free 30-day trial</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">FAQ</span>
+        <h2 class="section-title">Webcam Photo Booth<br><span class="gradient-text">Questions Answered</span></h2>
+      </div>
+      <div class="faq-list fade-in">
+        <details class="faq-item">
+          <summary>Which webcams work with BoothLedger?</summary>
+          <p>Any standard USB (UVC) webcam that Windows recognises as a camera, plus the built-in camera on a Windows laptop. There is no approved-model list to buy from. A quick check before an event: if the Windows Camera app shows a picture, the webcam is working in Windows.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I use my laptop&rsquo;s built-in camera as a photo booth?</summary>
+          <p>Yes. It&rsquo;s fine for testing and small home parties. Built-in cameras are usually 720p and sit at the wrong angle for guests, so for paid events most operators plug in an external USB webcam they can mount at eye level. When an external webcam is connected, BoothLedger picks it over the built-in camera automatically.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What resolution does a webcam photo booth capture at?</summary>
+          <p>You choose 720p, 1080p (the default) or 4K in the camera settings. BoothLedger captures at the best mode your webcam supports up to that setting, so a 720p webcam stays 720p even if you choose 4K. 4K uses more CPU and disk space, and older PCs may stutter between shots.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do boomerangs, GIFs and video work with a webcam?</summary>
+          <p>Yes. Boomerangs (exported as MP4 or GIF) and video clips both work with a webcam. Webcam clips record at a lower frame rate than a Canon&rsquo;s live-view stream, so they look a little choppier. For photo-first events this rarely matters; for a video-led booth a Canon gives smoother clips.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do AI effects and green screen work with a webcam?</summary>
+          <p>Yes. Green screen (chroma key), AI background removal and <a href="/ai-photo-booth">AI effects</a> all work on the photo after it is taken, so they run the same way whether it came from a webcam or a Canon. A sharper, well-lit source photo gives better AI results. AI features need the AI Photobooth plan.</p>
+        </details>
+        <details class="faq-item">
+          <summary>When should I upgrade from a webcam to a Canon DSLR?</summary>
+          <p>Step up to a Canon DSLR or mirrorless camera when you&rsquo;re selling prints at weddings and corporate events, when venues are dark, or when you need smooth boomerangs and video. The same BoothLedger licence covers both, and your templates and events carry over, so the only change is plugging in the camera. See <a href="/dslr-photo-booth-software">DSLR photo booth software</a>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I use Canon EOS Webcam Utility with BoothLedger?</summary>
+          <p>No. Camera-as-webcam bridge software such as Canon EOS Webcam Utility is not supported, because it can hand the booth a placeholder frame instead of a real photo. Connect the Canon directly by USB instead: BoothLedger controls Canon DSLR and mirrorless cameras natively, with live view and full-resolution capture.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What happens if Windows or another app is blocking the webcam?</summary>
+          <p>BoothLedger checks for this and tells you what to do. If Windows camera privacy settings are blocking desktop apps, it explains which toggle to switch on and can open the Windows camera settings page for you. If another app such as Zoom, Teams, OBS or a webcam&rsquo;s own companion software is holding the camera, it asks you to close that app and try again.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo">
+            <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="32" height="32">
+            <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
+          </a>
+          <p class="footer-tagline">Professional photo booth software for event professionals worldwide.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h3>Product</h3>
+            <a href="/#features">Features</a>
+            <a href="/ai-photo-booth">AI Photo Booth</a>
+            <a href="/ai-video-booth">AI Video Booth</a>
+            <a href="/dslr-photo-booth-software">DSLR Photo Booth</a>
+            <a href="/mirror-booth">Mirror Booth</a>
+            <a href="/green-screen-photo-booth">Green Screen</a>
+            <a href="/trading-card-photo-booth">Trading Cards</a>
+            <a href="/webcam-photo-booth-software">Webcam Booth</a>
+            <a href="/gif-boomerang-photo-booth">GIF &amp; Boomerang</a>
+            <a href="/photo-booth-sharing-station">Sharing Station</a>
+            <a href="/pay-per-use-photo-booth">Pay-Per-Use Booths</a>
+            <a href="/photo-booth-crm">Photo Booth CRM</a>
+            <a href="/photo-booth-software-windows">Windows Software</a>
+            <a href="/photo-booth-data-capture">Data Capture</a>
+            <a href="/photobooth-software">Photobooth Software</a>
+            <a href="/newspaper-photo-booth">Newspaper</a>
+            <a href="/colouring-photo-booth">Colouring In</a>
+            <a href="/photo-mosaic">Photo Mosaic</a>
+            <a href="/glam-booth">Glam Booth</a>
+            <a href="/pricing">Pricing</a>
+          </div>
+          <div class="footer-col">
+            <h3>Solutions</h3>
+            <a href="/wedding-photo-booth-software">Weddings</a>
+            <a href="/corporate-photo-booth-software">Corporate</a>
+            <a href="/event-photo-booth-software">Events</a>
+            <a href="/brand-activation-photo-booth">Brand Activations</a>
+            <a href="/permanent-photo-booth-install">Permanent Installs</a>
+            <a href="/roaming-photographer-software">Roaming Photography</a>
+          </div>
+          <div class="footer-col">
+            <h3>Compare</h3>
+            <a href="/compare">All Comparisons</a>
+            <a href="/vs-dslrbooth">vs dslrBooth</a>
+            <a href="/vs-snappic">vs Snappic</a>
+            <a href="/vs-lumabooth">vs LumaBooth</a>
+            <a href="/lumabooth-alternatives">LumaBooth Alternatives</a>
+            <a href="/dslrbooth-alternatives">dslrBooth Alternatives</a>
+            <a href="/vs-darkroom-booth">vs Darkroom Booth</a>
+            <a href="/vs-simple-booth">vs Simple Booth</a>
+            <a href="/vs-boothbook">vs BoothBook</a>
+          </div>
+          <div class="footer-col">
+            <h3>Resources</h3>
+            <a href="/blog/best-photo-booth-software">Best Software 2026</a>
+            <a href="/blog/how-to-start-photo-booth-business">Start a Business</a>
+            <a href="/blog/photo-booth-pricing-guide">Pricing Guide</a>
+            <a href="/blog/dslr-vs-ipad-photo-booth">DSLR vs iPad</a>
+            <a href="/blog/ai-background-removal-vs-green-screen">AI vs Green Screen</a>
+            <a href="/blog/photo-booth-software-languages">11 Languages</a>
+            <a href="/blog/photo-booth-software-for-canon">Canon Software</a>
+            <a href="/photo-booth-integrations-guide">Integrations Guide</a>
+            <a href="/#faq">FAQ</a>
+            <a href="https://www.instagram.com/booth_ledger" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="mailto:info@photoboothguys.ie">Contact</a>
+            <a href="https://boothledger.com/user/login" target="_blank" rel="noopener noreferrer">Customer Login</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 PhotoBooth Guys. All rights reserved.</p>
+        <p><a href="mailto:info@photoboothguys.ie" style="color:var(--muted);text-decoration:none;">info@photoboothguys.ie</a> &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;">Privacy</a> &middot; <a href="/third-party-software" style="color:var(--muted);text-decoration:none;">Third-party software</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=18"></script>
+
+  <!-- Analytics -->
+  <script>
+  (function(){
+    var start = Date.now();
+    var sent = false;
+    function track(dur) {
+      if (sent) return;
+      sent = true;
+      var data = {
+        path: location.pathname,
+        referrer: document.referrer || "",
+        screen_width: screen.width,
+        duration: dur || Math.round((Date.now() - start) / 1000)
+      };
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon("https://boothledger.com/api/v1/analytics/track",
+          new Blob([JSON.stringify(data)], {type: "application/json"}));
+      } else {
+        fetch("https://boothledger.com/api/v1/analytics/track", {
+          method: "POST", body: JSON.stringify(data),
+          headers: {"Content-Type": "application/json"}, keepalive: true
+        }).catch(function(){});
+      }
+    }
+    document.addEventListener("visibilitychange", function() {
+      if (document.visibilityState === "hidden") track();
+    });
+    window.addEventListener("beforeunload", function() { track(); });
+  })();
+  </script>
+</body>
+</html>
