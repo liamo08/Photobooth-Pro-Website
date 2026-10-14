@@ -5,7 +5,13 @@
     ============================================================
     UNLISTED PRE-LAUNCH PAGE — the iOS app is not on the App
     Store yet (Apple ID 6788917574, submitted, awaiting review).
+    Since 14 Oct 2026 the page COLLECTS EMAILS instead of linking
+    to the App Store (form -> /api/v1/analytics/email-download-link
+    with platform "ios" + notify_only -> platform_waitlist table).
     When the app goes live, do ALL of these to launch this page:
+      0. Put the "Download on the App Store" buttons back (see the
+         git history of this file) and email everyone in
+         platform_waitlist (platform = 'ios', notified_at IS NULL).
       1. Change the robots meta below to "index, follow".
       2. Add to sitemap.xml:
          <url><loc>https://boothledger.com/ipad-photo-booth-app</loc><priority>0.8</priority></url>
@@ -267,6 +273,17 @@
     }
   </style>
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="hDTsJjbsuIFfEsb2icX72w" async></script>
+  <style>
+    .ipad-launch-line { max-width: 620px; margin: 0 auto 20px; font-size: 1.02rem; line-height: 1.6; }
+    .ipad-notify { width: 100%; max-width: 520px; margin: 0 auto; text-align: left; }
+    .ipad-notify__row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .ipad-notify__row input[type="email"] { flex: 1 1 240px; min-width: 0; padding: 14px 16px; border-radius: 12px; border: 1px solid #cbd5e1; background: #fff; color: #0f172a; font-size: 16px; }
+    .ipad-notify__row .btn { flex: 0 0 auto; }
+    .ipad-notify__trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+    .ipad-notify__note { margin: 10px 0 0; font-size: 13.5px; opacity: .8; }
+    .hero-actions { flex-direction: column; align-items: center; }
+    @media (max-width: 480px) { .ipad-notify__row .btn { width: 100%; } }
+  </style>
 </head>
 <body class="ml">
 
@@ -291,7 +308,7 @@
         <li><a href="/#ecosystem">Ecosystem</a></li>
         <li><a href="/photo-booth-crm">CRM</a></li>
         <li><a href="/pricing">Pricing</a></li>
-        <li><a href="#download" class="nav-cta">Get the App</a></li>
+        <li><a href="#download" class="nav-cta">Get Notified</a></li>
       </ul>
     </div>
   </nav>
@@ -305,7 +322,7 @@
     <div class="container hero-content">
       <div class="hero-badge fade-in">
         <span class="badge-dot"></span>
-        Now on iPad &amp; iPhone
+        Coming to iPad &amp; iPhone in the next two weeks
       </div>
       <h1 class="hero-title fade-in">
         iPad Photo Booth App<br>
@@ -317,13 +334,19 @@
         sharing. Tether a Canon DSLR over USB for studio-grade shots, print over AirPrint,
         and run it all on the same account as BoothLedger for Windows.
       </p>
+      <p class="ipad-launch-line fade-in">
+        <strong>The iPad app is in final App Store review and due for release in the next two weeks.</strong>
+        Leave your email and we&rsquo;ll tell you the day it&rsquo;s live.
+      </p>
       <div class="hero-actions fade-in">
-        <a href="https://apps.apple.com/app/id6788917574" id="appStoreBtn" class="btn btn-primary btn-lg" rel="noopener">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8.98-.2 1.92-.86 3.05-.86 1.36 0 2.66.55 3.5 1.67-3.09 1.85-2.36 5.91.6 7.02-.57 1.5-1.31 2.99-2.23 4.34zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
-          </svg>
-          Download on the App Store
-        </a>
+        <form class="ipad-notify" id="ipadNotifyHero" novalidate>
+          <div class="ipad-notify__row">
+            <input type="email" name="email" required autocomplete="email" placeholder="you@example.com" aria-label="Your email address">
+            <button type="submit" class="btn btn-primary btn-lg">Notify me at launch</button>
+          </div>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="ipad-notify__trap">
+          <p class="ipad-notify__note">One email on launch day. No newsletter.</p>
+        </form>
         <a href="/pricing" class="btn btn-outline btn-lg">
           View Pricing
         </a>
@@ -528,9 +551,9 @@
     <div class="container">
       <div class="download-card fade-in">
         <div class="download-content">
-          <span class="section-tag">Start Free</span>
-          <h2>Turn Your iPad Into<br><span class="gradient-text">A Photo Booth</span></h2>
-          <p>30-day free trial &mdash; full capture modes, templates, AirPrint, sharing and cloud sync. No credit card. One account covers Windows and iPad.</p>
+          <span class="section-tag">Launching Soon</span>
+          <h2>Be First To Run Your Booth<br><span class="gradient-text">On An iPad</span></h2>
+          <p>BoothLedger for iPad is due for release in the next two weeks. Leave your email and we&rsquo;ll let you know the day it&rsquo;s on the App Store. It comes with the same 30-day free trial, and one account covers Windows and iPad.</p>
 
           <div class="download-checks">
             <div class="download-check">
@@ -560,15 +583,17 @@
           </div>
 
           <div class="download-actions" style="justify-content:center;">
-            <a href="https://apps.apple.com/app/id6788917574" id="appStoreBtnBottom" class="btn btn-primary btn-xl" rel="noopener">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8.98-.2 1.92-.86 3.05-.86 1.36 0 2.66.55 3.5 1.67-3.09 1.85-2.36 5.91.6 7.02-.57 1.5-1.31 2.99-2.23 4.34zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
-              </svg>
-              Download on the App Store
-            </a>
-            <span class="download-version">iPad &amp; iPhone &middot; iPadOS 15+ &middot; Free 30-day trial</span>
+            <form class="ipad-notify" id="ipadNotifyBottom" novalidate>
+              <div class="ipad-notify__row">
+                <input type="email" name="email" required autocomplete="email" placeholder="you@example.com" aria-label="Your email address">
+                <button type="submit" class="btn btn-primary btn-xl">Notify me at launch</button>
+              </div>
+              <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="ipad-notify__trap">
+              <p class="ipad-notify__note">One email on launch day. No newsletter.</p>
+            </form>
+            <span class="download-version">iPad &amp; iPhone &middot; iPadOS 15+ &middot; Free 30-day trial at launch</span>
           </div>
-          <span class="appstore-note">Running booths on PCs too? <a href="/#download" style="color:var(--accent);">Get BoothLedger for Windows &rarr;</a></span>
+          <span class="appstore-note">Don&rsquo;t want to wait? BoothLedger runs on Windows today. <a href="/#download" style="color:var(--accent);">Get BoothLedger for Windows &rarr;</a></span>
         </div>
       </div>
     </div>
@@ -696,14 +721,49 @@
 
   <script src="js/main.js?v=18"></script>
 
-  <!-- App Store click tracking (separate from the Windows download conversion) -->
+  <!-- iPad launch notification sign-up (platform_waitlist, no email sent now) -->
   <script>
   (function(){
-    function trackAppStore(){ try { gtag('event', 'ios_app_store_click', { page: location.pathname }); } catch(e){} }
-    var a = document.getElementById('appStoreBtn');
-    var b = document.getElementById('appStoreBtnBottom');
-    if (a) a.addEventListener('click', trackAppStore);
-    if (b) b.addEventListener('click', trackAppStore);
+    function wire(form){
+      if (!form) return;
+      var input = form.querySelector('input[type="email"]');
+      var trap = form.querySelector('input[name="website"]');
+      var btn = form.querySelector('button[type="submit"]');
+      var note = form.querySelector('.ipad-notify__note');
+      var label = btn.textContent;
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        var email = (input.value || '').trim();
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+          note.textContent = 'Please enter a valid email address.';
+          input.focus();
+          return;
+        }
+        btn.disabled = true;
+        btn.textContent = 'Saving\u2026';
+        fetch('/api/v1/analytics/email-download-link', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({email: email, website: trap.value, platform: 'ios', notify_only: true})
+        }).then(function(r){
+          return r.json().catch(function(){ return {}; }).then(function(d){ return {ok: r.ok, data: d}; });
+        }).then(function(res){
+          if (res.ok) {
+            form.querySelector('.ipad-notify__row').style.display = 'none';
+            note.textContent = 'You\u2019re on the list. We\u2019ll email you the day BoothLedger for iPad is on the App Store.';
+            try { gtag('event', 'ios_waitlist_join', { page: location.pathname }); } catch(e){}
+          } else {
+            note.textContent = (res.data && res.data.error) || 'Something went wrong. Please try again.';
+            btn.disabled = false; btn.textContent = label;
+          }
+        }).catch(function(){
+          note.textContent = 'Something went wrong. Please try again.';
+          btn.disabled = false; btn.textContent = label;
+        });
+      });
+    }
+    wire(document.getElementById('ipadNotifyHero'));
+    wire(document.getElementById('ipadNotifyBottom'));
   })();
   </script>
 
