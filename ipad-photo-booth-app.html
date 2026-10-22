@@ -3,24 +3,26 @@
 <head>
   <!--
     ============================================================
-    UNLISTED PRE-LAUNCH PAGE — the iOS app is not on the App
-    Store yet (Apple ID 6788917574, submitted, awaiting review).
-    Since 14 Oct 2026 the page COLLECTS EMAILS instead of linking
-    to the App Store (form -> /api/v1/analytics/email-download-link
-    with platform "ios" + notify_only -> platform_waitlist table).
-    When the app goes live, do ALL of these to launch this page:
-      0. Put the "Download on the App Store" buttons back (see the
-         git history of this file) and email everyone in
-         platform_waitlist (platform = 'ios', notified_at IS NULL).
-      1. Change the robots meta below to "index, follow".
-      2. Add to sitemap.xml:
-         <url><loc>https://boothledger.com/ipad-photo-booth-app</loc><priority>0.8</priority></url>
-      3. Add a "## Pages" line to llms.txt.
-      4. Footer link sweep: insert
-         <a href="/ipad-photo-booth-app">iPad App</a>
-         after the Trading Cards anchor in the footer Product
-         column across all *.html + blog/*.html.
-      5. Verify https://apps.apple.com/app/id6788917574 resolves.
+    PRE-LAUNCH PAGE, NOW INDEXED. The iOS app is not on the App
+    Store yet (Apple ID 6788917574, in review). This page COLLECTS
+    EMAILS instead of linking to the App Store (form posts to
+    /api/v1/analytics/email-download-link with platform "ios" plus
+    notify_only, landing in the platform_waitlist table).
+
+    Opened to search on 22 Oct 2026 so it can earn ranking before
+    launch: robots is "index, follow", it is listed in sitemap.xml
+    and llms.txt, and the footer Product column links to it across
+    the site. KEEP THE COPY FREE OF DATED PROMISES while the App
+    Store date is uncertain: say "launching soon", never "in N weeks".
+
+    Still to do WHEN THE APP GOES LIVE:
+      1. Put the "Download on the App Store" buttons back (see this
+         file's git history) and retire the email capture.
+      2. Email everyone in platform_waitlist where platform = 'ios'
+         and notified_at IS NULL, then stamp notified_at. There is an
+         admin view at /admin/waitlist on BoothLedger Cloud with a
+         CSV export built for exactly this.
+      3. Verify https://apps.apple.com/app/id6788917574 resolves.
     ============================================================
   -->
   <!-- Google tag (gtag.js) -->
@@ -39,7 +41,7 @@
   <meta name="description" content="Turn your iPad into a professional photo booth. Print direct to DNP and Citizen dye-subs over USB or over AirPrint, tether a Canon DSLR, add AI effects, templates and cloud galleries — the same BoothLedger account as the Windows software. Free 30-day trial.">
   <meta name="keywords" content="ipad photo booth app, ipad photo booth software, photo booth app for ipad, turn ipad into photo booth, ipad photobooth, best ipad photo booth app, ipad photo booth with printing, ipad photo booth direct usb printing, ipad dnp dye sublimation printer, dslr ipad photo booth, ipad photo booth for weddings, ipad photo booth for events">
   <meta name="author" content="BoothLedger">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://boothledger.com/ipad-photo-booth-app">
   <link rel="alternate" hreflang="en" href="https://boothledger.com/ipad-photo-booth-app">
   <link rel="alternate" hreflang="x-default" href="https://boothledger.com/ipad-photo-booth-app">
@@ -332,7 +334,7 @@
     <div class="container hero-content">
       <div class="hero-badge fade-in">
         <span class="badge-dot"></span>
-        Coming to iPad &amp; iPhone in the next two weeks
+        Coming soon to iPad &amp; iPhone
       </div>
       <h1 class="hero-title fade-in">
         iPad Photo Booth App<br>
@@ -346,7 +348,7 @@
         BoothLedger for Windows.
       </p>
       <p class="ipad-launch-line fade-in">
-        <strong>The iPad app is in final App Store review and due for release in the next two weeks.</strong>
+        <strong>The iPad app is in App Store review and launching soon.</strong>
         Leave your email and we&rsquo;ll tell you the day it&rsquo;s live.
       </p>
       <div class="hero-actions fade-in">
@@ -572,7 +574,7 @@
         <div class="download-content">
           <span class="section-tag">Launching Soon</span>
           <h2>Be First To Run Your Booth<br><span class="gradient-text">On An iPad</span></h2>
-          <p>BoothLedger for iPad is due for release in the next two weeks. Leave your email and we&rsquo;ll let you know the day it&rsquo;s on the App Store. It comes with the same 30-day free trial, and one account covers Windows and iPad.</p>
+          <p>BoothLedger for iPad is launching soon. Leave your email and we&rsquo;ll let you know the day it&rsquo;s on the App Store. It comes with the same 30-day free trial, and one account covers Windows and iPad.</p>
 
           <div class="download-checks">
             <div class="download-check">
@@ -691,6 +693,7 @@
             <a href="/mirror-booth">Mirror Booth</a>
             <a href="/green-screen-photo-booth">Green Screen</a>
             <a href="/trading-card-photo-booth">Trading Cards</a>
+            <a href="/ipad-photo-booth-app">iPad App</a>
             <a href="/webcam-photo-booth-software">Webcam Booth</a>
             <a href="/gif-boomerang-photo-booth">GIF &amp; Boomerang</a>
             <a href="/photo-booth-sharing-station">Sharing Station</a>
