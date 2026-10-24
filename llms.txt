@@ -2,12 +2,12 @@
 
 > Professional photo booth software for events. Canon DSLR support, custom templates, instant SMS/email sharing, cloud management & AI effects.
 
-BoothLedger is a Windows photo booth application designed for professional event photographers and photo booth operators. It supports Canon DSLR cameras, custom multi-photo templates, direct dye-sublimation printing, and instant sharing via SMS, email, and QR codes. The software includes two AI engines for creative effects like face swap, AI backgrounds, magazine covers, and artistic transformations.
+BoothLedger is a Windows photo booth application designed for professional event photographers and photo booth operators. It supports Canon DSLR cameras, custom multi-photo templates, direct dye-sublimation printing, and instant sharing via SMS, email, and QR codes. The software includes two AI engines for creative effects like magazine covers, movie posters, artistic transformations, custom prompts and AI video.
 
 ## Pages
 
 - [Home](https://boothledger.com/): Main landing page with features overview, download, and FAQ
-- [AI Photo Booth](https://boothledger.com/ai-photo-booth): AI-powered photo booth features including face swap, AI backgrounds, and 50+ creative effects
+- [AI Photo Booth](https://boothledger.com/ai-photo-booth): AI-powered photo booth features including AI styles, custom prompts, AI video and 50+ creative effects
 - [AI Video Booth](https://boothledger.com/ai-video-booth): Turn booth photos or AI photo transformations into 5-10 second AI videos (image-to-video) delivered to guests by QR while the booth keeps running - 12 built-in effects (Animate, Style + Animate, Transformation Reveal), custom video prompts, per-event spend limits, from $0.25 per clip in AI credits on the Pro plan
 - [Pricing](https://boothledger.com/pricing): Basic EUR 12/month (standard and photo strip events); Pro EUR 35/month (every event type plus the AI photo booth); 30-day free trial includes all of Pro
 - [Mirror Booth](https://boothledger.com/mirror-booth): Mirror booth software for interactive photo booth experiences
@@ -41,7 +41,7 @@ BoothLedger is a Windows photo booth application designed for professional event
 ## Key Features
 
 - Canon DSLR camera integration with live view
-- AI face swap and AI background removal
+- AI styles, custom prompts and AI video
 - Custom multi-photo templates
 - Direct dye-sublimation printing
 - SMS, email, and QR code sharing
