@@ -135,7 +135,7 @@
     .pricing-card:nth-child(2) { animation-delay: .5s; }
     .pricing-card:hover { transform: translateY(-4px); border-color: rgba(99,102,241,.2); box-shadow: 0 20px 60px -12px rgba(0,0,0,.5); }
     .pricing-card.featured { border-color: rgba(99,102,241,.3); background: linear-gradient(160deg, rgba(99,102,241,.08) 0%, rgba(17,24,39,.8) 40%); box-shadow: 0 0 60px -20px rgba(99,102,241,.15); }
-    .pricing-card.featured::before { content: 'Most Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--accent), #4f46e5); color: #fff; font-size: 12px; font-weight: 700; padding: 5px 16px; border-radius: 100px; letter-spacing: .04em; }
+    .pricing-card.featured::before { content: 'Full package'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--accent), #4f46e5); color: #fff; font-size: 12px; font-weight: 700; padding: 5px 16px; border-radius: 100px; letter-spacing: .04em; }
     .card-name { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
     .card-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.5; }
     .card-price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 4px; }
@@ -612,7 +612,7 @@
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Photo sharing (QR, email, SMS)</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Display management</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Template editor</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Event management</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Trading card &amp; background removal events</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Cloud sync &amp; gallery</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Bulk photo download</li>
       <li class="highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg><a href="/photo-booth-crm" style="color:inherit;">Photo booth CRM &amp; bookings</a></li>
@@ -621,8 +621,8 @@
 
   <!-- AI -->
   <div class="pricing-card featured">
-    <div class="card-name">AI Photobooth</div>
-    <div class="card-desc">The full BoothLedger experience with AI-powered effects and face swap.</div>
+    <div class="card-name">Pro</div>
+    <div class="card-desc">The full package: everything in Basic, plus the AI photo booth.</div>
     <div class="devices-badge">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
       2 devices included
@@ -637,14 +637,113 @@
     <hr class="card-divider">
     <ul class="card-features">
       <li class="highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Everything in Basic</li>
-      <li class="highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>AI photo effects &amp; prompts</li>
-      <li class="highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>AI face swap</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>AI background removal</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>AI face enhancement</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Live swap mode</li>
+      <li class="highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>AI styles &amp; custom prompts</li>
+      <li class="highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>AI video</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Two AI engines (Seedream &amp; Nano Banana)</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Integrations: pay to play, triggers, webhooks</li>
+            <li><a href="#compare" style="color:#6d28d9;font-weight:600;">Compare every feature &darr;</a></li>
     </ul>
   </div>
 </div>
+
+
+<!-- Basic vs Pro comparison (keep rows in line with the cloud app's plan chooser, app/services/plan_compare.py) -->
+<style>
+  .pc { max-width: 840px; margin: -32px auto 72px; padding: 0 24px; position: relative; z-index: 1; }
+  .pc h2 { font-size: clamp(26px, 3.4vw, 34px); font-weight: 800; letter-spacing: -.035em; color: #0b1220; margin: 0 0 8px; text-align: center; }
+  .pc-lede { text-align: center; color: #64748b; font-size: 16px; line-height: 1.55; margin: 0 auto 26px; max-width: 560px; }
+  .pc-card { background: #fff; border: 1px solid #e6eaf1; border-radius: 20px; overflow: hidden; box-shadow: 0 1px 2px rgba(15,23,42,.04), 0 12px 32px -18px rgba(15,23,42,.18); }
+  .pc-table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 15px; }
+  .pc-table col.pc-c { width: 130px; }
+  .pc-table th, .pc-table td { padding: 14px 22px; border-bottom: 1px solid #e6eaf1; text-align: left; vertical-align: middle; }
+  .pc-table thead th { font-size: 15px; font-weight: 800; color: #0b1220; padding-top: 18px; padding-bottom: 16px; }
+  .pc-table thead th small { display: block; font-size: 12.5px; font-weight: 600; color: #64748b; margin-top: 2px; }
+  .pc-table thead .pc-feat { font-size: 11.5px; letter-spacing: .09em; text-transform: uppercase; color: #64748b; font-weight: 700; }
+  .pc-mid { text-align: center !important; }
+  .pc-pro { background: #f5f0ff; }
+  .pc-table thead .pc-pro { background: #7c3aed; color: #fff; }
+  .pc-table thead .pc-pro small { color: rgba(255,255,255,.85); }
+  .pc-group th { background: #fafbfd; font-size: 11.5px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #64748b; padding-top: 11px; padding-bottom: 11px; }
+  .pc-group th.pc-pro { background: #ebe1ff; }
+  .pc-label { font-weight: 600; color: #1e293b; }
+  .pc-hint { display: block; font-weight: 400; font-size: 13.5px; color: #64748b; margin-top: 2px; line-height: 1.4; }
+  .pc-yes, .pc-no { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; }
+  .pc-yes { background: #7c3aed; color: #fff; }
+  .pc-no { color: #94a3b8; }
+  .pc-yes svg, .pc-no svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .pc-no svg { stroke-width: 2; }
+  .pc-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 130px)); gap: 10px; }
+  .pc-strip img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: top; border-radius: 12px; display: block; background: #e6eaf1; }
+  .pc-strip-cap { margin: 10px 0 0; font-size: 13.5px; color: #64748b; }
+  .pc-strip-cap a { color: #6d28d9; font-weight: 600; }
+  .pc-table tbody:last-child tr:last-child > * { border-bottom: 0; }
+  .pc-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .pc-cta { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+  @media (max-width: 640px) {
+    .pc { margin-top: -48px; }
+    .pc-table col.pc-c { width: 62px; }
+    .pc-table th, .pc-table td { padding: 11px 12px; }
+    .pc-table { font-size: 14px; }
+    .pc-table thead th small { display: none; }
+    .pc-strip { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+  }
+</style>
+<section class="pc" id="compare" aria-labelledby="pcTitle">
+  <h2 id="pcTitle">Compare Basic and Pro</h2>
+  <p class="pc-lede">Pro is the full package: everything in Basic, plus every AI feature. Your free 30-day trial includes all of Pro, so you can try the AI before you choose.</p>
+  <div class="pc-card">
+    <table class="pc-table">
+      <colgroup><col><col class="pc-c"><col class="pc-c"></colgroup>
+      <thead>
+        <tr>
+          <th scope="col" class="pc-feat">Feature</th>
+          <th scope="col" class="pc-mid">Basic<small>&euro;12/mo</small></th>
+          <th scope="col" class="pc-mid pc-pro">Pro<small>&euro;35/mo</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="pc-group"><th scope="rowgroup" colspan="2">Booth &amp; events</th><th class="pc-pro" aria-hidden="true"></th></tr>
+        <tr><th scope="row" class="pc-label">Booth app with camera control<span class="pc-hint">Canon DSLRs and webcams; Nikon and Sony in beta.</span></th><td class="pc-mid"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td><td class="pc-mid pc-pro"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td></tr>
+        <tr><th scope="row" class="pc-label">Photo strip, newspaper &amp; colouring-in events</th><td class="pc-mid"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td><td class="pc-mid pc-pro"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td></tr>
+        <tr><th scope="row" class="pc-label">Trading card, background removal &amp; mosaic events</th><td class="pc-mid"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td><td class="pc-mid pc-pro"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td></tr>
+        <tr><th scope="row" class="pc-label">Template editor<span class="pc-hint">Design print and share layouts.</span></th><td class="pc-mid"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td><td class="pc-mid pc-pro"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td></tr>
+        <tr><th scope="row" class="pc-label">Guest screen &amp; display management</th><td class="pc-mid"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td><td class="pc-mid pc-pro"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td></tr>
+      </tbody>
+      <tbody>
+        <tr class="pc-group"><th scope="rowgroup" colspan="2">Galleries, sharing &amp; business</th><th class="pc-pro" aria-hidden="true"></th></tr>
+        <tr><th scope="row" class="pc-label">Photo sharing by QR, email &amp; SMS</th><td class="pc-mid"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td><td class="pc-mid pc-pro"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td></tr>
+        <tr><th scope="row" class="pc-label">Cloud sync &amp; event galleries</th><td class="pc-mid"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td><td class="pc-mid pc-pro"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td></tr>
+        <tr><th scope="row" class="pc-label">Bulk photo download</th><td class="pc-mid"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td><td class="pc-mid pc-pro"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td></tr>
+        <tr><th scope="row" class="pc-label"><a href="/photo-booth-crm" style="color:inherit;">Photo booth CRM &amp; bookings</a></th><td class="pc-mid"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td><td class="pc-mid pc-pro"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td></tr>
+      </tbody>
+      <tbody>
+        <tr class="pc-group"><th scope="rowgroup" colspan="2">AI photo booth</th><th class="pc-pro" aria-hidden="true"></th></tr>
+        <tr>
+          <td colspan="3">
+            <div class="pc-strip">
+              <img src="/images/ai-vogue-couple-sm.webp" alt="AI magazine cover photo of a couple at a wedding" loading="lazy" width="300" height="375">
+              <img src="/images/ai-goodfellas-lads-sm.webp" alt="AI movie poster photo of a group of guests" loading="lazy" width="300" height="375">
+              <img src="/images/ai-sketch-duo-sm.webp" alt="AI pencil sketch photo of two guests" loading="lazy" width="300" height="375">
+              <img src="/images/ai-instagram-trio-sm.webp" alt="AI social post style photo of three guests" loading="lazy" width="300" height="375">
+            </div>
+            <p class="pc-strip-cap">Examples of what guests get on Pro. AI photos and videos use pay-as-you-go AI credits. <a href="/ai-photo-booth">See the AI photo booth</a></p>
+          </td>
+        </tr>
+        <tr><th scope="row" class="pc-label">AI styles &amp; custom prompts<span class="pc-hint">Magazine covers, movie posters, art styles, or write your own.</span></th><td class="pc-mid"><span class="pc-no"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg><span class="pc-sr">Not included</span></span></td><td class="pc-mid pc-pro"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td></tr>
+        <tr><th scope="row" class="pc-label">Two AI engines<span class="pc-hint">Seedream for best quality, Nano Banana for speed.</span></th><td class="pc-mid"><span class="pc-no"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg><span class="pc-sr">Not included</span></span></td><td class="pc-mid pc-pro"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td></tr>
+        <tr><th scope="row" class="pc-label"><a href="/ai-video-booth" style="color:inherit;">AI video</a><span class="pc-hint">Turn a guest&rsquo;s photo into a short clip, delivered by QR.</span></th><td class="pc-mid"><span class="pc-no"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg><span class="pc-sr">Not included</span></span></td><td class="pc-mid pc-pro"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td></tr>
+      </tbody>
+      <tbody>
+        <tr class="pc-group"><th scope="rowgroup" colspan="2">Pro extras</th><th class="pc-pro" aria-hidden="true"></th></tr>
+        <tr><th scope="row" class="pc-label"><a href="/photo-booth-integrations-guide" style="color:inherit;">Integrations</a><span class="pc-hint">Pay to play, light and relay triggers, webhooks and the control API.</span></th><td class="pc-mid"><span class="pc-no"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg><span class="pc-sr">Not included</span></span></td><td class="pc-mid pc-pro"><span class="pc-yes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="pc-sr">Included</span></span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pc-cta">
+    <a href="javascript:void(0)" class="card-cta card-cta--primary" style="width:auto;padding-left:28px;padding-right:28px;" onclick="handleSubscribe('ai'); return false;">Get Pro</a>
+    <a href="#download" class="card-cta card-cta--outline" style="width:auto;padding-left:28px;padding-right:28px;">Try everything free for 30 days</a>
+  </div>
+</section>
 
 <!-- Free trial download (downloadBtn is wired in js/main.js: Ads conversion + download log; phones get "email me the link") -->
 <section class="pr-dl" id="download">
@@ -674,7 +773,7 @@
       </div>
       <div style="flex:1 1 380px;display:grid;grid-template-columns:1fr 1fr;gap:10px;" id="prepaidGrid">
         <button type="button" class="card-cta card-cta--outline" style="margin:0;" onclick="handleSubscribe('basic_12mo'); return false;">Basic &middot; 12 months <span data-prepaid="basic_12mo">&euro;120</span></button>
-        <button type="button" class="card-cta card-cta--primary" style="margin:0;" onclick="handleSubscribe('ai_12mo'); return false;">AI &middot; 12 months <span data-prepaid="ai_12mo">&euro;350</span></button>
+        <button type="button" class="card-cta card-cta--primary" style="margin:0;" onclick="handleSubscribe('ai_12mo'); return false;">Pro &middot; 12 months <span data-prepaid="ai_12mo">&euro;350</span></button>
       </div>
     </div>
     <p style="margin:14px 0 0;font-size:12px;color:#8a8f98;">Need more than 2 devices? Each extra device is 50% of the plan price; you can add one for the rest of your term at any time from Account &rarr; Devices.</p>
@@ -694,7 +793,7 @@
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="toggleFaq(this)">Can I switch between plans?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-    <div class="faq-a">Yes. You can upgrade from Basic to AI Photobooth at any time. The price difference is prorated. You can also switch between monthly and yearly billing through the customer portal.</div>
+    <div class="faq-a">Yes. You can upgrade from Basic to Pro at any time. The price difference is prorated. You can also switch between monthly and yearly billing through the customer portal.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="toggleFaq(this)">How do I cancel?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
@@ -706,7 +805,7 @@
   </div>
   <div class="faq-item">
     <div class="faq-q" onclick="toggleFaq(this)">Is there a free trial of the AI features?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-    <div class="faq-a">Yes. The 30-day free trial includes every feature, including all the AI effects, face swap and AI prompts, and comes with $5 of free AI credit to try them. No credit card is needed. Photos taken on a trial carry a small &ldquo;BoothLedger TRIAL&rdquo; watermark so you can test every step &mdash; capture, print, share &mdash; without it being a free event licence; every photo taken after you subscribe is clean.</div>
+    <div class="faq-a">Yes. The 30-day free trial includes every feature, including AI styles, custom prompts and AI video, and comes with $5 of free AI credit to try them. No credit card is needed. Photos taken on a trial carry a small &ldquo;BoothLedger TRIAL&rdquo; watermark so you can test every step &mdash; capture, print, share &mdash; without it being a free event licence; every photo taken after you subscribe is clean.</div>
   </div>
 </section>
 
@@ -949,12 +1048,12 @@
   const PLAN_LABELS = {
     basic_monthly: 'Basic - Monthly',
     basic_yearly: 'Basic - Yearly',
-    ai_monthly: 'AI Photobooth - Monthly',
-    ai_yearly: 'AI Photobooth - Yearly',
+    ai_monthly: 'Pro - Monthly',
+    ai_yearly: 'Pro - Yearly',
     basic_6mo: 'Basic - 6 months, paid once',
     basic_12mo: 'Basic - 12 months, paid once',
-    ai_6mo: 'AI Photobooth - 6 months, paid once',
-    ai_12mo: 'AI Photobooth - 12 months, paid once',
+    ai_6mo: 'Pro - 6 months, paid once',
+    ai_12mo: 'Pro - 12 months, paid once',
   };
   const PREPAID_KEYS = new Set(['basic_6mo','basic_12mo','ai_6mo','ai_12mo']);
   let prepaidPrices = null;
