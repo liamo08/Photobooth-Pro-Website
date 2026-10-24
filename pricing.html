@@ -457,6 +457,26 @@
   <!-- Schema: Organization -->
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"BoothLedger","url":"https://boothledger.com/","logo":{"@type":"ImageObject","url":"https://boothledger.com/images/boothledger-logo-full.png","width":1000,"height":1000},"description":"Professional photo booth software for event professionals worldwide","sameAs":["https://www.instagram.com/booth_ledger"]}</script>
   <link rel="stylesheet" href="/css/site-legacy.css?v=2">
+<style>
+  /* Above-the-fold pass (2026-10): prices and the start of both feature lists
+     visible on a ~800px-tall laptop screen without scrolling. */
+  .pricing-hero { padding: 108px 24px 8px; }
+  .pricing-hero__badge { display: none; }
+  .pricing-hero h1 { font-size: clamp(30px, 4vw, 44px); margin-bottom: 10px; }
+  .pricing-hero p { font-size: 16.5px; }
+  .toggle-wrap { margin: 18px auto 24px; flex-wrap: wrap; row-gap: 0; padding: 0 16px; }
+  .toggle-wrap .toggle-track { flex-shrink: 0; }
+  .toggle-wrap #currencySwitch { flex-basis: 100%; margin-top: 6px !important; }
+  .pricing-card { padding: 28px 32px 32px; }
+  .card-desc { margin-bottom: 16px; }
+  .pricing-card .devices-badge { display: none; } /* hero already says 2 devices on every plan */
+  .card-billed { margin-bottom: 18px; }
+  .card-divider { margin-bottom: 16px; }
+  @media (max-width: 768px) {
+    .pricing-hero { padding-top: 96px; }
+    .pricing-card { padding: 24px 22px 28px; }
+  }
+</style>
 </head>
 <body class="ml ml-pricing">
 
