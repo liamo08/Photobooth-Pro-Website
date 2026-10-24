@@ -9,7 +9,7 @@ BoothLedger is a Windows photo booth application designed for professional event
 - [Home](https://boothledger.com/): Main landing page with features overview, download, and FAQ
 - [AI Photo Booth](https://boothledger.com/ai-photo-booth): AI-powered photo booth features including face swap, AI backgrounds, and 50+ creative effects
 - [AI Video Booth](https://boothledger.com/ai-video-booth): Turn booth photos or AI photo transformations into 5-10 second AI videos (image-to-video) delivered to guests by QR while the booth keeps running - 12 built-in effects (Animate, Style + Animate, Transformation Reveal), custom video prompts, per-event spend limits, from $0.25 per clip in AI credits on the Pro plan
-- [Pricing](https://boothledger.com/pricing): Subscription plans starting at EUR 12/month with 30-day free trial
+- [Pricing](https://boothledger.com/pricing): Basic EUR 12/month (standard and photo strip events); Pro EUR 35/month (every event type plus the AI photo booth); 30-day free trial includes all of Pro
 - [Mirror Booth](https://boothledger.com/mirror-booth): Mirror booth software for interactive photo booth experiences
 - [Green Screen Photo Booth](https://boothledger.com/green-screen-photo-booth): Green screen and AI background removal features
 - [Newspaper Photo Booth](https://boothledger.com/newspaper-photo-booth): Newspaper photo booth software that turns each guest into a custom A4 front-page newspaper with an editable headline, names and date, printed full-size on-site. "On This Date" mode lets a guest enter a birthday (or any date from 1900 on) and writes the front page from that day — headline, story, captions and classified ads — for $0.03 of AI credit per page, in 8 languages
