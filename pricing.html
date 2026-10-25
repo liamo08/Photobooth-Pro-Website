@@ -108,6 +108,11 @@
     .nav-links a:hover { color: var(--text); }
     .nav-cta { background: var(--accent) !important; color: #fff !important; padding: 8px 20px; border-radius: 8px; font-weight: 600 !important; transition: opacity .2s, transform .15s !important; }
     .nav-cta:hover { opacity: .9; transform: translateY(-1px); }
+    .nav-brought-by { display: flex; align-items: center; gap: 6px; margin-left: 16px; padding-left: 16px; border-left: 1px solid var(--line, #e5e7eb); text-decoration: none; }
+    .nav-brought-by span { font-size: 11px; white-space: nowrap; }
+    .nav-container > .nav-links { margin-left: auto; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; border-radius: 2px; transition: .3s; }
 
     /* ── Hero ── */
     .pricing-hero { position: relative; z-index: 1; text-align: center; padding: 140px 24px 40px; }
@@ -431,7 +436,11 @@
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .pricing-cards { grid-template-columns: 1fr; max-width: 440px; }
-      .nav-links { display: none; }
+      .nav-toggle { display: flex; margin-left: auto; }
+      .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; flex-direction: column; align-items: stretch; padding: 80px 32px; gap: 24px; transition: right .3s; }
+      .nav-links.open { right: 0; }
+      .nav-brought-by { margin-left: 10px; padding-left: 10px; }
+      .nav-brought-by span { display: none; }
       .pricing-hero { padding-top: 120px; }
       .modal-card { padding: 36px 28px 32px; max-width: 480px; }
     }
@@ -456,7 +465,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://boothledger.com/"},{"@type":"ListItem","position":2,"name":"Pricing","item":"https://boothledger.com/pricing"}]}</script>
   <!-- Schema: Organization -->
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"BoothLedger","url":"https://boothledger.com/","logo":{"@type":"ImageObject","url":"https://boothledger.com/images/boothledger-logo-full.png","width":1000,"height":1000},"description":"Professional photo booth software for event professionals worldwide","sameAs":["https://www.instagram.com/booth_ledger"]}</script>
-  <link rel="stylesheet" href="/css/site-legacy.css?v=2">
+  <link rel="stylesheet" href="/css/site-legacy.css?v=5">
 <style>
   /* Above-the-fold pass (2026-10): prices and the start of both feature lists
      visible on a ~800px-tall laptop screen without scrolling. */
@@ -575,19 +584,27 @@
 </div>
 
 <!-- Nav -->
-<nav class="nav">
+<nav class="nav" id="nav">
   <div class="nav-container">
-    <a href="https://boothledger.com" class="nav-logo">
-      <img src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="32" height="32">
-      <span>Booth<span class="nav-logo-accent">Ledger</span></span>
+    <a href="/" class="nav-logo">
+      <img class="logo-icon" src="/images/boothledger-icon-96.webp" alt="BoothLedger" width="40" height="40">
+      <span class="logo-text">Booth<span class="logo-accent">Ledger</span></span>
     </a>
-    <ul class="nav-links">
-      <li><a href="https://boothledger.com/#features">Features</a></li>
-      <li><a href="https://boothledger.com/#ai">AI Effects</a></li>
+    <a href="https://www.photoboothguys.ie" target="_blank" rel="noopener" class="nav-brought-by">
+      <span>Brought to you by</span>
+      <img src="/images/photobooth-guys-logo.webp" width="31" height="28" alt="PhotoBooth Guys">
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/ai-photo-booth">AI Photo Booth</a></li>
+      <li><a href="/ai-video-booth">AI Video</a></li>
+      <li><a href="/#ecosystem">Ecosystem</a></li>
+      <li><a href="/compare">Compare</a></li>
       <li><a href="/photo-booth-crm">CRM</a></li>
-      <li><a href="#plans">Pricing</a></li>
+      <li><a href="/pricing" class="active" aria-current="page">Pricing</a></li>
       <li><a href="https://boothledger.com/user/login" class="nav-account">My Account</a></li>
-      <li><a href="#download" class="nav-cta">Download</a></li>
+      <li><a href="#download" class="nav-cta">Download Trial</a></li>
     </ul>
   </div>
 </nav>

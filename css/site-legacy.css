@@ -284,3 +284,28 @@ body.ml {
 .ml-pricing .modal-submit:hover:not(:disabled) { background: var(--blue-700); box-shadow: 0 8px 24px -8px rgba(124,58,237,.6); }
 .ml-pricing .modal-footer { color: var(--muted); }
 .ml-pricing .modal-footer a { color: var(--blue-700); }
+
+/* ---------- Nav: one menu sitewide (2026-10-25) — keep labels on one line, drawer below 1180px ---------- */
+.ml .nav-links a { white-space: nowrap; }
+.ml .nav-links a.active { color: var(--ink) !important; background: #f1f4f9; }
+@media (max-width: 1320px) {
+  .ml .nav-brought-by span { display: none; }
+}
+@media (max-width: 1180px) {
+  .ml .nav-toggle { display: flex; margin-left: auto; }
+  .ml .nav-links { position: fixed; top: -14px; right: -100%; width: 280px; height: 100vh; flex-direction: column; align-items: stretch; padding: 80px 32px; background: #fff; border-left: 1px solid var(--line); box-shadow: -24px 0 60px -20px rgba(15,23,42,.35); transition: right .3s; }
+  .ml .nav-links.open { right: 0; }
+  .ml .nav-links a { font-size: 16px; padding: 12px 14px; border-radius: 12px; }
+  .ml .nav-links a.nav-cta { margin-left: 0; text-align: center; }
+}
+
+/* ---------- Inline fixed-column grids (bento cards + stats strips) collapse on small screens (2026-10-25) ---------- */
+@media (max-width: 900px) {
+  .ml [style*="grid-template-columns:repeat(6,1fr)"] { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+  .ml [style*="grid-template-columns:repeat(6,1fr)"] > * { grid-column: auto !important; grid-row: auto !important; }
+  .ml [style*="grid-template-columns:repeat(6,1fr)"] > [style*="span 4"] { grid-column: 1 / -1 !important; }
+}
+@media (max-width: 600px) {
+  .ml [style*="grid-template-columns:repeat(6,1fr)"] { grid-template-columns: minmax(0,1fr) !important; }
+  .ml [style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: repeat(2, minmax(0,1fr)) !important; row-gap: 24px !important; }
+}
