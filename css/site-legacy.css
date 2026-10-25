@@ -309,3 +309,14 @@ body.ml {
   .ml [style*="grid-template-columns:repeat(6,1fr)"] { grid-template-columns: minmax(0,1fr) !important; }
   .ml [style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: repeat(2, minmax(0,1fr)) !important; row-gap: 24px !important; }
 }
+
+/* ---------- Nav pill: one width on every page and every screen size (matches .m-nav in site.css) ---------- */
+.ml .nav-container, .ml .nav.scrolled .nav-container { max-width: 1360px !important; width: 100%; box-sizing: border-box; }
+/* Same layout as the homepage nav on desktop: links centred, My Account as an outline pill next to the CTA */
+@media (min-width: 1181px) {
+  .ml .nav-container > .nav-links { flex: 1; }
+  .ml .nav-links > li:first-child { margin-left: auto; }
+  .ml .nav-links > li:has(> .nav-account) { margin-left: auto; }
+  .ml .nav-links a.nav-account { border: 1px solid var(--line); background: #fff; padding: 9px 15px; }
+  .ml .nav-links a.nav-account:hover { background: #f8fafc; }
+}
