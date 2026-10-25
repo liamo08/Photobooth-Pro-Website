@@ -939,14 +939,15 @@
   let isYearly = false;
   let selectedPriceKey = '';
 
-  // ── Currency: EUR inside the EU, GBP in the UK, AUD in Australia, USD
-  // everywhere else. GBP/AUD are only offered once the server has prices
+  // ── Currency: EUR inside the EU, GBP in the UK, AUD in Australia, CAD in
+  // Canada, USD everywhere else. GBP/AUD/CAD are only offered once the server has prices
   // for them (bookLive), otherwise those visitors see USD as before. ──
   const EU_TZ = new Set(['Europe/Dublin','Europe/Lisbon','Atlantic/Madeira','Atlantic/Azores','Atlantic/Canary','Europe/Madrid','Europe/Paris','Europe/Brussels','Europe/Amsterdam','Europe/Luxembourg','Europe/Berlin','Europe/Busingen','Europe/Rome','Europe/Vatican','Europe/San_Marino','Europe/Malta','Europe/Vienna','Europe/Prague','Europe/Copenhagen','Europe/Stockholm','Europe/Helsinki','Europe/Mariehamn','Europe/Warsaw','Europe/Budapest','Europe/Bratislava','Europe/Ljubljana','Europe/Zagreb','Europe/Bucharest','Europe/Sofia','Europe/Athens','Europe/Tallinn','Europe/Riga','Europe/Vilnius','Asia/Nicosia','Europe/Nicosia']);
   const GBP_TZ = new Set(['Europe/London','Europe/Belfast','Europe/Guernsey','Europe/Isle_of_Man','Europe/Jersey']);
-  const BOOK_PREFIX = { EUR: '', USD: 'usd_', GBP: 'gbp_', AUD: 'aud_' };
-  const BOOK_SYMBOL = { EUR: '\u20ac', USD: '$', GBP: '\u00a3', AUD: 'A$' };
-  const BOOK_KEY_RE = /^(usd|gbp|aud)_/;
+  const BOOK_PREFIX = { EUR: '', USD: 'usd_', GBP: 'gbp_', AUD: 'aud_', CAD: 'cad_' };
+  const BOOK_SYMBOL = { EUR: '\u20ac', USD: '$', GBP: '\u00a3', AUD: 'A$', CAD: 'C$' };
+  const BOOK_KEY_RE = /^(usd|gbp|aud|cad)_/;
+  const CAD_TZ = new Set(['America/St_Johns','America/Halifax','America/Glace_Bay','America/Moncton','America/Goose_Bay','America/Blanc-Sablon','America/Toronto','America/Montreal','America/Nipigon','America/Thunder_Bay','America/Iqaluit','America/Pangnirtung','America/Atikokan','America/Winnipeg','America/Rainy_River','America/Resolute','America/Rankin_Inlet','America/Regina','America/Swift_Current','America/Edmonton','America/Cambridge_Bay','America/Yellowknife','America/Inuvik','America/Creston','America/Dawson_Creek','America/Fort_Nelson','America/Vancouver','America/Whitehorse','America/Dawson']);
   // ── India: banks refuse recurring card charges from overseas merchants (RBI
   // e-mandate rules), so a subscription can never be paid from there. Those
   // visitors only see the 12-month pay-once terms; the server enforces it too. ──
@@ -961,6 +962,7 @@
       if (EU_TZ.has(tz)) return 'EUR';
       if (GBP_TZ.has(tz)) return 'GBP';
       if (tz.indexOf('Australia/') === 0) return 'AUD';
+      if (CAD_TZ.has(tz) || tz.indexOf('Canada/') === 0) return 'CAD';
       return 'USD';
     } catch (e) { return 'EUR'; }
   }
