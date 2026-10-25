@@ -320,3 +320,14 @@ body.ml {
   .ml .nav-links a.nav-account { border: 1px solid var(--line); background: #fff; padding: 9px 15px; }
   .ml .nav-links a.nav-account:hover { background: #f8fafc; }
 }
+
+/* Nav sizes are fixed at every desktop width. Beats the old "4K Display Scaling" inline blocks (18 pages) and
+   style.min.css big-screen rules that enlarged nav text/logo at 2400px+ and made it overflow the pill. */
+@media (min-width: 1181px) {
+  .ml .nav, .ml .nav.scrolled { padding: 0 12px !important; }
+  .ml .nav-links { gap: 2px !important; }
+  .ml .nav-links a { font-size: 14.5px !important; }
+  .ml .nav-links a.nav-cta { font-size: 14.5px !important; padding: 10px 16px !important; border-radius: 999px !important; }
+  .ml .logo-text { font-size: 18px !important; }
+  .ml .logo-icon { width: 34px !important; height: 34px !important; }
+}
