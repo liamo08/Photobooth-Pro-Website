@@ -100,10 +100,10 @@
     });
   }
 
-  // --- Download buttons: Windows installer, or a form on phones/Macs ---
-  // The app is Windows-only, so on a phone the installer download is useless.
-  // There the button opens a small form that emails the link (Apple devices
-  // also join the Mac & iPad waitlist).
+  // --- Download buttons: Windows installer, App Store, or a form ---
+  // Windows gets the installer. iPhone/iPad get the App Store (BoothLedger
+  // Photo Booth, live since Oct 2026). Other phones/tablets and Macs get a
+  // small form that emails the Windows link (Macs also join the Mac waitlist).
   function isPhoneOrTablet() {
     var ua = navigator.userAgent || '';
     if (/Android|iPhone|iPad|iPod|Mobile|Silk|Kindle/i.test(ua)) return true;
@@ -116,6 +116,22 @@
     if (/iPhone|iPad|iPod/.test(ua)) return 'ios';
     if (/Macintosh/.test(ua)) return navigator.maxTouchPoints > 1 ? 'ios' : 'mac';
     return '';
+  }
+
+  var APP_STORE_URL = 'https://apps.apple.com/app/id6788917574';
+
+  // iPhone/iPad: send them to the App Store instead of a waitlist.
+  function initAppStoreButton(btn) {
+    btn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="vertical-align:-4px;"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8.98-.2 1.92-.86 3.05-.86 1.36 0 2.66.55 3.5 1.67-3.09 1.85-2.36 5.91.6 7.02-.57 1.5-1.31 2.99-2.23 4.34zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg> Download on the App Store';
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (typeof gtag === 'function') gtag('event', 'ios_app_store_click', {'event_category': 'download', 'page': location.pathname});
+      window.location.href = APP_STORE_URL;
+    });
+    if (btn.id === 'downloadBtn') {
+      var version = document.getElementById('downloadVersion');
+      if (version) version.textContent = 'Free on the App Store for iPad & iPhone, on the same account as the Windows app.';
+    }
   }
 
   // GitHub latest release URL - always points to newest version
@@ -154,19 +170,19 @@
   }
 
   // Phones, tablets and Macs can't run the Windows app, so the button opens a
-  // small form instead. platform 'mac'/'ios' also joins the Mac & iPad
-  // waitlist; the server emails the Windows link either way.
+  // small form instead. platform 'mac' also joins the Mac waitlist; the
+  // server emails the Windows link either way.
   function initEmailLinkButton(downloadBtn, platform) {
     var waitlist = platform === 'mac' || platform === 'ios';
     downloadBtn.innerHTML = waitlist
       ? '<svg class="m-i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>' +
-        ' Join the Mac &amp; iPad waitlist'
+        ' Join the Mac waitlist'
       : '<svg class="m-i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>' +
         ' Email me the download link';
     if (downloadBtn.id === 'downloadBtn') {
       var version = document.getElementById('downloadVersion');
       if (version) version.textContent = waitlist
-        ? 'BoothLedger runs on Windows 10/11 today. Mac & iPad versions are on the way.'
+        ? 'BoothLedger runs on Windows 10/11 and iPad today. A Mac version is on the way.'
         : 'BoothLedger runs on a Windows 10/11 PC. We’ll email you the link so you can install it there.';
     }
 
@@ -206,7 +222,7 @@
     var note = document.createElement('p');
     note.style.cssText = 'margin:10px 0 0;font-size:13.5px;color:inherit;opacity:.85;';
     note.textContent = waitlist
-      ? 'We’ll email you when BoothLedger for Mac & iPad launches, plus the Windows download link in case you have a Windows PC. No newsletter.'
+      ? 'We’ll email you when BoothLedger for Mac launches, plus the Windows download link in case you have a Windows PC. No newsletter.'
       : 'One email with the link. No newsletter.';
     form.appendChild(note);
 
@@ -292,6 +308,7 @@
     var apple = applePlatform();
     var mobile = isPhoneOrTablet();
     buttons.forEach(function (btn) {
+      if (apple === 'ios') return initAppStoreButton(btn);
       if (apple) return initEmailLinkButton(btn, apple);
       if (mobile) return initEmailLinkButton(btn, '');
       btn.addEventListener('click', function (e) {
