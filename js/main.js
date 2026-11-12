@@ -102,7 +102,7 @@
 
   // --- Download buttons: Windows installer, App Store, or a form ---
   // Windows gets the installer. iPhone/iPad get the App Store (BoothLedger
-  // Photo Booth, live since Oct 2026). Other phones/tablets and Macs get a
+  // Photo Booth, live since Oct 2026). Android gets Google Play. Other phones/tablets and Macs get a
   // small form that emails the Windows link (Macs also join the Mac waitlist).
   function isPhoneOrTablet() {
     var ua = navigator.userAgent || '';
@@ -131,6 +131,26 @@
     if (btn.id === 'downloadBtn') {
       var version = document.getElementById('downloadVersion');
       if (version) version.textContent = 'Free on the App Store for iPad & iPhone, on the same account as the Windows app.';
+    }
+  }
+
+  var PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=ie.photoboothguys.boothledger';
+
+  function isAndroid() {
+    return /Android/i.test(navigator.userAgent || '');
+  }
+
+  // Android phones/tablets: send them to Google Play (live since Nov 2026).
+  function initPlayStoreButton(btn) {
+    btn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="vertical-align:-4px;"><path d="M3.6 2.3c-.2.2-.3.6-.3 1v17.4c0 .4.1.8.3 1l9.7-9.7L3.6 2.3zm10.8 10.8 2.6 2.6-11 6.3 8.4-8.9zm3.9-3.9 2.8 1.6c.8.5.8 1.8 0 2.3l-2.8 1.6-2.9-2.8 2.9-2.7zM6 2l11 6.3-2.6 2.6L6 2z"/></svg> Get it on Google Play';
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (typeof gtag === 'function') gtag('event', 'android_play_store_click', {'event_category': 'download', 'page': location.pathname});
+      window.location.href = PLAY_STORE_URL;
+    });
+    if (btn.id === 'downloadBtn') {
+      var version = document.getElementById('downloadVersion');
+      if (version) version.textContent = 'Free on Google Play for Android phones & tablets, on the same account as the Windows and iPad apps.';
     }
   }
 
@@ -309,6 +329,7 @@
     var mobile = isPhoneOrTablet();
     buttons.forEach(function (btn) {
       if (apple === 'ios') return initAppStoreButton(btn);
+      if (isAndroid()) return initPlayStoreButton(btn);
       if (apple) return initEmailLinkButton(btn, apple);
       if (mobile) return initEmailLinkButton(btn, '');
       btn.addEventListener('click', function (e) {
