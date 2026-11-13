@@ -189,6 +189,14 @@
     .m-crm-actions { display: flex; gap: 10px; flex-wrap: wrap; }
     .m-crm img { width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 30px 60px -30px rgba(15,23,42,.45); display: block; }
     @media (max-width: 900px) { .m-crm { grid-template-columns: minmax(0, 1fr); padding: 22px; gap: 22px; } }
+    /* Download section: sign up first, then pick a platform (2026-11-13) */
+    .m-dl .m-dl-step { display:flex; align-items:center; gap:10px; margin:22px 0 10px; font-weight:700; font-size:15px; color:#fff; }
+    .m-dl-num { width:26px; height:26px; border-radius:50%; background:rgba(255,255,255,.2); display:inline-flex; align-items:center; justify-content:center; font-size:13px; flex:none; }
+    .m-dl-actions.m-dl-stores { gap:10px; }
+    .m-dl-actions.m-dl-stores .m-btn { height:48px; padding:0 18px; font-size:15px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.4); color:#fff !important; }
+    .m-dl-actions.m-dl-stores .m-btn:hover { background:rgba(255,255,255,.22); }
+    .m-dl-actions.m-dl-stores .m-btn svg { width:19px; height:19px; flex:none; }
+    #downloadVersion { margin:12px 0 0; }
   </style>
 </head>
 <body class="m">
@@ -233,13 +241,13 @@
           <h1 class="m-title">Professional Photo Booth <span class="soft">Software That Delivers</span></h1>
           <p class="m-lede">The all-in-one photo booth software for event professionals. Canon DSLR support, beautiful templates, instant SMS/email sharing, cloud management, and AI-powered effects &mdash; everything you need to deliver unforgettable events.</p>
           <div class="m-hero-ctas">
-            <a href="#download" class="m-btn m-btn-primary m-btn-lg">
-              <svg class="m-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            <a href="https://boothledger.com/user/register" class="m-btn m-btn-primary m-btn-lg" data-bl-signup>
               Start 30-Day Free Trial
+              <svg class="m-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
             <a href="#features" class="m-btn m-btn-ghost m-btn-lg">Explore Features</a>
           </div>
-          <p class="m-hero-note">Windows 10/11 &middot; No credit card required</p>
+          <p class="m-hero-note">Windows, iPad, iPhone &amp; Android &middot; No credit card required</p>
         </div>
 
         <div class="m-showcase" aria-label="AI photo booth examples">
@@ -542,7 +550,7 @@
         <div>
           <span class="m-kicker" style="color:rgba(255,255,255,.75);">Free 30-day trial</span>
           <h2 class="m-h2">Ready to Get Started?</h2>
-          <p class="m-dl-lede">Download BoothLedger and try it free for 30 days. No credit card required. Full access to all features including AI effects.</p>
+          <p class="m-dl-lede">Create your free account, then install BoothLedger on your booth and sign in with the same email and password. Full access to every feature, including AI effects, free for 30 days. No credit card required.</p>
           <ul class="m-ticks">
             <li><span class="m-tick"><svg class="m-i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>30-day full-featured trial</li>
             <li><span class="m-tick"><svg class="m-i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>No credit card required</li>
@@ -551,13 +559,20 @@
             <li><span class="m-tick"><svg class="m-i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>BoothLedger Cloud access</li>
             <li><span class="m-tick"><svg class="m-i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Windows 10/11, iPad, iPhone &amp; Android (Mac coming soon)</li>
           </ul>
+          <p class="m-dl-step"><span class="m-dl-num">1</span>Create your account</p>
           <div class="m-dl-actions">
-            <button class="m-btn m-btn-white" id="downloadBtn">
-              <svg class="m-i" viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-              Download for Windows
-            </button>
-            <span class="download-version" id="downloadVersion">Windows 10/11 &middot; 64-bit &middot; iPad on the App Store &middot; Android on <a href="https://play.google.com/store/apps/details?id=ie.photoboothguys.boothledger" rel="noopener" style="color:inherit;text-decoration:underline;">Google Play</a></span>
+            <a class="m-btn m-btn-white" href="https://boothledger.com/user/register" id="signupBtn" data-bl-signup>
+              Start your free trial
+              <svg class="m-i" viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
           </div>
+          <p class="m-dl-step"><span class="m-dl-num">2</span>Get the app and sign in</p>
+          <div class="m-dl-actions m-dl-stores">
+            <button class="m-btn" id="downloadBtn" data-windows-badge><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.4 4.5v7H3v-6zm8.4-1.1L21 3v8.5h-9.6V4.4zM3 12.5h7.4v7L3 18.5v-6zm8.4 0H21V21l-9.6-1.4v-7.1z"/></svg>Windows</button>
+            <a class="m-btn" href="https://apps.apple.com/app/id6788917574" rel="noopener" data-bl-store="ios"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8.98-.2 1.92-.86 3.05-.86 1.36 0 2.66.55 3.5 1.67-3.09 1.85-2.36 5.91.6 7.02-.57 1.5-1.31 2.99-2.23 4.34zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>App Store</a>
+            <a class="m-btn" href="https://play.google.com/store/apps/details?id=ie.photoboothguys.boothledger" rel="noopener" data-bl-store="android"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.2.2-.3.6-.3 1v17.4c0 .4.1.8.3 1l9.7-9.7L3.6 2.3zm10.8 10.8 2.6 2.6-11 6.3 8.4-8.9zm3.9-3.9 2.8 1.6c.8.5.8 1.8 0 2.3l-2.8 1.6-2.9-2.8 2.9-2.7zM6 2l11 6.3-2.6 2.6L6 2z"/></svg>Google Play</a>
+          </div>
+          <p class="download-version" id="downloadVersion">Windows 10/11 (64-bit) &middot; iPad &amp; iPhone &middot; Android phones &amp; tablets. One account and one subscription on every device.</p>
         </div>
         <div class="m-support">
           <h3>Platform &amp; Camera Support</h3>
@@ -800,7 +815,7 @@
   </footer>
 
   <script src="js/hero-slideshow.js" defer></script>
-  <script src="js/main.js?v=21" defer></script>
+  <script src="js/main.js?v=22" defer></script>
 
   <!-- Analytics -->
   <script>

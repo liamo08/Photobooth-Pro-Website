@@ -8,7 +8,7 @@
   // --- Google Click ID (gclid) capture & persistence ---
   (function(){try{var KEY='__bl_gclid';var TTL=90*24*60*60*1000;var p=new URLSearchParams(window.location.search);var g=p.get('gclid');if(g){try{localStorage.setItem(KEY,JSON.stringify({v:g,t:Date.now()}));}catch(e){}}window.BL_getGclid=function(){try{var raw=localStorage.getItem(KEY);if(!raw)return '';var o=JSON.parse(raw);if(!o||!o.v||!o.t)return '';if(Date.now()-o.t>TTL){localStorage.removeItem(KEY);return '';}return o.v;}catch(e){return '';}};}catch(e){}})();
   // Carry the gclid across to the BoothLedger Cloud sign-up page (different domain, so localStorage can't).
-  document.addEventListener('DOMContentLoaded',function(){try{var g=window.BL_getGclid&&window.BL_getGclid();if(!g)return;document.querySelectorAll('a[href*="boothledgercloud.photoboothguys.ie/user/register"]').forEach(function(a){try{var u=new URL(a.href);if(!u.searchParams.get('gclid')){u.searchParams.set('gclid',g);a.href=u.toString();}}catch(e){}});}catch(e){}});
+  document.addEventListener('DOMContentLoaded',function(){try{var g=window.BL_getGclid&&window.BL_getGclid();if(!g)return;document.querySelectorAll('a[href*="boothledgercloud.photoboothguys.ie/user/register"], a[href*="boothledger.com/user/register"]').forEach(function(a){try{var u=new URL(a.href);if(!u.searchParams.get('gclid')){u.searchParams.set('gclid',g);a.href=u.toString();}}catch(e){}});}catch(e){}});
 
 
   // --- Scroll-triggered fade-in animations ---
@@ -192,14 +192,14 @@
   // Phones, tablets and Macs can't run the Windows app, so the button opens a
   // small form instead. platform 'mac' also joins the Mac waitlist; the
   // server emails the Windows link either way.
-  function initEmailLinkButton(downloadBtn, platform) {
+  function initEmailLinkButton(downloadBtn, platform, keepLabel) {
     var waitlist = platform === 'mac' || platform === 'ios';
-    downloadBtn.innerHTML = waitlist
+    if (!keepLabel) downloadBtn.innerHTML = waitlist
       ? '<svg class="m-i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>' +
         ' Join the Mac waitlist'
       : '<svg class="m-i" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>' +
         ' Email me the download link';
-    if (downloadBtn.id === 'downloadBtn') {
+    if (downloadBtn.id === 'downloadBtn' && !keepLabel) {
       var version = document.getElementById('downloadVersion');
       if (version) version.textContent = waitlist
         ? 'BoothLedger runs on Windows 10/11 and iPad today. A Mac version is on the way.'
@@ -317,6 +317,20 @@
 
   // #downloadBtn, plus any in-content button marked data-bl-download
   // (e.g. blog CTAs), get the same platform handling.
+  function initSignupAndStoreLinks() {
+    document.querySelectorAll('[data-bl-signup]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        if (typeof gtag === 'function') gtag('event', 'signup_click', {'event_category': 'signup', 'page': location.pathname});
+      });
+    });
+    document.querySelectorAll('[data-bl-store]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        var ios = a.getAttribute('data-bl-store') === 'ios';
+        if (typeof gtag === 'function') gtag('event', ios ? 'ios_app_store_click' : 'android_play_store_click', {'event_category': 'download', 'page': location.pathname});
+      });
+    });
+  }
+
   function initDownloadButton() {
     var buttons = [];
     var main = document.getElementById('downloadBtn');
@@ -328,6 +342,16 @@
     var apple = applePlatform();
     var mobile = isPhoneOrTablet();
     buttons.forEach(function (btn) {
+      // Homepage: a Windows badge next to App Store / Google Play badges. On a
+      // phone, tablet or Mac it offers to email the Windows link instead.
+      if (btn.hasAttribute('data-windows-badge')) {
+        if (apple || mobile) return initEmailLinkButton(btn, '', true);
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          startWindowsDownload(btn);
+        });
+        return;
+      }
       if (apple === 'ios') return initAppStoreButton(btn);
       if (isAndroid()) return initPlayStoreButton(btn);
       if (apple) return initEmailLinkButton(btn, apple);
@@ -647,6 +671,7 @@
     initMobileNav();
     initSmoothScroll();
     initDownloadButton();
+    initSignupAndStoreLinks();
     initActiveNavLinks();
     initAIGallery();
     initComparisonSliders();
