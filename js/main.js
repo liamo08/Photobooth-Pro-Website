@@ -118,6 +118,17 @@
     return '';
   }
 
+  // Log which button was pressed (sign up, App Store, Google Play) so the
+  // admin funnel can say which platform visitors want. Never blocks the click.
+  function trackCta(kind, platform) {
+    try {
+      navigator.sendBeacon(
+        'https://boothledger.com/api/v1/analytics/track-cta',
+        new Blob([JSON.stringify({kind: kind, platform: platform || '', page: location.pathname})], {type: 'application/json'})
+      );
+    } catch (e) {}
+  }
+
   var APP_STORE_URL = 'https://apps.apple.com/app/id6788917574';
 
   // iPhone/iPad: send them to the App Store instead of a waitlist.
@@ -126,6 +137,7 @@
     btn.addEventListener('click', function (e) {
       e.preventDefault();
       if (typeof gtag === 'function') gtag('event', 'ios_app_store_click', {'event_category': 'download', 'page': location.pathname});
+      trackCta('store_click', 'ios');
       window.location.href = APP_STORE_URL;
     });
     if (btn.id === 'downloadBtn') {
@@ -146,6 +158,7 @@
     btn.addEventListener('click', function (e) {
       e.preventDefault();
       if (typeof gtag === 'function') gtag('event', 'android_play_store_click', {'event_category': 'download', 'page': location.pathname});
+      trackCta('store_click', 'android');
       window.location.href = PLAY_STORE_URL;
     });
     if (btn.id === 'downloadBtn') {
@@ -321,12 +334,14 @@
     document.querySelectorAll('[data-bl-signup]').forEach(function (a) {
       a.addEventListener('click', function () {
         if (typeof gtag === 'function') gtag('event', 'signup_click', {'event_category': 'signup', 'page': location.pathname});
+        trackCta('signup_click');
       });
     });
     document.querySelectorAll('[data-bl-store]').forEach(function (a) {
       a.addEventListener('click', function () {
         var ios = a.getAttribute('data-bl-store') === 'ios';
         if (typeof gtag === 'function') gtag('event', ios ? 'ios_app_store_click' : 'android_play_store_click', {'event_category': 'download', 'page': location.pathname});
+        trackCta('store_click', ios ? 'ios' : 'android');
       });
     });
   }
