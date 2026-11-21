@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BoothLedger — How guests opt in to SMS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://boothledger.com/sms-opt-in">
+<style>
+  :root { --ink:#1a1a1a; --ink2:#555; --rule:#e6e3dc; --accent:#2436E8; --paper:#faf8f3; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 56px 24px 96px; }
+  h1 { font-size: 2rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .updated { color: var(--ink2); font-size: .9rem; margin: 0 0 36px; }
+  h2 { font-size: 1.15rem; margin: 40px 0 8px; }
+  p, li { color: #2a2a2a; }
+  a { color: var(--accent); }
+  ul { padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  .lead { font-size: 1.05rem; color: var(--ink2); }
+  figure { margin: 18px 0 8px; }
+  figure img { width: 100%; max-width: 520px; height: auto; display: block; border: 1px solid var(--rule); border-radius: 12px; }
+  figcaption { color: var(--ink2); font-size: .9rem; margin-top: 8px; }
+  blockquote { margin: 14px 0; padding: 12px 16px; background: #fff; border-left: 4px solid var(--accent); border-radius: 6px; }
+  footer { margin-top: 48px; color: var(--ink2); font-size: .85rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>How guests opt in to BoothLedger texts</h1>
+  <p class="updated">Last updated: 21 November 2026</p>
+
+  <p class="lead">
+    BoothLedger is photo booth software by Photobooth Guys Limited (Ireland). This page shows
+    exactly where and how an event guest asks for a text message. Texting is
+    <strong>optional</strong>. A guest never has to give a phone number to use the booth,
+    take photos, print them or get them another way.
+  </p>
+
+  <h2>Step 1: the guest chooses how to get their photo</h2>
+  <p>
+    After taking their photo, the guest sees the Share + Print screen. SMS is one of several
+    choices, and none is required:
+  </p>
+  <ul>
+    <li><strong>Scan QR</strong>: scan a code with the phone camera to open the photo. No phone number needed.</li>
+    <li><strong>Email</strong>: type an email address instead.</li>
+    <li><strong>Print</strong>: take a printed copy.</li>
+    <li><strong>Done</strong>: leave without sharing.</li>
+    <li><strong>SMS</strong>: only if the guest taps it themselves.</li>
+  </ul>
+  <figure>
+    <img src="/images/sms/booth-share-options.jpg" alt="Booth Share + Print screen with Done, Email, SMS, Scan QR and Print buttons" width="700" height="933">
+    <figcaption>The booth's Share + Print screen. SMS is one optional button next to QR, Email and Print.</figcaption>
+  </figure>
+
+  <h2>Step 2: the guest types their own number and taps Send</h2>
+  <p>
+    Tapping SMS opens the screen below. The guest types their own mobile number on the
+    touchscreen and taps <strong>Send SMS</strong>. Directly under the button, the screen says:
+  </p>
+  <blockquote>You'll get one text with your photo link. Msg &amp; data rates may apply. Reply STOP to opt out.</blockquote>
+  <p>Tapping Cancel closes the screen and nothing is sent.</p>
+  <figure>
+    <img src="/images/sms/booth-sms-numpad.jpg" alt="Send Photo via SMS screen: number keypad, Send SMS button and consent notice underneath" width="700" height="930">
+    <figcaption>The Send Photo via SMS screen with the consent notice under the Send button (example number).</figcaption>
+  </figure>
+
+  <h2>What the guest receives</h2>
+  <p>One text with a link to the photo they just took, for example:</p>
+  <blockquote>Here are your photos: https://boothledgercloud.photoboothguys.ie/p/Xk3f9QmZ2a</blockquote>
+  <ul>
+    <li>One message per request. No follow-ups, reminders or marketing.</li>
+    <li>Numbers are never bought, imported, shared or sold. They are only used to deliver the photo link.</li>
+    <li>Each number is limited to a small number of texts per day.</li>
+    <li>Reply STOP to opt out, or HELP for help. Help: info@photoboothguys.ie.</li>
+  </ul>
+
+  <h2>More detail</h2>
+  <p>
+    <a href="/sms-terms">SMS Terms</a> · <a href="/privacy">Privacy Policy</a>
+  </p>
+
+  <footer>© 2026 Photobooth Guys Limited · 77 Camden Street Lower, Dublin D02 XE80, Ireland · info@photoboothguys.ie</footer>
+</div>
+</body>
+</html>
